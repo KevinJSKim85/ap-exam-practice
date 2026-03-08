@@ -651,7 +651,7 @@ function renderMC() {
 
   return `
   <div class="header">
-    <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
+    <div class="logo" onclick="goHome()"><span>←</span> ${getExamName()}</div>
     <div class="exam-info">Section I: Multiple Choice</div>
     <div class="header-actions">
       <div id="timer" class="timer">${hasFRQ() ? '70:00' : '90:00'}</div>
@@ -697,7 +697,7 @@ function renderMCReview() {
 
   return `
   <div class="header">
-    <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
+    <div class="logo" onclick="goHome()"><span>←</span> ${getExamName()}</div>
     <div class="exam-info">Section I: Review</div>
     <div class="header-actions"><div id="timer" class="timer">--:--</div></div>
   </div>
@@ -727,7 +727,7 @@ function renderFRQTransition() {
   stopTimer();
   return `
   <div class="header">
-    <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
+    <div class="logo" onclick="goHome()"><span>←</span> ${getExamName()}</div>
     <div class="exam-info">Section Transition</div>
     <div></div>
   </div>
@@ -754,7 +754,7 @@ function renderFRQ() {
 
   return `
   <div class="header">
-    <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
+    <div class="logo" onclick="goHome()"><span>←</span> ${getExamName()}</div>
     <div class="exam-info">Section II: Free Response</div>
     <div class="header-actions">
       <div id="timer" class="timer">60:00</div>
@@ -806,7 +806,7 @@ function renderFRQScoring() {
 
   return `
   <div class="header">
-    <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
+    <div class="logo" onclick="goHome()"><span>←</span> ${getExamName()}</div>
     <div class="exam-info">FRQ Self-Scoring</div>
     <div></div>
   </div>
@@ -883,7 +883,7 @@ function renderResults() {
 
   return `
   <div class="header">
-    <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
+    <div class="logo" onclick="goHome()"><span>←</span> ${getExamName()}</div>
     <div class="exam-info">Results</div>
     <div></div>
   </div>
