@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Exam Practice</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ap-green:#00703c;--ap-dark:#1a1a1a;--ap-gray:#f5f5f5;--ap-border:#ddd;--ap-text:#333;--ap-white:#fff;--ap-blue:#0066cc;--ap-red:#cc0000;--ap-orange:#e67e00;--sidebar-w:260px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--ap-gray);color:var(--ap-text);min-height:100vh}
+/* HEADER */
+.header{background:var(--ap-dark);color:var(--ap-white);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:fixed;top:0;left:0;right:0;z-index:100}
+.header .logo{font-weight:700;font-size:18px;letter-spacing:-.5px}
+.header .logo span{color:var(--ap-green)}
+.header .exam-info{font-size:14px;opacity:.8}
+.header .timer{background:var(--ap-green);color:var(--ap-white);padding:6px 16px;border-radius:4px;font-weight:600;font-size:16px;font-variant-numeric:tabular-nums}
+.header .timer.warning{background:var(--ap-orange)}
+.header .timer.danger{background:var(--ap-red)}
+.header-actions{display:flex;align-items:center;gap:12px}
+.btn{padding:8px 20px;border:none;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--ap-green);color:var(--ap-white)}
+.btn-primary:hover{background:#005a30}
+.btn-secondary{background:transparent;color:var(--ap-white);border:1px solid rgba(255,255,255,.3)}
+.btn-secondary:hover{border-color:var(--ap-white)}
+.btn-outline{background:transparent;color:var(--ap-green);border:2px solid var(--ap-green)}
+.btn-outline:hover{background:var(--ap-green);color:var(--ap-white)}
+.btn-danger{background:var(--ap-red);color:var(--ap-white)}
+.btn-sm{padding:5px 12px;font-size:12px}
+/* SIDEBAR */
+.sidebar{position:fixed;top:56px;left:0;width:var(--sidebar-w);height:calc(100vh - 56px);background:var(--ap-white);border-right:1px solid var(--ap-border);overflow-y:auto;z-index:50;padding:16px}
+.sidebar h3{font-size:13px;text-transform:uppercase;color:#666;margin-bottom:12px;letter-spacing:.5px}
+.q-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.q-btn{width:100%;aspect-ratio:1;border:1px solid var(--ap-border);background:var(--ap-white);border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;position:relative}
+.q-btn:hover{border-color:var(--ap-green)}
+.q-btn.active{background:var(--ap-green);color:var(--ap-white);border-color:var(--ap-green)}
+.q-btn.answered{background:#e8f5e9;border-color:var(--ap-green);color:var(--ap-green)}
+.q-btn.flagged::after{content:'';position:absolute;top:2px;right:2px;width:6px;height:6px;background:var(--ap-orange);border-radius:50%}
+.sidebar-stats{margin-top:16px;padding-top:16px;border-top:1px solid var(--ap-border);font-size:13px;color:#666}
+.sidebar-stats div{margin-bottom:4px}
+.sidebar-stats span{font-weight:600;color:var(--ap-text)}
+/* MAIN CONTENT */
+.main{margin-left:var(--sidebar-w);margin-top:56px;padding:32px 48px;max-width:900px}
+.main.no-sidebar{margin-left:0;max-width:100%}
+/* LANDING PAGE */
+.landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 56px);text-align:center;margin-left:0;padding:48px}
+.landing h1{font-size:36px;margin-bottom:8px}
+.landing .subtitle{font-size:18px;color:#666;margin-bottom:48px}
+.exam-cards{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
+.exam-card{background:var(--ap-white);border:2px solid var(--ap-border);border-radius:12px;padding:40px 32px;width:340px;cursor:pointer;transition:all .2s}
+.exam-card:hover{border-color:var(--ap-green);box-shadow:0 4px 20px rgba(0,112,60,.15)}
+.exam-card h2{font-size:22px;margin-bottom:8px}
+.exam-card p{color:#666;font-size:14px;margin-bottom:20px}
+.exam-card .meta{display:flex;gap:16px;justify-content:center;font-size:13px;color:#888}
+.exam-card .meta div{display:flex;align-items:center;gap:4px}
+/* QUESTION */
+.question-container{background:var(--ap-white);border-radius:8px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.question-num{font-size:14px;font-weight:600;color:#666}
+.flag-btn{display:flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--ap-border);border-radius:4px;padding:6px 12px;font-size:13px;cursor:pointer;color:#666;transition:all .15s}
+.flag-btn:hover,.flag-btn.flagged{border-color:var(--ap-orange);color:var(--ap-orange)}
+.flag-btn.flagged{background:#fff8e1}
+.question-text{font-size:16px;line-height:1.6;margin-bottom:24px}
+.question-text table{border-collapse:collapse;margin:12px 0}
+.question-text table td,.question-text table th{border:1px solid var(--ap-border);padding:8px 16px;text-align:center}
+.question-text table th{background:var(--ap-gray);font-weight:600}
+.stimulus{background:var(--ap-gray);border-left:3px solid var(--ap-green);padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.6;border-radius:0 4px 4px 0}
+.choices{list-style:none}
+.choices li{padding:12px 16px;margin-bottom:8px;border:2px solid var(--ap-border);border-radius:6px;cursor:pointer;transition:all .15s;font-size:15px;display:flex;align-items:flex-start;gap:12px}
+.choices li:hover{border-color:var(--ap-blue);background:#f0f7ff}
+.choices li.selected{border-color:var(--ap-green);background:#e8f5e9}
+.choices li .choice-letter{font-weight:700;min-width:20px;color:#666}
+.choices li.selected .choice-letter{color:var(--ap-green)}
+/* NAV BUTTONS */
+.nav-buttons{display:flex;justify-content:space-between;margin-top:24px}
+/* FRQ */
+.frq-container{background:var(--ap-white);border-radius:8px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.frq-text{font-size:15px;line-height:1.7;margin-bottom:24px;white-space:pre-line}
+.frq-textarea{width:100%;min-height:200px;border:2px solid var(--ap-border);border-radius:6px;padding:16px;font-size:15px;font-family:inherit;line-height:1.6;resize:vertical}
+.frq-textarea:focus{outline:none;border-color:var(--ap-green)}
+.frq-part{margin-bottom:32px}
+.frq-part h4{font-size:14px;font-weight:600;margin-bottom:8px;color:var(--ap-green)}
+/* SCORING PAGE */
+.scoring-section{background:var(--ap-white);border-radius:8px;padding:32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.scoring-section h3{font-size:18px;margin-bottom:16px}
+.rubric-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--ap-gray)}
+.rubric-item:last-child{border:none}
+.rubric-item label{font-size:14px;line-height:1.5;cursor:pointer;flex:1}
+.rubric-item input[type=checkbox]{width:18px;height:18px;margin-top:2px;accent-color:var(--ap-green)}
+.points-display{font-size:14px;font-weight:600;color:var(--ap-green);min-width:50px;text-align:right}
+.score-input{width:60px;padding:6px;font-size:16px;font-weight:600;text-align:center;border:2px solid var(--ap-border);border-radius:4px}
+.score-input:focus{outline:none;border-color:var(--ap-green)}
+/* RESULTS */
+.results-page{text-align:center;padding:48px 24px}
+.results-page.main{max-width:700px;margin:56px auto 0}
+.score-circle{width:160px;height:160px;border-radius:50%;background:var(--ap-green);color:var(--ap-white);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:32px auto}
+.score-circle .big-num{font-size:64px;font-weight:800;line-height:1}
+.score-circle .label{font-size:14px;opacity:.8}
+.breakdown{background:var(--ap-white);border-radius:8px;padding:24px;margin:32px 0;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.breakdown h3{margin-bottom:16px;font-size:18px}
+.breakdown-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--ap-gray)}
+.breakdown-row:last-child{border:none;font-weight:700}
+.progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin-top:4px}
+.progress-bar .fill{height:100%;background:var(--ap-green);border-radius:4px;transition:width .5s}
+/* SECTION TRANSITION */
+.section-transition{text-align:center;padding:80px 48px}
+.section-transition h2{font-size:28px;margin-bottom:12px}
+.section-transition p{color:#666;font-size:16px;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+/* REVIEW PAGE */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;margin:20px 0}
+.review-item{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:2px solid var(--ap-border);border-radius:4px;font-size:12px;font-weight:600;cursor:pointer}
+.review-item.answered{background:#e8f5e9;border-color:var(--ap-green);color:var(--ap-green)}
+.review-item.unanswered{background:#fff3e0;border-color:var(--ap-orange);color:var(--ap-orange)}
+.review-item.flagged{border-color:var(--ap-orange);position:relative}
+.review-item.correct{background:#e8f5e9;border-color:var(--ap-green);color:var(--ap-green)}
+.review-item.incorrect{background:#ffebee;border-color:var(--ap-red);color:var(--ap-red)}
+.legend{display:flex;gap:20px;justify-content:center;margin:16px 0;font-size:13px}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:12px;height:12px;border-radius:3px;border:2px solid}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center}
+.modal{background:var(--ap-white);border-radius:12px;padding:32px;max-width:480px;width:90%;text-align:center}
+.modal h3{font-size:20px;margin-bottom:12px}
+.modal p{color:#666;margin-bottom:24px}
+.modal-actions{display:flex;gap:12px;justify-content:center}
+.hidden{display:none!important}
+/* Responsive */
+@media(max-width:768px){
+.sidebar{display:none}
+.main{margin-left:0;padding:20px 16px}
+}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+// ===== QUESTION DATA =====
+const MACRO_MC = [
+{q:"When an economy operates inside its production possibilities curve, it can increase production of one good",choices:["at zero opportunity cost in terms of the other good","only with an increase in unemployment","only with an increase in the price level","only with an increase in technology","only if the labor force increases"],answer:0},
+{q:"If people save 10 percent of each additional dollar received in income, which of the following is true?",choices:["The marginal propensity to consume is less than the marginal propensity to save.","The marginal propensity to consume increases as income increases.","The marginal propensity to consume is 0.1, and the maximum value of the tax multiplier is \u22121.","The marginal propensity to consume equals the marginal propensity to save.","The marginal propensity to consume is 0.9, and the maximum value of the spending multiplier is 10."],answer:4},
+{q:"An increase in spending on capital goods will most likely lead to which of the following in the long run?",choices:["An increase in government spending","An increase in long-run aggregate supply","An increase in consumption spending due to crowding out","A decrease in employment","A decrease in economic growth"],answer:1},
+{q:"The real interest rate can remain constant if an increase in transfer payments is accompanied by",choices:["a decrease in government purchases","a decrease in income tax rates","an increase in reserve requirements","an open-market sale of bonds","a decrease in private savings"],answer:0},
+{q:"Suppose the only revenue taken in by the government is in the form of income taxes and the tax rate is 10 percent. If national income is $900 billion and government expenditures plus transfers are $120 billion, which of the following is true about the government budget?",choices:["The government budget has a surplus of $780 billion.","The government budget has a surplus of $120 billion.","The government budget is balanced.","The government budget has a deficit of $90 billion.","The government budget has a deficit of $30 billion."],answer:4},
+{q:"One reason the aggregate demand curve is downward-sloping is that as the price level increases,",choices:["the purchasing power of assets decreases","imports decrease","the demand for the domestic currency on the foreign exchange market increases","interest-sensitive expenditures increase","the public feels richer and spends more"],answer:0},
+{q:'The table shows the time required to produce one crane or one truck in the United States and Thailand. The United States and Thailand have the same amount of resources.<br><table><tr><th></th><th>1 Crane</th><th>1 Truck</th></tr><tr><td>United States</td><td>50 hours</td><td>25 hours</td></tr><tr><td>Thailand</td><td>20 hours</td><td>30 hours</td></tr></table>Which of the following can be accurately concluded from the data?',choices:["The United States has a comparative advantage in producing cranes, and Thailand has a comparative advantage in producing trucks.","Thailand has a comparative advantage in producing cranes, and the United States has a comparative advantage in producing trucks.","Thailand has a comparative advantage in producing both cranes and trucks.","The United States has a comparative advantage in producing both cranes and trucks.","Neither country has a comparative advantage in producing cranes and trucks."],answer:1},
+{q:"All of the following concepts can be illustrated using the production possibilities curve model EXCEPT",choices:["unemployment","inflation","opportunity cost","choice","scarcity"],answer:1},
+{q:"An expansionary monetary policy is intended to eliminate which type of unemployment?",choices:["Frictional","Cyclical","Structural","Seasonal","Natural"],answer:1},
+{q:"Based on the graph provided, which segment represents only the expansionary phase of the business cycle?",choices:["RS","ST","SU","TV","VW"],answer:3},
+{q:"Which of the following correctly describes spending in a circular flow model?",choices:["Households hire resources from producers in resource markets.","Households purchase goods and services from producers in product markets.","Households purchase goods and services from producers in resource markets.","Producers hire resources from households in product markets.","Producers sell resources to households in product markets."],answer:1},
+{q:"If some unemployed individuals become discouraged and stop looking for employment, which of the following will occur in the short run?",choices:["The unemployment rate will increase.","The unemployment rate will decrease.","The labor force will increase.","Real output will increase.","The labor force participation rate will increase."],answer:1},
+{q:"Which of the following would NOT be included in the gross domestic product of the United States in 2018?",choices:["The value of computers produced in the United States in 2018 but not sold","The value of cars produced in the United States in 2018 by a Japanese motor company","The value of cars produced in Japan in 2018 by a United States motor company","The amount a patient paid to a dentist for dental services completed in 2018 in the United States","The value of a restaurant meal purchased by a Japanese tourist in 2018 in the United States"],answer:2},
+{q:"Which of the following individuals benefits from unexpected inflation?",choices:["A retiree living on a fixed pension","A landlord receiving fixed lease payments","A student saving $10 each month in a piggy bank","A creditor lending out $1,000 as a fixed-rate loan","A debtor making payments on existing fixed-rate loans"],answer:4},
+{q:"Frictional unemployment may be caused by",choices:["people losing jobs when their skills become obsolete","people quitting jobs to look for better jobs","people dropping out of the job market after a considerable search","a general downturn in economic activity","a decrease in aggregate supply"],answer:1},
+{q:'Country X has the following macroeconomic statistics.<br><table><tr><th>Real Output (Billions $)</th><th>Unemployment Rate (%)</th></tr><tr><td>110</td><td>1</td></tr><tr><td>108</td><td>2</td></tr><tr><td>106</td><td>3</td></tr><tr><td>104</td><td>4</td></tr><tr><td>102</td><td>5</td></tr><tr><td>100</td><td>6</td></tr><tr><td>98</td><td>7</td></tr></table>Suppose the current cyclical unemployment rate is 2%, the frictional unemployment rate is 4%, and the structural unemployment rate is 1%. What is the full-employment level of real output?',choices:["$100 billion","$102 billion","$104 billion","$106 billion","$110 billion"],answer:1},
+{q:'The table shows the end-of-year consumer price index (CPI) for an economy.<br><table><tr><th>Year</th><th>CPI</th></tr><tr><td>2008</td><td>80</td></tr><tr><td>2009</td><td>100</td></tr><tr><td>2010</td><td>105</td></tr></table>Which of the following statements is true based on the information given?',choices:["The inflation rate in 2009 was 20 percent.","The base year for the price index is 2008.","The inflation rate was higher in 2010 than in 2009.","The inflation rate in 2010 was 5 percent.","Prices of all products rose in 2009 and 2010."],answer:3},
+{q:"One limitation of using real GDP to measure a nation\u2019s economic performance is that",choices:["real GDP does not account for inflation","real GDP does not count final goods","real GDP estimates an economy\u2019s potential, not its actual performance","real GDP does not account for nonmarket transactions","real GDP understates the rate of unemployment"],answer:3},
+{q:"Real gross domestic product is equal to which of the following?",choices:["Real wages of households","Real income plus government transfer payments","Nominal output adjusted for price-level changes","Nominal output less depreciation","Changes in the standard of living"],answer:2},
+{q:'Based on the data in the table, what is true about the market for pizza if the current market price is $10?<br><table><tr><th>Price</th><th>Quantity Demanded</th><th>Quantity Supplied</th></tr><tr><td>$5</td><td>140</td><td>20</td></tr><tr><td>$10</td><td>120</td><td>40</td></tr><tr><td>$15</td><td>100</td><td>60</td></tr><tr><td>$20</td><td>80</td><td>80</td></tr><tr><td>$25</td><td>60</td><td>100</td></tr></table>',choices:["The supply curve will shift to the left.","The demand curve will shift to the right.","The market price for pizza will decrease.","There is a shortage of 80 units.","There is a surplus of 160 units."],answer:3},
+{q:"In the short run, a contractionary fiscal policy will",choices:["shift the aggregate demand curve to the left","shift the short-run aggregate supply curve to the right","increase the money supply","increase the demand for loanable funds","increase the government budget deficit"],answer:0},
+{q:"A reduction in aggregate demand will necessarily cause an increase in unemployment in the short run when",choices:["nominal wages or prices are sticky downward","nominal wages and prices are flexible","the aggregate supply curve is vertical","the money supply grows at a constant rate","imports exceed exports"],answer:0},
+{q:"A decrease in nominal wages will cause the",choices:["price level to increase","real output to remain the same","long-run aggregate supply curve to shift to the left","short-run aggregate supply curve to shift to the right","aggregate demand curve to shift to the right"],answer:3},
+{q:"With an upward-sloping aggregate supply curve, an increase in government transfer payments will most likely",choices:["reduce the price level","reduce the level of nominal gross domestic product","increase real gross domestic product in the short run","shift the short-run aggregate supply curve to the right","shift both the aggregate demand curve and the long-run aggregate supply curve to the left"],answer:2},
+{q:"With an upward-sloping aggregate supply curve, an increase in government transfer payments will most likely",choices:["reduce the price level","reduce the level of nominal gross domestic product","increase real gross domestic product in the short run","shift the short-run aggregate supply curve to the right","shift both the aggregate demand curve and the long-run aggregate supply curve to the left"],answer:2},
+{q:"Which of the following is an example of an automatic stabilizer that is contractionary?",choices:["A government-legislated increase in the marginal income tax rate","Bond purchases by the nation\u2019s central bank","An increase in transfer payments","An increase in tax revenues as GDP increases","An increase in unemployment compensation"],answer:3},
+{q:"Which of the following correctly describes an effective fiscal policy action to close an inflationary gap?",choices:["Decreasing taxes, which will increase aggregate demand","Increasing taxes, which will increase aggregate demand","Increasing government spending, which will decrease private investment","Increasing government spending, which will decrease interest rates","Decreasing government spending, which will decrease aggregate demand"],answer:4},
+{q:"Assume that an economy is currently in a recession. If policy-makers do nothing and wages and prices are flexible, which of the following will occur in the long run?",choices:["The short-run aggregate supply curve will shift to the right, leading to full employment.","The short-run aggregate supply curve will shift to the left, leading to full employment.","The aggregate demand curve will shift to the right, leading to full employment.","The aggregate demand curve will shift to the left, leading to full employment.","The unemployment rate will continue to increase."],answer:0},
+{q:"If there is no crowding out, a $10 billion increase in investment in physical capital will most likely lead to a",choices:["less than $10 billion increase in aggregate supply","more than $10 billion increase in aggregate demand","$10 billion increase in aggregate demand","$10 billion increase in aggregate supply","$10 billion increase in the money supply"],answer:1},
+{q:"Which of the following will cause an increase in the price level in the short run?",choices:["A rightward shift in the aggregate demand curve","A rightward shift in the short-run aggregate supply curve","A rightward shift in the long-run aggregate supply curve","An increase in savings","An increase in imports"],answer:0},
+{q:"What is the most likely short-run effect of an increase in the price of oil, a key input for production?",choices:["An increase in long-run aggregate supply","Demand-pull inflation","A reduction in the unemployment rate","An increase in real gross domestic product","Cost-push inflation"],answer:4},
+{q:"Assume the economy is currently in short-run equilibrium at point D, as shown in the graph provided, and that the banking system has limited reserves. Which of the following is a monetary policy action that would restore long-run equilibrium?",choices:["An open-market purchase of government bonds, which would move the economy to point C","An open-market sale of government bonds, which would move the economy to point A","An increase in the required reserve ratio, which would move the economy to point C","An increase in government spending, which would move the economy to point C","An increase in taxes, which would move the economy to point A"],answer:1},
+{q:"Assume Bank A has the following balance sheet. If the required reserve ratio is 25 percent, what is the maximum amount by which Bank A can increase its loans?",choices:["$0","$25,000","$50,000","$100,000","$150,000"],answer:1},
+{q:"Assume that the required reserve ratio is 10 percent and the banking system has limited reserves. If the central bank buys $1,000 of bonds from commercial banks, which of the following will occur?",choices:["The money supply will increase by a maximum of $1,000.","There will be a maximum of $9,000 of new loans made by all banks.","Demand deposits will increase by a maximum of $9,000.","The amount of new cash reserves injected into the banking system will be $100.","The money supply will increase by a maximum of $10,000."],answer:4},
+{q:"Which of the following is counted in the M2 measure, but not the M1 measure, of the United States money supply?",choices:["Savings accounts","Currency","Stocks","Small time deposits","Checkable deposits"],answer:3},
+{q:"An increase in the real interest rate will most likely affect private investment in plant and equipment and the quantity of personal savings in which of the following ways?",choices:["Private investment will increase, and personal savings will increase.","Private investment will increase, and personal savings will decrease.","Private investment will decrease, and personal savings will increase.","Private investment will decrease, and personal savings will not change.","Private investment will not change, and personal savings will decrease."],answer:2},
+{q:"Assume the banking system in a nation has limited reserves. Following an unanticipated increase in the money supply, the price level and real output will change in which of the following ways in the short run?",choices:["The price level will increase, and real output will increase.","The price level will increase, and real output will decrease.","The price level will increase, and real output will not change.","The price level will not change, and real output will not change.","The price level will decrease, and real output will increase."],answer:0},
+{q:"Assume firms increase their borrowing in order to expand capacity. How will this additional borrowing affect the loanable funds market?",choices:["The supply of loanable funds curve will shift to the left.","The supply of loanable funds curve will shift to the right.","The demand for loanable funds curve will shift to the left.","The demand for loanable funds curve will shift to the right.","The loanable funds market will not be affected."],answer:3},
+{q:"Which of the following is an example of a contractionary monetary policy action by a central bank?",choices:["Increasing interest on reserves","Buying government securities on the open market","Decreasing government spending","Increasing business taxes","Decreasing the policy rate"],answer:0},
+{q:"Assume the banking system in a nation has limited reserves. When the central bank increases the required reserve ratio, a commercial bank\u2019s",choices:["excess reserves remain unchanged","excess reserves increase","excess reserves decrease","required reserves decrease","required reserves remain unchanged"],answer:2},
+{q:"Which of the following policy actions will offset the effect of a decrease in investment in plant and equipment on aggregate demand in the short run in the United States?",choices:["An open-market sale of government bonds","An increase in marginal income taxes","An increase in the required reserve ratio","A decrease in government spending","A decrease in interest on reserves"],answer:4},
+{q:"An increase in real income will cause which of the following to occur in the short run?",choices:["Imports will decrease.","Consumption spending will decrease.","Nominal interest rates will decrease.","The monetary base will increase.","Money demand will increase."],answer:4},
+{q:"Assume that a central bank operating in a banking system with limited reserves decreases its required reserve ratio. As a result, demand deposits and total reserves will most likely change in which of the following ways after all adjustments take place in the banking system and assuming banks lend out all excess reserves?",choices:["Demand deposits will increase, and total reserves will increase.","Demand deposits will increase, and total reserves will not change.","Demand deposits will not change, and total reserves will increase.","Demand deposits will decrease, and total reserves will not change.","Demand deposits will decrease, and total reserves will increase."],answer:1},
+{q:"Which of the following is true for savings accounts?",choices:["Savings accounts are shares of ownership in a company.","Savings accounts are part of the monetary base.","Savings accounts are interest-bearing assets.","Savings accounts are the most liquid form of financial assets.","Savings accounts are used as tools of monetary policy."],answer:2},
+{q:"Assume a country has ample reserves in its banking system. Which combination of monetary and fiscal policies will necessarily reduce the price level in the short run?",choices:["Selling bonds through open-market operations and increasing government spending","Increasing administered interest rates and decreasing government spending","Buying bonds through open-market operations and leaving government spending unchanged","Decreasing administered interest rates and decreasing government spending","Decreasing the policy rate and increasing government spending"],answer:1},
+{q:"Crowding out is most likely to occur with which of the following changes?",choices:["A decrease in government spending","An increase in the government budget surplus","An increase in the government budget deficit","A decrease in the real interest rate","A decrease in the trade deficit"],answer:2},
+{q:"Increases in public investment in education and increased educational attainment by workers will have which of the following effects in the long run?",choices:["Labor productivity will increase, and real GDP per capita will increase.","Labor productivity will increase, and real GDP per capita will decrease.","Labor productivity will increase, and real GDP per capita will not change.","Labor productivity will decrease, and real GDP per capita will increase.","Labor productivity will decrease, and real GDP per capita will decrease."],answer:0},
+{q:"Increases in government borrowing to finance increases in budget deficits will most likely result in",choices:["a decrease in the real interest rate","a decrease in private domestic investment","a rightward shift in the long-run Phillips curve","an increase in the money supply","an increase in financial capital outflows"],answer:1},
+{q:"Following a decrease in marginal income tax rates and a decrease in corporate tax rates, which of the following will most likely happen to aggregate demand, short-run aggregate supply, and the price level in the short run?",choices:["AD will increase, no change to SRAS, price level will decrease.","AD will increase, SRAS will decrease, price level will decrease.","AD will increase, SRAS will increase, indeterminate impact on price level.","No change to AD, SRAS will increase, price level will increase.","AD will decrease, SRAS will decrease, indeterminate impact on price level."],answer:2},
+{q:"An increase in which of the following will most likely lead to long-run economic growth?",choices:["Transfer payments","Personal consumption expenditures","The real interest rate","Exports","The stock of physical capital"],answer:4},
+{q:"Movement along the short-run Phillips curve describes the relationship between inflation and unemployment when",choices:["aggregate demand changes for a given short-run aggregate supply curve","short-run aggregate supply changes for a given aggregate demand curve","aggregate demand decreases and short-run aggregate supply increases","aggregate demand increases and short-run aggregate supply decreases","policy changes are perfectly anticipated and the aggregate supply curve is vertical"],answer:0},
+{q:"According to the quantity theory of money, an increase in the nominal gross domestic product with a constant money supply means that the velocity of money must have",choices:["increased","decreased","not changed","initially increased, then decreased","initially decreased, then increased"],answer:0},
+{q:"Which of the following is true for a long-run Phillips curve?",choices:["It represents points for which expected and actual inflation rates are equal.","It shifts to the left when aggregate supply decreases.","It shifts to the left when money supply decreases.","It shifts to the right when transfer payments decrease.","It is horizontal because there is no change in inflation."],answer:0},
+{q:"Which of the following statements about the national debt is true?",choices:["Interest payments on the national debt are paid only when the debt is owned by foreign investors.","Gross domestic product minus the national debt equals net domestic product.","A government budget surplus reduces the national debt.","A country\u2019s national debt increases when its exports exceed its imports.","A decrease in interest rates reduces the value of the national debt."],answer:2},
+{q:"If real interest rates in the United States increase relative to the rest of the world, which of the following will occur?",choices:["Domestic private investment in plant and equipment will increase.","The supply of United States dollars in the foreign exchange market will increase.","The demand for United States dollars in the foreign exchange market will increase.","Net exports in the United States will increase.","The United States capital and financial account will be in deficit."],answer:2},
+{q:"Japan and the European Union are trading partners with flexible exchange rates. The currency of Japan is the yen, and the currency of the European Union is the euro. Which of the following will happen in the foreign exchange market if Japan increases its imports from Europe?",choices:["A depreciation of the euro","An increase in the supply of the euro","An increase in the demand for the euro","An increase in the demand for the yen","A decrease in the supply of the yen"],answer:2},
+{q:"The United States and the United Kingdom are trading partners with flexible exchange rates. The currency of the United States is the dollar ($), and the currency of the United Kingdom is the pound (\u00a3). The graph shows the foreign exchange market for the pound. At an exchange rate of $2 per pound, which of the following will occur?",choices:["There will be excess supply of the dollar.","There will be excess demand for the pound.","The pound will appreciate.","The dollar will appreciate.","A \u00a32 souvenir in Britain will cost $1 for United States tourists."],answer:3},
+{q:"The United States and the European Union are trading partners with flexible exchange rates. Which of the following is true if the exchange rate between the euro and the dollar changes from $1.00 per euro to $1.25 per euro?",choices:["United States exports to Europe will increase.","European exports to the United States will increase.","The dollar has appreciated.","The euro has depreciated.","The money supply in the United States will increase."],answer:0},
+{q:"Under a flexible exchange-rate system, the exchange rate between two countries\u2019 currencies is determined by the",choices:["amount of gold reserves held by the central bank in each country","gross domestic product of the exporting country","demand for and supply of each country\u2019s currency","amount of resources available to the importing country","real interest rate in the exporting country"],answer:2},
+{q:"The current account portion of a nation\u2019s balance of payments accounts includes",choices:["foreign direct investment","purchases of foreign bonds","purchases of foreign real estate","holdings of foreign currencies","exports of services"],answer:4}
+];
+
+const MICRO_MC = [
+{q:"If accounting profit is greater than zero for a firm in a competitive industry, then which of the following must be true?",choices:["The firm has no fixed cost.","The firm has positive economic profit.","The firm\u2019s total revenue exceeds its explicit cost.","The firm\u2019s economic profit exceeds its opportunity cost.","New firms will enter the industry in the long run."],answer:2},
+{q:"Which of the following best describes firms in an industry if all the firms are in a cartel?",choices:["They produce the allocatively efficient quantity.","They face a perfectly elastic demand curve.","They have identical cost curves.","They coordinate their production decisions.","They agree to remove barriers to entry."],answer:3},
+{q:"Which of the following is true for a price-discriminating firm?",choices:["The firm charges different prices to different consumers for the same product.","The firm charges different prices for different products.","The firm pays more per unit of labor than it pays per unit of capital.","The firm pays more per unit of capital than it pays per unit of labor.","The firm sells different quantities to its consumers but charges each of them the same price."],answer:0},
+{q:"A difference between command and market economic systems is that command economic systems",choices:["have a legal system that provides incentives to produce, whereas market economic systems do not","ensure efficiency, whereas market economic systems ensure equity","limit individual property rights, whereas market economic systems protect individual property rights","maximize producer and consumer surplus, whereas market economic systems do not","regulate production but not distribution, whereas market economic systems regulate both production and distribution"],answer:2},
+{q:"Dr. Art and Dr. Zed jointly own an outpatient surgery practice. Dr. Art takes 2 hours to perform knee surgery and 1 hour to perform elbow surgery. Dr. Zed takes 4 hours to perform knee surgery and 1 hour to perform elbow surgery. Which of the following conclusions is supported by the information provided?",choices:["Dr. Art has a comparative advantage in elbow surgery.","Dr. Zed has a comparative advantage in elbow surgery.","Dr. Zed does not have a comparative advantage in performing either procedure.","Dr. Art does not have a comparative advantage in performing either procedure.","Dr. Zed has an absolute advantage in performing both procedures."],answer:1},
+{q:"Assume that all firms in a perfectly competitive market currently earn positive economic profits. What will happen in the long run if all firms face constant returns to scale in production?",choices:["The price of the product will increase.","Firms will exit the industry.","The quantity produced by each existing firm will decrease.","Average total cost of production will increase.","Nothing will change."],answer:2},
+{q:'The table shows a firm\u2019s average fixed cost (AFC), total variable cost (TVC), and total economic profit at different levels of output.<br><table><tr><th>Output</th><th>AFC</th><th>TVC</th><th>Profit</th></tr><tr><td>50</td><td>$20</td><td>$200</td><td></td></tr><tr><td>200</td><td></td><td>$1,600</td><td>$1,000</td></tr></table>When the firm produces 200 units, the AFC is',choices:["$0","$5","$8","$20","$80"],answer:1},
+{q:"If the marginal revenue of the 201st unit of output is $15 and the marginal cost of the 201st unit is $20, the total economic profit of producing 201 units will be",choices:["$995","$1,000","$1,005","$1,015","$1,035"],answer:0},
+{q:'Assume that capital and labor are the only two inputs used by a clinic. The table shows the hourly marginal product and the hourly price of capital and labor at the current output level.<br><table><tr><th></th><th>Capital</th><th>Labor</th></tr><tr><td>Marginal Product</td><td>25 units</td><td>5 units</td></tr><tr><td>Hourly Price</td><td>$200</td><td>$50</td></tr></table>To minimize costs at the current output level, the clinic should change the hiring of capital and labor in which of the following ways?',choices:["Capital hired should decrease, labor hired should increase.","Capital hired should decrease, labor hired should decrease.","Capital hired should increase, labor hired should decrease.","Capital hired should increase, labor hired should increase.","There should be no change to capital or labor hired."],answer:2},
+{q:"The project funding decisions made by two interdependent research companies, Creative and Genezyz, resulted in a profit of $4 million for Creative and a profit of $5 million for Genezyz. Which of the following is required for this combination of project choices to be a Nash equilibrium?",choices:["Genezyz charges a lower price to its customers than Creative does.","Neither firm has a dominant strategy.","Neither firm could earn higher profits by unilaterally changing its project choice.","Creative could earn a higher profit if it chose a different project when Genezyz chose its initial project.","The combined profits of the two firms are maximized at the current combination of project choices."],answer:2},
+{q:"The cross-price elasticity of demand for Goods X and Y is \u22122.8. Based on this information, what is true about Good X and Good Y?",choices:["Good X is a normal good and Good Y is an inferior good.","The goods are inferior.","The goods are substitutes.","The goods are complements.","The goods have upward-sloping demand curves."],answer:3},
+{q:"Zucchini is produced in a perfectly competitive market with a downward-sloping demand curve and an upward-sloping supply curve. Dawson Farm is a typical perfectly competitive farm that produces and sells zucchini at the equilibrium price of $1.75 per pound. Which of the following is true?",choices:["No buyer in the market is willing to pay more than $1.75 per pound for zucchini.","No buyer in the market is willing to pay more than $1.75 per pound for zucchini from Dawson Farm.","Market demand for zucchini will increase if Dawson Farm lowers its price below $1.75 per pound.","Dawson Farm would lose some but not all of its customers if it raises the price above $1.75.","Dawson Farm would likely be able to increase the demand for its zucchini by advertising."],answer:1},
+{q:"Over the entire range of output for which a firm\u2019s short-run average variable cost is decreasing, which of the following must be true?",choices:["Short-run marginal cost is falling.","There are increasing returns to scale.","There are decreasing returns to scale.","Short-run marginal cost is less than short-run average variable cost.","Short-run marginal cost is increasing due to diminishing returns."],answer:3},
+{q:"Ice cream is a normal good. Ice cream and hot fudge are complementary goods, while ice cream and gelato are substitute goods. Which of the following could lead to an increase in the equilibrium price and an indeterminate change in the equilibrium quantity of ice cream?",choices:["Consumer incomes rise, and the price of hot fudge increases.","Bacteria in ice cream facilities leads to consumers being hospitalized, and increased dairy production lowers input costs for ice cream.","The price of gelato increases, and new technology increases efficiency of ice cream production.","A new study indicates ice cream is associated with improved bone health, and a leading ice cream producer declares bankruptcy.","A newly popular diet includes avoiding dairy products, and the government begins to subsidize ice cream production."],answer:3},
+{q:"As a firm expands its output, it initially experiences economies of scale and then diseconomies of scale. The firm\u2019s long-run average cost curve is",choices:["horizontal and then upward sloping","horizontal and then downward sloping","downward sloping and then upward sloping","continuously upward sloping","continuously downward sloping"],answer:2},
+{q:"When a firm is experiencing economies of scale, an increase in the firm\u2019s output will result in which of the following?",choices:["A decrease in total cost","A decrease in long-run average total cost","A downward shift in the long-run marginal cost curve","An increase in long-run average variable cost","An increase in average fixed cost"],answer:1},
+{q:"The graph shows the imposition of a per-unit tax on producers. Which areas represent government tax revenue, producer surplus, and deadweight loss after the imposition of the tax?",choices:["Tax revenue is P5P3MJ; Producer surplus is P3P1L; Deadweight loss is JNL.","Tax revenue is P5P2NJ; Producer surplus is P6P5J; Deadweight loss is P4P5J.","Tax revenue is JNL; Producer surplus is P3P1NM; Deadweight loss is MLN.","Tax revenue is P5P2NJ; Producer surplus is P2P1N; Deadweight loss is JNL.","Tax revenue is P5P3MJ; Producer surplus is P3P1L; Deadweight loss is JML."],answer:3},
+{q:"When Tom\u2019s income increases from $100 to $120, the quantity of golf balls he purchases increases from 10 to 12. What is Tom\u2019s income elasticity of demand, and what type of good is a golf ball for Tom?",choices:["Income elasticity of demand is 1, and golf balls are a normal good for Tom.","Income elasticity of demand is \u22121, and golf balls are an inferior good for Tom.","Income elasticity of demand is 10, and golf balls are a normal good for Tom.","Income elasticity of demand is \u221210, and golf balls are an inferior good for Tom.","Income elasticity of demand is 20, and golf balls are a normal good for Tom."],answer:0},
+{q:"One reason many governments provide free access to mandatory primary education is because primary education",choices:["generates negative externalities","helps to reduce future income inequality","is only provided by a natural monopoly","is nonrival and therefore subject to overcrowding","is nonexcludable and therefore subject to the free rider problem"],answer:1},
+{q:"Heggood, Inc., a perfectly competitive firm, produces hats using capital and labor purchased in competitive factor markets. If the demand for hats increases, Heggood, Inc. will",choices:["decrease the price of hats","decrease its demand for labor","decrease the quantity of labor demanded","increase its demand for capital","increase the rental price of capital"],answer:3},
+{q:"Imperfectly competitive markets do not achieve allocative efficiency because profit maximization for each firm occurs when which of the following is true?",choices:["Price equals average total cost.","Price is greater than marginal cost.","Price equals marginal revenue.","Price is less than marginal benefit.","Price is less than marginal revenue."],answer:1},
+{q:"Which of the following will likely result in an indeterminate change in the equilibrium quantity of a competitive market?",choices:["An increase in supply along a perfectly inelastic demand curve","A decrease in supply along a relatively elastic demand curve","A decrease in demand along a perfectly elastic supply curve","An increase in demand and a decrease in supply","An increase in demand and an increase in supply"],answer:3},
+{q:"Which of the following statements most accurately describes the relationship between corn, an output, and machines, an input, that are used to gather corn?",choices:["The price of machines used to gather corn increases when the demand for corn increases.","The price of machines used to gather corn decreases when the demand for corn increases.","The price of machines used to gather corn increases when the demand for corn decreases.","The price of machines used to gather corn increases when the price of wheat, a producer substitute for corn, increases.","The price of machines used to gather corn is unrelated to the demand for corn."],answer:0},
+{q:"RKB and JCM are two competing firms considering which project to develop. RKB will develop either Project Alpha or Project Beta. JCM will develop either Project X or Project Y. The payoff matrix shows the payoffs for each combination of strategies. Each firm independently and simultaneously chooses its strategy. Which of the following conclusions is supported by the information in the payoff matrix?",choices:["There is no combination of project choices that results in a Nash equilibrium.","There are multiple combinations of project choices that result in Nash equilibria.","RKB has a dominant strategy, but JCM does not.","JCM has a dominant strategy, but RKB does not.","Neither firm has a dominant strategy."],answer:2},
+{q:"Consider two groups of workers in competitive labor markets. Workers in group X have a skill set unique to producing computers, and workers in group Y have a skill set that can be used to produce either computers or smartphones. When the price of smartphones decreases, the wages paid to workers producing smartphones decrease. Which of the following could happen to the wages of workers in group X?",choices:["No change because workers in group X do not have the skills to produce smartphones.","No change because the supply of and demand for workers producing computers would both shift to the left.","Wages would decrease because the supply of workers producing computers would increase, with more workers from group Y seeking jobs with firms producing computers.","Wages would decrease because the supply of workers producing computers would decrease, with more workers from group X seeking training for smartphone jobs.","Wages would increase because workers in group X have specialized skills."],answer:2},
+{q:"If the marginal product of an input is positive and increasing, total product is",choices:["decreasing at an increasing rate","increasing at an increasing rate","increasing at a decreasing rate","decreasing at a decreasing rate","increasing at a constant rate"],answer:1},
+{q:"For a firm operating in perfectly competitive product and factor markets, the marginal revenue product of labor is equal to the",choices:["marginal product of labor","price of labor multiplied by the marginal product of labor","price of labor multiplied by the price of the output","price of the output divided by the price of labor","price of the output multiplied by the marginal product of labor"],answer:4},
+{q:"The graph shows the marginal private cost (MPC), marginal social cost (MSC), marginal private benefit (MPB), and marginal social benefit (MSB) in a market for a good that has an external cost. What are the socially efficient and market equilibrium quantities?",choices:["Socially efficient quantity is 6, and market equilibrium quantity is 12.","Socially efficient quantity is 9, and market equilibrium quantity is 9.","Socially efficient quantity is 9, and market equilibrium quantity is 12.","Socially efficient quantity is 12, and market equilibrium quantity is 12.","Socially efficient quantity is 12, and market equilibrium quantity is 9."],answer:2},
+{q:"What is the dollar value of the marginal external cost?",choices:["$0.25","$0.50","$1.00","$5.00","$5.50"],answer:1},
+{q:"When marginal utility from consuming a good is zero, the total utility from consuming the good is",choices:["zero","negative","maximized","rising at a constant rate","equal to marginal utility per dollar spent on the good"],answer:2},
+{q:'The table shows Rosco\u2019s utility data.<br><table><tr><th>Milkshake Cups</th><th>Total Utility (utils)</th></tr><tr><td>1</td><td>50</td></tr><tr><td>2</td><td>100</td></tr><tr><td>3</td><td>145</td></tr><tr><td>4</td><td>185</td></tr><tr><td>5</td><td>220</td></tr></table>Which of the following is true based on Rosco\u2019s utility data?',choices:["Rosco\u2019s marginal utility from the fourth cup is 185 utils.","Rosco\u2019s marginal utility from the fifth cup is 35 utils.","Rosco\u2019s marginal utility from the third cup is greater than the marginal utility from the second cup.","Rosco\u2019s marginal utility from the fourth cup is greater than the marginal utility from the third cup.","Rosco\u2019s total utility and marginal utility both increase as he consumes more cups of milkshake."],answer:1},
+{q:"Which of the following is true for a monopolistically competitive firm that is in short-run equilibrium and earning a positive economic profit?",choices:["Accounting profits are less than economic profits.","Marginal cost is greater than price.","Marginal revenue is less than price.","Average total cost is greater than price.","Marginal revenue is less than marginal cost."],answer:2},
+{q:"Which of the following is true in the inelastic region of a monopolist\u2019s demand curve as output increases?",choices:["Marginal revenue and total revenue are negative.","Marginal revenue is increasing and total revenue is positive.","Marginal revenue is decreasing and total revenue is negative.","Marginal revenue is positive and total revenue is increasing.","Marginal revenue is negative and total revenue is decreasing."],answer:4},
+{q:"Which of the following explains why the marginal factor (resource) cost curve lies above the supply curve for labor in a monopsonistic labor market?",choices:["The monopsonist must lower its price to sell more output.","Each worker is paid a different wage, based on individual marginal productivity.","The monopsonist has market power and pays whatever wage it desires.","The supply of labor is perfectly elastic.","The monopsonist must increase the wage for all workers to hire more workers."],answer:4},
+{q:"As an economy moves along its production possibilities curve, which of the following must be true?",choices:["The marginal benefit of the output is greater than the marginal cost of the output.","An increase in output results in a decrease in average total cost.","The marginal social cost of producing an additional output is zero.","Producing more of one good results in producing less of the other good.","The economy is producing the socially optimal combination of goods."],answer:3},
+{q:'The table shows hourly production data and total revenue for a perfectly competitive firm.<br><table><tr><th>Workers Hired</th><th>Total Revenue ($)</th><th>Quantity Produced</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>50</td><td>10</td></tr><tr><td>2</td><td>95</td><td>19</td></tr><tr><td>3</td><td>135</td><td>27</td></tr><tr><td>4</td><td>170</td><td>34</td></tr><tr><td>5</td><td>200</td><td>40</td></tr></table>What is the marginal revenue product of the fourth worker?',choices:["$35","$34","$30","$7","$5"],answer:0},
+{q:"Regulating a natural monopoly to set its output price equal to the marginal cost of production will result in economic losses because for the last unit of output produced, marginal cost is",choices:["less than the marginal willingness to pay and less than average total cost","greater than the marginal willingness to pay and less than average total cost","equal to the marginal willingness to pay and less than average total cost","equal to the marginal willingness to pay and equal to average total cost","greater than the marginal willingness to pay and equal to average total cost"],answer:2},
+{q:"Which of the following actions would a government take when regulating a natural monopoly to produce the socially optimal quantity?",choices:["Impose a lump-sum tax on the monopolist\u2019s profit.","Impose a per-unit tax on the monopolist\u2019s profit.","Open the market for competition to lower the monopoly price.","Regulate the monopoly to charge a price equal to the average total cost.","Grant a lump-sum subsidy to the monopoly."],answer:4},
+{q:"Which of the following is true if the production of a good creates negative externalities?",choices:["The market produces the socially efficient level of output.","Antitrust laws are violated.","The market price equals the marginal social cost.","The marginal social cost exceeds the marginal private cost.","The good is produced by the public sector."],answer:3},
+{q:"The graph shows the market supply (S) and demand (D) curves for a particular product. If the government imposes a price ceiling at P2, which of the following statements is true?",choices:["The quantity sold in the market falls from Q2 to Q1.","The quantity sold in the market remains at Q2 because the price ceiling is not binding.","The price ceiling results in a shortage of (Q3\u2212Q1).","The price ceiling results in a surplus of (Q3\u2212Q1).","The price ceiling will benefit sellers at the expense of buyers."],answer:1},
+{q:"Assume paper clips are produced in a perfectly competitive industry that is currently in long-run equilibrium. One firm develops a new production method that reduces its variable cost. If its competitors are unable to copy this new method, what will happen to this firm\u2019s output and profit in the short run?",choices:["Output will increase, and profit will increase.","Output will decrease, and profit will increase.","Output will not change, and profit will increase.","Output will increase, and profit will not change.","Output will not change, and profit will not change."],answer:0},
+{q:"The graph shows the combinations of donuts and cups of coffee that the country of Deetopia could produce. Which of the following must be true?",choices:["Combination T is allocatively efficient because customers will consume both donuts and cups of coffee.","Combination V is allocatively efficient because Deetopia has an absolute advantage in producing cups of coffee.","The opportunity cost of producing 1 cup of coffee is 2 donuts.","The opportunity cost of producing 1 cup of coffee is 6 donuts.","The opportunity cost of producing 1 donut increases as more cups of coffee are produced."],answer:2},
+{q:"Suppose the country of Deetopia produces 6 cups of coffee and 12 donuts. Which of the following must be true?",choices:["The combination leaves some resources unemployed.","The combination has the highest opportunity cost in production.","The combination is productively efficient.","The combination is neither productively nor socially efficient.","The combination cannot be produced with the given amount of resources."],answer:2},
+{q:"If a monopolist can increase output and profit by engaging in perfect price discrimination, allocative efficiency will",choices:["improve even though consumer surplus goes to zero","possibly improve or get worse depending on whether consumer surplus increases or decreases","possibly improve or get worse depending on whether consumer surplus increases by more or less than the increase in producer surplus","get worse because producer surplus increases by more than the increase in consumer surplus","be unchanged because although producer surplus increases, total surplus is unaffected"],answer:0},
+{q:"The demand curve for shoes is downward sloping, and the absolute value of the price elasticity of demand is 2. If the price of shoes increases by 3 percent, what will happen to the quantity of shoes demanded?",choices:["It will decrease by 6%.","It will decrease by 3%.","It will decrease by 2%.","It will increase by 6%.","It will increase by 3%."],answer:0},
+{q:"The postmaster general of a country decides to double the price of first-class stamps, expecting the action to cause the revenues from sales of first-class stamps to double. What absolute value of price elasticity of demand is the postmaster general assuming in making the projection?",choices:["0","Between 0 and 1","1","Greater than 1","Infinite"],answer:0},
+{q:"Katie\u2019s demand for chocolate bars is perfectly inelastic at a quantity of one per week. Maximiliano will consume three chocolate bars per week when the price is $1, and he will consume four per week when the price is $0.50. Katie and Maximiliano are the only consumers of chocolate bars. Which of the following best describes the price elasticity of market demand beginning at the price of $0.50 and ending at the price of $1?",choices:["Perfectly inelastic","Inelastic","Unit elastic","Elastic","Perfectly elastic"],answer:1},
+{q:"An effective price floor placed on a market for a good will have which of the following effects on the quantity purchased by consumers and the consumer surplus?",choices:["Quantity will decrease, and consumer surplus will increase","Quantity will decrease, and consumer surplus will decrease","Quantity will increase, and consumer surplus will not change","Quantity will increase, and consumer surplus will increase","Quantity will not change, and consumer surplus will decrease"],answer:1},
+{q:"Which of the following is true of production in the long run?",choices:["At least one factor of production is fixed.","Only one factor of production is fixed.","Some factors of production are fixed while others are variable.","All factors of production are variable.","All factors of production, except technology, are fixed."],answer:3},
+{q:'The table shows quantity, total revenue, and total cost data.<br><table><tr><th>Quantity</th><th>Total Revenue ($)</th><th>Total Cost ($)</th></tr><tr><td>0</td><td>0</td><td>100</td></tr><tr><td>1</td><td>200</td><td>150</td></tr><tr><td>2</td><td>250</td><td>190</td></tr><tr><td>3</td><td>275</td><td>210</td></tr><tr><td>4</td><td>290</td><td>225</td></tr><tr><td>5</td><td>300</td><td>255</td></tr><tr><td>6</td><td>305</td><td>300</td></tr></table>At which quantity is the marginal revenue equal to marginal cost?',choices:["2","3","4","5","6"],answer:2},
+{q:"If a pure public good is provided only by a private market, then generally the good will",choices:["be overproduced relative to the socially optimal quantity","be underproduced relative to the socially optimal quantity","be excludable","be rivalrous","reduce deadweight loss"],answer:1},
+{q:"Which of the following is an example of a violation of antitrust laws?",choices:["Advertising to increase a firm\u2019s market share in an industry","Making positive economic profits by charging a price above marginal cost","Making free-trade agreements with other countries","Engaging in collusive behavior to restrain competition","Charging a price below the price ceiling"],answer:3},
+{q:"Removing a binding price floor on milk will affect the quantity of milk demanded and the quantity of milk supplied in the market in which of the following ways?",choices:["No change to quantity demanded, and quantity supplied will decrease.","Quantity demanded will decrease, and quantity supplied will decrease.","Quantity demanded will decrease, and quantity supplied will increase.","Quantity demanded will increase, and no change to quantity supplied.","Quantity demanded will increase, and quantity supplied will decrease."],answer:4},
+{q:"Kailas Cars produces cars that are made of both steel and aluminum. Steel and aluminum are substitutes in production. Kailas Cars\u2019 demand for steel will increase if which of the following occurs?",choices:["The supply of aluminum increases.","The demand for cars increases.","The supply of gasoline, a complement to cars, decreases.","The wages of workers in the car industry increase.","The amount of time that people keep their cars increases."],answer:1},
+{q:"A decrease in the supply of pencils results in which of the following?",choices:["A surplus of pencils in the market","An increase in the demand for erasers, a complement in consumption","An increase in the quantity demanded of pencils","A decrease in the consumer surplus of pencil buyers","A decrease in the demand for pencils"],answer:3},
+{q:"The fresh fish market is in equilibrium, and the demand is perfectly elastic. The imposition of a per-unit tax on sellers by the government will result in which of the following?",choices:["The equilibrium price will increase by the full amount of the tax, and consumers will bear the entire burden.","The equilibrium price will remain unchanged, and consumers will bear the entire burden.","The equilibrium price will increase by the full amount of the tax, and suppliers will bear the entire burden.","The equilibrium price will remain unchanged, and suppliers will bear the entire burden.","The equilibrium price will increase by the full amount of the tax, and suppliers and consumers will bear the burden equally."],answer:3},
+{q:"The study of economics is based on the premise that",choices:["goods and services are scarce but capital is unlimited","the growth of government is limited but resources are unlimited","natural resources are scarce but labor is unlimited","factors of production are scarce but goods and services people desire are unlimited","consumer products are scarce but resources are unlimited"],answer:3},
+{q:"The efficient market outcome shown in the graph provided is",choices:["at price P1, quantity Q1, and total economic surplus is J+K","at price P2, quantity Q2, and total economic surplus is B+C+D+E+F+G+H+I","at price P0, quantity Q0, and total economic surplus is B+C+E+F","at price P0, quantity Q0, and total economic surplus is A+B+C+E+F","at price P0, quantity Q0, and total economic surplus is A+B+C+E+F+J"],answer:4},
+{q:"In the short run, when a profit-maximizing, perfectly competitive firm is producing at the quantity where MR=MC and the firm\u2019s total revenue is less than its total variable cost, the firm should",choices:["continue to produce the same quantity","shut down","lower its price","raise its price","expect other firms to enter the industry"],answer:1},
+{q:"Prosper Company is a profit-maximizing monopoly producing toy cubes. Prosper Company is currently earning positive economic profit. Which of the following combinations of events will definitely cause Prosper Company\u2019s profit to increase?",choices:["A decrease in demand for toy cubes and a decrease in fixed costs to produce toy cubes","A decrease in demand for toy cubes and an increase in fixed costs to produce toy cubes","A decrease in demand for toy cubes and a decrease in variable costs to produce toy cubes","An increase in demand for toy cubes and an increase in government subsidies to produce toy cubes","An increase in demand for toy cubes and an increase in fixed costs to produce toy cubes"],answer:3}
+];
+
+// FRQ DATA
+const MACRO_FRQ = [
+{title:"FRQ 1 (10 points)",text:`Assume the United States economy is currently facing an inflationary gap of $500 billion, a natural rate of unemployment of 5 percent, and an actual rate of inflation of 4 percent.
+
+(a) Using the relevant numerical values given above, draw a correctly labeled graph of the short-run Phillips curve and the long-run Phillips curve. Label the current short-run equilibrium as point X. Plot the relevant numerical values given above on the graph.
+
+(b) Suppose the federal government decreases government spending without changing taxes, and the marginal propensity to consume is 0.8.
+  (i) Calculate the minimum decrease in government spending needed to change aggregate demand by the amount of the output gap. Show your work.
+  (ii) Based solely on the decrease in government spending, what will happen to the short-run Phillips curve in the short run?
+  (iii) Based solely on the decrease in government spending, what will happen to the equilibrium real interest rate in the loanable funds market? Explain.
+  (iv) The United States and Mexico are trading partners with flexible exchange rates. Draw a correctly labeled graph of the foreign exchange market for the dollar, and show the impact of the real interest rate change from part (b)(iii) on the international value of the dollar.
+
+(c) Assume instead the government chooses to decrease government spending by $500 billion and decrease income taxes by $500 billion.
+  (i) What will be the numerical value and direction of the maximum change in aggregate demand?
+  (ii) What will happen to the demand for loanable funds? Explain.
+
+(d) In the absence of any policy actions to correct the inflationary gap, what will happen to real gross domestic product in the United States in the long run? Explain.`,maxPoints:10,rubric:[
+{part:"(a)",desc:"Correctly labeled SRPC graph with LRPC at 5% unemployment, point X to the left of LRPC at 4% inflation",pts:2},
+{part:"(b)(i)",desc:"Calculates minimum decrease as $100 billion (spending multiplier = 1/(1-0.8) = 5, so $500B/5 = $100B)",pts:1},
+{part:"(b)(ii)",desc:"SRPC stays the same (or movement along SRPC toward lower inflation and higher unemployment)",pts:1},
+{part:"(b)(iii)",desc:"Real interest rate decreases; demand for loanable funds decreases (or supply increases)",pts:1},
+{part:"(b)(iv)",desc:"Correctly labeled forex market graph; leftward shift of demand for dollar (or rightward shift of supply), dollar depreciates",pts:2},
+{part:"(c)(i)",desc:"Maximum change in AD is a decrease of $500 billion",pts:1},
+{part:"(c)(ii)",desc:"Demand for loanable funds will not change; no change in government borrowing",pts:1},
+{part:"(d)",desc:"Real GDP will decrease; SRAS will decrease as nominal wages/input prices/inflationary expectations increase",pts:1}
+]},
+{title:"FRQ 2 (5 points)",text:`Assume the required reserve ratio in the country of Rayogi is 5 percent, and the banking system in Rayogi has limited reserves.
+
+(a) If Rayogi's central bank sells $10 million of securities to commercial banks and the commercial banks pay for the securities out of their reserves, calculate the maximum possible change in the money supply. Show your work.
+
+(b) Draw a correctly labeled graph of the money market, and show the effect of the change in the money supply identified in part (a) on the equilibrium nominal interest rate in Rayogi.
+
+(c) Assume no change in inflationary expectations. Based on the change in the nominal interest rate identified in part (b), what will happen to the real interest rate in Rayogi?
+
+(d) Based on your answer to part (c), what will happen to the economic growth rate in Rayogi? Explain.`,maxPoints:5,rubric:[
+{part:"(a)",desc:"Maximum change in money supply is a decrease of $200 million (money multiplier = 1/0.05 = 20; $10M \u00d7 20 = $200M decrease)",pts:1},
+{part:"(b)",desc:"Correctly labeled money market graph with leftward shift in money supply, resulting in higher nominal interest rate",pts:2},
+{part:"(c)",desc:"The real interest rate will increase",pts:1},
+{part:"(d)",desc:"Economic growth rate will decrease; investment spending on plant and equipment will decrease",pts:1}
+]},
+{title:"FRQ 3 (5 points)",text:`In the country of Zuma, the natural rate of unemployment is 5 percent, the actual rate of unemployment is 10 percent, and the nominal interest rate is 3 percent.
+
+(a) Zuma produces two goods: food and capital goods. Draw a correctly labeled production possibilities curve for Zuma with food on the horizontal axis and capital goods on the vertical axis. Indicate a point on your graph, labeled W, which represents the current state of the economy.
+
+(b) Should the government increase, decrease, or keep income taxes unchanged to move the economy toward potential output? Explain.
+
+(c) On your graph in part (a), show another point, labeled Y, which shows the effect of the change in income taxes identified in part (b).
+
+(d) Suppose now there is an improved method of producing food only.
+  (i) Show the effect of this new method of production on your graph in part (a), labeling the new production possibilities curve as PPC2.
+  (ii) Based on your answer to part (d)(i), what happens to the opportunity cost of producing capital goods?`,maxPoints:5,rubric:[
+{part:"(a)",desc:"Correctly labeled PPC with point W below the PPC (inside the curve)",pts:1},
+{part:"(b)",desc:"Government should decrease income taxes; increases disposable income, consumption, and aggregate demand",pts:1},
+{part:"(c)",desc:"Point Y on the PPC reflecting an increase in either food or capital goods, or both (closer to or on the PPC)",pts:1},
+{part:"(d)(i)",desc:"Outward rotation of PPC reflecting increase in food production only, labeled PPC2",pts:1},
+{part:"(d)(ii)",desc:"The opportunity cost of producing capital goods increases",pts:1}
+]}
+];
+
+const MICRO_FRQ = [
+{title:"FRQ 1 (10 points)",text:`AirCab is the only airline that flies to and from a small island nation. It is currently operating while earning short-run negative economic profit.
+
+(a) Draw a correctly labeled graph for AirCab and show each of the following.
+  (i) The profit-maximizing quantity of flights, labeled QF
+  (ii) The profit-maximizing price charged by AirCab, labeled PF
+
+(b) Will the deadweight loss change if AirCab were to earn positive economic profit because of a decrease in fixed costs? Explain.
+
+(c) Assume the government wants AirCab to provide the allocatively efficient quantity of flights.
+  (i) Which of the following would best achieve that objective: a lump-sum tax, a per-unit tax, a per-unit subsidy, or a price floor?
+  (ii) On your graph in part (a), show the quantity, labeled QG, and the price, labeled PG, consistent with allocative efficiency in the market for AirCab flights.
+
+(d) Assume the cross-price elasticity of demand between AirCab's flights and Good L is +1.4. If the price of Good L decreases by 2%, by how much will the quantity of AirCab flights change?
+
+(e) Suppose the airports out of which AirCab flies decrease the landing fee they charge for each of AirCab's flights.
+  (i) How will this impact AirCab's profit-maximizing quantity of flights as compared to QF? Explain.
+  (ii) How will this impact AirCab's total revenue? Explain.`,maxPoints:10,rubric:[
+{part:"(a)",desc:"Correctly labeled monopoly graph: downward-sloping D and MR curves, upward-sloping MC through minimum of ATC, QF at MR=MC, PF from demand curve, ATC above demand at QF",pts:4},
+{part:"(b)",desc:"Deadweight loss will not change; changes in fixed costs have no effect on profit-maximizing quantity (MC unchanged)",pts:1},
+{part:"(c)(i)",desc:"A per-unit subsidy would best achieve the objective",pts:1},
+{part:"(c)(ii)",desc:"QG and PG shown where MC intersects demand curve (allocatively efficient point)",pts:1},
+{part:"(d)",desc:"Quantity of AirCab flights will decrease by 2.8% (cross-price elasticity 1.4 \u00d7 2% decrease = 2.8% decrease)",pts:1},
+{part:"(e)(i)",desc:"Profit-maximizing quantity will increase; marginal cost curve shifts downward",pts:1},
+{part:"(e)(ii)",desc:"Total revenue will increase; as a monopoly, AirCab operates on the elastic portion of the demand curve (MR is positive at new quantity)",pts:1}
+]},
+{title:"FRQ 2 (5 points)",text:`Homeowners purchase and plant trees for their personal benefit to improve the appearance of their yards. The market for these trees is perfectly competitive.
+
+(a) Assume that the trees planted in homeowners' yards also provide constant external marginal benefits to the homeowners' neighbors. Draw a correctly labeled graph of the market with the marginal social benefit (MSB), marginal private benefit (MPB), marginal social cost (MSC), and marginal private cost (MPC), and show each of the following.
+  (i) The market equilibrium quantity, labeled QM
+  (ii) The socially optimal quantity, labeled QS
+
+(b) Assume the government wants homeowners to internalize the externality to achieve the socially optimal quantity of trees using a per-unit subsidy. On your graph for part (a), shade the area representing the government's total expenditure on the subsidy.
+
+(c) Assume trees are normal goods. If consumers' incomes were to increase, what would happen to the socially optimal quantity of trees? Explain.
+
+(d) Instead, assume that the trees do not benefit the neighbors; rather, the leaves from trees planted by homeowners fall into their neighbors' yards, costing the neighbors time and money to clean up. In the absence of government intervention, is the socially optimal quantity of these trees greater than, less than, or equal to the market equilibrium quantity? Explain.`,maxPoints:5,rubric:[
+{part:"(a)",desc:"Correctly labeled graph: downward-sloping MPB, MSB above MPB, upward-sloping MPC=MSC, QM at MPB\u2229MPC, QS at MSB\u2229MSC (QS > QM)",pts:2},
+{part:"(b)",desc:"Shaded area representing government's total expenditure on the subsidy (rectangle at QS between MSB and MPB, times QS)",pts:1},
+{part:"(c)",desc:"Socially optimal quantity would increase; demand for trees (MPB) would increase, shifting MSB right as well",pts:1},
+{part:"(d)",desc:"Socially optimal quantity is less than market equilibrium quantity; MSC > MPC due to negative consumption externality",pts:1}
+]},
+{title:"FRQ 3 (5 points)",text:`The table represents the total quantity of textbooks that can be produced by a firm using different quantities of workers in a single day.
+
+Number of Workers | Total Quantity of Textbooks Produced per Day
+1                 | 10
+2                 | 25
+3                 | 33
+4                 | 36
+5                 | 37
+6                 | 35
+
+The workers are hired in a perfectly competitive labor market and are paid $200 per day, and these wages are the firm's only variable cost. The firm also has a daily fixed cost of $500. Every textbook is sold at a unit price of $100.
+
+(a) Calculate the average variable cost of producing 25 textbooks. Show your work.
+
+(b) With the hiring of which worker do diminishing marginal returns begin for this firm? Explain using numbers.
+
+(c) How many workers should this firm hire to maximize profits? Explain using marginal analysis.
+
+(d) Calculate the firm's economic profit if it hires the number of workers identified in part (c). Show your work.
+
+(e) Assume the daily fixed cost increases to $1,000. What will happen to the profit-maximizing quantity of labor hired?`,maxPoints:5,rubric:[
+{part:"(a)",desc:"AVC = TVC / Q = (2 workers \u00d7 $200) / 25 = $400/25 = $16",pts:1},
+{part:"(b)",desc:"Diminishing marginal returns begin with the 3rd worker: MP of 3rd worker = 8, which is less than MP of 2nd worker = 15, and MP of 2nd worker > MP of 1st worker = 10",pts:1},
+{part:"(c)",desc:"Hire 4 workers: MRP of 4th worker = 3 \u00d7 $100 = $300 > $200 wage; MRP of 5th worker = 1 \u00d7 $100 = $100 < $200 wage",pts:1},
+{part:"(d)",desc:"Profit = TR - TC = (36 \u00d7 $100) - (4 \u00d7 $200 + $500) = $3,600 - $1,300 = $2,300",pts:1},
+{part:"(e)",desc:"The profit-maximizing quantity of labor hired will not change (fixed costs do not affect the marginal analysis)",pts:1}
+]}
+];
+
+// ===== APP STATE =====
+let state = {
+  screen: 'landing', // landing, mc, mc-review, frq-transition, frq, frq-scoring, results
+  exam: null, // 'macro' or 'micro'
+  currentQ: 0,
+  mcAnswers: {},
+  mcFlags: {},
+  frqAnswers: {},
+  frqScores: {},
+  timerSeconds: 0,
+  timerInterval: null,
+  timerRunning: false
+};
+
+function getQuestions() {
+  return state.exam === 'macro' ? MACRO_MC : MICRO_MC;
+}
+function getFRQs() {
+  return state.exam === 'macro' ? MACRO_FRQ : MICRO_FRQ;
+}
+function getExamName() {
+  return state.exam === 'macro' ? 'AP Macroeconomics' : 'AP Microeconomics';
+}
+const LETTERS = ['A','B','C','D','E'];
+
+// ===== TIMER =====
+function startTimer(minutes) {
+  state.timerSeconds = minutes * 60;
+  state.timerRunning = true;
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerInterval = setInterval(() => {
+    if (state.timerSeconds > 0) {
+      state.timerSeconds--;
+      updateTimerDisplay();
+    } else {
+      clearInterval(state.timerInterval);
+      state.timerRunning = false;
+    }
+  }, 1000);
+}
+function stopTimer() {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerRunning = false;
+}
+function updateTimerDisplay() {
+  const el = document.getElementById('timer');
+  if (!el) return;
+  const m = Math.floor(state.timerSeconds / 60);
+  const s = state.timerSeconds % 60;
+  el.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  el.className = 'timer';
+  if (state.timerSeconds < 300) el.classList.add('danger');
+  else if (state.timerSeconds < 600) el.classList.add('warning');
+}
+
+// ===== RENDER =====
+function render() {
+  const app = document.getElementById('app');
+  switch(state.screen) {
+    case 'landing': app.innerHTML = renderLanding(); break;
+    case 'mc': app.innerHTML = renderMC(); break;
+    case 'mc-review': app.innerHTML = renderMCReview(); break;
+    case 'frq-transition': app.innerHTML = renderFRQTransition(); break;
+    case 'frq': app.innerHTML = renderFRQ(); break;
+    case 'frq-scoring': app.innerHTML = renderFRQScoring(); break;
+    case 'results': app.innerHTML = renderResults(); break;
+  }
+  if (state.screen === 'mc') updateTimerDisplay();
+}
+
+function renderLanding() {
+  stopTimer();
+  return `
+  <div class="header"><div class="logo"><span>AP</span> Exam Practice</div><div class="exam-info">2022 International</div><div></div></div>
+  <div class="landing">
+    <h1>AP Exam Practice</h1>
+    <p class="subtitle">2022 International Exam Questions</p>
+    <div class="exam-cards">
+      <div class="exam-card" onclick="selectExam('macro')">
+        <h2>AP Macroeconomics</h2>
+        <p>Full exam with 60 multiple choice questions and 3 free response questions</p>
+        <div class="meta"><div>\u23f1 2 hr 10 min</div><div>\u270f 60 MC + 3 FRQ</div></div>
+      </div>
+      <div class="exam-card" onclick="selectExam('micro')">
+        <h2>AP Microeconomics</h2>
+        <p>Full exam with 60 multiple choice questions and 3 free response questions</p>
+        <div class="meta"><div>\u23f1 2 hr 10 min</div><div>\u270f 60 MC + 3 FRQ</div></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderMC() {
+  const qs = getQuestions();
+  const q = qs[state.currentQ];
+  const answered = Object.keys(state.mcAnswers).length;
+  const flagged = state.mcFlags[state.currentQ] || false;
+  const selected = state.mcAnswers[state.currentQ];
+
+  let sidebar = `<div class="sidebar"><h3>Questions</h3><div class="q-grid">`;
+  for (let i = 0; i < qs.length; i++) {
+    let cls = 'q-btn';
+    if (i === state.currentQ) cls += ' active';
+    else if (state.mcAnswers[i] !== undefined) cls += ' answered';
+    if (state.mcFlags[i]) cls += ' flagged';
+    sidebar += `<button class="${cls}" onclick="goToQ(${i})">${i+1}</button>`;
+  }
+  sidebar += `</div><div class="sidebar-stats"><div>Answered: <span>${answered}</span> / ${qs.length}</div><div>Flagged: <span>${Object.values(state.mcFlags).filter(Boolean).length}</span></div></div></div>`;
+
+  let choices = '<ul class="choices">';
+  q.choices.forEach((c, i) => {
+    const sel = selected === i ? ' selected' : '';
+    choices += `<li class="${sel}" onclick="selectAnswer(${i})"><span class="choice-letter">${LETTERS[i]}</span><span>${c}</span></li>`;
+  });
+  choices += '</ul>';
+
+  return `
+  <div class="header">
+    <div class="logo"><span>AP</span> ${getExamName()}</div>
+    <div class="exam-info">Section I: Multiple Choice</div>
+    <div class="header-actions">
+      <div id="timer" class="timer">70:00</div>
+    </div>
+  </div>
+  ${sidebar}
+  <div class="main">
+    <div class="question-container">
+      <div class="question-header">
+        <span class="question-num">Question ${state.currentQ + 1} of ${qs.length}</span>
+        <button class="flag-btn ${flagged ? 'flagged' : ''}" onclick="toggleFlag()">
+          ${flagged ? '\u2691 Flagged' : '\u2690 Flag for Review'}
+        </button>
+      </div>
+      <div class="question-text">${q.q}</div>
+      ${choices}
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-outline" onclick="prevQ()" ${state.currentQ === 0 ? 'disabled style="opacity:.4;pointer-events:none"' : ''}>\u2190 Previous</button>
+      ${state.currentQ === qs.length - 1
+        ? `<button class="btn btn-primary" onclick="reviewMC()">Review Answers \u2192</button>`
+        : `<button class="btn btn-primary" onclick="nextQ()">Next \u2192</button>`}
+    </div>
+  </div>`;
+}
+
+function renderMCReview() {
+  const qs = getQuestions();
+  const answered = Object.keys(state.mcAnswers).length;
+  const unanswered = qs.length - answered;
+  const flaggedCount = Object.values(state.mcFlags).filter(Boolean).length;
+
+  let grid = '<div class="review-grid">';
+  for (let i = 0; i < qs.length; i++) {
+    let cls = 'review-item';
+    if (state.mcAnswers[i] !== undefined) cls += ' answered'; else cls += ' unanswered';
+    if (state.mcFlags[i]) cls += ' flagged';
+    grid += `<div class="${cls}" onclick="goToQ(${i});state.screen='mc';render()">${i+1}</div>`;
+  }
+  grid += '</div>';
+
+  return `
+  <div class="header">
+    <div class="logo"><span>AP</span> ${getExamName()}</div>
+    <div class="exam-info">Section I: Review</div>
+    <div class="header-actions"><div id="timer" class="timer">--:--</div></div>
+  </div>
+  <div class="main no-sidebar" style="max-width:700px;margin:80px auto 0">
+    <div class="question-container">
+      <h2 style="margin-bottom:8px">Review Your Answers</h2>
+      <p style="color:#666;margin-bottom:20px">Click any question to return to it.</p>
+      <div style="display:flex;gap:24px;margin-bottom:20px">
+        <div><strong>${answered}</strong> Answered</div>
+        <div style="color:var(--ap-orange)"><strong>${unanswered}</strong> Unanswered</div>
+        <div><strong>${flaggedCount}</strong> Flagged</div>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#e8f5e9;border-color:var(--ap-green)"></div>Answered</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fff3e0;border-color:var(--ap-orange)"></div>Unanswered</div>
+      </div>
+      ${grid}
+    </div>
+    <div class="nav-buttons" style="margin-top:24px">
+      <button class="btn btn-outline" onclick="state.screen='mc';render()">\u2190 Back to Questions</button>
+      <button class="btn btn-primary" onclick="goToFRQ()">Continue to Section II \u2192</button>
+    </div>
+  </div>`;
+}
+
+function renderFRQTransition() {
+  stopTimer();
+  return `
+  <div class="header">
+    <div class="logo"><span>AP</span> ${getExamName()}</div>
+    <div class="exam-info">Section Transition</div>
+    <div></div>
+  </div>
+  <div class="main no-sidebar section-transition" style="max-width:700px;margin:80px auto 0">
+    <h2>Section II: Free Response</h2>
+    <p>You will have <strong>60 minutes</strong> to answer 3 free-response questions.<br>You are advised to spend the first 10 minutes reading all questions and planning your answers.<br>Spend approximately half your time on the first question and divide the remaining time equally between the next two.</p>
+    <button class="btn btn-primary" onclick="startFRQ()" style="font-size:16px;padding:12px 32px">Begin Section II</button>
+  </div>`;
+}
+
+function renderFRQ() {
+  const frqs = getFRQs();
+  const currentFRQ = state.currentQ;
+  const frq = frqs[currentFRQ];
+
+  let tabs = '<div style="display:flex;gap:8px;margin-bottom:24px">';
+  frqs.forEach((f, i) => {
+    const active = i === currentFRQ ? 'btn-primary' : 'btn-outline';
+    tabs += `<button class="btn ${active}" onclick="state.currentQ=${i};render()">Question ${i+1}</button>`;
+  });
+  tabs += '</div>';
+
+  const savedAnswer = state.frqAnswers[`${state.exam}_${currentFRQ}`] || '';
+
+  return `
+  <div class="header">
+    <div class="logo"><span>AP</span> ${getExamName()}</div>
+    <div class="exam-info">Section II: Free Response</div>
+    <div class="header-actions">
+      <div id="timer" class="timer">60:00</div>
+    </div>
+  </div>
+  <div class="main no-sidebar" style="max-width:800px;margin:80px auto 0">
+    ${tabs}
+    <div class="frq-container">
+      <h3 style="margin-bottom:16px">${frq.title}</h3>
+      <div class="frq-text">${frq.text}</div>
+      <div class="frq-part">
+        <h4>Your Response</h4>
+        <textarea class="frq-textarea" placeholder="Type your response here..." oninput="state.frqAnswers['${state.exam}_${currentFRQ}']=this.value">${savedAnswer}</textarea>
+      </div>
+    </div>
+    <div class="nav-buttons" style="margin-top:24px">
+      <button class="btn btn-outline" onclick="${currentFRQ > 0 ? `state.currentQ=${currentFRQ-1};render()` : ''}" ${currentFRQ === 0 ? 'disabled style="opacity:.4;pointer-events:none"' : ''}>\u2190 Previous</button>
+      ${currentFRQ === frqs.length - 1
+        ? `<button class="btn btn-primary" onclick="goToFRQScoring()">Submit Exam \u2192</button>`
+        : `<button class="btn btn-primary" onclick="state.currentQ=${currentFRQ+1};render()">Next Question \u2192</button>`}
+    </div>
+  </div>`;
+}
+
+function renderFRQScoring() {
+  stopTimer();
+  const frqs = getFRQs();
+  let sections = '';
+
+  frqs.forEach((frq, fi) => {
+    let rubricHTML = '';
+    frq.rubric.forEach((r, ri) => {
+      const key = `${state.exam}_${fi}_${ri}`;
+      const checked = state.frqScores[key] ? 'checked' : '';
+      rubricHTML += `
+      <div class="rubric-item">
+        <input type="checkbox" id="${key}" ${checked} onchange="state.frqScores['${key}']=this.checked;updateFRQTotal()">
+        <label for="${key}"><strong>${r.part}</strong> (${r.pts} pt${r.pts>1?'s':''}): ${r.desc}</label>
+      </div>`;
+    });
+
+    sections += `
+    <div class="scoring-section">
+      <h3>${frq.title}</h3>
+      <p style="color:#666;margin-bottom:16px">Check each criterion you believe you met in your response:</p>
+      ${rubricHTML}
+    </div>`;
+  });
+
+  return `
+  <div class="header">
+    <div class="logo"><span>AP</span> ${getExamName()}</div>
+    <div class="exam-info">FRQ Self-Scoring</div>
+    <div></div>
+  </div>
+  <div class="main no-sidebar" style="max-width:800px;margin:80px auto 0">
+    <h2 style="margin-bottom:8px">Score Your Free Responses</h2>
+    <p style="color:#666;margin-bottom:24px">Compare your answers against the scoring rubric. Check each criterion you believe you earned.</p>
+    <div id="frq-total" style="background:var(--ap-green);color:white;padding:16px 24px;border-radius:8px;margin-bottom:24px;font-size:18px;font-weight:600;text-align:center">
+      FRQ Score: 0 / 20
+    </div>
+    ${sections}
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-primary" onclick="showResults()" style="font-size:16px;padding:12px 40px">See My AP Score</button>
+    </div>
+  </div>`;
+}
+
+function renderResults() {
+  stopTimer();
+  const qs = getQuestions();
+  const frqs = getFRQs();
+
+  // MC scoring
+  let mcCorrect = 0;
+  qs.forEach((q, i) => {
+    if (state.mcAnswers[i] === q.answer) mcCorrect++;
+  });
+
+  // FRQ scoring
+  let frqPoints = 0;
+  frqs.forEach((frq, fi) => {
+    frq.rubric.forEach((r, ri) => {
+      if (state.frqScores[`${state.exam}_${fi}_${ri}`]) frqPoints += r.pts;
+    });
+  });
+
+  const mcWeighted = (mcCorrect / 60) * 53.33;
+  const frqWeighted = (frqPoints / 20) * 26.67;
+  const composite = mcWeighted + frqWeighted;
+
+  let apScore;
+  if (composite >= 60) apScore = 5;
+  else if (composite >= 47) apScore = 4;
+  else if (composite >= 35) apScore = 3;
+  else if (composite >= 25) apScore = 2;
+  else apScore = 1;
+
+  const qualLabels = {5:'Extremely well qualified',4:'Well qualified',3:'Qualified',2:'Possibly qualified',1:'No recommendation'};
+
+  // MC detail grid
+  let mcGrid = '<div class="review-grid" style="grid-template-columns:repeat(10,1fr)">';
+  qs.forEach((q, i) => {
+    const correct = state.mcAnswers[i] === q.answer;
+    const cls = state.mcAnswers[i] !== undefined ? (correct ? 'correct' : 'incorrect') : 'unanswered';
+    mcGrid += `<div class="review-item ${cls}" title="Q${i+1}: ${state.mcAnswers[i] !== undefined ? (correct ? 'Correct' : 'Your answer: ' + LETTERS[state.mcAnswers[i]] + ', Correct: ' + LETTERS[q.answer]) : 'Unanswered'}">${i+1}</div>`;
+  });
+  mcGrid += '</div>';
+
+  return `
+  <div class="header">
+    <div class="logo"><span>AP</span> ${getExamName()}</div>
+    <div class="exam-info">Results</div>
+    <div></div>
+  </div>
+  <div class="results-page main no-sidebar" style="max-width:700px;margin:80px auto 0">
+    <h2>Your AP Score</h2>
+    <div class="score-circle">
+      <div class="big-num">${apScore}</div>
+      <div class="label">out of 5</div>
+    </div>
+    <p style="font-size:18px;color:#666;margin-bottom:8px">${qualLabels[apScore]}</p>
+    <p style="font-size:14px;color:#999">${getExamName()} 2022</p>
+
+    <div class="breakdown">
+      <h3>Score Breakdown</h3>
+      <div class="breakdown-row"><span>Multiple Choice</span><span>${mcCorrect} / 60 correct (${Math.round(mcCorrect/60*100)}%)</span></div>
+      <div class="breakdown-row"><span>MC Weighted Score</span><span>${mcWeighted.toFixed(1)} / 53.33</span></div>
+      <div class="breakdown-row"><span>Free Response</span><span>${frqPoints} / 20 points</span></div>
+      <div class="breakdown-row"><span>FRQ Weighted Score</span><span>${frqWeighted.toFixed(1)} / 26.67</span></div>
+      <div class="breakdown-row"><span>Composite Score</span><span>${composite.toFixed(1)} / 80.00</span></div>
+    </div>
+
+    <div class="breakdown">
+      <h3>Multiple Choice Detail</h3>
+      <div class="legend" style="justify-content:flex-start;margin-bottom:12px">
+        <div class="legend-item"><div class="legend-dot" style="background:#e8f5e9;border-color:var(--ap-green)"></div>Correct</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ffebee;border-color:var(--ap-red)"></div>Incorrect</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#fff3e0;border-color:var(--ap-orange)"></div>Unanswered</div>
+      </div>
+      ${mcGrid}
+      <p style="font-size:13px;color:#999;margin-top:12px">Hover over a question for details.</p>
+    </div>
+
+    <div class="breakdown">
+      <h3>AP Score Scale</h3>
+      ${[5,4,3,2,1].map(s => {
+        const ranges = {5:'60-80',4:'47-59',3:'35-46',2:'25-34',1:'0-24'};
+        const active = s === apScore ? 'font-weight:700;color:var(--ap-green)' : 'color:#999';
+        return `<div class="breakdown-row" style="${active}"><span>${s} - ${qualLabels[s]}</span><span>${ranges[s]}</span></div>`;
+      }).join('')}
+    </div>
+
+    <div style="margin-top:32px;display:flex;gap:16px;justify-content:center">
+      <button class="btn btn-outline" onclick="location.reload()">Try Another Exam</button>
+    </div>
+  </div>`;
+}
+
+// ===== ACTIONS =====
+function selectExam(exam) {
+  state = { screen:'mc', exam, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false };
+  render();
+  startTimer(70);
+}
+function goToQ(i) { state.currentQ = i; render(); }
+function nextQ() { if (state.currentQ < getQuestions().length - 1) { state.currentQ++; render(); } }
+function prevQ() { if (state.currentQ > 0) { state.currentQ--; render(); } }
+function selectAnswer(i) { state.mcAnswers[state.currentQ] = i; render(); }
+function toggleFlag() { state.mcFlags[state.currentQ] = !state.mcFlags[state.currentQ]; render(); }
+function reviewMC() { state.screen = 'mc-review'; render(); }
+function goToFRQ() { stopTimer(); state.screen = 'frq-transition'; state.currentQ = 0; render(); }
+function startFRQ() { state.screen = 'frq'; state.currentQ = 0; render(); startTimer(60); }
+function goToFRQScoring() { state.screen = 'frq-scoring'; render(); }
+function updateFRQTotal() {
+  const frqs = getFRQs();
+  let total = 0;
+  frqs.forEach((frq, fi) => {
+    frq.rubric.forEach((r, ri) => {
+      if (state.frqScores[`${state.exam}_${fi}_${ri}`]) total += r.pts;
+    });
+  });
+  const el = document.getElementById('frq-total');
+  if (el) el.textContent = `FRQ Score: ${total} / 20`;
+}
+function showResults() { state.screen = 'results'; render(); }
+
+// INIT
+render();
+</script>
+</body>
+</html>
