@@ -486,38 +486,6 @@ const PHYSICS1_2014_MC = [
 {q:"A geologist is using a sensor to record waves in a layer of rock and is viewing them on a monitor screen. At one moment the monitor shows the signal above. If the signal is created by just two traveling waves, what can be concluded from the signal about the waves when they reach the sensor? Select two answers.",choices:["The waves have different frequencies.","The waves have different amplitudes.","The waves are traveling in opposite directions.","The waves are traveling at different speeds."],answer:[0,1],multi:true},
 ];
 
-const DSAT_GEOMETRY_MC = [
-{q:"In the xy-plane, a circle has equation x<sup>2</sup> + y<sup>2</sup> - 6x + 8y - 11 = 0. What is the area of the circle?",choices:["16π","25π","36π","49π"],answer:2},
-{q:"In the xy-plane, the endpoints of a diameter of circle C are (2, 1) and (8, 1). Which equation represents circle C?",choices:["(x - 5)<sup>2</sup> + (y - 1)<sup>2</sup> = 6","(x - 5)<sup>2</sup> + (y - 1)<sup>2</sup> = 9","(x - 3)<sup>2</sup> + (y - 1)<sup>2</sup> = 9","(x - 5)<sup>2</sup> + (y - 1)<sup>2</sup> = 36"],answer:1},
-{q:"For real number a, the graph of x<sup>2</sup> + y<sup>2</sup> + ax - 12y + 20 = 0 is a circle tangent to the x-axis. What is the positive value of a?",choices:["2√5","4√5","6√5","8√5"],answer:1},
-{q:"In the xy-plane, a circle has equation x<sup>2</sup> + y<sup>2</sup> - 2x + 6y - 15 = 0. What is the length of the chord cut from this circle by the line y = 1?",choices:["3","4","6","8"],answer:2},
-
-{q:"If tan θ = 3/4 for an acute angle θ, what is the value of sin(90 - θ) + cos θ?",choices:["3/5","4/5","6/5","8/5"],answer:3},
-{q:"If x is acute and sin x = 5/13, what is tan(90 - x)?",choices:["5/12","12/5","5/13","13/12"],answer:1},
-{q:"In right triangle ABC with right angle at C, altitude CD is drawn to hypotenuse AB, where D lies on AB. If AD = 4 and DB = 9, what is tan A?",choices:["2/3","3/2","9/4","4/9"],answer:1},
-
-{q:"A right circular cylinder has radius r and height 2r. A right circular cone has the same base radius r and volume equal to the cylinder's volume. What is the cone's height in terms of r?",choices:["2r","3r","4r","6r"],answer:3},
-{q:"A solid sphere of radius 6 is melted and recast into identical solid hemispheres of radius 3. How many hemispheres are formed?",choices:["8","12","16","18"],answer:2},
-{q:"A solid consists of a right circular cylinder of radius 3 and height 10 with a hemisphere of radius 3 attached on top. If the exposed surface includes the curved surfaces and the bottom circular base, what is the total surface area?",choices:["78π","84π","87π","96π"],answer:2},
-{q:"A right circular cone has height 12 and slant height 13. The cone is filled completely with water and then poured into a right circular cylinder of radius 3. What is the height of water in the cylinder?",choices:["25/3","100/9","32/3","125/9"],answer:1},
-
-{q:"In the xy-plane, triangle ABC has vertices A(-2, 1), B(4, 5), and C(6, -1). What is the perimeter of triangle ABC?",choices:["2(√13 + √10 + √17)","√52 + √40 + √68","2√40 + √68","2(√13 + √10) + √17"],answer:0},
-{q:"In the xy-plane, A(1, 4) and B(7, -2). Let M be the midpoint of AB. What is the equation of the line through M that is perpendicular to AB?",choices:["y = x - 3","y = -x + 5","y = x + 3","y = -x - 3"],answer:0},
-{q:"In the xy-plane, a square has opposite vertices at (-1, 2) and (7, 6). What is the area of the square?",choices:["20","32","40","80"],answer:2},
-
-{q:"Triangles ABC and DEF are similar, and AB/DE = 3/5. If the area of triangle ABC is 54, what is the area of triangle DEF?",choices:["90","120","150","180"],answer:2},
-{q:"In triangle ABC, points D on AB and E on AC are such that DE is parallel to BC. If AD/AB = 3/5 and the area of trapezoid DBCE is 128, what is the area of triangle ABC?",choices:["160","180","200","225"],answer:2},
-
-{q:"A circle has radius 9. What is the length of the minor arc subtended by a central angle of 140 degrees?",choices:["6π","7π","8π","9π"],answer:1},
-{q:"In a circle of radius 12, a sector has area 24π. What is the length of the minor arc of that sector?",choices:["2π","3π","4π","6π"],answer:2},
-
-{q:"A square is inscribed in a circle. If the area of the square is 98, what is the area of the circle?",choices:["42π","49π","56π","98π"],answer:1},
-{q:"A circle is inscribed in a square whose perimeter is 40. What is the area inside the square but outside the circle?",choices:["100 - 20π","100 - 25π","100 - 50π","100 - 10π"],answer:1},
-
-{q:"A 30-60-90 triangle has area 48√3. What is its perimeter?",choices:["8√6 + 4√2","4√6(3 + √3)","12√2 + 4√6","24 + 8√3"],answer:1},
-{q:"A right rectangular prism has side lengths 4, 6, and x. If its surface area is 208, what is the length of its space diagonal?",choices:["2√26","2√29","4√13","10"],answer:1}
-];
-
 // FRQ DATA
 const MACRO_FRQ = [
 {title:"FRQ 1 (10 points)",text:`Assume the United States economy is currently facing an inflationary gap of $500 billion, a natural rate of unemployment of 5 percent, and an actual rate of inflation of 4 percent.
@@ -663,7 +631,7 @@ const MICRO_2023_FRQ = [
 // ===== APP STATE =====
 let state = {
   screen: 'landing', // landing, mc, mc-review, frq-transition, frq, frq-scoring, results
-  exam: null, // 'macro', 'micro', 'macro23', 'micro23', 'physics1_2017', 'physics1_2014', or 'dsat_geometry'
+  exam: null, // 'macro', 'micro', 'macro23', 'micro23', 'physics1_2017', or 'physics1_2014'
   currentQ: 0,
   mcAnswers: {},
   mcFlags: {},
@@ -682,7 +650,6 @@ function getQuestions() {
     case 'micro23': return MICRO_2023_MC;
     case 'physics1_2017': return PHYSICS1_2017_MC;
     case 'physics1_2014': return PHYSICS1_2014_MC;
-    case 'dsat_geometry': return DSAT_GEOMETRY_MC;
     default: return [];
   }
 }
@@ -704,7 +671,6 @@ function getExamName() {
     case 'micro23': return 'AP Microeconomics';
     case 'physics1_2017': return 'AP Physics 1';
     case 'physics1_2014': return 'AP Physics 1';
-    case 'dsat_geometry': return 'Digital SAT Math';
     default: return 'AP Exam';
   }
 }
@@ -712,7 +678,6 @@ function getExamYear() {
   if (state.exam === 'macro23' || state.exam === 'micro23') return '2023';
   if (state.exam === 'physics1_2017') return '2017';
   if (state.exam === 'physics1_2014') return '2014';
-  if (state.exam === 'dsat_geometry') return 'Geometry';
   return '2022';
 }
 const LETTERS = ['A','B','C','D','E'];
@@ -808,14 +773,6 @@ function renderLanding() {
         <div class="meta"><div>⏱ 90 min</div><div>✏ 50 MC</div></div>
       </div>
     </div>
-    <h3 style="margin:32px 0 16px;color:#666">Digital SAT Math</h3>
-    <div class="exam-cards">
-      <div class="exam-card" onclick="selectExam('dsat_geometry')">
-        <h2>Geometry &amp; Trigonometry</h2>
-        <p>Hard Module 2 level questions — Circles, triangles, volume, coordinate geometry</p>
-        <div class="meta"><div>⏱ 35 min</div><div>✏ 22 MC</div></div>
-      </div>
-    </div>
   </div>`;
 }
 
@@ -852,7 +809,7 @@ function renderMC() {
     <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
     <div class="exam-info">Section I: Multiple Choice</div>
     <div class="header-actions">
-      <div id="timer" class="timer">${state.exam?.startsWith('dsat_') ? '35:00' : (hasFRQ() ? '70:00' : '90:00')}</div>
+      <div id="timer" class="timer">${hasFRQ() ? '70:00' : '90:00'}</div>
     </div>
   </div>
   ${sidebar}
@@ -1132,7 +1089,7 @@ function renderResults() {
 function selectExam(exam) {
   state = { screen:'mc', exam, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false };
   render();
-  startTimer(exam.startsWith('dsat_') ? 35 : (hasFRQ() ? 70 : 90));
+  startTimer(hasFRQ() ? 70 : 90);
 }
 function goToQ(i) { state.currentQ = i; render(); }
 function nextQ() { if (state.currentQ < getQuestions().length - 1) { state.currentQ++; render(); } }
