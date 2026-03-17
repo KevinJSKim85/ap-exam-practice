@@ -65,12 +65,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .subject-content{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease,padding .35s ease;padding:0 16px}
 .subject-section.expanded .subject-content{max-height:1800px;opacity:1;padding:14px 16px 16px}
 .exam-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.exam-card{position:relative;background:#fff;border:1px solid #d0d8e6;border-radius:12px;padding:14px 14px 12px;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;text-align:left;min-height:126px}
+.exam-card{position:relative;background:#fff;border:1px solid #d0d8e6;border-radius:12px;padding:14px 14px 12px;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;text-align:left;min-height:90px}
 .exam-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(17,24,39,.08);border-color:#9fb5d8}
 .exam-card h2{font-size:16px;margin-bottom:5px;color:#101828}
 .exam-card p{color:#475467;font-size:13px;line-height:1.35;margin-bottom:10px}
 .exam-card .meta{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#667085}
 .exam-card .meta div{display:flex;align-items:center;gap:4px}
+.num-card{display:flex;align-items:center;gap:16px;padding:12px 16px}
+.card-num{min-width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:14px;font-size:32px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-1px}
+.card-body{flex:1;min-width:0}
+.card-body h2{font-size:15px;margin-bottom:3px}
+.card-body p{margin-bottom:6px}
+.econ-num{background:linear-gradient(135deg,#2563eb,#3b82f6)}
+.physics-num{background:linear-gradient(135deg,#7c3aed,#8b5cf6)}
+.euro-num{background:linear-gradient(135deg,#059669,#10b981)}
+.psych-num{background:linear-gradient(135deg,#dc2626,#ef4444);font-size:22px;letter-spacing:-0.5px}
 .badge{position:absolute;top:10px;right:10px;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff}
 .badge.explain{background:var(--euro)}
 .badge.hard{background:var(--psych)}
@@ -8408,31 +8417,31 @@ function renderLanding() {
 
       <div class="subjects">
         ${section('econ','econ','📊','AP Economics','AP Economics — 4 practice sets',`
-          <div class="exam-card" onclick="selectExam('macro')"><h2>AP Macroeconomics</h2><p>2022 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('micro')"><h2>AP Microeconomics</h2><p>2022 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('macro23')"><h2>AP Macroeconomics</h2><p>2023 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('micro23')"><h2>AP Microeconomics</h2><p>2023 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('macro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('micro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('macro23')"><div class="card-num econ-num">'23</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('micro23')"><div class="card-num econ-num">'23</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
         `)}
 
         ${section('physics','physics','🔬','AP Physics','AP Physics — 2 practice sets',`
-          <div class="exam-card" onclick="selectExam('physics1_2017')"><h2>AP Physics 1</h2><p>2017 Released Exam — 40 multiple choice questions (includes multi-select)</p><div class="meta"><div>⏱ 90 min</div><div>✏ 40 MC</div></div></div>
-          <div class="exam-card" onclick="selectExam('physics1_2014')"><h2>AP Physics 1</h2><p>2014 Practice Exam — 50 multiple choice questions (includes multi-select)</p><div class="meta"><div>⏱ 90 min</div><div>✏ 50 MC</div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('physics1_2017')"><div class="card-num physics-num">'17</div><div class="card-body"><h2>AP Physics 1</h2><p>Released Exam · 40 MC (multi-select)</p><div class="meta"><div>⏱ 90 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('physics1_2014')"><div class="card-num physics-num">'14</div><div class="card-body"><h2>AP Physics 1</h2><p>Practice Exam · 50 MC (multi-select)</p><div class="meta"><div>⏱ 90 min</div></div></div></div>
         `)}
 
         ${section('euro','euro','🏛','AP European History','AP European History — 7 practice sets',`
-          <div class="exam-card" onclick="selectExam('euro1')"><h2>AP European History</h2><p>Practice Set 1 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2022 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('euro2')"><h2>AP European History</h2><p>Practice Set 2 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2023 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('euro3')"><h2>AP European History</h2><p>Practice Set 3 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2024 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('euro4')"><h2>AP European History</h2><p>Practice Set 4 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2018 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('euro5')"><h2>AP European History</h2><p>Practice Set 5 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2019 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('euro6')"><h2>AP European History</h2><p>Practice Set 6 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2021 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('euro_marco')"><span class="badge explain">WITH EXPLANATIONS</span><h2>AP European History</h2><p>Marco Learning — 55 MC with full answer explanations (wrong answer analysis)</p><div class="meta"><div>⏱ 55 min</div><div>✏ 55 MC + Explanations</div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro1')"><div class="card-num euro-num">1</div><div class="card-body"><h2>Practice Set 1</h2><p>55 MC + SAQ, DBQ, LEQ · FRQ: 2022</p><div class="meta"><div>⏱ 3 hr 15 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro2')"><div class="card-num euro-num">2</div><div class="card-body"><h2>Practice Set 2</h2><p>55 MC + SAQ, DBQ, LEQ · FRQ: 2023</p><div class="meta"><div>⏱ 3 hr 15 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro3')"><div class="card-num euro-num">3</div><div class="card-body"><h2>Practice Set 3</h2><p>55 MC + SAQ, DBQ, LEQ · FRQ: 2024</p><div class="meta"><div>⏱ 3 hr 15 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro4')"><div class="card-num euro-num">4</div><div class="card-body"><h2>Practice Set 4</h2><p>55 MC + SAQ, DBQ, LEQ · FRQ: 2018</p><div class="meta"><div>⏱ 3 hr 15 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro5')"><div class="card-num euro-num">5</div><div class="card-body"><h2>Practice Set 5</h2><p>55 MC + SAQ, DBQ, LEQ · FRQ: 2019</p><div class="meta"><div>⏱ 3 hr 15 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro6')"><div class="card-num euro-num">6</div><div class="card-body"><h2>Practice Set 6</h2><p>55 MC + SAQ, DBQ, LEQ · FRQ: 2021</p><div class="meta"><div>⏱ 3 hr 15 min</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('euro_marco')"><div class="card-num euro-num" style="font-size:24px">✦</div><div class="card-body"><span class="badge explain">WITH EXPLANATIONS</span><h2>Marco Learning</h2><p>55 MC + Full Answer Explanations (오답노트)</p><div class="meta"><div>⏱ 55 min</div></div></div></div>
         `)}
 
         ${section('psych','psych','🧠','AP Psychology','AP Psychology — 3 practice sets',`
-          <div class="exam-card" onclick="selectExam('psych1')"><span class="badge hard">HARDEST EVER</span><h2>AP Psychology</h2><p>2021 Exam — Mean 2.71, 53.3% pass rate (lowest in AP Psych history)</p><div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('psych2')"><h2>AP Psychology</h2><p>2022 Exam — Mean 2.86, 58.3% pass rate (2nd hardest)</p><div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div></div>
-          <div class="exam-card" onclick="selectExam('psych3')"><h2>AP Psychology</h2><p>2023 Exam — Mean 2.89, 59.6% pass rate (3rd hardest)</p><div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('psych1')"><div class="card-num psych-num">2021</div><div class="card-body"><span class="badge hard">HARDEST EVER</span><h2>AP Psychology</h2><p>Mean 2.71 · 53.3% pass rate · 100 MC + 2 FRQ</p><div class="meta"><div>⏱ 2 hr</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('psych2')"><div class="card-num psych-num">2022</div><div class="card-body"><h2>AP Psychology</h2><p>Mean 2.86 · 58.3% pass rate · 100 MC + 2 FRQ</p><div class="meta"><div>⏱ 2 hr</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('psych3')"><div class="card-num psych-num">2023</div><div class="card-body"><h2>AP Psychology</h2><p>Mean 2.89 · 59.6% pass rate · 100 MC + 2 FRQ</p><div class="meta"><div>⏱ 2 hr</div></div></div></div>
         `)}
       </div>
     </div>
