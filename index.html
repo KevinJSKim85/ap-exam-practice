@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AP Exam Practice</title>
+<link rel="icon" href="data:,">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ap-green:#00703c;--ap-dark:#1a1a1a;--ap-gray:#f5f5f5;--ap-border:#ddd;--ap-text:#333;--ap-white:#fff;--ap-blue:#0066cc;--ap-red:#cc0000;--ap-orange:#e67e00;--sidebar-w:260px}
+:root{--ap-green:#00703c;--ap-dark:#1a1a1a;--ap-gray:#f5f5f5;--ap-border:#ddd;--ap-text:#333;--ap-white:#fff;--ap-blue:#0066cc;--ap-red:#cc0000;--ap-orange:#e67e00;--sidebar-w:260px;--econ:#145ea8;--physics:#5f3dc4;--euro:#1f8a4c;--psych:#b4232f;--landing-ink:#111827;--landing-sub:#5b6576}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--ap-gray);color:var(--ap-text);min-height:100vh}
 /* HEADER */
 .header{background:var(--ap-dark);color:var(--ap-white);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:fixed;top:0;left:0;right:0;z-index:100}
@@ -43,16 +44,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .main{margin-left:var(--sidebar-w);margin-top:56px;padding:32px 48px;max-width:900px}
 .main.no-sidebar{margin-left:0;max-width:100%}
 /* LANDING PAGE */
-.landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 56px);text-align:center;margin-left:0;padding:48px}
-.landing h1{font-size:36px;margin-bottom:8px}
-.landing .subtitle{font-size:18px;color:#666;margin-bottom:48px}
-.exam-cards{display:flex;gap:32px;flex-wrap:wrap;justify-content:center}
-.exam-card{background:var(--ap-white);border:2px solid var(--ap-border);border-radius:12px;padding:40px 32px;width:340px;cursor:pointer;transition:all .2s}
-.exam-card:hover{border-color:var(--ap-green);box-shadow:0 4px 20px rgba(0,112,60,.15)}
-.exam-card h2{font-size:22px;margin-bottom:8px}
-.exam-card p{color:#666;font-size:14px;margin-bottom:20px}
-.exam-card .meta{display:flex;gap:16px;justify-content:center;font-size:13px;color:#888}
+.landing{margin:56px 0 0;padding:40px 20px 68px;background:radial-gradient(circle at 12% 8%,#dbeafe 0,#eef4ff 38%,#f4f6fb 72%,#f6f7fb 100%)}
+.landing-shell{max-width:1080px;margin:0 auto}
+.hero{background:linear-gradient(140deg,#ffffff,#f7faff);border:1px solid #d7deea;border-radius:20px;padding:28px 26px 24px;box-shadow:0 8px 28px rgba(16,24,40,.06);margin-bottom:18px;text-align:left}
+.hero h1{font-family:Georgia,'Times New Roman',serif;font-size:42px;letter-spacing:-.8px;color:var(--landing-ink);margin-bottom:6px}
+.hero .subtitle{font-size:17px;color:var(--landing-sub);margin-bottom:16px}
+.quick-stats{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid #d7deea;padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;color:#344054}
+.subjects{display:flex;flex-direction:column;gap:14px}
+.subject-section{background:rgba(255,255,255,.9);border:1px solid #d7deea;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(17,24,39,.05)}
+.subject-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;background:#fff;border-left:8px solid #94a3b8;transition:background .2s,border-color .2s}
+.subject-header:hover{background:#f8fafc}
+.subject-header.econ{border-left-color:var(--econ)}
+.subject-header.physics{border-left-color:var(--physics)}
+.subject-header.euro{border-left-color:var(--euro)}
+.subject-header.psych{border-left-color:var(--psych)}
+.subject-title{font-size:20px;font-weight:800;color:#1f2937;display:flex;align-items:center;gap:8px}
+.subject-count{font-size:13px;color:#667085;font-weight:600}
+.subject-indicator{font-size:18px;color:#667085;transition:transform .3s}
+.subject-section.expanded .subject-indicator{transform:rotate(180deg)}
+.subject-content{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease,padding .35s ease;padding:0 16px}
+.subject-section.expanded .subject-content{max-height:1800px;opacity:1;padding:14px 16px 16px}
+.exam-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.exam-card{position:relative;background:#fff;border:1px solid #d0d8e6;border-radius:12px;padding:14px 14px 12px;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;text-align:left;min-height:126px}
+.exam-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(17,24,39,.08);border-color:#9fb5d8}
+.exam-card h2{font-size:16px;margin-bottom:5px;color:#101828}
+.exam-card p{color:#475467;font-size:13px;line-height:1.35;margin-bottom:10px}
+.exam-card .meta{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:#667085}
 .exam-card .meta div{display:flex;align-items:center;gap:4px}
+.badge{position:absolute;top:10px;right:10px;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff}
+.badge.explain{background:var(--euro)}
+.badge.hard{background:var(--psych)}
 /* QUESTION */
 .question-container{background:var(--ap-white);border-radius:8px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .question-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
@@ -128,6 +149,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 @media(max-width:768px){
 .sidebar{display:none}
 .main{margin-left:0;padding:20px 16px}
+.landing{padding:28px 14px 64px}
+.hero h1{font-size:34px}
+.hero .subtitle{font-size:15px}
+.subject-title{font-size:18px}
+.exam-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -8207,6 +8233,10 @@ globalThis.AP_PSYCH_FRQ_DATA = { PSYCH_SET1_FRQ, PSYCH_SET2_FRQ, PSYCH_SET3_FRQ 
 
 
 // ===== APP STATE =====
+function defaultLandingSections() {
+  return { econ: false, physics: false, euro: false, psych: false };
+}
+
 let state = {
   screen: 'landing', // landing, mc, mc-review, frq-transition, frq, frq-scoring, results
   exam: null, // 'macro', 'micro', 'macro23', 'micro23', 'physics1_2017', or 'physics1_2014'
@@ -8217,7 +8247,8 @@ let state = {
   frqScores: {},
   timerSeconds: 0,
   timerInterval: null,
-  timerRunning: false
+  timerRunning: false,
+  landingSections: defaultLandingSections()
 };
 
 function getQuestions() {
@@ -8301,6 +8332,7 @@ function startTimer(minutes) {
   state.timerSeconds = minutes * 60;
   state.timerRunning = true;
   if (state.timerInterval) clearInterval(state.timerInterval);
+  updateTimerDisplay();
   state.timerInterval = setInterval(() => {
     if (state.timerSeconds > 0) {
       state.timerSeconds--;
@@ -8338,119 +8370,70 @@ function render() {
     case 'frq-scoring': app.innerHTML = renderFRQScoring(); break;
     case 'results': app.innerHTML = renderResults(); break;
   }
-  if (state.screen === 'mc') updateTimerDisplay();
+  if (state.screen === 'mc' || state.screen === 'frq') updateTimerDisplay();
+}
+
+function toggleLandingSection(section) {
+  if (!state.landingSections) state.landingSections = defaultLandingSections();
+  state.landingSections[section] = !state.landingSections[section];
+  render();
 }
 
 function renderLanding() {
   stopTimer();
+  const open = state.landingSections || defaultLandingSections();
+  const section = (key, tone, icon, title, count, cards) => `
+    <section class="subject-section ${open[key] ? 'expanded' : ''}">
+      <button class="subject-header ${tone}" onclick="toggleLandingSection('${key}')">
+        <span>
+          <span class="subject-title">${icon} ${title}</span>
+          <span class="subject-count">${count}</span>
+        </span>
+        <span class="subject-indicator">⌄</span>
+      </button>
+      <div class="subject-content">
+        <div class="exam-grid">${cards}</div>
+      </div>
+    </section>`;
+
   return `
-  <div class="header"><div class="logo" onclick="goHome()"><span>AP</span> Exam Practice</div><div class="exam-info">Official Released Exams</div><div></div></div>
+  <div class="header"><div class="logo" onclick="goHome()"><span>AP</span> Exam Practice</div><div class="exam-info">Organized by subject</div><div></div></div>
   <div class="landing">
-    <h1>AP Exam Practice</h1>
-    <p class="subtitle">Practice with Official Released Exams</p>
-    <h3 style="margin-bottom:16px;color:#666">2022 Exams</h3>
-    <div class="exam-cards">
-      <div class="exam-card" onclick="selectExam('macro')">
-        <h2>AP Macroeconomics</h2>
-        <p>2022 International - Full exam with 60 MC and 3 FRQ</p>
-        <div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('micro')">
-        <h2>AP Microeconomics</h2>
-        <p>2022 International - Full exam with 60 MC and 3 FRQ</p>
-        <div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div>
-      </div>
-    </div>
-    <h3 style="margin:32px 0 16px;color:#666">2023 Exams</h3>
-    <div class="exam-cards">
-      <div class="exam-card" onclick="selectExam('macro23')">
-        <h2>AP Macroeconomics</h2>
-        <p>2023 International - Full exam with 60 MC and 3 FRQ</p>
-        <div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('micro23')">
-        <h2>AP Microeconomics</h2>
-        <p>2023 International - Full exam with 60 MC and 3 FRQ</p>
-        <div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div>
-      </div>
-    </div>
-    <h3 style="margin:32px 0 16px;color:#666">Physics 1</h3>
-    <div class="exam-cards">
-      <div class="exam-card" onclick="selectExam('physics1_2017')">
-        <h2>AP Physics 1</h2>
-        <p>2017 Released Exam — 40 multiple choice questions (includes multi-select)</p>
-        <div class="meta"><div>⏱ 90 min</div><div>✏ 40 MC</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('physics1_2014')">
-        <h2>AP Physics 1</h2>
-        <p>2014 Practice Exam — 50 multiple choice questions (includes multi-select)</p>
-        <div class="meta"><div>⏱ 90 min</div><div>✏ 50 MC</div></div>
-      </div>
-    </div>
-    <h3 style="margin:32px 0 16px;color:#666">AP European History</h3>
-    <div class="exam-cards">
-      <div class="exam-card" onclick="selectExam('euro1')">
-        <h2>AP European History</h2>
-        <p>Practice Set 1 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2022 FRQ)</p>
-        <div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('euro2')">
-        <h2>AP European History</h2>
-        <p>Practice Set 2 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2023 FRQ)</p>
-        <div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div>
-      </div>
-    </div>
-    <div class="exam-cards" style="margin-top:16px">
-      <div class="exam-card" onclick="selectExam('euro3')">
-        <h2>AP European History</h2>
-        <p>Practice Set 3 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2024 FRQ)</p>
-        <div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('euro4')">
-        <h2>AP European History</h2>
-        <p>Practice Set 4 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2018 FRQ)</p>
-        <div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div>
-      </div>
-    </div>
-    <div class="exam-cards" style="margin-top:16px">
-      <div class="exam-card" onclick="selectExam('euro5')">
-        <h2>AP European History</h2>
-        <p>Practice Set 5 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2019 FRQ)</p>
-        <div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('euro6')">
-        <h2>AP European History</h2>
-        <p>Practice Set 6 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2021 FRQ)</p>
-        <div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div>
-      </div>
-    </div>
-    <div class="exam-cards" style="margin-top:16px">
-      <div class="exam-card" onclick="selectExam('euro_marco')" style="border-color:var(--ap-green);position:relative">
-        <div style="position:absolute;top:-10px;right:16px;background:var(--ap-green);color:#fff;padding:2px 10px;border-radius:4px;font-size:11px;font-weight:700">WITH EXPLANATIONS</div>
-        <h2>AP European History</h2>
-        <p>Marco Learning — 55 MC with full answer explanations (wrong answer analysis)</p>
-        <div class="meta"><div>⏱ 55 min</div><div>✏ 55 MC + Explanations</div></div>
-      </div>
-    </div>
-    <h3 style="margin:32px 0 16px;color:#666">AP Psychology — 3 Hardest Exams Ever</h3>
-    <div class="exam-cards">
-      <div class="exam-card" onclick="selectExam('psych1')" style="border-color:#e53935;position:relative">
-        <div style="position:absolute;top:-10px;right:16px;background:#e53935;color:#fff;padding:2px 10px;border-radius:4px;font-size:11px;font-weight:700">HARDEST EVER</div>
-        <h2>AP Psychology</h2>
-        <p>2021 Exam — Mean 2.71, 53.3% pass rate (lowest in AP Psych history)</p>
-        <div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div>
-      </div>
-      <div class="exam-card" onclick="selectExam('psych2')">
-        <h2>AP Psychology</h2>
-        <p>2022 Exam — Mean 2.86, 58.3% pass rate (2nd hardest)</p>
-        <div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div>
-      </div>
-    </div>
-    <div class="exam-cards" style="margin-top:16px">
-      <div class="exam-card" onclick="selectExam('psych3')">
-        <h2>AP Psychology</h2>
-        <p>2023 Exam — Mean 2.89, 59.6% pass rate (3rd hardest)</p>
-        <div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div>
+    <div class="landing-shell">
+      <section class="hero">
+        <h1>AP Exam Practice</h1>
+        <p class="subtitle">Practice with released exams and curated practice sets</p>
+        <div class="quick-stats">16 exams • 4 subjects • 1,000+ questions</div>
+      </section>
+
+      <div class="subjects">
+        ${section('econ','econ','📊','AP Economics','AP Economics — 4 practice sets',`
+          <div class="exam-card" onclick="selectExam('macro')"><h2>AP Macroeconomics</h2><p>2022 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('micro')"><h2>AP Microeconomics</h2><p>2022 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('macro23')"><h2>AP Macroeconomics</h2><p>2023 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('micro23')"><h2>AP Microeconomics</h2><p>2023 International - Full exam with 60 MC and 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div><div>✏ 60 MC + 3 FRQ</div></div></div>
+        `)}
+
+        ${section('physics','physics','🔬','AP Physics','AP Physics — 2 practice sets',`
+          <div class="exam-card" onclick="selectExam('physics1_2017')"><h2>AP Physics 1</h2><p>2017 Released Exam — 40 multiple choice questions (includes multi-select)</p><div class="meta"><div>⏱ 90 min</div><div>✏ 40 MC</div></div></div>
+          <div class="exam-card" onclick="selectExam('physics1_2014')"><h2>AP Physics 1</h2><p>2014 Practice Exam — 50 multiple choice questions (includes multi-select)</p><div class="meta"><div>⏱ 90 min</div><div>✏ 50 MC</div></div></div>
+        `)}
+
+        ${section('euro','euro','🏛','AP European History','AP European History — 7 practice sets',`
+          <div class="exam-card" onclick="selectExam('euro1')"><h2>AP European History</h2><p>Practice Set 1 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2022 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('euro2')"><h2>AP European History</h2><p>Practice Set 2 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2023 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('euro3')"><h2>AP European History</h2><p>Practice Set 3 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2024 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('euro4')"><h2>AP European History</h2><p>Practice Set 4 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2018 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('euro5')"><h2>AP European History</h2><p>Practice Set 5 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2019 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('euro6')"><h2>AP European History</h2><p>Practice Set 6 — 55 stimulus-based MC + SAQ, DBQ, LEQ (2021 FRQ)</p><div class="meta"><div>⏱ 3 hr 15 min</div><div>✏ 55 MC + FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('euro_marco')"><span class="badge explain">WITH EXPLANATIONS</span><h2>AP European History</h2><p>Marco Learning — 55 MC with full answer explanations (wrong answer analysis)</p><div class="meta"><div>⏱ 55 min</div><div>✏ 55 MC + Explanations</div></div></div>
+        `)}
+
+        ${section('psych','psych','🧠','AP Psychology','AP Psychology — 3 practice sets',`
+          <div class="exam-card" onclick="selectExam('psych1')"><span class="badge hard">HARDEST EVER</span><h2>AP Psychology</h2><p>2021 Exam — Mean 2.71, 53.3% pass rate (lowest in AP Psych history)</p><div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('psych2')"><h2>AP Psychology</h2><p>2022 Exam — Mean 2.86, 58.3% pass rate (2nd hardest)</p><div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div></div>
+          <div class="exam-card" onclick="selectExam('psych3')"><h2>AP Psychology</h2><p>2023 Exam — Mean 2.89, 59.6% pass rate (3rd hardest)</p><div class="meta"><div>⏱ 2 hr</div><div>✏ 100 MC + 2 FRQ</div></div></div>
+        `)}
       </div>
     </div>
   </div>`;
@@ -8577,6 +8560,9 @@ function renderFRQ() {
   const frqs = getFRQs();
   const currentFRQ = state.currentQ;
   const frq = frqs[currentFRQ];
+  const timerText = state.timerSeconds > 0
+    ? `${Math.floor(state.timerSeconds / 60)}:${(state.timerSeconds % 60).toString().padStart(2, '0')}`
+    : `${getFRQTime()}:00`;
 
   let tabs = '<div style="display:flex;gap:8px;margin-bottom:24px">';
   frqs.forEach((f, i) => {
@@ -8592,7 +8578,7 @@ function renderFRQ() {
     <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
     <div class="exam-info">Section II: Free Response</div>
     <div class="header-actions">
-      <div id="timer" class="timer">60:00</div>
+      <div id="timer" class="timer">${timerText}</div>
     </div>
   </div>
   <div class="main no-sidebar" style="max-width:800px;margin:80px auto 0">
@@ -8787,9 +8773,9 @@ function renderResults() {
 
 // ===== ACTIONS =====
 function selectExam(exam) {
-  state = { screen:'mc', exam, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false };
-  render();
+  state = { screen:'mc', exam, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false, landingSections: defaultLandingSections() };
   startTimer(getMCTime());
+  render();
 }
 function goToQ(i) { state.currentQ = i; render(); }
 function nextQ() { if (state.currentQ < getQuestions().length - 1) { state.currentQ++; render(); } }
@@ -8815,7 +8801,7 @@ function toggleFlag() { state.mcFlags[state.currentQ] = !state.mcFlags[state.cur
 function reviewMC() { state.screen = 'mc-review'; render(); }
 function goToFRQ() { stopTimer(); state.screen = 'frq-transition'; state.currentQ = 0; render(); }
 function getFRQTime() { return isPsych() ? 50 : isEuro() ? 100 : 60; }
-function startFRQ() { state.screen = 'frq'; state.currentQ = 0; render(); startTimer(getFRQTime()); }
+function startFRQ() { startTimer(getFRQTime()); state.screen = 'frq'; state.currentQ = 0; render(); }
 function goToFRQScoring() { state.screen = 'frq-scoring'; render(); }
 function updateFRQTotal() {
   const frqs = getFRQs();
@@ -8834,7 +8820,7 @@ function goHome() {
     if (!confirm('Leave this exam and return to the home page?')) return;
   }
   stopTimer();
-  state = { screen:'landing', exam:null, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false };
+  state = { screen:'landing', exam:null, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false, landingSections: defaultLandingSections() };
   render();
 }
 
