@@ -58,6 +58,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .subject-header.physics{border-left-color:var(--physics)}
 .subject-header.euro{border-left-color:var(--euro)}
 .subject-header.psych{border-left-color:var(--psych)}
+.subject-header.bio{border-left-color:#0d9488}
 .subject-title{font-size:20px;font-weight:800;color:#1f2937;display:flex;align-items:center;gap:8px}
 .subject-count{font-size:13px;color:#667085;font-weight:600}
 .subject-indicator{font-size:18px;color:#667085;transition:transform .3s}
@@ -80,6 +81,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .physics-num{background:linear-gradient(135deg,#7c3aed,#8b5cf6)}
 .euro-num{background:linear-gradient(135deg,#059669,#10b981)}
 .psych-num{background:linear-gradient(135deg,#dc2626,#ef4444);font-size:22px;letter-spacing:-0.5px}
+.bio-num{background:linear-gradient(135deg,#0d9488,#14b8a6);font-size:22px;letter-spacing:-0.5px}
 .badge{position:absolute;top:10px;right:10px;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff}
 .badge.explain{background:var(--euro)}
 .badge.hard{background:var(--psych)}
@@ -8241,6 +8243,3102 @@ const PSYCH_SET3_FRQ = [
 globalThis.AP_PSYCH_FRQ_DATA = { PSYCH_SET1_FRQ, PSYCH_SET2_FRQ, PSYCH_SET3_FRQ };
 
 
+// AP Biology set1
+const BIO_SET1_MC = [
+  {
+    "q": "The resting membrane potential depends on which of the following? [Stimulus: I. Active transport] [Stimulus: II. Selective permeability] [Stimulus: III. Differential distribution of ions across the axonal membrane]",
+    "choices": [
+      "III only",
+      "I and II only",
+      "II and III only",
+      "I, II, and III"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The Krebs cycle in humans occurs in the",
+    "choices": [
+      "mitochondrial matrix",
+      "inner mitochondrial membrane",
+      "outer mitochondrial membrane",
+      "intermembrane space"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A heterotroph",
+    "choices": [
+      "obtains its energy from sunlight, harnessed by pigments",
+      "obtains its energy by oxidizing organic molecules",
+      "makes organic molecules from CO2",
+      "obtains its energy by consuming exclusively autotrophs"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Regarding meiosis and mitosis, one difference between the two forms of cellular reproduction is that in meiosis",
+    "choices": [
+      "there is one round of cell division, whereas in mitosis there are two rounds of cell division",
+      "separation of sister chromatids occurs during the second division, whereas in mitosis separation of sister chromatids occurs during the first division",
+      "chromosomes are replicated during interphase, whereas in mitosis chromosomes are replicated during prophase",
+      "spindle fibers form during prophase, whereas in mitosis the spindle fibers form during metaphase"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A feature of amino acids NOT found in carbohydrates is the presence of",
+    "choices": [
+      "carbon atoms",
+      "oxygen atoms",
+      "nitrogen atoms",
+      "hydrogen atoms"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is NOT a characteristic of bacteria?",
+    "choices": [
+      "Circular double-stranded DNA",
+      "Membrane-bound cellular organelles",
+      "Plasma membrane consisting of lipids and proteins",
+      "Ribosomes that synthesize polypeptides"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following best explains why a population is described as the evolutionary unit?",
+    "choices": [
+      "Genetic changes can only occur at the population level.",
+      "The gene pool in a population remains fixed over time.",
+      "Natural selection affects individuals, not populations.",
+      "Individuals cannot evolve, but populations can."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The endocrine system maintains homeostasis using many feedback mechanisms. Which of the following is an example of positive feedback?",
+    "choices": [
+      "Infant suckling causes a mother's brain to release oxytocin, which in turn stimulates milk production.",
+      "An enzyme is allosterically inhibited by the product of the reaction it catalyzes.",
+      "When ATP is abundant the rate of glycolysis decreases.",
+      "When blood sugar levels decrease to normal after a meal, insulin is no longer secreted."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A scientist carries out a cross between two guinea pigs, both of which have black coats. Black hair coat is dominant over white hair coat. Three quarters of the offspring have black coats, and one quarter have white coats. The genotypes of the parents were most likely",
+    "choices": [
+      "bb x bb",
+      "Bb x Bb",
+      "Bb x bb",
+      "BB x Bb"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A large island is devastated by a volcanic eruption. Most of the horses die except for the heaviest males and heaviest females of the group. They survive, reproduce, and perpetuate the population. Since weight is highly heritable and the distribution of weights approximates a binomial distribution, the offspring of the next generation would be expected to have",
+    "choices": [
+      "a higher mean weight compared with their parents",
+      "a lower mean weight compared with their parents",
+      "the same mean weight as members of the original population",
+      "a higher mean weight compared with members of the original population"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "All of the following play a role in morphogenesis EXCEPT",
+    "choices": [
+      "apoptosis",
+      "homeotic genes",
+      "operons",
+      "inductive effects"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "During the period when life is believed to have begun, the atmosphere on primitive Earth contained abundant amounts of all the following gases EXCEPT",
+    "choices": [
+      "oxygen",
+      "hydrogen",
+      "ammonia",
+      "methane"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Villi and microvilli are present in the small intestine and aid in reabsorption by",
+    "choices": [
+      "increasing the surface area of the small intestine",
+      "decreasing the surface area of the small intestine",
+      "making the small intestine more hydrophilic",
+      "making the small intestine more hydrophobic"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following does NOT take place in the small intestine?",
+    "choices": [
+      "Pancreatic lipase breaks down fats to fatty acids and glycerol.",
+      "Pepsin breaks down proteins to amino acids.",
+      "Pancreatic amylase breaks down carbohydrates into simple sugars.",
+      "Bile emulsifies fats into smaller fat particles."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "In animal cells, which of the following represents the most likely pathway that a secretory protein takes as it is synthesized in a cell?",
+    "choices": [
+      "Plasma membrane-Golgi apparatus-ribosome-secretory vesicle-rough ER",
+      "Ribosome-Golgi apparatus-rough ER-secretory vesicle-plasma membrane",
+      "Plasma membrane-Golgi apparatus-ribosome-secretory vesicle-rough ER",
+      "Ribosome-rough ER-Golgi apparatus-secretory vesicle-plasma membrane"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "All of the following statements are correct regarding alleles EXCEPT",
+    "choices": [
+      "alleles are alternative forms of the same gene",
+      "alleles are found on corresponding loci of homologous chromosomes",
+      "a gene can have more than two alleles",
+      "an individual with two identical alleles is said to be heterozygous with respect to that gene"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Once a plasmid has incorporated specific genes, such as the gene coding for the antibiotic ampicillin, into its genome, the plasmid may be cloned by",
+    "choices": [
+      "inserting it into a virus to generate multiple copies",
+      "treating it with a restriction enzyme in order to cut the molecule into small pieces",
+      "inserting it into a suitable bacterium in order to produce multiple copies",
+      "running it on a gel electrophoresis in order to determine the size of the gene of interest"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Although mutations occur at a regular and predictable rate, which of the following statements is the LEAST likely reason the frequency of mutation appears to be low?",
+    "choices": [
+      "Some mutations produce alleles that are recessive and may not be expressed.",
+      "Some undesirable phenotypic traits may be prevented from reproducing.",
+      "Some mutations cause such drastic phenotypic changes that they are removed from the gene pool.",
+      "The predictable rate of mutation results in ongoing variability in a gene pool."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following adaptive features would least likely be found in an animal living in a hot arid environment?",
+    "choices": [
+      "Long loops of Henle to maximize water reabsorption",
+      "Storage of water in fatty tissues",
+      "Large ears to aid in heat dispersion",
+      "Short loops of Henle to maximize water secretion"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following best accounts for the ability of legumes to grow well in nitrogen-poor soils?",
+    "choices": [
+      "These plants make their own proteins.",
+      "These plants have a mutualistic relationship with nitrogen-fixing bacteria.",
+      "These plants are capable of directly converting nitrogen gas into nitrates.",
+      "These plants do not require nitrogen to make plant proteins."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is most correct concerning cell differentiation in vertebrates?",
+    "choices": [
+      "Cells in different tissues contain different sets of genes, leading to structural and functional differences.",
+      "Differences in the timing and expression levels of different genes leads to structural and functional differences.",
+      "Differences in the reading frame of mRNA leads to structural and functional differences.",
+      "Differences between tissues result from spontaneous morphogenesis."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Question below refers to the diagram below. [Stimulus: image provided] [Stimulus: Which of the following chambers or vessels carry deoxygenated blood in the human heart?]",
+    "choices": [
+      "4 only",
+      "1 and 2 only",
+      "5 only",
+      "1, 2, and 4"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In chick embryos, the extraembryonic membrane that provides nourishment to the fetus is the",
+    "choices": [
+      "amnion",
+      "chorion",
+      "placenta",
+      "egg yolk"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Some strains of viruses can change normal mammalian cells into cancer cells in vitro. This transformation of the mammalian cell is usually associated with the",
+    "choices": [
+      "formation of a pilus between the mammalian cell and the virus",
+      "incorporation of the viral genome into the mammalian cell's nuclear DNA",
+      "conversion of the host's genome into the viral DNA",
+      "release of spores into the mammalian cell"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The major difference between cartilage and bone is that cartilage",
+    "choices": [
+      "is a part of the skeletal system",
+      "is composed of collagen and salts",
+      "lacks blood vessels and nerves",
+      "secretes a matrix"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "All of the following are examples of events that can prevent interspecific breeding EXCEPT",
+    "choices": [
+      "the potential mates experience geographic isolation",
+      "the potential mates experience behavioral isolation",
+      "the potential mates have different courtship rituals",
+      "the potential mates have similar breeding seasons"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is NOT a characteristic of asexual reproduction in animals?",
+    "choices": [
+      "Daughter cells have the same number of chromosomes as the parent cell.",
+      "Daughter cells are identical to the parent cell.",
+      "The parent cell produces diploid cells.",
+      "The daughter cells fuse to form a zygote."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is the correct characteristic of arteries?",
+    "choices": [
+      "They are thin-walled blood vessels.",
+      "They contain valves that prevent backflow.",
+      "They always carry oxygenated blood.",
+      "They carry blood away from the heart."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Transpiration is a result of special properties of water. The special properties of water include all of the following EXCEPT",
+    "choices": [
+      "cohesion",
+      "adhesion",
+      "capillary action",
+      "hydrophobicity"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Crossing-over occurs during which of the following phases in meiosis?",
+    "choices": [
+      "Prophase I",
+      "Metaphase I",
+      "Anaphase I",
+      "Prophase II"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following about meiosis is NOT true?",
+    "choices": [
+      "Meiosis produces two haploid gametes.",
+      "Homologous chromosomes join during synapsis.",
+      "Sister chromatids separate during meiosis I.",
+      "Crossing-over increases genetic variation in gametes."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A plant grows in the opposite direction of the gravitational force. This is an example of",
+    "choices": [
+      "positive thignotropism",
+      "negative phototropism",
+      "positive phototropism",
+      "negative gravitropism"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In most ecosystems, net primary productivity is important because it represents the",
+    "choices": [
+      "energy available to producers",
+      "total solar energy converted to chemical energy by producers",
+      "biomass of all producers",
+      "energy available to heterotrophs"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Hawkmoths are insects that are similar in appearance and behavior to hummingbirds. Which of the following is LEAST valid?",
+    "choices": [
+      "These organisms are examples of convergent evolution.",
+      "These organisms were subjected to similar environmental conditions.",
+      "These organisms are genetically related to each other.",
+      "These organisms have analogous structures."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following describes a symbiotic relationship?",
+    "choices": [
+      "A tapeworm feeds off of its host's nutrients causing the host to lose large amounts of weight.",
+      "Certain plants grow on trees in order to gain access to sunlight, not affecting the tree.",
+      "Remora fish eat parasites off of sharks; the sharks stay free of parasites, and the remora fish are protected from predators.",
+      "Meerkats sound alarm calls to warn other meerkats of predators."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Destruction of all beta cells in the pancreas will cause which of the following to occur?",
+    "choices": [
+      "Glucagon secretion will stop and blood glucose levels will increase.",
+      "Glucagon secretion will stop and blood glucose levels will decrease.",
+      "Glucagon secretion will stop and digestive enzymes will be secreted.",
+      "Insulin secretion will stop and blood glucose levels will increase."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "All of the following are stimulated by the sympathetic nervous system EXCEPT",
+    "choices": [
+      "dilation of the pupil of the eye",
+      "constriction of blood vessels",
+      "increased secretion of the sweat glands",
+      "increased peristalsis in the gastrointestinal tract"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The calypso orchid, Calypso bulbosa, grows in close association with mycorrhizae fungi. The fungi penetrate the roots of the flower and take advantage of the plant's food resources. The fungi concentrate rare minerals, such as phosphates, in the roots and make them readily accessible to the orchid. This situation is an example of",
+    "choices": [
+      "parasitism",
+      "commensalism",
+      "mutualism",
+      "endosymbiosis"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following are characteristics of both bacteria and fungi?",
+    "choices": [
+      "Cell wall, DNA, and plasma membrane",
+      "Nucleus, organelles, and unicellularity",
+      "Plasma membrane, multicellularity, and Golgi apparatus",
+      "Cell wall, unicellularity, and mitochondria"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A sustained decrease in circulating Ca2+ levels might be caused by decreased levels of which of the following substances?",
+    "choices": [
+      "Growth hormone",
+      "Parathyroid hormone",
+      "Thyroid hormone",
+      "Calcitonin"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The synthesis of new proteins necessary for lactose utilization by the bacterium E. coli using the lac operon is regulated",
+    "choices": [
+      "by the synthesis of additional ribosomes",
+      "at the transcription stage",
+      "at the translation stage",
+      "by differential replication of the DNA that codes for lactose-utilizing mechanisms"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following statements about trypsin is NOT true?",
+    "choices": [
+      "It is an organic compound made of proteins.",
+      "It is a catalyst that alters the rate of a reaction.",
+      "It is operative over a wide pH range.",
+      "The rate of catalysis is affected by the concentration of substrate."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "In DNA replication, which of the following does NOT occur?",
+    "choices": [
+      "Helicase unwinds the double helix.",
+      "DNA ligase links the Okazaki fragments.",
+      "RNA polymerase is used to elongate both chains of the helix.",
+      "DNA strands grow in the 5' to 3' direction."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A change in a neuron membrane potential from +50 millivolts to -70 millivolts is considered",
+    "choices": [
+      "depolarization",
+      "repolarization",
+      "hyperpolarization",
+      "an action potential"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The energy given up by electrons as they move through the electron transport chain is used to",
+    "choices": [
+      "break down glucose",
+      "make glucose",
+      "produce ATP",
+      "make NADH"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If a photosynthesizing plant began to release 18O2 instead of normal oxygen, one could most reasonably conclude that the plant had been supplied with",
+    "choices": [
+      "H2O containing radioactive oxygen",
+      "CO2 containing radioactive oxygen",
+      "C6H12O6 containing radioactive oxygen",
+      "NO2 containing radioactive oxygen"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "All of the following statements describe the unique characteristics of water EXCEPT",
+    "choices": [
+      "it is a polar solvent",
+      "it forms hydrogen bonds with disaccharides",
+      "it can dissociate into hydrogen ions and hydroxide ions",
+      "it is a hydrophobic solvent"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Chemical substances released by organisms that elicit a physiological or behavioral response in other members of the same species are known as",
+    "choices": [
+      "auxins",
+      "hormones",
+      "pheromones",
+      "enzymes"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Homologous structures are often cited as evidence for the process of natural selection. All of the following are examples of homologous structures EXCEPT",
+    "choices": [
+      "the wings of a bird and the wings of a bat",
+      "the flippers of a whale and the arms of a man",
+      "the pectoral fins of a porpoise and the flippers of a seal",
+      "the forelegs of an insect and the forelimbs of a dog"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The sliding action in the myofibril of skeletal muscle contraction requires which of the following? [Stimulus: I. Ca2+] [Stimulus: II. ATP] [Stimulus: III. Actin]",
+    "choices": [
+      "I only",
+      "II only",
+      "II and III",
+      "I, II, and III"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Certain populations of finches have long been isolated on the Galapagos Islands off the western coast of South America. Compared with the larger stock population of mainland finches, these separate populations exhibit far greater variation over a wider range of species. The variation among these numerous finch species is the result of",
+    "choices": [
+      "convergent evolution",
+      "divergent evolution",
+      "disruptive selection",
+      "stabilizing selection"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following contributes the MOST to genetic variability in a population?",
+    "choices": [
+      "Sporulation",
+      "Binary fission",
+      "Vegetative propagation",
+      "Mutation"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following organisms in this population are secondary consumers?",
+    "choices": [
+      "Sharks",
+      "Mackerels",
+      "Herrings",
+      "Small crustaceans"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following organisms has the largest biomass in this food chain?",
+    "choices": [
+      "Phytoplanktons",
+      "Mackerels",
+      "Herrings",
+      "Sharks"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "If the herring population is reduced by predation, which of the following is most likely to occur in this aquatic ecosystem?",
+    "choices": [
+      "The mackerels will be the largest predator in the ecosystem.",
+      "The small crustacean population will be greatly reduced.",
+      "The phytoplankton population will be reduced over the next year.",
+      "The small crustaceans will become extinct."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following represents the correct pathway taken by a nerve impulse as it travels from the spinal cord to effector cells?",
+    "choices": [
+      "1-2-3-4",
+      "6-5-4-3",
+      "2-3-4-5",
+      "4-5-6-7"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The brain of the frog is destroyed. A piece of acid-soaked paper is applied to the frog's skin. Every time the piece of paper is placed on its skin, one leg moves upward. Which of the following conclusions is best supported by the experiment?",
+    "choices": [
+      "Reflex actions are not automatic.",
+      "Some reflex actions can be inhibited or facilitated.",
+      "All behaviors in frogs are primarily reflex responses.",
+      "This reflex action bypasses the brain."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "A nerve impulse requires the release of neurotransmitters at the axonal bulb of a presynaptic neuron. Which of the following best explains the purpose of neurotransmitters, such as acetylcholine?",
+    "choices": [
+      "They speed up the nerve conduction in a neuron.",
+      "They open the sodium channels in the axonal membrane.",
+      "They excite or inhibit the postsynaptic neuron.",
+      "They open the potassium channels in the axonal membrane."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following DNA strands would serve as a template for the amino acid sequence shown above?",
+    "choices": [
+      "3'-ATGCGACCAGCACGT-5'",
+      "3'-AUGCCACUAGCACGU-5'",
+      "3'-TACGGTGATCGTGCA-5'",
+      "3'-UACGGUGAUCGUGCA-5'"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If a mutation occurs in which uracil is deleted from the messenger RNA after methionine is translated, which of the following represents the resulting amino acid sequence?",
+    "choices": [
+      "Serine-histidine-serine-threonine",
+      "Methionine-proline-glutamine-histidine",
+      "Methionine-proline-leucine-alanine-arginine",
+      "Methionine-proline-alanine-arginine-arginine"
+    ],
+    "answer": 1
+  }
+];
+
+void BIO_SET1_MC;
+
+
+// AP Biology set2
+const BIO_SET2_MC = [
+  {
+    "q": "In plants, the tendency of climbing vines to twine their tendrils around a trellis is called",
+    "choices": [
+      "thigmotropism",
+      "hydrotropism",
+      "phototropism",
+      "geotropism"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Females with Turner's syndrome have a high incidence of hemophilia, a recessive, X-linked trait. Based on this information, it can be inferred that females with this condition",
+    "choices": [
+      "have an extra X chromosome",
+      "have an extra Y chromosome",
+      "lack an X chromosome",
+      "have red blood cells that clump"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "When a retrovirus inserted its DNA into the middle of a bacterial gene, it altered the normal reading frame by one base pair. This type of mutation is called",
+    "choices": [
+      "duplication",
+      "translocation",
+      "inversion",
+      "frameshift mutation"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "High levels of estrogen from maturing follicles inhibit the release of gonadotropin releasing hormone (GnRH). Which of the following endocrine glands produces GnRH?",
+    "choices": [
+      "Anterior pituitary",
+      "Posterior pituitary",
+      "Hypothalamus",
+      "Pineal gland"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The principle inorganic compound found in living things is",
+    "choices": [
+      "carbon",
+      "oxygen",
+      "water",
+      "glucose"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Kangaroo rats are better able to concentrate urine than humans are. It would be expected that, compared to the nephrons of human kidneys, the nephrons of kangaroo-rat kidneys would have",
+    "choices": [
+      "thicker walls, which are impermeable to water",
+      "shorter loops of Henle",
+      "longer loops of Henle",
+      "shorter collecting ducts"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "All of the following are modes of asexual reproduction EXCEPT",
+    "choices": [
+      "sporulation",
+      "fission",
+      "budding",
+      "meiosis"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The moist skin of earthworms, spiracles of grasshoppers, and the mucus membranes lining alveoli are all associated with the process of",
+    "choices": [
+      "excretion",
+      "respiration",
+      "circulation",
+      "digestion"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Invertebrate immune systems possess which of the following?",
+    "choices": [
+      "Cytotoxic T-lymphocytes",
+      "Phagocytes",
+      "B-cells",
+      "Helper T-cells"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "All of the following are examples of connective tissue EXCEPT",
+    "choices": [
+      "ligaments",
+      "muscle",
+      "blood",
+      "cartilage"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Photosynthesis requires",
+    "choices": [
+      "glucose, light, CO2",
+      "light, CO2, water",
+      "water, soil, O2",
+      "O2, water, light"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "If a forest of fir, birch, and white spruce trees was devastated by fire, which of the following would most likely happen?",
+    "choices": [
+      "Only animal life would continue to inhabit the region.",
+      "Secondary succession would begin to occur.",
+      "Only tough grasses would appear.",
+      "The number of species would stabilize as the ecosystem matures."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following processes occur in the cytoplasm of an eukaryotic cell?",
+    "choices": [
+      "I only",
+      "III only",
+      "II and III only",
+      "I, II, and III"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Crossing-over during meiosis permits scientists to determine",
+    "choices": [
+      "the chance for variation in zygotes",
+      "the rate of mutations",
+      "the distance between genes on a chromosome",
+      "which traits are dominant or recessive"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "An animal cell that is permeable to water but not salts has an internal NaCl concentration of 10%. If placed in freshwater the cell will",
+    "choices": [
+      "plasmolyze",
+      "swell and eventually lyse",
+      "endocytose water into a large central vacuole",
+      "shrivel"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Three distinct bird species, flicker, woodpecker, and elf owl, all inhabit a large cactus, Cereus giganteus, in the desert of Arizona. Since competition among these birds rarely occurs, the most likely explanation for this phenomenon is that these birds",
+    "choices": [
+      "have a short supply of resources",
+      "have different ecological niches",
+      "do not live together long",
+      "are unable to breed"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Lampreys attach to the skin of lake trout and absorb nutrients from its body. This relationship is an example of",
+    "choices": [
+      "commensalism",
+      "parasitism",
+      "mutualism",
+      "gravitropism"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The nucleotide sequence of a DNA molecule is 5′-C-A-T-3′. A mRNA molecule with a complementary codon is transcribed from the DNA in the process of protein synthesis a tRNA pairs with a mRNA codon. What is the nucleotide sequence of the tRNA anticodon?",
+    "choices": [
+      "5′-G-T-A-3′",
+      "5′-G-U-A-3′",
+      "5′-C-A-U-3′",
+      "5-′U-A-C-3′"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Viruses are considered an exception to the cell theory because they",
+    "choices": [
+      "are not independent organisms",
+      "have only a few genes",
+      "move about via their tails",
+      "have evolved from ancestral protists"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "All of the following organs in the digestive system secrete digestive enzymes EXCEPT the",
+    "choices": [
+      "mouth",
+      "stomach",
+      "gall bladder",
+      "small intestine"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Memory loss would most likely be due to a malfunction of which part of the brain?",
+    "choices": [
+      "Medulla",
+      "Cerebellum",
+      "Cerebrum",
+      "Pons"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The sequence of amino acids in hemoglobin molecules of humans is more similar to the hemoglobin of chimpanzees than it is to the hemoglobin of dogs. This similarity suggests that",
+    "choices": [
+      "humans and dogs are more closely related than humans and chimpanzees",
+      "humans and chimpanzees are more closely related than humans and dogs",
+      "humans are related to chimpanzees but not to dogs",
+      "humans and chimpanzees are closely analogous"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "According to the heterotroph hypothesis, which event had to occur before oxygen filled the atmosphere?",
+    "choices": [
+      "Heterotrophs had to remove carbon dioxide from the air.",
+      "Autotrophs, which make their own food, had to evolve.",
+      "Heterotrophs had to evolve.",
+      "Autotrophs had to convert atmospheric nitrogen to nitrate."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Two individuals, one with type B blood and one with type AB blood, have a child. The probability that the child has type O blood is",
+    "choices": [
+      "0%",
+      "25%",
+      "50%",
+      "100%"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The largest amount of energy is available to",
+    "choices": [
+      "population A",
+      "population B",
+      "population C",
+      "population D"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following would be the most likely result if there was an increase in the number of organisms in population C?",
+    "choices": [
+      "The biomass of population D will remain the same.",
+      "The biomass of population B will decrease.",
+      "The biomass of population C will steadily increase.",
+      "The food source available to population C would increase."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "During which phase do chromosomes replicate?",
+    "choices": [
+      "G1",
+      "S",
+      "G2",
+      "M"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "In mammalian cells, the first sign of prophase is the",
+    "choices": [
+      "appearance of chromosomes",
+      "separation of chromatids",
+      "disappearance of the nuclear membrane",
+      "replication of chromosomes"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Mitosis occurs in all of the following types of cells EXCEPT",
+    "choices": [
+      "epidermal cells",
+      "hair cells",
+      "red blood cells",
+      "pancreatic cells"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Since neurons are destined never to divide again, what conclusion can be made?",
+    "choices": [
+      "These cells will go through cell division.",
+      "These cells will be permanently arrested in the G1 phase.",
+      "These cells will be permanently arrested in the G2 phase.",
+      "These cells will quickly enter the S phase."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Based on the graph, the resting membrane potential of the muscle fibers is closest to",
+    "choices": [
+      "-90 mV",
+      "-70 mV",
+      "0 mV",
+      "+70 mV"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following statements is true concerning the initial phase of depolarization?",
+    "choices": [
+      "Voltage-gated K+ channels open in the plasma membrane.",
+      "The concentration of Ca2+ ions within the plasma membrane becomes more negative.",
+      "The membrane potential stays close to -40 mV.",
+      "The permeability of the sarcolemma to Na+ ions increases."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In cardiac fibers, the duration of an action potential is approximately",
+    "choices": [
+      "0.10 secs",
+      "0.20 secs",
+      "0.25 secs",
+      "0.30 secs"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "One major difference between the action potential of cardiac muscle fibers and the action potential of skeletal muscle fibers is that in cardiac muscle fibers",
+    "choices": [
+      "the membrane is permeable to Na+, not K+",
+      "voltage-gated K+ channels open during depolarization, not repolarization",
+      "depolarization is prolonged compared to that in skeletal muscle fibers",
+      "the refractory period is shorter than that of skeletal muscle fibers"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The two most closely related organisms are",
+    "choices": [
+      "sea anemone and hagfish",
+      "eel and salamander",
+      "hagfish and eel",
+      "sea anemone and salamander"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The correct order of evolution for the traits above is",
+    "choices": [
+      "jaws – vertebral column – walking legs",
+      "walking legs – jaws – vertebral column",
+      "jaws – walking legs – vertebral column",
+      "vertebral column – jaws – walking legs"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Pre- and post-zygotic barriers exist that prevent two different species from producing viable offspring. All of the following are pre-zygotic barriers EXCEPT",
+    "choices": [
+      "anatomical differences preventing copulation",
+      "different temporality of mating",
+      "sterility of offspring",
+      "incompatible mating songs"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Birds and insects have both adapted wings to travel by flight. The wings of birds and insects are an example of",
+    "choices": [
+      "divergent evolution",
+      "convergent evolution",
+      "speciation",
+      "mutation"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is true when the level of CTP is low in a cell?",
+    "choices": [
+      "CTP is converted to ATCase.",
+      "The metabolic traffic down the pathway increases.",
+      "ATCase is inhibited, which slows down CTP synthesis.",
+      "The final product of the pathway is reduced."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "This enzymatic phenomenon is an example of",
+    "choices": [
+      "transcription",
+      "feedback inhibition",
+      "dehydration synthesis",
+      "photosynthesis"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The biosynthesis of cytidine 5'-triphosphate requires",
+    "choices": [
+      "a ribose sugar, a phosphate group, and a nitrogen base",
+      "a deoxyribose sugar, a phosphate group, and a nitrogen base",
+      "a ribose sugar, phosphate groups, and a nitrogen base",
+      "a deoxyribose sugar, phosphate groups, and a nitrogen base"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Here is a sketch of a molecule of the sex hormone, testosterone, that is derived from cholesterol.",
+    "choices": [
+      "The hormone acts as the first messenger when it binds to and activates the G protein-coupled receptor on the surface of cells in the testes. This activates the mobile G protein located inside the cell.",
+      "The hormone enters cells in the testes by first binding with a membrane receptor, which causes a channel to open in the membrane, allowing the testosterone to flood into the cell.",
+      "The hormone readily passes through the cell membrane and binds to a receptor in the cytoplasm. The hormone and receptor then enter the nucleus and act as a transcription factor that turns on one or more genes.",
+      "The hormone binds with cAMP on the surface of the cell. Once attached to cAMP, the hormone enters the cell and initiates a signal transduction pathway."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Mice are mammals. As such, they are endotherms. They maintain internal heat metabolically. A lizard is an ectotherm and gains its body heat from the environment. Which of the following graphs most accurately depicts this situation?",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is a direct result of depolarizing the presynaptic membrane of an axon?",
+    "choices": [
+      "The postsynaptic cell produces an action potential.",
+      "Synaptic vesicles fuse with the presynaptic membrane.",
+      "Voltage-gated calcium channels in the membrane open.",
+      "Neurotransmitter is released into the synapse."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "There are two types of enzyme inhibition: competitive and noncompetitive. Competitive inhibitors compete with the substrate for one active site, while noncompetitive inhibitors bind to another part of the enzyme and alter its shape. Malonate is an inhibitor of the respiratory enzyme succinate dehydrogenase in the following reaction.",
+    "choices": [
+      "In the presence of malonate, increase the concentration of succinate, the substrate. If the rate of reaction increases, then malonate is a competitive inhibitor.",
+      "In the presence of malonate, increase the concentration of succinate, the substrate. If the rate of reaction increases, then malonate is a noncompetitive inhibitor.",
+      "Malonate can alternate between a competitive and noncompetitive inhibitor depending on what is required.",
+      "A coenzyme must be affecting the rate of the reaction."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Water climate diagrams summarize the climate for a region. Average temperature is shown on the left axis, precipitation on the right axis, and months of the year on the x-axis. Assuming that a major limiting factor for plant growth is availability of water, choose the graph below that depicts the region with the best conditions for plant growth.",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Here is a graph showing the rate of photosynthesis of a green plant plotted against light intensity.",
+    "choices": [
+      "The rate of photosynthesis stops increasing because chlorophyll molecules begin to decompose due to increased heat, not increased light.",
+      "The rate of photosynthesis slows as chlorophyll molecules, which are proteins, denature.",
+      "Photosynthesis ceases when protons are no longer released by the photolysis of water.",
+      "The rate of photosynthesis increases until the light-harvesting apparatus in the thylakoid membranes become saturated and cannot make use of additional light."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The lac operon is found only in prokaryotes and consists of structural genes and a promoter and operator. Which of the following statements explains why we study the lac operon?",
+    "choices": [
+      "It represents a principal means by which gene transcription can be regulated.",
+      "It explains how baby mammals utilize lactose from their mothers as they nurse.",
+      "It illustrates how RNA is processed after it is transcribed.",
+      "It illustrates possible control of the cell cycle and may lead to an understanding of cancer."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Here is the simplified equation for photosynthesis:",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The plasma membrane is selectively permeable and regulates what enters and leaves a cell. It consists of a phospholipid bilayer embedded with proteins. Which of the following statements about the membrane is correct?",
+    "choices": [
+      "Carbon dioxide is a polar molecule and readily diffuses through the hydrophilic layers of the membrane.",
+      "Starch readily diffuses across the membrane into the liver, where it is stored as glycogen.",
+      "Aquaporins are special water channels in the plasma membrane that facilitate the uptake of large amounts of water without the expenditure of energy.",
+      "Oxygen passes through the cristae of mitochondria mainly through ATP synthase channels."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Active transport involves the movement of a substance across a membrane against its concentration or electrochemical gradient. Active transport is mediated by specific transport proteins and requires the expenditure of energy. Which of the following statements describes an example of active transport?",
+    "choices": [
+      "Glucose is transported across some membranes by carrier proteins down a concentration gradient.",
+      "Freshwater protists such as amoeba and paramecia have contractile vacuoles that pump out excess water.",
+      "Countercurrent exchange in the capillaries of fish gills enables fish to absorb large amounts of oxygen from the surrounding water where oxygen levels are low.",
+      "A red blood cell will lyse (burst) if placed into a hypotonic solution because large amounts of water flood into the cell."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Here is a sketch of an animal cell.",
+    "choices": [
+      "Structure A detoxifies poisons in the cell.",
+      "Structure B packages proteins for export.",
+      "Structure C synthesizes RNA.",
+      "Structure D consists of cytoskeleton."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Chronically high levels of glucocorticoids can result in obesity, muscle weakness, and depression. This looks like several diseases but actually is only one, Cushing syndrome. Excessive activity of either the pituitary or the adrenal gland can cause the disease. To determine which gland has abnormal activity in a particular patient, doctors use the drug dexamethasone, a synthetic glucocorticoid that blocks ACTH (adrenocorticotropic hormone) release.",
+    "choices": [
+      "The pituitary, because although ACTH is blocked, the pituitary is still sending a signal to the adrenal glands.",
+      "The pituitary, because blocking ACTH has no effect on cortisol levels.",
+      "The adrenal gland, because the pituitary is prevented from stimulating the adrenal glands, and yet cortisol levels are still high.",
+      "The adrenal gland, because the pituitary is sending a signal to the adrenal gland and the adrenal glands have stopped producing cortisol."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Here is the final reaction in the citric acid cycle. It shows the regeneration of oxaloacetate.",
+    "choices": [
+      "The enzyme malate dehydrogenase is allosteric.",
+      "The reaction is exergonic; the released energy is absorbed by NAD+.",
+      "The reaction is a reduction reaction.",
+      "NAD+ is oxidized into NADH."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following statements about the DNA in one of your liver cells is correct?",
+    "choices": [
+      "Your liver cells contain the same DNA as your white blood cells.",
+      "Most of the DNA in your liver cells will be transcribed but not translated.",
+      "Most of the DNA in your liver cells will be transcribed in the nucleus and translated in the cytoplasm.",
+      "DNA in your liver cells contains genes unique to storing glycogen, while other cells do not contain those genes."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Two genes (B and E) determine coat color in Labrador retrievers. Alleles B and b code for how much melanin is present. The dominant allele B codes for black fur, the recessive allele b codes for brown hair. A second gene consisting of two alleles, E and e, codes for the deposition of pigment in the hair. In this case, the alleles for pigment deposition (E or e) are said to be epistatic to the gene that codes for black or brown pigment. If the dominant allele (E) is not present, regardless of the genotype at the black/brown locus, the animal's fur will be yellow.",
+    "choices": [
+      "BBEe will be brown.",
+      "BbEe will be brown.",
+      "Bbee will be brown.",
+      "BBee will be yellow."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Within a cell, the amount of protein synthesized using a given mRNA molecule depends in part on which of the following?",
+    "choices": [
+      "DNA methylation suppresses the expression of genes.",
+      "Transcription factors mediate the binding of RNA polymerase and the initiation of transcription, which will determine how much protein is manufactured.",
+      "The speed with which mRNA is degraded will determine how much protein is synthesized.",
+      "The location and number of ribosomes in a cell will solely determine how much protein is synthesized."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Oxygen is carried in the blood by the respiratory pigment hemoglobin, which can combine loosely with four oxygen molecules, forming the molecule oxyhemoglobin. To function properly, hemoglobin must bind to oxygen in the lungs and drop it off at body cells. The more easily the hemoglobin binds to oxygen in the lungs, the more difficult the oxygen is to unload at the body cells. Here is a graph showing two different saturation-dissociation curves for one type of hemoglobin at two different pH levels.",
+    "choices": [
+      "Hemoglobin B has a greater affinity for oxygen and therefore binds more easily to oxygen in the lungs.",
+      "Hemoglobin A is characteristic of a mammal that evolved at sea level where oxygen levels are high.",
+      "In an acidic environment, hemoglobin drops off oxygen more easily at body cells.",
+      "Hemoglobin A is found in mammals with a higher metabolism."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Banana plants, which are triploid, are seedless and therefore sterile. Which is the most likely explanation for this phenomenon?",
+    "choices": [
+      "Because they are triploid, bananas cannot generate gametes because homologous pairs cannot line up during meiosis.",
+      "Because they are triploid, there are no male or female banana plants.",
+      "Because they are triploid, bananas cannot generate homologous pairs during mitosis.",
+      "Because they are triploid, bananas cannot carry out crossing-over."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Animals maintain a minimum metabolic rate for basic functions such as breathing, heart rate, and maintaining body temperature. The minimum metabolic rate for an animal at rest is the basal metabolic rate (BMR). The BMR is affected by many factors, including whether an animal is an ectotherm or endotherm; its age and sex; and size and body mass. Here is a graph that shows the relationship of BMR per kilogram of body mass to body size for a group of mammals.",
+    "choices": [
+      "The relationship between BMR and body mass is a direct one. The larger the body mass the higher the BMR is and the greater the breathing rate is.",
+      "The relationship between BMR and body mass is a direct one. The larger the body mass the higher the BMR is and the lower the breathing rate is.",
+      "The relationship between BMR and body mass is inversely proportional. The larger the body mass, the lower the BMR is and the lower the breathing rate is.",
+      "The larger the animal, the faster the heart rate and breathing rate both are."
+    ],
+    "answer": 2
+  }
+];
+
+
+// AP Biology set3
+const BIO_SET3_MC = [
+  {
+    "q": "The graph on the left (A) shows an absorption spectrum for chlorophyll a extracted from a plant. The graph on the right (B) shows an action spectrum from a living plant, with wave lengths of light plotted against the rate of photosynthesis as measured by release of oxygen. Which statement best explains the difference between the two spectra?",
+    "choices": [
+      "Graph A plots the absorption spectrum of a red plant; graph B plots an absorption spectrum for a green plant.",
+      "The chlorophyll from Graph A cannot carry out the light-dependent reactions; but the chlorophyll in graph B can.",
+      "The data from Graph A characterize several photosynthetic pigments that reflect almost no light; the data from Graph B characterize chlorophyll a, which reflects only green light.",
+      "Graph A shows an absorption spectrum for an unusual type of chlorophyll a."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Scientific work has been carried out to measure where the relative amounts of CFTR protein are localized in the affected cells. After studying the graph, which of the following statements about CFTR protein is correct?",
+    "choices": [
+      "Transcription is not occurring.",
+      "Translation is not occurring.",
+      "CFTR protein does not fold properly after it is synthesized.",
+      "CFTR protein is not being packaged in the cytoplasm."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "From the description of cystic fibrosis above, which of the following statements is correct?",
+    "choices": [
+      "The disease is similar to cancer in that it has both an environmental and a genetic cause.",
+      "Cystic fibrosis is an example of a genetic disease caused by polygenic inheritance because several genes must be mutated in order for the disease to occur.",
+      "Cystic fibrosis is an example of pleiotropy because one mutated gene causes multiple effects.",
+      "A person who has one cystic fibrosis allele will have the disease."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Referring to the simplified reaction of cellular respiration shown here, which of the following statements is correct? C6H12O6 + 6O2 → 6CO2 + 6H2O + energy",
+    "choices": [
+      "C6H12O6 is reduced.",
+      "O2 is reduced.",
+      "CO2 is reduced.",
+      "H2O is reduced."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Based on the cladogram, which of the following is NOT true?",
+    "choices": [
+      "Only some tetrapods have amnions.",
+      "Mammals and amphibians are more closely related than mammals and birds.",
+      "Ancestor 2 lived before ancestor 3; and we do know when that was.",
+      "Lungfishes and amphibians share a common ancestor."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "On Andros Islands in the Bahamas, populations of mosquito fish, Gambusia hubbsi, colonized a series of ponds. These ponds are no longer connected. However, the environments are very similar except that some ponds contain predatory fish, while others do not. In high predation ponds, selection has favored the evolution of a body shape that enables rapid bursts of speed. In low predation ponds, another body type is favored—one that is well-suited to swim for long periods of time. When scientists brought together sample mosquito fish from the two types of ponds, they found that the females mated only with males that had the same body type as their own. Which of the following statements best describes what happened to the mosquito fish as evidenced by the mating choice in the female fish?",
+    "choices": [
+      "Reproductive isolation caused geographic isolation.",
+      "Reproductive isolation was not complete.",
+      "Allopatric isolation brought about reproductive isolation.",
+      "Sympatric isolation brought about reproductive isolation."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "From 1972 to 2004, researchers studying the greater prairie chicken observed that a population collapse mirrored a reduction in fertility as measured by the hatching rate of eggs. Comparison of DNA samples from the Jasper County, Illinois, population with DNA from feathers in a museum collection showed that genetic variation had declined in the studied population. The researchers translocated prairie chickens from Minnesota, Kansas, and Nebraska into the Illinois prairie chicken population in 1992 and found that the hatching rate in Illinois prairie chickens changed. Here is a graph of the data. Which of the following statements most accurately explains what happened to the studied population of prairie chickens after translocation and why?",
+    "choices": [
+      "The hatching rate increased because genetic variation declined.",
+      "The hatching rate increased because genetic variation increased.",
+      "The hatching rate decreased because genetic variation decreased.",
+      "The hatching rate decreased because the translocated animals were invasive and grew to dominate the population."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following statements about the immune system is NOT correct?",
+    "choices": [
+      "A lymphocyte has receptors for many different antigens.",
+      "An antigen can have different epitopes.",
+      "Dendritic cells are antigen-presenting cells.",
+      "T cells attack infected body cells."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "In a study of dusty salamanders, Desmognathus ochrophaeus, scientists brought individuals from different populations into the laboratory and tested their ability to mate and produce viable, fertile offspring. Here is the graph of the data. The degree of reproductive isolation is represented by an index ranging from 0 (no isolation) to 2 (complete isolation). Which of the following statements best describes the evolutionary history of dusty salamanders?",
+    "choices": [
+      "Mutation alone caused the two populations to diverge.",
+      "Both mutation and genetic drift cause the two populations to diverge.",
+      "Both mutation and genetic drift caused the two populations to become separate species after they were separated by great distance.",
+      "Reproductive isolation between the two populations increases as the distance between them increases."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following statements best describes what a Barr body is and its significance?",
+    "choices": [
+      "It is an inactivated Y chromosome and results in a man being sterile.",
+      "It is an inactivated Y chromosome, and the person who has it appears female.",
+      "It is an inactivated X chromosome and results in females with half their cells having one X inactivated and the other half of their cells having the other X inactivated.",
+      "It is an inactivated X chromosome and results in females who are sterile."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Scientists carried out a series of experiments to study innate immunity in fruit flies. They began with a mutant fly strain in which a pathogen is recognized but the signaling that would normally trigger an innate response is blocked. As a result, the flies did not make any antimicrobial peptides (AMP). The researchers then genetically engineered some of the mutant flies to express significant amounts of a single AMP, either defensin or drosomycin. They then infected the flies with a fungus, Neurospora crassa, by shaking anesthetized flies for 30 seconds in a Petri dish containing a sporulating fungal culture. The 6-day survival rate was monitored and recorded. Here is a graph displaying some data from the experiment. KEY: Which of the following statements is supported by the data?",
+    "choices": [
+      "Each AMP provided minimal immunity against fungal infection.",
+      "Both AMPs provided better immunity than did either one alone.",
+      "Drosomycin provided immunity against the fungal infection.",
+      "There was no control in this experiment."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following statements is supported by the data?",
+    "choices": [
+      "Cichlids were an agent of selection, eating the more visible, brightly colored guppies.",
+      "Killifish were an agent of selection, eating the more visible, brightly colored guppies.",
+      "Guppies, as a group, experienced change in coloration, from brightly colored to dull in order to survive.",
+      "Individual guppies experienced a mutation that caused a change in coloration and enabled them to avoid being eaten."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following statements best expresses the point of this experiment?",
+    "choices": [
+      "Mutations can be brought about by the environment.",
+      "Mutations occur randomly.",
+      "Agents of selection are not always readily apparent.",
+      "Evolution does not always require millions of years."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In the Tularosa Basin of New Mexico are black lava formations surrounded by light-colored sandy desert. Pocket mice inhabit both areas. Dark-colored ones inhabit the lava formations, while light-colored mice inhabit the desert. Which of the following statements is correct about this scenario?",
+    "choices": [
+      "The two varieties of mice descended from a recent common ancestor.",
+      "The mouse population was originally one population that diverged into two species because of mutations.",
+      "Selection favors some phenotypes over others.",
+      "Originally the mice were all dark colored. As the lava decomposed into sand, the color of some mice changed because that color was favored in that environment."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "What is the best explanation for the fact that tuna, sharks, and dolphins all have a similar streamlined appearance?",
+    "choices": [
+      "They all share a recent common ancestor.",
+      "They all sustained the same set of mutations.",
+      "They acquire a streamlined body type to survive in their particular environment.",
+      "The streamlined body has a selective advantage in that environment."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following statements is not correct about lipids?",
+    "choices": [
+      "Lipids consist of fatty acids and glycerol.",
+      "Steroids are examples of lipids.",
+      "The molecules of a saturated fatty acid are packed so close together that they form a solid at room temperature.",
+      "The head of a phospholipid is hydrophobic, and the tails are hydrophilic."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "If 1 is thymine, what is a?",
+    "choices": [
+      "Adenine",
+      "Thymine",
+      "Cytosine",
+      "Uracil"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "If 4 is adenine, what is D?",
+    "choices": [
+      "Adenine",
+      "Thymine",
+      "Cytosine",
+      "Uracil"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Yeast cells carry out both aerobic and anaerobic respiration. A yeast cell that is fed on glucose is moved from an aerobic to an anaerobic environment. Which of the following statements is correct and gives the correct reason for it?",
+    "choices": [
+      "The cell dies because it cannot make ATP.",
+      "The cell would need to consume glucose at a much greater rate because aerobic respiration is much more efficient as compared with anaerobic respiration.",
+      "The cell would need to consume another food source other than glucose because it will not be able to make adequate ATP with only glucose.",
+      "The cell will begin to divide rapidly because larger cells require more oxygen and glucose than smaller ones."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which statement below best describes the results of the experiment?",
+    "choices": [
+      "The lower the wavelength of light, the greater the rate of photosynthesis.",
+      "The highest wavelengths of light provide the fastest rate of photosynthesis.",
+      "The highest rate of photosynthesis results from exposure to two different wavelengths of light.",
+      "The greatest reduction in DPIP occurs at 550 nm light intensity."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "What is the best explanation for the results in Question 61?",
+    "choices": [
+      "650 nm and 700 nm of light have the greatest penetrating power.",
+      "The photosynthetic pigments in the experiment do not absorb light in the 650 nm and 700 nm range.",
+      "Only wavelengths of 650 nm and 700 nm are reflected by the chlorophyll.",
+      "The chloroplasts have two photosystems that absorb light in different wavelengths."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "A group of scientists wished to learn about the energy efficiency of different modes of locomotion. They studied the literature that was based on accurate measurements and produced this graph based on the data they analyzed. Which of the following statement accurately describes what the scientists discovered?",
+    "choices": [
+      "An animal with a large body mass expends more energy per kilogram of body mass than a small animal, regardless of the type of locomotion.",
+      "Swimming has to overcome drag as well as gravity.",
+      "Running is the least energy-efficient means of locomotion.",
+      "The best parameter to measure in this type of experiment is CO2 consumption."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Oxygen is carried in the blood by the respiratory pigment hemoglobin, which can combine loosely with four oxygen molecules to form the molecule oxyhemoglobin. To function properly, hemoglobin must bind to oxygen in the lungs and drop it off at body cells. The more easily the hemoglobin bonds to oxygen in the lungs, the more difficult for the hemoglobin to unload the oxygen at the body cells. Here is a graph showing two different saturation-dissociation curves for one type of hemoglobin at two different pH levels. Based on your knowledge of biology and the information in this graph, which statement about the hemoglobin curves is correct?",
+    "choices": [
+      "Hemoglobin B has a greater affinity for oxygen and will therefore bind more easily to oxygen in the lungs.",
+      "Hemoglobin B is characteristic of a mammal that evolved at a high elevation where oxygen is rare.",
+      "When CO2 levels in the blood are high, as shown in hemoglobin B, hemoglobin releases oxygen more readily.",
+      "Hemoglobin A is the type found in mammals with a higher metabolism. Hemoglobin B is characteristic of mammals with a lower metabolism."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The geneticist Mary Lyon hypothesized the existence of structures visible just under the nuclear membrane in mammals, which were later named Barr bodies. Which of the following statement is NOT correct about Barr bodies?",
+    "choices": [
+      "In the early female embryo, one copy of the X chromosome becomes inactivated in every body cell.",
+      "The same chromosome in every cell of a normal female is inactivated.",
+      "A male with the XXY genotype will have one Barr body.",
+      "Barr bodies consist of highly methylated DNA."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Energy is harvested during cellular respiration in stages. Which of the following correctly states which phase of cellular respiration harvests the most energy and the correct explanation why?",
+    "choices": [
+      "The most energy is released during the Krebs cycle because it is here that pyruvate is completely broken down into CO2.",
+      "The most energy is released during the Krebs cycle because in addition to the production of ATP, both FADH2 and NADH are produced. Each of those molecules will release 2 ATPs and 3 ATPs, respectively.",
+      "The most energy is released during oxidative phosphorylation because in addition to the phosphorylation of ADP into ATP, all the potential energy held in NADH and FADH is transferred to ATP.",
+      "The most energy is released during oxidative phosphorylation because H2O is completely broken down into H+ and O2."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The following reaction occurs in the citric acid cycle. Study the reaction as it is shown here. Which of the following statements is correct?",
+    "choices": [
+      "This is part of the reaction that produces pyruvate.",
+      "The reaction is an example of negative feedback.",
+      "The reaction is an oxidation reaction.",
+      "The reaction occurs in the cristae membrane."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following statements is correct about a man who has hemophilia and whose wife does not have the disease and who does not have any relatives with the disease?",
+    "choices": [
+      "All his daughters will have the disease.",
+      "All his sons will have the disease.",
+      "All his sons will be carriers.",
+      "All his daughters will be carriers."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Identify the phase of meiosis when recombination occurs, and state the reason for your decision.",
+    "choices": [
+      "Picture 1, because sister chromosomes are lined up on the metaphase plate.",
+      "Picture 1, because homologous pairs are lined up on the metaphase plate.",
+      "Picture 2, because homologues are paired up in synapsis.",
+      "Picture 3, because homologous pairs are exchanging genetic material."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A rooster with gray feathers and a hen with the same phenotype produce 17 gray, 7 black, and 8 white chicks. What is the simplest explanation for the inheritance of these colors in chickens?",
+    "choices": [
+      "The trait for gray is epistatic over the trait for black.",
+      "The trait for gray is epistatic over the trait for white.",
+      "The traits for black and white color demonstrate incomplete dominance.",
+      "The traits for black and white color demonstrate codominance."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Hydrangea flowers have one gene for flower color. Plants of the same genetic variety have flowers that range in color from blue to pink with the color varying due to the type of soil in which they are grown. Which of the following statement best explains this phenomenon?",
+    "choices": [
+      "The alleles for flower color show incomplete dominance where neither trait is dominant; expression of the genes shows a blending of traits.",
+      "The alleles for flower color are codominant; both traits show depending on the environment.",
+      "In this case, the environment alters the expression of a trait.",
+      "The genes for flower color show polygenic inheritance."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following statements best explains the results?",
+    "choices": [
+      "The two alleles for body color and wing structure are located on separate chromosomes and assort independently.",
+      "The two alleles for body color and wing structure are located on separate chromosomes and assorted independently, but there was some crossing-over.",
+      "The two alleles are linked, located on the same chromosome, immediately next to one another, and inherited together.",
+      "The two alleles are linked and located on the same chromosome but are far apart and experienced some crossing-over."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following sketches depicts the most likely location of the alleles for body color and wing shape?",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is an example of a coupling of an exergonic reaction with an endergonic one?",
+    "choices": [
+      "Unicellular organisms that live in freshwater, such as amoeba, must pump out excess water using their contractile vacuoles.",
+      "The enzyme lactase binds with lactose to produce molecules of glucose and galactose.",
+      "Electrons escaping from chlorophyll a are replaced by those released by the hydrolysis of water.",
+      "The flow of electrons down an electron transport chain in mitochondria powers the pumping of protons against a gradient into the outer compartment."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following statements best describes what this cell will accomplish as part of the immune system?",
+    "choices": [
+      "It will secrete a chemical that will form holes in the pathogen.",
+      "It will produce antibodies against the antigen it is engulfing.",
+      "It will circulate in the bloodstream for a lifetime and will be able to identify the antigen in the future.",
+      "It will present pieces of the antigen on its surface membrane."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "A researcher is experimenting with nerve transmission using neurons from a giant squid. At the beginning of the experiment, the axon is at rest and has a threshold measured at –70 mV at 37oC. The axon receives one stimulus that triggers one action potential in the axon. Subsequent stimuli are much stronger. Which of the following statements explains what happens when several strong stimuli are experienced by the axon?",
+    "choices": [
+      "The axon becomes hyperpolarized to –90 mV.",
+      "The axon becomes hyperpolarized to –50 mV.",
+      "The strength of the action potential becomes greater.",
+      "The frequency of the action potential increases."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The frequency of a particular allele in a population of 1,000 birds in Hardy-Weinberg equilibrium is 0.3. If the population remains in equilibrium, what would be the expected frequency of that allele after 500 years?",
+    "choices": [
+      "It will increase if the allele is favorable or will decrease if it is unfavorable for individuals in that population.",
+      "Not enough information is provided to determine if the frequency of the allele will remain the same or change.",
+      "The frequency of the allele will remain at 0.3 because the population is at Hardy-Weinberg equilibrium.",
+      "The frequency of the allele will remain the same; this is an example of the bottleneck effect."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "You then explore what happens if you expose the plant to different conditions. Which of the following statements is correct based on proposed changes to the potometer?",
+    "choices": [
+      "Increasing the green wavelengths of light will increase the rate of transpiration and account for Line A on the graph.",
+      "Placing a plastic bag over the plant will increase the rate of transpiration and account for Line A.",
+      "Placing a fan near the plant will decrease the rate of transpiration and account for Line C.",
+      "Painting the upper leaf surface of most of the leaves with clear nail polish will decrease the rate of transpiration and account for Line C."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is NOT correct about transpiration in plants?",
+    "choices": [
+      "Water moves upward from the roots to the shoots in the xylem by active transport from an area of high osmotic potential to an area of low osmotic potential.",
+      "Plants lose water through stomates in their leaves.",
+      "The movement of water through a plant is facilitated by the physical and chemical properties of the water itself.",
+      "Placing a container of water between the light source and the plant is necessary to prevent the introduction of heat as a second variable in the experiment."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "When the first tiny prokaryotic cell took up residence inside a larger prokaryotic cell, it heralded the advent of the eukaryotic cell and led to an explosion of new life on Earth. Since then, most cells on Earth have internal organelles. Which of the following best summarizes an advantage of having internal membranes and organelles?",
+    "choices": [
+      "DNA can reproduce more efficiently.",
+      "Even though prokaryotes do not have mitochondria, they contain structures that carry out the same function.",
+      "Organelles separate specific reactions in the cell and increase metabolic efficiency.",
+      "Compartmentalization enables prokaryotes to reproduce more quickly."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Many different fermentation pathways occur in different organisms in nature. For example, skeletal muscle cells convert pyruvate into lactic acid when no oxygen is present. Yeast cells can produce alcohol and carbon dioxide under the same circumstances. However, regardless of the specific reactions, the purpose of glycolysis is an important one. Which statement best describes the importance of glycolysis?",
+    "choices": [
+      "It produces large amounts of ATP by substrate level phosphorylation.",
+      "It reoxidizes NADH so that glycolysis can continue.",
+      "It produces pyruvate, which is the raw material for oxidative phosphorylation.",
+      "It occurs in the cytoplasm."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Human DNA and the DNA of a banana are 50% identical. Which statement best explains this fact in terms of what you know about the evolution of life on Earth?",
+    "choices": [
+      "Humans evolved from an organism that resembled a banana more than a billion years ago.",
+      "All organisms on Earth evolved from an ancestral eukaryotic cell 2 billion years ago.",
+      "Humans and bananas evolved from a recent common ancestor within the last 6 million years.",
+      "Bananas and humans have experienced thousands of mutations that have made us appear so very different from each other."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following principles is NOT part of Darwin's theory of evolution by natural selection?",
+    "choices": [
+      "Evolution is a gradual process that occurs over a long period of time.",
+      "Every population has tremendous variation.",
+      "Mutations are the main source of all variation in a population.",
+      "Organisms will overpopulate area, giving rise to competition."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following statements is supported by the information presented in the graph, which shows a comparison of two regions in Oregon, one deforested and the other undisturbed?",
+    "choices": [
+      "Roots of plants are efficient at absorbing nitrates from the soil.",
+      "Variation in the amount of nitrate in stream water is due to periods of intense rain.",
+      "Replanting trees after an area has been clear-cut can prevent nitrate runoff into rivers.",
+      "The presence of trees in an area causes an increase of nitrates in the soil."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Here is a food web for a habitat that is threatened by developers who will remove three-fourths of the grasses in the area on which the mice and rabbits feed. Which of the following statements describes what will most likely happen to the wildlife in the area?",
+    "choices": [
+      "The hawk will begin to eat frogs instead of snakes and mice.",
+      "Since three trophic levels are shown in the food web, 75% of the organisms in this food web will die.",
+      "Based on the number of trophic levels, about 25% of the mice and rabbits will die.",
+      "The hawk population will decrease."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The pH of two lakes is measured. Lake A has a pH of 8.0; Lake B has a pH of 6.0. Which of the following statements is correct about these lakes?",
+    "choices": [
+      "Lake B is alkaline.",
+      "Lake B is 100 times more alkaline than Lake A.",
+      "The hydrogen ion concentration of Lake B is 104 M.",
+      "The pH of both lakes will decrease in response to acid rain."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The BCL-2 gene codes for a protein that normally inhibits apoptosis. In some cases, the BCL-2 gene is mutated and becomes activated inappropriately. Cells with this mutated, overexpressed gene fail to undergo apoptosis; they continue to divide and form cancerous tumors. The mutated gene causes many cancers, including lymphoma and breast, colon, and prostate cancers. Oblimersen is a drug now in clinical trials that is an antisense RNA. It binds to BCL-2 mRNA and inactivates it. Which of the following sketches accurately demonstrates the action of the antisense drug Oblimersen?",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Figure 1 shows the growth of the filamentous green algae Spirogyra in a flask of sterilized pond water that contains nitrate. If phosphate is added to the flask as shown, the growth curve changes to that shown in Figure 2. Which of the following graphs is the best prediction of the algae growth if more nitrate (NO3) is added along with the phosphate?",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following statements correctly characterizes an autoimmune disease?",
+    "choices": [
+      "T cells attack healthy body cells.",
+      "An aneurysm is a weakness in the wall of a blood vessel that causes it to balloon out. The vessel can rupture and cause a hemorrhage.",
+      "Several factors cause hypertension: smoking, being overweight, lack of physical activity, and too much salt in the diet.",
+      "Alzheimer's disease is caused by the buildup of plaque within the brain, causing brain cells to die."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Apoptosis, which is programmed cell death, is a necessary process in living organisms. Which of the following is NOT correct about apoptosis?",
+    "choices": [
+      "It occurs randomly.",
+      "A particular cell dies when it is no longer needed by the organism.",
+      "A cell carries out apoptosis when too many mutations have accumulated.",
+      "Plant cells carry out apoptosis as a defense measure in cells that have been infected by parasites."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "African lungfish often live in small, stagnant, freshwater pools. With reduced gills, they differ from other fish in that they breathe air. They also differ in that they release the nitrogen waste urea instead of ammonia. Which of the following statements correctly explains how this is an advantage for lungfish?",
+    "choices": [
+      "Urea is insoluble in water and sinks to the bottom of the small pools. Thus the poisonous substance is isolated from the fish.",
+      "Ammonia, which is highly toxic, would endanger lungfish that inhabit the small pools.",
+      "Other fish in the small pools can use urea as an energy source.",
+      "The highly toxic urea makes the pool uninhabitable to competitors."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "During oxidative phosphorylation, the energy needed to drive ATP synthesis comes from one source. Which of the following statements states the immediate source of that energy?",
+    "choices": [
+      "Electrons flow down an electron transport chain as they are attracted to oxygen.",
+      "The transfer of a phosphate group to ADP is exergonic.",
+      "The bonding of electrons to oxygen at the end of the chain releases energy.",
+      "The proton gradient across the membrane where the ATP synthase is embedded represents potential energy."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following statements about cellular respiration is correct?",
+    "choices": [
+      "Most CO2 produced during cellular respiration is released from glycolysis.",
+      "Protons are pumped through ATP synthase by active transport.",
+      "The final electron acceptor of the electron transport chain is NAD+.",
+      "ATP is formed because an endergonic reaction is coupled with an exergonic reaction."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The light reactions of photosynthesis supply the Calvin cycle with which of the following?",
+    "choices": [
+      "The light reactions provide oxygen for the light-independent reactions.",
+      "ATP and NADPH provide the power and raw materials for the Calvin cycle.",
+      "Water entering the plant through the roots provides hydrogen directly to the Calvin cycle.",
+      "CO2 released by the light-dependent reactions provides the raw material for the Calvin cycle."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Here is a sketch showing cyclic photophosphorylation in the grana of plant cells. Which of the following statements about this process is correct, and what is the reason for it?",
+    "choices": [
+      "It is similar to oxidative phosphorylation in cellular respiration because its function is to generate ATP.",
+      "It is similar to glycolysis because it involves an electron transport chain.",
+      "It is the opposite of cellular respiration because it releases oxygen rather than utilizes it.",
+      "It is the opposite of the citric acid cycle because ATP is utilized, not produced."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following statements about lipids is correct?",
+    "choices": [
+      "Unsaturated fatty acids are linked to heart disease.",
+      "Lipids make up most cell surface receptors.",
+      "Phospholipids are water soluble.",
+      "Steroids are lipids that consist of glycerol and fatty acids."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Unlike large populations, small populations are vulnerable to various processes that draw populations down an extinction vortex toward smaller and smaller populations until no individuals survive. Which of the following statements correctly identifies the factors that endanger a population?",
+    "choices": [
+      "Inbreeding and loss of genetic variation threaten a population.",
+      "Migration of new individuals into the population threatens a population.",
+      "Mutation reduces the health of a population.",
+      "Breeding with individuals from a different population may cause the extinction of the first population due to a decrease in diversity."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following statements about the immune system is NOT correct?",
+    "choices": [
+      "Innate immunity, also known as the adaptive immune response, relies on circulating phagocytes engulfing foreign substances.",
+      "Adaptive immunity is a slower response than innate immunity.",
+      "Innate immunity activates a humoral response.",
+      "Dendritic cells are antigen presenting cells."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The disaccharide lactose is available to E. coli in the human colon if the host drinks milk. Digestion of lactose into glucose and galactose begins with the hydrolysis of lactose by the enzyme β-galactosidase, which is encoded by gene Z in the lac operon. Which of these diagrams correctly depicts the lac operon when lactose is being utilized?",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following statements explains how a point mutation can have no negative impact in the protein formed from a sequence in DNA?",
+    "choices": [
+      "The first codon of a gene is always AUG, a leader sequence; a mutation in that sequence will have no effect on the protein produced.",
+      "Several codons code for the same amino acid.",
+      "DNA polymerase and DNA ligase carry out excision repair before transcription.",
+      "RNA processing will repair point mutations before mRNA leaves the nucleus."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "When DNA replicates, each strand of the original DNA molecule is used as a template for the synthesis of a second, complementary strand. Which of the following sketches most accurately illustrates the synthesis of a new DNA strand at the replication fork?",
+    "choices": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "answer": 2
+  }
+];
+
+void BIO_SET3_MC;
+
+
+// AP Biology set4
+const BIO_SET4_MC = [
+  {
+    "q": "Which of the following is the source of oxygen produced during photosynthesis?",
+    "choices": [
+      "H2O",
+      "H2O2",
+      "CO2",
+      "CO"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "An organism exposed to wild temperature fluctuations shows very little, if any, change in its metabolic rate. This organism is most probably a",
+    "choices": [
+      "ectotherm.",
+      "endotherm.",
+      "thermophyle.",
+      "ascospore."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is a frameshift mutation?",
+    "choices": [
+      "CAT HAS HIS -> CAT HAS HIT",
+      "CAT HAS HIS -> CAT HSH ISA",
+      "CAT HAS HIS -> CAT HIS HAT",
+      "CAT HAS HIS -> CAT WAS HIT"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A researcher conducts a survey of a biome and finds 35 percent more species than she has found in any other biome. Which biome is she most likely to be in?",
+    "choices": [
+      "Tundra",
+      "Tiaga",
+      "Tropical rainforest",
+      "Temperate deciduous forest"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A man contracts the same flu strain for the second time in a single winter season. The second time he experiences fewer symptoms and recovers more quickly. Which cells are responsible for this rapid recovery?",
+    "choices": [
+      "Helper T cells",
+      "Cytotoxic T cells",
+      "Memory cells",
+      "Plasma cells"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following are traits that are affected by more than one gene?",
+    "choices": [
+      "Heterozygous traits",
+      "Pleiotropic traits",
+      "Polygenic traits",
+      "Blended alleles"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A lizard lacking a chemical defense mechanism that is colored in the same way as a lizard that has a defense mechanism is displaying",
+    "choices": [
+      "aposometric coloration.",
+      "cryptic coloration.",
+      "Batesian mimicry.",
+      "Müllerian mimicry."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Crossover would most likely occur in which situation?",
+    "choices": [
+      "Two genes (1 and 2) are located right next to each other on chromosome A.",
+      "Gene 1 is located on chromosome A, and gene 2 is on chromosome B.",
+      "Genes 1 and 2 are located near each other on the X chromosome.",
+      "Gene 1 is located on chromosome A; gene 2 is located far away but on the same chromosome."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Imagine an organism whose 2n = 96. Meiosis would leave this organism's cells with how many chromosomes?",
+    "choices": [
+      "192",
+      "96",
+      "48",
+      "24"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A student conducts an experiment to test the efficiency of a certain enzyme. Which of the following protocols would probably not result in a change in the enzyme's efficiency?",
+    "choices": [
+      "Bringing the temperature of the experimental setup from 20°C to 50°C",
+      "Adding an acidic solution to the setup",
+      "Adding substrate but not enzyme",
+      "Placing the substrate and enzyme in a container with double the capacity"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "You observe a species that gives birth to only one offspring at a time and has a relatively long life-span for its body size. Which of the following is probably also true of this organism?",
+    "choices": [
+      "It lives in a newly colonized habitat.",
+      "It is an aquatic organism.",
+      "It requires relatively high parental care of offspring.",
+      "The age at which the offspring themselves can give birth is relatively young."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is an example of a detritivore?",
+    "choices": [
+      "Cactus",
+      "Algae",
+      "Bat",
+      "Fungus"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In a certain population of squirrels that is in Hardy-Weinberg equilibrium, black color is a recessive phenotype present in 9 percent of the squirrels, and 91 percent are gray. What percentage of the population is homozygous dominant for this trait?",
+    "choices": [
+      "21 percent",
+      "30 percent",
+      "49 percent",
+      "70 percent"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Refer to question 15 for details on the squirrel population. Which of the following conditions is required to keep this population in Hardy-Weinberg equilibrium?",
+    "choices": [
+      "Random mating",
+      "Genetic drift",
+      "Mutation",
+      "Gene flow"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A reaction that includes energy as one of its reactants is called a(n)",
+    "choices": [
+      "exergonic reaction.",
+      "hydrolysis reaction.",
+      "endergonic reaction.",
+      "redox reaction."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "To which of the following labeled trophic levels would a herbivore most likely be assigned?",
+    "choices": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "A population undergoes a shift in which those who are really tall and those who are really short decrease in relative frequency compared to those of medium size, due to a change in the availability of resources. This is an example of",
+    "choices": [
+      "directional selection.",
+      "stabilizing selection.",
+      "disruptive selection.",
+      "sympatric speciation."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following statements is correct?",
+    "choices": [
+      "Water flows from hypertonic to hypotonic.",
+      "Germinating seeds use less oxygen than do nongerminating seeds.",
+      "The rate of transpiration decreases with an increase in air movement.",
+      "Smaller DNA fragments migrate more rapidly than do larger DNA fragments on gel electrophoresis."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is not a form of interspecies interaction?",
+    "choices": [
+      "Commensalism",
+      "Succession",
+      "Mutualism",
+      "Parasitism"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Sickle cell anemia is a disease caused by the substitution of an incorrect nucleotide into the DNA sequence for a particular gene. The amino acids are still added to the growing protein chain, but the symptoms of sickle cell anemia result. This is an example of a",
+    "choices": [
+      "frameshift mutation.",
+      "missense mutation.",
+      "nonsense mutation.",
+      "thymine dimer mutation."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "When oxygen becomes unavailable, this process regenerates NAD+, allowing respiration to continue.",
+    "choices": [
+      "Glycolysis",
+      "Chemiosmosis",
+      "Fermentation",
+      "Calvin cycle"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "This process leads to the net production of two pyruvate, two ATP, and two NADH.",
+    "choices": [
+      "Glycolysis",
+      "Chemiosmosis",
+      "Fermentation",
+      "Calvin cycle"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "This process couples the production of ATP with the movement of electrons down the electron transport chain by harnessing the driving force created by a proton gradient.",
+    "choices": [
+      "Glycolysis",
+      "Chemiosmosis",
+      "Fermentation",
+      "Calvin cycle"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "This process has as its products NADP+, ADP, and sugar.",
+    "choices": [
+      "Glycolysis",
+      "Chemiosmosis",
+      "Fermentation",
+      "Calvin cycle"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "This biome has cold winters and is known for its pine forests.",
+    "choices": [
+      "Desert",
+      "Tundra",
+      "Taiga",
+      "Deciduous forests"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "This biome is the driest of the land biomes and experiences the greatest daily temperature fluctuations.",
+    "choices": [
+      "Desert",
+      "Tundra",
+      "Taiga",
+      "Deciduous forests"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "This biome contains trees that drop their leaves during the winter months.",
+    "choices": [
+      "Desert",
+      "Tundra",
+      "Taiga",
+      "Deciduous forests"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "This biome contains plants whose roots cannot go deep due to the presence of a permafrost.",
+    "choices": [
+      "Desert",
+      "Tundra",
+      "Taiga",
+      "Deciduous forests"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Testosterone level in this population may be an example of",
+    "choices": [
+      "adaptive radiation.",
+      "an adaptation.",
+      "divergent selection.",
+      "development."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "What can you infer about the role of testosterone in reproduction in this species?",
+    "choices": [
+      "It is detrimental to breeding.",
+      "It aids adult males only.",
+      "It ensures that all males reproduce equally.",
+      "It aids in breeding."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "What originally caused the change in the variant?",
+    "choices": [
+      "Karyotyping",
+      "Balance polymorphism",
+      "Mutation",
+      "Polyploidy"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "What kind of speciation does this example illustrate?",
+    "choices": [
+      "Allopatric",
+      "Sympatric",
+      "Isolated",
+      "Polyploidy"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following could possibly characterize the new variant?",
+    "choices": [
+      "Adaptive radiation",
+      "Divergent selection",
+      "Equilibrium",
+      "Polyploidy"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is likely to exhibit the process described earlier?",
+    "choices": [
+      "Fallow deer",
+      "Fruit flies",
+      "Grass",
+      "Spotted toads"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The DNA placed in this electrophoresis gel separates as a result of what characteristic?",
+    "choices": [
+      "pH",
+      "Charge",
+      "Size",
+      "Polarity"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If this gel were used in a court case as DNA evidence taken from the crime scene, which of the following suspects appears to be guilty?",
+    "choices": [
+      "Suspect A",
+      "Suspect B",
+      "Suspect C",
+      "Suspect D"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which two suspects, while not guilty, could possibly be identical twins?",
+    "choices": [
+      "A and B",
+      "A and C",
+      "B and C",
+      "B and D"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "What is the frequency of the recessive homozygote?",
+    "choices": [
+      "15 percent",
+      "19 percent",
+      "25 percent",
+      "40 percent"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "What would be the approximate frequency of the heterozygote condition if this population were in Hardy-Weinberg equilibrium?",
+    "choices": [
+      "20 percent",
+      "45 percent",
+      "48 percent",
+      "72 percent"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Is this population in Hardy-Weinberg equilibrium?",
+    "choices": [
+      "Yes",
+      "No",
+      "Cannot tell from the information given",
+      "Maybe, if individuals are migrating"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following processes may be occurring in this population, given the allele frequencies?",
+    "choices": [
+      "Directional selection",
+      "Homozygous advantage",
+      "Hybrid vigor",
+      "Allopatric speciation"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "After the bag has been sitting in the beaker for a while, what would you expect to have happened to the bag?",
+    "choices": [
+      "There will have been a net flow of water out of the bag, causing it to decrease in size.",
+      "There will be have been a net flow of water into the bag, causing it to swell in size.",
+      "The bag will be the exact same size because no water will have moved at all.",
+      "The solute will have moved out of the dialysis bag into the beaker."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "If this bag were instead placed into a beaker of distilled water, what would be the expected result?",
+    "choices": [
+      "There will be a net flow of water out of the bag, causing it to decrease in size.",
+      "There will be a net flow of water into the bag, causing it to swell in size.",
+      "The bag will remain the exact same size because no water will move at all.",
+      "The solute will flow out of the dialysis bag into the beaker."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is true about water potential?",
+    "choices": [
+      "It drives the movement of water from a region of lower water potential to a region of higher water potential.",
+      "Solute potential is the only factor that determines the water potential.",
+      "Pressure potential combines with solute potential to determine the water potential.",
+      "Water potential always drives water from an area of lower pressure potential to an area of higher pressure potential."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If the pedigree is studying an autosomal recessive condition for which the alleles are A and a, what was the probability that a child produced by parents A and B would be heterozygous?",
+    "choices": [
+      "0.0625",
+      "0.1250",
+      "0.2500",
+      "0.5000"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Imagine that a couple (C and D) go to a genetic counselor because they are interested in having children. They tell the counselor that they have a family history of a certain disorder and they want to know the probability of their firstborn having this condition. What is the probability of the child having the autosomal recessive condition?",
+    "choices": [
+      "0.0625",
+      "0.1250",
+      "0.2500",
+      "0.3333"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The bold line that point C intersects is known as the",
+    "choices": [
+      "biotic potential.",
+      "carrying capacity.",
+      "limiting factor.",
+      "maximum attainable population."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "On the basis of what happens at the end of this chart, what is the most likely explanation for the population decline after point E?",
+    "choices": [
+      "The population became too dense and it had to decline.",
+      "There was a major environmental shift that made survival impossible for many.",
+      "Food became scarce, leading to a major famine.",
+      "The population had become too large."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "At the beginning of the experiment,",
+    "choices": [
+      "Side A is hypertonic to side B.",
+      "Side A is hypotonic to side B.",
+      "Side A is isotonic to side B.",
+      "Side A is hypotonic to side B with respect to sucrose."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "If you examine side A after a couple of days, you will see",
+    "choices": [
+      "an increase in the concentration of NaCl and sucrose and an increase in water level.",
+      "a decrease in the concentration of NaCl, an increase in water level, and no change in the concentration of sucrose.",
+      "no net change.",
+      "an increase in the concentration of NaCl and an increase in the water level."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Tay-Sachs is a disease caused by a recessive allele. Individuals with the genetic disorder usually do not survive more than a few years, and thus are not able to reproduce and pass on the gene. What would explain how this allele and its associated disease is preserved in the population?",
+    "choices": [
+      "Heterozygous individuals will show no symptoms.",
+      "Spontaneous mutation converts the dominant allele to the recessive form.",
+      "Occasionally the gene will instead increase the fitness of the individual.",
+      "Tay-Sachs is asymptomatic in people who are homozygous recessive."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A new plant was discovered and determined to have an unusually low number of stomata on the undersides of its leaves. For what environment would this plant most likely be best adapted?",
+    "choices": [
+      "Cold and rainy",
+      "Humid and sunny",
+      "Hot and humid",
+      "Hot and dry"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The first simple cells evolved approximately 3.5 billion years ago, followed by the more complex eukaryotic cells 2.1 billion years ago. Which of the following statements is correct?",
+    "choices": [
+      "Eukaryotic organelles helped create separate environments for metabolic reactions, thus increasing their metabolic efficiency.",
+      "Prokaryotic and eukaryotic cells have no structural similarities.",
+      "The organelles in larger eukaryotic cells took care of the problems of having a larger surface area-to-volume ratio.",
+      "Eukaryotic cells are able to multiply faster based on their more complex structure."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Easily produced genetic variation is key to the rapid evolution of viral and microbial populations. Furthermore, pathogens that need to escape the immune system rely on this variation to generate new surface antigens that go unrecognized by the host's immune system. Which of the following is an example of this antigenic variation?",
+    "choices": [
+      "HIV, which can remain integrated into the host genome for many years",
+      "The flu virus, which changes its envelope proteins",
+      "MRSA, which has become resistant to many antibiotics",
+      "Multiple sclerosis, which attacks the cells of the nervous system"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A baby duck runs for cover when a large object is tossed over its head. After this object is repeatedly passed overhead, the duck learns there is no danger and stops running for cover when the same object appears again. This is an example of",
+    "choices": [
+      "imprinting.",
+      "fixed-action pattern.",
+      "agonistic behavior.",
+      "habituation."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In a population of giraffes, an environmental change occurs that favors individuals that are tallest. As a result, more of the taller individuals are able to obtain nutrients and survive to pass along their genetic information. This is an example of",
+    "choices": [
+      "directional selection.",
+      "stabilizing selection.",
+      "sexual selection.",
+      "disruptive selection."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The relatives of a group of pelicans from the same species that separated from each other because of an unsuccessful migration are reunited 150 years later and find that they are unable to produce offspring. This is an example of",
+    "choices": [
+      "allopatric speciation.",
+      "sympatric speciation.",
+      "genetic drift.",
+      "gene flow."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A cell is placed into a hypertonic environment and its cytoplasm shrivels up. This demonstrates the principle of",
+    "choices": [
+      "diffusion.",
+      "active transport.",
+      "facilitated diffusion.",
+      "plasmolysis."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is a biotic factor that could affect the growth rate of a population?",
+    "choices": [
+      "Volcanic eruption",
+      "Glacier melting",
+      "Destruction of the ozone layer",
+      "Sudden reduction in the animal food resource"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is not a way to form recombinant DNA?",
+    "choices": [
+      "Translation",
+      "Conjugation",
+      "Specialized transduction",
+      "Transformation"
+    ],
+    "answer": 0
+  }
+];
+
+
+// AP Biology FRQ
+// AP Biology FRQ data extracted from official College Board FRQ and Scoring Guideline PDFs.
+// Set sourced from AP Biology 2023.
+const BIO_SET1_FRQ = [
+  {
+    "title": "Q1: Long FRQ (9 points)",
+    "text": "1. In eukaryotic microorganisms, the PHO signaling pathway regulates the expression of certain genes. These \ngenes, Pho target genes, encode proteins involved in regulating phosphate homeostasis. When the level of \nextracellular inorganic phosphate (Pi) is high, a transcriptional activator Pho4 is phosphorylated by a complex \nof two proteins, Pho80\u2013Pho85. As a result, the Pho target genes are not expressed. When the level of \nextracellular Pi is low, the activity of the Pho80\u2013Pho85 complex is inhibited by another protein, Pho81, \nenabling Pho4 to induce the expression of these target genes. A simplified model of this pathway is shown in \nFigure 1. \nFigure 1. A simplified model of the regulation of expression of Pho target genes in (A) a \nhigh-phosphate (high-Pi) environment and (B) a low-phosphate (low-Pi) environment \nTo study the role of the different proteins in the PHO pathway, researchers used a wild-type strain of yeast to \ncreate a strain with a mutant form of Pho81 (pho81mt) and a strain with a mutant form of Pho4 (pho4mt). In \neach of these mutant strains, researchers measured the activity of a particular enzyme, APase, which removes \nphosphates from its substrates and is encoded by PHO1, a Pho target gene (Table 1). They then determined the \nlevel of PHO1 mRNA relative to that of the wild-type yeast strain, which was set to 10. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n5 \n\n \n \n__________________________________________________________ \nTABLE 1. APase ACTIVITY AND RELATIVE AMOUNTS OF PHO1 mRNA IN WILD-TYPE AND MUTANT \nSTRAINS OF YEAST IN HIGH- AND LOW-PHOSPHATE ENVIRONMENTS \nYeast Strain \nMutation \nAPase Activity in \nHigh-Pi Environment \nmU/mL/OD600\n( \n) \n\u00b12SEx \nAPase Activity in \nLow-Pi Environment \nmU/mL/OD600\n( \n) \n\u00b12SEx \nRelative Amounts of \nPHO1 mRNA in \nHigh-Pi Environment \n\u00b12SEx \nRelative Amounts of \nPHO1 mRNA in \nLow-Pi Environment \n\u00b12SEx \nWild-type \nNone \n0.5 \u00b1 0.1 \n17.3 \u00b1 0.9 \n0.1 \u00b1 0.0 \n10 \u00b1 2.0 \npho81mt \nNonfunctional \nPho81 \n0.4 \u00b1 0.1 \n0.6 \u00b1 0.1 \n0.7 \u00b1 0.2 \n0.9 \u00b1 0.8 \npho4mt \nNonfunctional \nPho4 \n0.5 \u00b1 0.0 \n0.8 \u00b1 0.2 \n0.6 \u00b1 0.4 \n0.3 \u00b1 0.1 \n(a) Describe the effect that the addition of a charged phosphate group can have on a protein that would cause \nthe protein to become inactive. Explain how a signal can be amplified during signal transduction in a \npathway such as the PHO signaling pathway. \n(b) Based on Table 1, identify a dependent variable in the researchers\u2019 experiment. Justify the researchers\u2019 \nusing the wild-type strain for the creation of the mutant strains. Justify the researchers\u2019 using mutant strains \nin which only a single component of the pathway was mutated in each strain. \n(c) Based on the data in Table 1, identify the yeast strain and growth conditions that lead to the highest relative \namount of PHO1 mRNA. Calculate the percent change in APase activity in wild-type yeast cells in a \nhigh-Pi environment compared with that of wild-type cells in a low-Pi environment. \n(d) In a follow-up experiment, researchers created a strain of yeast with a mutation that resulted in a \nnonfunctional Pho85 protein. Based on Figure 1, predict the effects of this mutation on PHO1 expression \nin the mutant strain in a high-Pi environment. Provide reasoning to justify your prediction. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n6",
+    "maxPoints": 9,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the effect the addition of a charged phosphate group can have on a protein that",
+        "pts": 2
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on Table 1, identify a dependent variable in the researchers\u2019 experiment.",
+        "pts": 3
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the data in Table 1, identify the yeast strain and growth conditions that lead to",
+        "pts": 2
+      },
+      {
+        "part": "(d)",
+        "desc": "In a follow-up experiment, researchers created a strain of yeast with a mutation that",
+        "pts": 2
+      }
+    ]
+  },
+  {
+    "title": "Q2: Long FRQ (9 points)",
+    "text": "2. Elevated levels of CO2 increase the rate of photosynthesis and growth in plants. Scientists studying the \nmechanisms involved in these increases examined a variety of species and found that when plants are exposed \nto elevated levels of CO2, there is an increase in the number of chloroplasts per cell. To investigate whether the \nelevated levels of CO2 have a similar effect on the number of mitochondria in plant cells, the scientists then \nselected six of these species to quantify the number of mitochondria per cell when the plants were exposed to \nboth normal and elevated levels of CO2 (Table 1). \nTABLE 1. AVERAGE NUMBER OF MITOCHONDRIA IN PLANTS EXPOSED TO NORMAL AND ELEVATED \nLEVELS OF CO2 \nSpecies \nMitochondria at Normal \nCO2 \n2\n(per 100 \u03bcm of cell area) \n\u00b12SEx \nMitochondria at Elevated \nCO2 \n2\n(per 100 \u03bcm of cell area) \n\u00b12SEx \n1 \n1.0 \u00b1 0.10 \n1.6 \u00b1 0.10 \n2 \n0.4 \u00b1 0.05 \n0.9 \u00b1 0.08 \n3 \n0.5 \u00b1 0.07 \n0.9 \u00b1 0.10 \n4 \n0.3 \u00b1 0.03 \n0.6 \u00b1 0.06 \n5 \n0.7 \u00b1 0.06 \n1.5 \u00b1 0.22 \n6 \n1.3 \u00b1 0.15 \n2.4 \u00b1 0.22 \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n7 \n\n__________________________________________________________ \n(a) Describe the role of the inner mitochondrial membrane in cellular respiration. \n(b) Using the template in the space provided for your response, construct an appropriately labeled graph that \nrepresents the data in Table 1. Determine which species show(s) a difference in the number of \nmitochondria between normal and elevated levels of CO2. \n(c) Based on the data in Table 1, describe the relationship between the level of CO2 and the average number of \nmitochondria per unit area of a cell. \n(d) The leaves of a particular plant species are typically green, but scientists notice a plant in which the leaves \nhave white stripes. They determine that the stripes result from a mutation in mitochondrial DNA that \ninterferes with the development of chloroplasts. The scientists crossed plants using pollen from the plant \nwith white-striped leaves and ovules from a plant with green leaves. Predict the phenotype(s) of the leaves \nof offspring produced from this cross. Provide reasoning to justify your prediction. Explain why plants \nwith the same genotype are able to differ in the structure and/or number of certain organelles in response to \nchanges in atmospheric levels of CO2. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n8 \n\n__________________________________________________________",
+    "maxPoints": 9,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the role of the inner mitochondrial membrane in cellular respiration.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Using the template in the space provided for your response, construct an appropriately",
+        "pts": 4
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the data in Table 1, describe the relationship between the level of",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "The leaves of a particular plant species are typically green, but scientists notice a plant in",
+        "pts": 3
+      }
+    ]
+  },
+  {
+    "title": "Q3: Short FRQ (4 points)",
+    "text": "3. Sand lances of the genus Ammodytes are small fish that function as keystone organisms in several coastal \necosystems. These sand lances are prey fish that support organisms at higher trophic levels. Scientists \nperformed experiments to examine how sand lance populations are likely to be affected by the rising \ntemperatures and CO2 levels associated with climate change. \nSand lance embryos typically develop and mature into adult fish at low temperatures (approximately 5\u00b0C) and \nstable, low CO2 levels (approximately 400 \u03bcatm). Over the course of two years, the scientists measured the \nsurvival rate of sand lance embryos allowed to develop and mature in a laboratory at three different \ntemperatures, 5\u00b0C, 7\u00b0C, and 10\u00b0C, with the level of CO2 maintained at 400 \u03bcatm, 1,000 \u03bcatm, and \n2,100 \u03bcatm for each temperature. \n(a) Describe the effect of increased biodiversity on the resilience of an ecosystem in a changing environment. \n(b) Justify the scientists\u2019 selecting 5\u00b0C as the lowest temperature and 400 \u03bcatm as the lowest CO2 level in \ntheir study of sand lance embryo survival. \n(c) State a null hypothesis for the experiment. \n(d) The scientists claim that a reduction in the population size of the Ammodytes sand lances will affect the \nstability of the entire coastal ecosystem. Provide reasoning to support the scientists\u2019 claim. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n9 \n\n \n \n \n__________________________________________________________",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the effect of increased biodiversity on the resilience of an ecosystem in a",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Justify the scientists\u2019 selecting 5\u00b0C as the lowest temperature and 400 \u03bcatm as the lowest",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "State a null hypothesis for the experiment.",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "The scientists claim that a reduction in the population size of the Ammodytes sand lances",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q4: Short FRQ (4 points)",
+    "text": "4. Noncyclic electron flow and cyclic electron flow are two major pathways of the light-dependent reactions of \nphotosynthesis. In noncyclic electron flow, electrons pass through photosystem II, then components of a \n+\nNADP \nchloroplast electron transport chain, and then photosystem I before finally reducing \nto NADPH. In \ncyclic electron flow, electrons cycle through photosystem I and some components of the electron transport \nchain (Figure 1). \nFigure 1. The pathways of noncyclic and cyclic (heavy arrows) electron flow. The \ncytochrome complex is a component of the electron transport chain between the \ntwo photosystems. \n(a) Describe the role of chlorophyll in the photosystems of plant cells. \n(b) Based on Figure 1, explain why an increase in the ratio of NADPH to NADP+ will cause an increase in \nthe flow of electrons through the cyclic pathway. \n(c) Using rice plants, scientists examined the effect of a mutation that results in the loss of the protein CRR6. \nCRR6 is a part of the photosystem I complex, and its absence reduces the activity of photosystem I. \nPredict the effect of the mutation on the rate of biomass (dry weight) accumulation. \n(d) Justify your prediction in part (c). \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n10",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the role of chlorophyll in the photosystems of plant cells.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on Figure 1, explain why an increase in the ratio of NADPH to NADP+ will cause an",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Using rice plants, scientists examined the effect of a mutation that results in the loss of",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Justify your prediction in part (c).",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q5: Short FRQ (4 points)",
+    "text": "5. Ruminants are hoofed animals, including cattle and sheep, that have a unique four-chambered stomach \nspecialized to digest tough, fiber-filled grasses. Researchers studying ruminants are investigating the \nmorphological and molecular characteristics of different ruminant families in order to determine the \nevolutionary relationships among the families. Cladograms of several ruminant families were constructed based \non morphological data (Figure 1A) and molecular data (Figure 1B). Table 1 shows a sample of the \nmorphological characteristics present in each family used to construct the cladogram in Figure 1A. \nFigure 1. Cladogram of six ruminant families based on (A) morphological \ndata and (B) molecular data \nTABLE 1. MORPHOLOGICAL CHARACTERISTICS FOUND IN EACH RUMINANT FAMILY \nCharacteristic \nNumber \nMorphological \nCharacteristic \nTragulidae Giraffidae Bovidae Moschidae Antilocapridae Cervidae \n1 \nExtra tooth material \nX \nX \n2 \nThird stomach \nX \nX \nX \nX \nX \n3 \nDouble opening for \ntear ducts \nX \nX \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n11 \n\n \n__________________________________________________________ \n(a) Describe how a scientist would use a comparison of the DNA sequences of different organisms to suggest \nthe most likely evolutionary relationship among the organisms. \n(b) Based on Figure 1, explain why Bovidae is likely to be more closely related to Moschidae than it is to \nGiraffidae. \n(c) Using the template in the space provided for your response, represent the point(s) at which characteristic 1, \nlisted in Table 1, evolved by marking \u201cX\u201d on the line(s) of the cladogram in the correct location(s). \n(d) Based on Figure 1A, explain why a characteristic found only in the Cervidae and Bovidae families is more \nlikely evidence of convergent evolution than it is of common ancestry. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n12",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe how a scientist would use a comparison of the DNA sequences of different",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on Figure 1, explain why Bovidae is likely to be more closely related to Moschidae",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Using the template in the space provided for your response, represent the point(s) at",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Based on Figure 1A, explain why a characteristic found only in the Cervidae and Bovidae",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q6: Short FRQ (4 points)",
+    "text": "6. Housekeeping genes encode proteins involved in universally important processes such as transcription, \ntranslation, and glycolysis. Because these genes appear to be expressed in all cells at constant levels, the \nexpression of housekeeping genes is often used as a control when comparing how the expression of other genes \nvaries under different conditions. \nResearchers studying the effect of pesticides on declining bee populations wanted to determine whether the \nexpression of four housekeeping genes (GAPDH, RPL32, RPS5, and TBP-AF) was in fact constant in bees \nacross different variables. The researchers collected samples of mRNA for each of the four genes and compared \nhow their expression varied across the developmental stage of the bee, the sex of the bee, and the cell type from \nwhich the sample was taken. The mRNA from the samples was reverse transcribed to produce DNA copies of \neach gene. PCR was then used to amplify the DNA, and the Cq value was determined. The Cq value is the \nnumber of PCR cycles needed to produce a specified number of DNA copies. A high Cq value for a sample \nindicates the gene was expressed at a low level. \nTo analyze whether any of the examined variables affected expression of the housekeeping genes, researchers \nexamined the range of Cq values for each gene in response to each variable. Genes with a wide range of Cq \nvalues were determined to be affected by the variable, while genes with a narrow range of Cq values were \ndetermined to be unaffected by the variable. \nFigure 1. The effect of developmental stage, sex, and cell type on the Cq \nvalue of four housekeeping genes \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n13 \n\n \n__________________________________________________________ \n(a) Based on the data in Figure 1, identify the gene that had the lowest median Cq value when bees of different \ndevelopmental stages were compared. \n(b) The Cq value is inversely proportional to the amount of mRNA from that gene in the starting sample. Based \non the data in Figure 1, identify the gene that has the lowest level of gene expression regardless of variable. \n(c) The scientists investigated the effect of pesticides on the expression of other genes in one cell type of a \ngroup of bees containing males and females of the same developmental stage. They hypothesized that \nTBP-AF would serve as the best control gene for this experiment. Use the data to evaluate their hypothesis. \n(d) Explain how expression of a gene such as GAPDH can vary from one cell type to another within the same \nbee. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n14 \n\n \nSTOP \nEND OF EXAM \n\u00a9 2023 College Board. \nVisit College Board on the web: collegeboard.org. \n15",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Based on the data in Figure 1, identify the gene that had the lowest median Cq value",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "The Cq value is inversely proportional to the amount of mRNA from that gene in the",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "The scientists investigated the effect of pesticides on the expression of other genes in one",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Explain how expression of a gene such as GAPDH can vary from one cell type to another",
+        "pts": 1
+      }
+    ]
+  }
+];
+
+// Set sourced from AP Biology 2022.
+const BIO_SET2_FRQ = [
+  {
+    "title": "Q1: Long FRQ (9 points)",
+    "text": "1. The binding of an extracellular ligand to a G protein-coupled receptor in the plasma membrane of a cell\ntriggers intracellular signaling (Figure 1, A). After ligand binding, GTP replaces the GDP that is bound to\nGsa, a subunit of the G protein (Figure 1, B). This causes Gsa to activate other cellular proteins, including\nadenylyl cyclase that converts ATP to cyclic AMP (cAMP). The cAMP activates protein kinases\n(Figure 1, C). In cells that line the small intestine, a cAMP-activated protein kinase causes further signaling\nthat ultimately results in the secretion of chloride ions (Cl\u2212) from the cells. Under normal conditions, Gsa\nhydrolyzes GTP to GDP, thus inactivating adenylyl cyclase and stopping the signal (Figure 1, A).\nFigure 1. Under normal conditions, ligand binding to a G protein-coupled \nreceptor results in chloride ion transport from an intestinal cell. \nIndividuals infected with the bacterium Vibrio cholerae experience severe loss of water from the body \n(dehydration). This is due to the effects of the bacterial cholera toxin that enters intestinal cells. Scientists \nstudied the effects of cholera toxin on four samples of isolated intestinal cell membranes containing the \nG protein-related signal transduction components shown in Figure 1. GTP was added to samples II and IV\nonly; cholera toxin was added to samples III and IV only. The scientists then measured the amount of cAMP\nproduced by the adenylyl cyclase in each sample (Table 1). \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n5\n\n__________________________________________________________ \nTABLE 1. AMOUNT OF cAMP PRODUCED FROM INTESTINAL CELL MEMBRANES IN THE ABSENCE \nOR PRESENCE OF CHOLERA TOXIN \nSample GTP Cholera Toxin \nRate of cAMP Production \n(pmol per mg adenylyl \ncyclase per min) \nI \n\u2212 \n\u2212 \n0.5 \nII \n+\n\u2212\n10.0 \nIII \n\u2212\n+\n0.5 \nIV \n+\n+\n127.0 \npresent, +; absent, \u2212 \n(a) Describe one characteristic of a membrane that requires a channel be present for chloride ions to passively\ncross the membrane. Explain why the movement of chloride ions out of intestinal cells leads to water loss.\n(b) Identify an independent variable in the experiment. Identify a negative control in the experiment. Justify\nwhy the scientists included Sample III as a control treatment in the experiment.\n(c) Based on the data, describe the effect of cholera toxin on the synthesis of cAMP. Calculate the percent\nchange in the rate of cAMP production due to the presence of cholera toxin in sample IV compared with\nsample II.\n(d) A drug is designed to bind to cholera toxin before it crosses the intestinal cell membrane. Scientists mix the\ndrug with cholera toxin and then add this mixture and GTP to a sample of intestinal cell membranes.\nPredict the rate of cAMP production in pmol per mg adenylyl cyclase per min if the drug binds to all of\nthe toxin. In a separate experiment, scientists engineer a mutant adenylyl cyclase that cannot be activated by\nGsa. The scientists claim that cholera toxin will not cause excessive water loss from whole intestinal cells\nthat contain the mutant adenylyl cyclase. Justify this claim.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n6",
+    "maxPoints": 9,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe one characteristic of a membrane that requires a channel be present for chloride",
+        "pts": 2
+      },
+      {
+        "part": "(b)",
+        "desc": "Identify an independent variable in the experiment.",
+        "pts": 3
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the data, describe the effect of cholera toxin on the synthesis of cAMP .",
+        "pts": 2
+      },
+      {
+        "part": "(d)",
+        "desc": "A drug is designed to bind to cholera toxin and prevent the toxin from crossing the",
+        "pts": 2
+      }
+    ]
+  },
+  {
+    "title": "Q2: Long FRQ (9 points)",
+    "text": "2. During meiosis, double-strand breaks occur in chromatids. The breaks are either repaired by the exchange of\ngenetic material between homologous nonsister chromatids, which is the process known as crossing over\n(Figure 1A), or they are simply repaired without any crossing over (Figure 1B). Plant breeders developing new\nvarieties of corn are interested in determining whether, in corn, a correlation exists between the number of\nmeiotic double-strand chromatid breaks and the number of crossovers.\nFigure 1. Double-strand breaks in chromatids are \nrepaired with crossing over (A) or without crossing \nover (B). \nUsing specialized staining and microscopy techniques, scientists counted the number of double-strand \nchromatid breaks and the number of crossovers in the same number of meiotic gamete-forming cells of six \ninbred strains of corn (Table 1). \nTABLE 1. NUMBER OF CHROMATID DOUBLE-STRAND BREAKS AND AVERAGE NUMBER OF \nCROSSOVERS IN INBRED STRAINS OF CORN \nStrain of Corn \nNumber of \nDouble-Strand Breaks \nAverage Number of \nCrossovers ( \u00b1 2SE )\nx \nI \n710\n19.5 \u00b1 0.5\nII \n650\n18.0 \u00b1 0.7\nIII \n600\n17.5 \u00b1 1.0\nIV \n510\n16.0 \u00b1 1.0\nV \n425\n14.0 \u00b1 0.5\nVI \n325\n11.0 \u00b1 1.5\n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n7\n\n \n__________________________________________________________ \n(a) The double-strand breaks occur along the DNA backbone. Describe the process by which the breaks occur.\n(b) Using the template in the space provided for your response, construct an appropriately labeled graph that\nrepresents the data in Table 1 and allows examination of a possible correlation between double-strand\nbreaks and crossovers. Based on the data, determine whether corn strains I, II, and III differ in their\naverage number of crossovers.\n(c) Based on the data, describe the relationship between the average number of double-strand breaks and the\naverage number of crossovers in the strains of corn analyzed in the experiment.\n(d) Crossing over (Figure 1A) creates physical connections that are required for proper separation of\nhomologous chromosomes during meiosis. A diploid cell with four pairs of homologous chromosomes\nundergoes meiosis to produce four haploid cells. Crossing over occurs between only three of the pairs.\nPredict the number of chromosomes most likely present in each of the four haploid cells. Provide reasoning\nto justify your prediction. Explain how plant breeders can use the information in Table 1 to help develop\nnew varieties of corn.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n8\n__________________________________________________________",
+    "maxPoints": 9,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "The double-strand breaks occur along the DNA backbone. Describe the process by which",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Using the template in the space provided for your response, construct an appropriately",
+        "pts": 4
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the data, describe the relationship between the average number of double-",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Crossing over (Figure 1A) creates physical connections that are required for proper",
+        "pts": 3
+      }
+    ]
+  },
+  {
+    "title": "Q3: Short FRQ (4 points)",
+    "text": "3. Fireflies emit light when the enzyme luciferase catalyzes a reaction in which its substrate, D-luciferin, reacts to\nform oxyluciferin and other products (Figure 1). In order to determine the optimal temperature for this enzyme,\nscientists added ATP to a solution containing D-luciferin, luciferase, and other substances needed for the\nreaction. They then measured the amount of light emitted during the first three seconds of the reaction when it\nwas carried out at different temperatures.\nFigure 1. Light is emitted as a result of the reaction catalyzed by luciferase. \n(a) Describe a characteristic of the luciferase enzyme that allows it to catalyze the reaction.\n(b) Identify the dependent variable in the experiment.\n(c) State the null hypothesis for the experiment.\n(d) A student claims that, as temperature increases, there will be an increase in the amount of light given off by\nthe reaction in the first three seconds. Support the student\u2019s claim.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n9\n\n__________________________________________________________",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe a characteristic of the luciferase enzyme that allows it to catalyze the reaction.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Identify the dependent variable in the experiment.",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "State the null hypothesis for the experiment.",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "A student claims that, as temperature increases, there will be an increase in the amount",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q4: Short FRQ (4 points)",
+    "text": "4. Existing isolated brook trout populations in Newfoundland, Canada, were once part of a larger population that\nwas fragmented at the end of the most recent glaciation period about 10,000 to 12,000 years ago. Researchers\ninvestigated 14 naturally separated stream populations of brook trout. They found that the populations are all\ngenetically distinct and show differences in morphology.\n(a) Describe the prezygotic barrier that results in these genetically distinct populations.\n(b) Brook trout with longer fins are able to swim faster than brook trout with shorter fins. In one of the\nNewfoundland streams, the main prey of the brook trout evolved to move faster. For brook trout living in\nthis stream, explain the difference in fitness between longer-finned individuals and shorter-finned\nindividuals.\n(c) If two morphologically and behaviorally distinct populations of brook trout remain isolated for many\ngenerations, predict the likely impact on both populations.\n(d) Researchers claim that there are more genetic differences between any two current brook trout populations\nthan there are between any single current population and the ancestral brook trout population from which all\nthe trout are descended. Provide reasoning to justify their claim.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n10\n__________________________________________________________",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the prezygotic barrier that results in these genetically distinct populations.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Brook trout with longer fins are able to swim faster than brook trout with shorter fins. In",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "If two morphologically and behaviorally distinct populations of brook trout remain",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Researchers claim that there are more genetic differences between any two current",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q5: Short FRQ (4 points)",
+    "text": "5. The following models represent all the interacting species in two different communities with some of the same\nspecies and feeding relationships. These models assume that both communities have the same initial biomass.\nThe models can be used to understand the effects of human activities on the communities.\nFigure 1. Models of two different communities with some of the same species \n(a) Describe a characteristic of a community that makes a species invasive in that community but not invasive\nin a different community.\n(b) Explain why removing species PP1 will have a greater effect on community B than on community A.\n(c) An invasive species (INV) that eats individuals of species SC2 is introduced into community B. Using the\ntemplate in the space provided for your response, for community B, indicate the feeding relationship for this\ninvasive species by correctly placing INV to represent the invasive species and an arrow to represent the\nfeeding relationship within community B.\n(d) Explain how human activities that add toxins to the soil could change a community with many species at\neach trophic level, such as community A, into a community with few species at each trophic level, such as\ncommunity B.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n11\n\n__________________________________________________________",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe a characteristic of a community that makes a species invasive in that community",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Explain why removing species PP1 will have a greater effect on community B than on",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "An invasive species (INV) that eats individuals of species SC2 is introduced into",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Explain how human activities that add toxins to the soil could change a community with",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q6: Short FRQ (4 points)",
+    "text": "6. Researchers are studying the use of RNA vaccines to protect individuals against certain diseases. To develop\nthe vaccines, particular cells are first removed from an individual. Then mRNAs coding for specific proteins\nfrom a pathogen are introduced into the cells. The altered cells are injected back into the individual, where the\ncells make the proteins encoded by the introduced mRNAs. The individual then produces an immune response\nto the proteins that will help to protect the individual from developing a disease if exposed to the pathogen in\nthe future.\nWhen introduced into cells, the mRNAs used for vaccines must be stable so that they are not degraded before\nthe encoded proteins are produced. Researchers developed several modified caps that they hypothesized might\nmake the introduced mRNAs more stable than mRNAs with the normal GTP cap. To test the effect of the\nmodified caps, the researchers produced mRNAs that differed only in their cap structure (no cap, the normal\ncap, or modified caps I, II, or III). They introduced the same amount of each mRNA to different groups of\ncells and measured the amount of time required for half of the mRNAs to degrade (mRNA half-life) and the\ntotal amount of protein translated from the mRNAs (Table 1).\nTABLE 1. EFFECT OF mRNA CAP STRUCTURE ON mRNA HALF-LIFE AND PROTEIN TRANSLATED \nFROM THE INTRODUCED mRNA \n5\u00a2 Cap Structure \nmRNA Half-Life \u00b12SEx\n(hours after introduction \ninto cells) \nTotal Amount of Protein \nTranslated from \nmRNA \u00b12SEx (relative to \namount in normal cap) \nNo cap \n1.41 \u00b1 0.02\n0.011 \u00b1 0.000\nNormal GTP cap \n16.10 \u00b1 1.83\n1.000 \u00b1 0.007\nModified cap I\n15.50 \u00b1 1.57\n4.777 \u00b1 0.042\nModified cap II\n27.00 \u00b1 2.85 \n13.094 \u00b1 0.307\nModified cap III\n18.09 \u00b1 0.81\n6.570 \u00b1 0.075\n(a) Based on the data, identify which cap structure is most likely to protect the end of the mRNAs from\ndegradation.\n(b) Based on the data for the mRNAs with modified caps, describe the relationship between the mRNA\nhalf-life and the total amount of protein produced.\n(c) After examining the data on mRNA half-lives and the amount of protein produced, the researchers\nhypothesized that each mRNA molecule with modified cap I was translated more frequently than was each\nmRNA molecule with the normal GTP cap. Evaluate their hypothesis by comparing the data in Table 1.\n(d) Introduction of mRNAs into cells allows the cells to produce foreign proteins that they might not normally\nproduce. Explain why the production of a foreign protein may be more likely from the introduction of\nmRNA than DNA into cells.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n12\n\nSTOP \nEND OF EXAM \n\u00a9 2022 College Board. \nVisit College Board on the web: collegeboard.org. \n13",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Based on the data, identify which cap structure is most likely to protect the end of the",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on the data for the mRNAs with modified caps, describe the relationship",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "After examining the data on mRNA half-lives and the amount of protein produced, the",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Introduction of mRNAs into cells allows the cells to produce foreign proteins that they",
+        "pts": 1
+      }
+    ]
+  }
+];
+
+// Set sourced from AP Biology 2024.
+const BIO_SET3_FRQ = [
+  {
+    "title": "Q1: Long FRQ (9 points)",
+    "text": "1. Crossing over in meiosis I is required for homologous chromosomes to properly align during metaphase and\nsegregate during the first cell division.\n(a) \n(i) Describe the function of S phase of interphase.\nSome regions of a chromosome called hotspots display a higher frequency of crossing over than other regions \ndo. Crossing over is suppressed in chromosomal regions near the centromeres. The centromere region of a \nduplicated chromosome includes a collection of proteins that form a structure called the kinetochore. Scientists \nhypothesized that one or more of these kinetochore proteins are responsible for suppressing crossing over \naround the centromere. \nTo investigate their hypothesis, scientists modified chromosome 8 in yeast such that, in each cell, one \n \nchromosome from the pair of homologous chromosome 8s contained the gene encoding red fluorescent protein \n(RFP), while the other chromosome from the pair contained the gene encoding green fluorescent protein \n(GFP). Cells expressing RFP emit (give off) red light, and cells expressing GFP emit green light. Models of the \nmodified chromosome 8 both before and after crossing over are shown in Figure 1. \nFigure 1. Models of modified chromosome 8 used in the experiment (A) before and (B) \nafter crossing over occurs at the hotspot \n(ii) Explain why some haploid cells formed after meiosis in this experiment will have only one\nfluorescent marker.\n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n5\n\nThe scientists then investigated whether attaching individual kinetochore proteins to a specific DNA sequence \npresent in a known crossing-over hotspot on chromosome 8 affected the frequency of crossing over at this \nlocation. In their first experiment, they examined three groups of yeast cells containing the modified \nchromosome 8. Group 1 contained no kinetochore proteins attached to the hotspot, group 2 contained the \nkinetochore protein CTF attached to the hotspot, and group 3 contained the kinetochore protein IML attached \nto the hotspot. For each group, the scientists determined the frequency of crossing over between the RFP and \nGFP genes. To determine the frequency, the scientists added the number of cells emitting both red and green \nlight to the number of cells that emitted no light and divided by the total number of cells (Figure 2). \nFigure 2. The frequency of crossing over \nin a hotspot on yeast chromosome 8 for \ncell groups treated with different \nkinetochore proteins. Error bars represent \n\u00b12SE x .\n(b) \n(i) Identify the control group for the scientists\u2019 first experiment, shown in Figure 2.\n(ii) In a follow-up experiment, the scientists created a modified version of CTF in which the\nDNA-binding portion had been removed. They compared the frequency of crossing over in yeast cells\nin the presence and absence of unmodified CTF with that in yeast cells in the presence and absence of\nthe modified CTF protein (data not shown). In the follow-up experiment, justify why the scientists\nused a modified CTF protein that is unable to bind to DNA as a control.\n(iii) Identify the independent variable in the follow-up experiment.\n(c) Based on Figure 2, describe the effect on the frequency of crossing over when CTF is attached to the\nchromosome 8 hotspot compared with the effect when IML is attached to the hotspot.\n(d) \n(i) Predict the effect on the number of copies of chromosome 8 likely to be present in the resulting\ndaughter cells when CTF is attached to the hotspot.\n(ii) Provide reasoning to justify your prediction.\n(iii) Explain how the presence of hotspots (Figure 1) could increase the likelihood that a population will\nsurvive in the presence of selective pressures.\n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n6\n__________________________________________________________ \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \nIf there are multiple parts to this question, write the part letter with your response. \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n7\n__________________________________________________________",
+    "maxPoints": 9,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the function of S phase of interphase.",
+        "pts": 2
+      },
+      {
+        "part": "(b)",
+        "desc": "Identify the control group for the scientists\u2019 first experiment, shown in Figure 2.",
+        "pts": 3
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on Figure 2, describe the effect on the frequency of crossing over when CTF is",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Predict the effect on the number of copies of chromosome 8 likely to be present in",
+        "pts": 3
+      }
+    ]
+  },
+  {
+    "title": "Q2: Long FRQ (9 points)",
+    "text": "2. To investigate how increases in environmental temperatures affect the metabolism of certain organisms,\nresearchers incubated liver cells from toads at different temperatures and measured two markers of metabolic\nactivity (Table 1): the rate of oxygen consumption and the rate of ATP synthesis.\n(a) Describe the role of water in the hydrolysis of ATP.\nTABLE 1. RATE OF OXYGEN CONSUMPTION AND ATP SYNTHESIS AT DIFFERENT TEMPERATURES \nMetabolic Marker \n20 C\n\u00b0 \n25 C\n\u00b0 \n30\u00b0C \n \nRate of Oxygen \nConsumption \n(nmol / min / mg of \nmitochondrial protein \n\u00b12SE )\nx \n12.8 \u00b1 2.2 16.5 \u00b1 2.0 22.1 \u00b1 0.7 \n \nRate of ATP Synthesis \n(nmol / min / mg of \nmitochondrial protein \n\u00b12SE )\nx \n12.6 \u00b1 1.6 16.8 \u00b1 2.0 21.07 \u00b1 0.8 \n(b) \n(i) Using the template in the space provided for your response, construct a bar graph that represents the\ndata shown in Table 1. Your graph should be appropriately plotted and labeled.\n(ii) Based on the data provided, determine the temperature in \u00b0C at which the rate of oxygen\nconsumption is different from the rate of oxygen consumption at 25 C\n\u00b0 .\n(c) \n(i) Based on the data in Table 1, describe the effect of temperature on the rate of ATP synthesis in liver\ncells from toads.\n(ii) Based on the data in Table 1, calculate the average amount of oxygen consumed, in nmol, for 10 mg\nof mitochondrial protein after 10 minutes at 25 C\n\u00b0 .\n(d) \n(i) Oligomycin is a compound that can block the channel protein function of ATP synthase. Predict the\neffects of using oligomycin on the proton gradient across the inner mitochondrial membrane.\n(ii) Justify your prediction.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \nIf there are multiple parts to this question, write the part letter with your response. \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n8\n__________________________________________________________",
+    "maxPoints": 9,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the role of water in the hydrolysis of ATP.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Using the template in the space provided for your response, construct a bar graph that",
+        "pts": 4
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the data in Table 1, describe the effect of temperature on the rate of ATP",
+        "pts": 2
+      },
+      {
+        "part": "(d)",
+        "desc": "Oligomycin is a compound that can block the channel protein function of ATP synthase.",
+        "pts": 2
+      }
+    ]
+  },
+  {
+    "title": "Q3: Short FRQ (4 points)",
+    "text": "3. To investigate whether red blood cells of animals lose the ability to take in glucose from their environment as\nthey age, scientists collected red blood cells from guinea pigs that ranged in age from one day old to seven\nmonths old. Scientists incubated an equal number of red blood cells in separate culture dishes that contained a\n300 nM solution of radioactively labeled glucose. The amount of radioactively labeled glucose present inside\nthe red blood cells of each group was measured over time.\n(a) Describe a difference between passive transport and active transport.\n(b) Justify why the scientists used an equal number of red blood cells in each culture dish as a control.\n(c) Glucose transporters are required for the facilitated diffusion of glucose into red blood cells. The scientists\nclaim that the expression of the gene encoding these transporters decreases as guinea pigs age. If the\nscientists\u2019 claim is supported by experimental data, predict the effect of increased age on the amount of\nradioactively labeled glucose present inside the cells of each group.\n(d) Justify your prediction in part (c).\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \nIf there are multiple parts to this question, write the part letter with your response. \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n9\n__________________________________________________________",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe a difference between passive transport and active transport.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Justify why the scientists used an equal number of red blood cells in each culture dish as a",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Glucose transporters are required for the facilitated diffusion of glucose into red blood",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Justify your prediction in part (c).",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q4: Short FRQ (4 points)",
+    "text": "4. The common wild oat is native to regions of Europe and Asia but is an invasive species in central California\ngrasslands. In California, the common wild oat has almost completely replaced some species of native\nbunchgrass. Researchers found that aphids, a type of small insect that often carries plant viruses, have a much\nhigher reproductive rate in grasslands that include the common wild oat than in grasslands composed of only\nnative bunchgrass species. Additionally, the viruses carried by the aphids appear to affect only the native\nbunchgrasses and not the common wild oat. Native bunchgrasses infected by the virus have much higher death\nrates than do native bunchgrasses that are not infected.\n(a) Describe the change in the resilience of an ecosystem when there is a decrease in the number of species.\n(b) Explain how the addition of the common wild oat affects the number of native bunchgrass plants that can\nbe supported by the California grasslands ecosystem.\n(c) Researchers suggest adding ladybugs, predators of aphids, to the California grasslands. Predict the effect of\nadding ladybugs on the abundance of the native bunchgrass population.\n(d) Justify your prediction in part (c).\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \nIf there are multiple parts to this question, write the part letter with your response. \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n10",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the change in the resilience of an ecosystem when there is a decrease in the",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Explain how the addition of the common wild oat affects the number of native",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Researchers suggest adding ladybugs, predators of aphids, to the California grasslands.",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Justify your prediction in part (c).",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q5: Short FRQ (4 points)",
+    "text": "5. Researchers study mechanisms that enable or prevent speciation.\n(a) Describe a post-zygotic mechanism that prevents gene flow and thus enables speciation.\nNew genes can evolve from noncoding regions of DNA. It is not until certain regulatory elements are present in \nthe DNA that a noncoding region becomes a new, functional gene that encodes a protein. These regulatory \nelements include a promoter, a 5\u2032 untranslated region (UTR) followed by a start codon, and a 3\u2032 UTR \nfollowing a stop codon (Figure 1). \nFigure 1. Basic structure of a functional \nag gene \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n11\n__________________________________________________________ \nResearchers studied the evolution of the family of antifreeze-glycoprotein (AG) encoding genes in Gadidae, a \nfamily of marine fish known as cods. When present in the fish, these glycoproteins reduce the freezing \ntemperature of the fish. The researchers compared genomic sequences in nine cod species and one non-cod fish \nspecies, B. brosme. They recorded the presence or absence of the elements of functional ag genes as well as \nag-like sequences that are similar to a functional gene but have undergone mutation and do not contain all the \nelements required to enable protein production (Figure 2). \nFigure 2. Phylogenetic tree showing the evolution of ag genes \n(b) Based on the data in Figure 2, explain how changes to the genome enabled cods to survive and reproduce\nafter a period of freezing temperatures between 10 and 15 million years ago.\n(c) Using the template in the space provided for your response, place an \u201cX\u201d on the phylogenetic tree to\nrepresent the origin of the functional ag gene.\n(d) Based on Figure 2, explain how genetic differences among the species in the Gadidae family determine the\nhabitats in which they can survive.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \nIf there are multiple parts to this question, write the part letter with your response. \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n12",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe a post-zygotic mechanism that prevents gene flow and thus enables speciation.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on the data in Figure 2, explain how changes to the genome enabled cods to",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Using the template in the space provided for your response, place an \u201cX\u201d on the",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Based on Figure 2, explain how genetic differences among the species in the Gadidae",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q6: Short FRQ (4 points)",
+    "text": "6. Scientists can quantify the rate of translation as ribosomes move along an mRNA from one codon to the next.\nUsing a procedure called ribosome profiling, the scientists measured how long a ribosome remains stationary at\neach codon of each mRNA. They determined the average translation rate across all codons is 5.2 amino acids\nper second but that the average translation rate for specific codons in different mRNA sequences can vary\nwidely. These variations in translation rates are thought to facilitate correct folding of the protein being\nproduced. The rate at which three different codons were translated was measured in 100 different mRNAs. The\nscientists determined the distribution of rate (number of times each rate was recorded) for each of the three\ncodons: GAC (Figure 1A), AUU (Figure 1B), and UGG (Figure 1C).\nFigure 1. The distribution of translation rates for three different codons (A) GAC, (B) AUU, and (C) UGG \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n13\n__________________________________________________________ \n(a) Using the data in Figure 1, graph A, identify the rate (in ms/codon) that was recorded the greatest number\nof times for the GAC codon.\n(b) Using the data in Figure 1, graphs B and C, describe the variation in translation rate of the AUU codon\ncompared with that of the UGG codon.\n(c) Scientists hypothesize that tRNA molecules that bind to UGG codons are available in lower abundance than\nare tRNAs that bind to AUU codons. Support the scientists\u2019 hypothesis using the data in Figure 1.\n(d) Amino acids can be encoded by multiple codons. In many organisms, certain codons for the same amino\nacid occur more frequently in an mRNA than do other codons. Based on the data provided, explain why the\nuse of one codon over another for the same amino acid might result in increased levels of protein production\nfrom a particular mRNA.\nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \nIf there are multiple parts to this question, write the part letter with your response. \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n14\nSTOP \nEND OF EXAM \n\u00a9 2024 College Board. \nVisit College Board on the web: collegeboard.org. \n15",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Using the data in Figure 1, graph A, identify the rate (in ms/codon ) that was recorded the",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Using the data in Figure 1, graphs B and C, describe the variation in translation rate of the",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Scientists hypothesize that tRNA molecules that bind to UGG codons are available in",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Amino acids can be encoded by multiple codons. In many organisms, certain codons for",
+        "pts": 1
+      }
+    ]
+  }
+];
+
+// Set sourced from AP Biology 2021.
+const BIO_SET4_FRQ = [
+  {
+    "title": "Q1: Long FRQ (10 points)",
+    "text": "1. Polycystic kidney disease P K D is an inherited disease that causes water loss from the body and affects cell \ndivision in the kidneys. Because water movement across cell membranes is related to ion movement, scientists \ninvestigated the role of the \n \nN\n a plu s, slash, K plus, A T P ase (also known as the sodium/potassium pump) in this disease. \nOuabain, a steroid hormone, binds to the \n \nN\n a plu s, slash, K plus, A T P ase in plasma membranes. Individuals with P K D have a \ngenetic mutation that results in an increased binding of ouabain to the \n \nN\n a plu s, slash, K plus, A T P ase . The scientists treated \nnormal human kidney N H K cells and P K D cells with increasing concentrations of ouabain and measured the \nnumber of cells (Figure 1) and the activity of the \n \nN\n a plus , slash, K plus, A T P ase (Figure 2) after a period of time. The \nscientists hypothesized that a signal transduction pathway that includes the protein kinases M E K and E R K \n(Figure 3) may play a role in P K D symptoms. \n \n \nThe figure presents a bar graph. The vertical axis labeled \u201cNumber of Cells,\u201d and the numbers 0 through 160, in increments of 20, are indicated. The horizontal axis is labeled \u201cOuabain, in p M,\u201d and the numbers 0, 1, 10, 10 squared, 10 cubed, 10 to the fourth power, 10 to the fifth power, 10 to the sixth power, 10 to the seventh power, 10 to the eighth power, and 10 to the ninth power are indicated. Each number has two bars. A key indicates that one bar represents P K D and one bar represents N H K. Each bar also has an error bar. From left to right, the data are as follows. All numbers are approximate. \n\nOuabain, 0 p M. N H K, 100 cells, with an error bar from 95 to 105. P K D, 100 cells, with an error bar from 95 to 105.\nOuabain, 1 p M. N H K, 103 cells, with an error bar from 98 to 108. P K D, 100 cells, with an error bar from 95 to 105.\nOuabain, 10 p M. N K H, 110 cells, with an error bar from 105 to 115. P K D, 103 cells, with an error bar from 95 to 109.\nOuabain, 10 squared p M. N K H, 103 cells, with an error bar from 97 to 107. P K D, 125 cells, with an error bar from 120 to 130.\nOuabain, 10 cubed p M. N K H, 103 cells, with an error bar from 98 to 105. P K D, 135 cells, with an error bar from 130 to 140. \nOuabain, 10 to the fourth power p M. N K H, 105 cells, with an error bar from 100 to 108. P K D, 150 cells, with an error bar from 140 to 158. \nOuabain, 10 to the fifth power p M. N K H, 80 cells, with an error bar from 75 to 85. P K D, 110 cells, with an error bar from 99 to 122.\nOuabain, 10 to the sixth power p M. N K H, 40 cells, with an error bar from 35 to 55. P K D, 30 cells, with an error bar from 17 to 43.\nOuabain, 10 to the seventh power p M. N K H, 47 cells, with an error bar from 38 to 55. P K D, 27 cells, with an error bar from 12 to 40.\nOuabain, 10 to the eighth power p M. N K H, 43 cells, with an error bar from 38 to 55. P K D, 30 cells, with an error bar from 22 to 39. \nOuabain, 10 to the ninth power p M. N K H, 37 cells, with an error bar from 27 to 50. P K D, 28 cells, with an error bar from 20 to 37. \nFigure 1. Cell number compared with the number of \ncells at 0 p M ouabain. Normal human kidney N H K \ncells and polycystic kidney disease P K D cells were \ntreated with increasing concentrations of ouabain. Error \nbars represent plus or minus, 2 S E sub bar x . The figure presents a graph of two curves in a coordinate plane. The horizontal axis is labeled \u201cOuabain, in p M,\u201d and the numbers 0, 1, 10, 10 squared, 10 cubed, 10 to the fourth power, 10 to the fifth power, 10 to the sixth power, 10 to the seventh power, 10 to the eighth power, and 10 to the ninth power are indicated. The vertical axis labeled \u201cPercent of N a plus, slash K plus A T P ase Activity,\u201d and the numbers 0 through 110, in increments of 10, are indicated. A key indicates that one curve represents N H K and the other curve represents P K D. There is a data point plotted for each value on the horizontal axis, and each point has a vertical error bar. For each curve, the approximate vertical axis value will be provided with their error bar values by curve and horizontal value. Note that all values are approximate. \n\nN H K curve. \n0 p M. 100. The error bar extends from 98 to 105. \n1 p M. 98. The error bar extends from 95 to 105. \n10 p M. 97. The error bar extends from 95 to 101. \n10 squared p M. 97. The error bar extends from 92 to 101. \n10 cubed p M. 96. The error bar extends from 94 to 98. \n10 to the fourth power p M. 93. The error bar extends from 88 to 99. \n10 to the fifth power p M. 79. The error bar extends from 75 to 82. \n10 to the sixth power p M. 30. The error bar extends from 26 to 35. \n10 to the seventh power p M. 8. The error bar extends from 4 to 9. \n10 to the eighth power p M. 2. The error bar is negligible. \n10 to the ninth power p M. 1. The error bar is negligible. \n\nP K D curve. \n0 p M. 100. The error bar extends from 98 to 105. \n1 p M. 98. The error bar extends from 95 to 105. \n10 p M. 97. The error bar extends from 93 to 105. \n10 squared p M. 96. The error bar extends from 92 to 103. \n10 cubed p M. 94. The error bar extends from 90 to 100. \n10 to the fourth power p M. 90. The error bar extends from 88 to 99. \n10 to the fifth power p M. 70. The error bar extends from 65 to 75. \n10 to the sixth power p M. 30. The error bar extends from 27 to 33. \n10 to the seventh power p M. 11. The error bar extends from 8 to 12. \n10 to the eighth power p M. 3. The error bar extends from 1 to 8. \n10 to the ninth power p M. 1. The error bar is negligible. \nFigure 2. Percent \n N a plus, slash, K plus, A T P ase \n activity of N H K and \n P K D cells treated with increasing concentrations of \nouabain. Error bars represent plus or minus, 2 S E sub bar x . \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n5 \n\n The figure presents a diagram of a signal transduction pathway. The pathway is arranged from top to bottom as follows. At the top of the diagram, N a plus slash K plus, A T P ase is drawn over Plasma Membrane. A dot labeled Bound Ouabain is indicated against the N a plus slash K plus A T P ase. Arrows are drawn to a rightward pointing arrow between M E K and P M E K. From P M E K, an arrow is drawn down to a rightward pointing arrow between E R K and P E R K. An arrow is drawn from P E R K through the nuclear envelope to a strand of D N A. An arrow is drawn from the D N A to the Transcription of Target Genes. \nFigure 3. Signal transduction pathway hypothesized to play a role in the increased number of P K D cells \n(a) Describe the characteristics of the plasma membrane that prevent simple diffusion of \n \n \nN a plus and K plus \nacross \nthe membrane. Explain why A T P is required for the activity of the \n \nN\n a plus slash K plus A T P ase . \n(b) Identify a dependent variable in the experiment represented in Figure 1. Justify the use of normal human \nkidney N H K cells as a control in the experiments. Justify the use of a range of ouabain concentrations in \nthe experiment represented in Figure 1. \n(c) Based on the data shown in Figure 2, describe the relationship between the concentration of ouabain and \nthe \n \nN\n a plu s slash K plus A T P ase activity both in normal human kidney N H K cells AND in P K D cells. The scientists \ndetermined that \n \nN\n a plus slash K plus A T P ase activity in P K D cells treated with 1 p M ouabain is 150 units of \n A T P hydrolyzed per second . Calculate the expected \n \nN\n a plus slash K plus A T P ase \n cells treated \nwith \n \n10 to the sixth power, p M ouabain. \n \n(d) In a third experiment, the scientists added an inhibitor of phosphorylated \n \n M E K p M E K \n to the P K D cells \nexposed to \n \n10 to the fourth power, p M ouabain. \n \nBased on Figure 3, predict the change in the relative ratio of E R K to p E R K \nin ouabain-treated P K D cells with the inhibitor compared with ouabain-treated P K D cells without the \ninhibitor. Provide reasoning to justify your prediction. Using the data in Figure 1 AND the signal \ntransduction pathway represented in Figure 3, explain how the concentration of cyclin proteins may \n \nincrease in P K D cells treated with \n \n10 to the fourth power, p M ouabain. \n \n__________________________________________________________ \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n6",
+    "maxPoints": 10,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the characteristics of the plasma membrane that prevent simple diffusion of Na+",
+        "pts": 2
+      },
+      {
+        "part": "(b)",
+        "desc": "Identify a dependent variable in the experiment represented in Figure 1.",
+        "pts": 3
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the data shown in Figure 2, describe the relationship between the concentration of",
+        "pts": 2
+      },
+      {
+        "part": "(d)",
+        "desc": "In a third experiment, the scientists added an inhibitor of phosphorylated MEK (pMEK) to",
+        "pts": 3
+      }
+    ]
+  },
+  {
+    "title": "Q2: Long FRQ (8 points)",
+    "text": "2. Geneticists investigated the mode of inheritance of a rare disorder that alters glucose metabolism and first \nshows symptoms in adulthood. The geneticists studied a family in which some individuals of generations 2 \nand 3 are known to have the disorder. Based on the pedigree (Figure 1), the geneticists concluded that the \n \ndisorder arose in individual 2 from generation 2 and w\n \nas caused by a mutation in mitochondrial D N A . The figure presents a pedigree that shows individuals with the glucose metabolism disorder. A key indicates six symbols to represent female without disorder, male without disorder, female with disorder, male with disorder, female with unknown phenotype, and male with unknown phenotype. There are four generations. Within each generation, each individual is labeled with a number.\nGeneration 1 consists of individual 1, a female without the disorder who has three second generation children with individual 2, a male without the disorder. \nTheir children in generation 2 are individual 2, individual 3, and individual 5. Individual 2, a female with the disorder, has four third generation children with individual 1, a male without the disorder. Individual 3, a male without the disorder, has two third generation children with individual 4, a female without the disorder. Individual 5, a female without the disorder, has th\nFigure 1. Pedigree of a family showing individuals with the glucose metabolism disorder. A question mark \nindicates that the phenotype is unknown. \nTABLE 1. AVERAGE BLOOD GLUCOSE LEVELS OF INDIVIDUALS IN GENERATION IV \nIndividual \n Average Blood Glucose Level ( in \nmi\nlligrams per deciliter, plus or minus, 2 S E sub x bar )\n I\nn\ndividual 1 in generation 4 \n 170 plus or minus 15 \n I\nn\ndividual 2 in generation 4 \n 190 plus or minus 10 \n I\nn\ndividual 3 in generation 4 \n 145 plus or minus 5 \n I\nn\ndividual 4 in generation 4 \n 165 plus or minus 15 \n I\nn\ndividual 5 in generation 4 \n 110 plus or minus 15 \n I\nn\ndividual 6 in generation 4 \n 125 plus or minus 5 \n I\nn\ndividual 7 in generation 4 \n 105 plus or minus 15 \n I\nn\ndividual 8 in generation 4 \n 120 plus or minus 10 \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n7 \n\n \nTABLE 2. PHENOTYPIC CLASSIFICATIONS BASED ON BLOOD GLUCOSE LEVELS \nPhenotype \n Blood Glucose Level (in milligrams per deciliter) \nNormal \n less than 140 milligrams per deciliter \nAt risk \n 140 to 199 milligrams per deciliter \nAffected \n greater than or equal to 200 milligrams per deciliter \n(a) The disorder alters glucose metabolism. Describe the atoms AND types of bonds in a glucose molecule. \n(b) Using the template in the space provided for your response, construct an appropriately labeled graph based \non the data in Table 1. Determine one individual who is both at risk of developing the disorder and has a \nsignificantly different blood glucose level from that of individual 1 in generation 4 1.\n(c) Based on the pedigree, identify all individuals in generation 4 who can pass on the mutation to their \nchildren. \n(d) Based on the fact that individual 2 in generation 2 is af\n \nfected, a student claims that the disorder is inherited in an \nX-linked recessive pattern. Based on the student\u2019s claim, predict which individuals of generation 3 will \nbe affected by the disorder. Based on the pedigree, justify why the data do NOT support the student\u2019s claim. \n__________________________________________________________ \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n8 \n\n \n \n \n__________________________________________________________",
+    "maxPoints": 8,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "The disorder alters glucose metabolism. Describe the atoms AND types of bonds in a",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Use the template provided to construct an appropriately labeled graph based on the data in",
+        "pts": 4
+      },
+      {
+        "part": "(c)",
+        "desc": "Based on the pedigree, identify all individuals in generation IV who can pass on the",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Based on the fact that individual II-2 is affected, a student claims that the disorder is",
+        "pts": 2
+      }
+    ]
+  },
+  {
+    "title": "Q3: Short FRQ (4 points)",
+    "text": "3. Researchers hypothesize that the plant compound resveratrol improves mitochondrial function. To test this \nhypothesis, researchers dissolve resveratrol in dimethyl sulfoxide D M S O . The solution readily passes \nthrough cell membranes. They add the resveratrol solution to mammalian muscle cells growing in a \nnutrient-rich solution (culture medium) that contains glucose. They measure A T P production at several time \npoints after the addition of the resveratrol solution and find an increase in A T P production by the muscle cells. \n(a) Describe the primary advantage for a mammalian muscle cell in using aerobic respiration over fermentation. \n(b) Identify an appropriate negative control for this experiment that would allow the researchers to conclude \nthat A T P is produced in response to the resveratrol treatment. \n(c) Predict the effect on short-term A T P production when resveratrol-treated mammalian muscle cells are \ngrown in a culture medium that lacks glucose or other sugars. \n(d) The researchers find that resveratrol stimulates the production of components of the electron transport \nchain. The researchers claim that treatment with resveratrol will also increase oxygen consumption by the \ncells if glucose is not limiting. Justify the claim. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n9 \n\n__________________________________________________________",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe the primary advantage for a mammalian muscle cell in using aerobic respiration",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Identify an appropriate negative control for this experiment that would allow the",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "Predict the effect on short-term ATP production when resveratrol-treated mammalian",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "The researchers find that resveratrol stimulates the production of components of the",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q4: Short FRQ (4 points)",
+    "text": "4. In 1981 a single immature male Geospiza conirostris finch flew more than 100 kilometers from the Gal\u00e1pagos \nisland of Espa\u00f1ola to the Gal\u00e1pagos island of Daphne Major, where no G. conirostris finches were living. The \n \nimmigrant finch bred with a female G. fortis, a species of finch common on Daphne Major. The \n \n F sub 1 finches and \nlater generations interbred only within their lineage. By 2012 scientists counted 23 individuals, including eight \nbreeding pairs, within this hybrid lineage on Daphne Major. The hybrid lineage became known as Big Bird. \nBirds with different beak shapes and sizes eat different types of food. The dimensions of the Big Bird beaks \nrelative to the beaks of the major competitor finch species on Daphne Major are shown in Figure 1. The figure presents a scatterplot in the first quadrant of a coordinate plane. The horizontal axis is labeled \u201cBeak Length, in millimeters,\u201d and the numbers 7.5 through 17.5, in increments of 2.5, are indicated. The vertical axis is labeled \u201cBeak Depth, in millimeters,\u201d and the numbers 5 through 20, in increments of 5, are indicated. A key indicates that four different types of birds are indicated in the \nFigure 1. The dimensions of the beaks of the Big Bird lineage and of its major competitor species in 2012 on \nDaphne Major. Each symbol represents the beak dimensions of a single bird. \n(a) The Big Bird lineage became reproductively isolated from G. fortis. Describe one prezygotic mechanism \nthat likely contributed to the reproductive isolation of the Big Bird lineage from G. fortis. \n(b) Based on the data in Figure 1, explain why the Big Bird population has been able to survive and reproduce \non Daphne Major. \n(c) A virus infects and kills all G. magnirostris on Daphne Major but does not affect the other finch species. \nAssuming food type and availability stay the same, predict the most likely change in the beak phenotype of \nthe Big Bird population after six more generations. \n(d) Provide reasoning to justify your prediction in part (c). \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n10",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "The Big Bird lineage became reproductively isolated from G. fortis. Describe one",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on the data in Figure 1, explain why the Big Bird population has been able to survive",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "A virus infects and kills all G. magnirostris on Daphne Major but does not affect the other",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Provide reasoning to justify your prediction in part (c).",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q5: Short FRQ (4 points)",
+    "text": "5. Annual plants complete their life cycle, including germination, seed production, and death, within one year. \nAmbrosia trifida (giant ragweed) is an annual plant that readily colonizes any land that has had a disturbance \nsuch as plowing. The plant is considered an invasive species in regions outside of its native range. In a \nparticular region, the seeds of A. trifida germinate from early March through the end of the summer, while the \nseeds of other annual plants require warmer soil temperatures and thus germinate from late April through the \nend of the summer. \nResearchers studied the influence of A. trifida on the biodiversity of other annual plant species that grow in the \nsame field. In early spring, the researchers marked off identical plots of land in a field that had been plowed the \nprevious fall and not replanted with new crops. All plants that grew on one half of the plots were left untouched \n(Figure 1A), while all germinating A. trifida seedlings were removed from the other half of the plots \nthroughout the spring and summer (Figure 1B). In late summer, the researchers counted and identified all \nplants that grew in the plots. The distribution of plants is represented by the symbols in Figures 1A and 1B. The figure presents a diagram of two rectangular plots. There is a key for the diagram indicates that an X \nFigure 1. Representations of plant identity and distribution in experimental plots in late summer. Each box \nrepresents one typical experimental plot, and each symbol represents 10 individual plants. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n11 \n\n__________________________________________________________ \n(a) Describe a cause of logistic growth of the ragweed population. \n(b) Based on the representation in Figure 1, explain why the scientists claim that plot B would be more \nresilient than plot A in response to a sudden environmental change. \n(c) In a third group of plots, the researchers removed all seedlings of all plants that germinated before June 1. \nAll plants that germinated after June 1 were left untouched. Using the template in the space provided for \nyour response and the symbols shown in Figure 1, represent the expected plant species that would be found \nin this third group of plots three months later. Draw no more than 12 symbols. Assume all other \nenvironmental conditions are the same as for the initial study described. \n(d) Explain how an invasive species such as ragweed affects ecosystem biodiversity, as illustrated in Figure 1. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n12",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Describe a cause of logistic growth of the ragweed population.",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Based on the representation in Figure 1, explain why the scientists claim that plot B would",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "In a third group of plots, the researchers removed all seedlings of all plants that germinated",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "Explain how an invasive species such as ragweed affects ecosystem biodiversity, as",
+        "pts": 1
+      }
+    ]
+  },
+  {
+    "title": "Q6: Short FRQ (4 points)",
+    "text": "6. The small invertebrate krill species Thysanoessa inermis is adapted to cold 4\n d egrees Celsius seawater. Over the past ten \nyears, there has been a gradual increase in the water temperature of the krill\u2019s habitat. A sustained increase in \nwater temperature may ultimately affect the ability of the krill to survive. \nOne effect of higher temperatures is protein misfolding within cells. Krill have several h s p genes that code for \nheat-shock proteins H S P s . These proteins help prevent protein misfolding or help to refold proteins to their \nnormal shapes. \nScientists conducted experiments on T. inermis to detect changes in the expression of h s p genes when the krill \nwere exposed to temperatures above 4 degrees Celsius . An experimental group of krill was maintained in tanks with 4 degrees Celsius \nseawater and then placed into tanks with 10 degrees Celsius \nsea\n \nwater for approximately three hours. The krill were then\ngiven a six-hour recovery period in the 4 degrees Celsius seawater tanks. A control group of krill was moved from a tank of \n 4 degrees Celsius seawater to another tank of 4 degrees Celsius seawater for approximately three hours and then returned to the original \ntank. The scientists analyzed h s p gene expression by measuring the concentrations of three m R N A s (1, 2, 3) \ntranscribed from certain h s p genes in both the heat-shocked krill (Figure 1) and the control krill. For the \ncontrol krill, no transcription of the h s p genes was detected throughout the test period (data not shown). The figure presents three line graphs in a single coordinate plane. The horizontal axis is labeled \u201cTime, in hours,\u201d and the numbers 0 through 12, in increments of 1, are indicated. The vertical axis is labeled \u201cAverage m R N A Concentration, in nanograms per microliter,\u201d and the numbers 0 through 30, in increments of 5, are indicated. The plane is divided vertically into three regions. A temperature is given for reach region. From 0 to 3 hours, the temperature is 4 degrees Celsius. From 3 to just past 6 hours, the temperature is 10 degrees Celsius. From just \nFigure 1. Average concentration of three m R N A s (1, 2, 3) \n transcribed from h s p genes in krill heat shocked at \n 10 degrees Celsius . Error bars represent plus or minus, 2 S E sub x bar .\n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n13 \n\n \n \n__________________________________________________________ \n(a) Identify the h s p m R N A \n that has the slowest rate of concentration increase in response to heat-shock \ntreatment. \n(b) Describe the trend in the average concentration of m R N A 1 throughout the experiment. \n(c) The scientists hypothesized that the heat-shock protein H S P translated from m R N A 1 plays a greater role \nin refolding proteins than does the H S P translated from m R N A 2 . Use the data to support the hypothesis. \n(d) m R N A s 1 and 2 \n are transcribed from the same gene. Explain how a cell can produce two different \n m R N A s from the same gene. \nWrite your responses to this question only on the designated pages in the separate Free Response booklet. \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n14 \n\nSTOP \nEND OF EXAM \n\u00a9 2021 College Board. \nVisit College Board on the web: collegeboard.org. \n15",
+    "maxPoints": 4,
+    "rubric": [
+      {
+        "part": "(a)",
+        "desc": "Identify the hsp mRNA that has the slowest rate of concentration increase in response to",
+        "pts": 1
+      },
+      {
+        "part": "(b)",
+        "desc": "Describe the trend in the average concentration of mRNA I throughout the experiment.",
+        "pts": 1
+      },
+      {
+        "part": "(c)",
+        "desc": "The scientists hypothesized that the heat-shock protein (HSP) translated from mRNA I",
+        "pts": 1
+      },
+      {
+        "part": "(d)",
+        "desc": "mRNAs I and II are transcribed from the same gene. Explain how a cell can produce",
+        "pts": 1
+      }
+    ]
+  }
+];
+
+void BIO_SET1_FRQ;
+void BIO_SET2_FRQ;
+void BIO_SET3_FRQ;
+void BIO_SET4_FRQ;
+
+
 // ===== APP STATE =====
 function defaultLandingSections() {
   return { econ: false, physics: false, euro: false, psych: false };
@@ -8278,6 +11376,10 @@ function getQuestions() {
     case 'psych1': return typeof PSYCH_SET1_MC!=='undefined'?PSYCH_SET1_MC:[];
     case 'psych2': return typeof PSYCH_SET2_MC!=='undefined'?PSYCH_SET2_MC:[];
     case 'psych3': return typeof PSYCH_SET3_MC!=='undefined'?PSYCH_SET3_MC:[];
+    case 'bio1': return typeof BIO_SET1_MC!=='undefined'?BIO_SET1_MC:[];
+    case 'bio2': return typeof BIO_SET2_MC!=='undefined'?BIO_SET2_MC:[];
+    case 'bio3': return typeof BIO_SET3_MC!=='undefined'?BIO_SET3_MC:[];
+    case 'bio4': return typeof BIO_SET4_MC!=='undefined'?BIO_SET4_MC:[];
     default: return [];
   }
 }
@@ -8297,13 +11399,18 @@ function getFRQs() {
     case 'psych1': return typeof PSYCH_SET1_FRQ!=='undefined'?PSYCH_SET1_FRQ:[];
     case 'psych2': return typeof PSYCH_SET2_FRQ!=='undefined'?PSYCH_SET2_FRQ:[];
     case 'psych3': return typeof PSYCH_SET3_FRQ!=='undefined'?PSYCH_SET3_FRQ:[];
+    case 'bio1': return typeof BIO_SET1_FRQ!=='undefined'?BIO_SET1_FRQ:[];
+    case 'bio2': return typeof BIO_SET2_FRQ!=='undefined'?BIO_SET2_FRQ:[];
+    case 'bio3': return typeof BIO_SET3_FRQ!=='undefined'?BIO_SET3_FRQ:[];
+    case 'bio4': return typeof BIO_SET4_FRQ!=='undefined'?BIO_SET4_FRQ:[];
     default: return [];
   }
 }
 function isEuro() { return state.exam && state.exam.startsWith('euro'); }
 function isMarco() { return state.exam === 'euro_marco'; }
 function isPsych() { return state.exam && state.exam.startsWith('psych'); }
-function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || (isEuro() && !isMarco()) || isPsych(); }
+function isBio() { return state.exam && state.exam.startsWith('bio'); }
+function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || (isEuro() && !isMarco()) || isPsych() || isBio(); }
 function getExamName() {
   switch(state.exam) {
     case 'macro': return 'AP Macroeconomics';
@@ -8314,6 +11421,7 @@ function getExamName() {
     case 'physics1_2014': return 'AP Physics 1';
     case 'euro1': case 'euro2': case 'euro3': case 'euro4': case 'euro5': case 'euro6': case 'euro_marco': return 'AP European History';
     case 'psych1': case 'psych2': case 'psych3': return 'AP Psychology';
+    case 'bio1': case 'bio2': case 'bio3': case 'bio4': return 'AP Biology';
     default: return 'AP Exam';
   }
 }
@@ -8331,9 +11439,13 @@ function getExamYear() {
   if (state.exam === 'psych1') return '2021';
   if (state.exam === 'psych2') return '2022';
   if (state.exam === 'psych3') return '2023';
+  if (state.exam === 'bio1') return '2021';
+  if (state.exam === 'bio2') return '2016';
+  if (state.exam === 'bio3') return '2018';
+  if (state.exam === 'bio4') return '2013';
   return '2022';
 }
-function getMCTime() { return isEuro() ? 55 : isPsych() ? 70 : (hasFRQ() ? 70 : 90); }
+function getMCTime() { return isEuro() ? 55 : isPsych() ? 70 : isBio() ? 90 : (hasFRQ() ? 70 : 90); }
 const LETTERS = ['A','B','C','D','E'];
 
 // ===== TIMER =====
@@ -8412,7 +11524,7 @@ function renderLanding() {
       <section class="hero">
         <h1>AP Exam Practice</h1>
         <p class="subtitle">Practice with released exams and curated practice sets</p>
-        <div class="quick-stats">16 exams • 4 subjects • 1,000+ questions</div>
+        <div class="quick-stats">20 exams • 5 subjects • 1,200+ questions</div>
       </section>
 
       <div class="subjects">
@@ -8442,6 +11554,13 @@ function renderLanding() {
           <div class="exam-card num-card" onclick="selectExam('psych1')"><div class="card-num psych-num">2021</div><div class="card-body"><span class="badge hard">HARDEST EVER</span><h2>AP Psychology</h2><p>Mean 2.71 · 53.3% pass rate · 100 MC + 2 FRQ</p><div class="meta"><div>⏱ 2 hr</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('psych2')"><div class="card-num psych-num">2022</div><div class="card-body"><h2>AP Psychology</h2><p>Mean 2.86 · 58.3% pass rate · 100 MC + 2 FRQ</p><div class="meta"><div>⏱ 2 hr</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('psych3')"><div class="card-num psych-num">2023</div><div class="card-body"><h2>AP Psychology</h2><p>Mean 2.89 · 59.6% pass rate · 100 MC + 2 FRQ</p><div class="meta"><div>⏱ 2 hr</div></div></div></div>
+        `)}
+
+        ${section('bio','bio','🧬','AP Biology','AP Biology — 4 practice sets',`
+          <div class="exam-card num-card" onclick="selectExam('bio1')"><div class="card-num bio-num">2021</div><div class="card-body"><span class="badge hard">HARDEST</span><h2>AP Biology</h2><p>Mean 2.83 · 59.2% pass rate · 60 MC + 6 FRQ</p><div class="meta"><div>⏱ 3 hr</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('bio2')"><div class="card-num bio-num">2016</div><div class="card-body"><h2>AP Biology</h2><p>Mean 2.85 · 60.5% pass rate · 60 MC + 6 FRQ</p><div class="meta"><div>⏱ 3 hr</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('bio3')"><div class="card-num bio-num">2018</div><div class="card-body"><h2>AP Biology</h2><p>Mean 2.87 · 61.5% pass rate · 60 MC + 6 FRQ</p><div class="meta"><div>⏱ 3 hr</div></div></div></div>
+          <div class="exam-card num-card" onclick="selectExam('bio4')"><div class="card-num bio-num">2013</div><div class="card-body"><h2>AP Biology</h2><p>Mean 2.88 · 63.1% pass rate · 60 MC + 6 FRQ</p><div class="meta"><div>⏱ 3 hr</div></div></div></div>
         `)}
       </div>
     </div>
@@ -8560,7 +11679,7 @@ function renderFRQTransition() {
   </div>
   <div class="main no-sidebar section-transition" style="max-width:700px;margin:80px auto 0">
     <h2>Section II: Free Response</h2>
-    <p>${isPsych() ? 'You will have <strong>50 minutes</strong> to answer 2 free-response questions.<br>Each question is worth 7 points. Spend approximately 25 minutes on each question.<br>You must APPLY concepts to the scenario — definitions alone earn zero points.' : isEuro() ? 'You will have <strong>100 minutes</strong> to answer the free-response questions.<br>SAQ: 40 minutes (3 questions). DBQ: 60 minutes (1 document-based question + 1 long essay).' : 'You will have <strong>60 minutes</strong> to answer 3 free-response questions.<br>You are advised to spend the first 10 minutes reading all questions and planning your answers.<br>Spend approximately half your time on the first question and divide the remaining time equally between the next two.'}</p>
+    <p>${isPsych() ? 'You will have <strong>50 minutes</strong> to answer 2 free-response questions.<br>Each question is worth 7 points. Spend approximately 25 minutes on each question.<br>You must APPLY concepts to the scenario — definitions alone earn zero points.' : isEuro() ? 'You will have <strong>100 minutes</strong> to answer the free-response questions.<br>SAQ: 40 minutes (3 questions). DBQ: 60 minutes (1 document-based question + 1 long essay).' : isBio() ? 'You will have <strong>90 minutes</strong> to answer 6 free-response questions.<br>Questions 1-2 are long (8-10 pts each). Questions 3-6 are short (4 pts each).<br>Spend ~20 min on each long question and ~10 min on each short question.' : 'You will have <strong>60 minutes</strong> to answer 3 free-response questions.<br>You are advised to spend the first 10 minutes reading all questions and planning your answers.<br>Spend approximately half your time on the first question and divide the remaining time equally between the next two.'}</p>
     <button class="btn btn-primary" onclick="startFRQ()" style="font-size:16px;padding:12px 32px">Begin Section II</button>
   </div>`;
 }
@@ -8680,9 +11799,10 @@ function renderResults() {
 
   const totalMC = qs.length;
   const psychMode = isPsych();
-  const mcWeight = psychMode ? 53.33 : (hasFRQ() ? 53.33 : 80);
-  const frqTotal = psychMode ? 14 : 20;
-  const frqWeight = psychMode ? 26.67 : (hasFRQ() ? 26.67 : 0);
+  const bioMode = isBio();
+  const mcWeight = bioMode ? 40 : psychMode ? 53.33 : (hasFRQ() ? 53.33 : 80);
+  const frqTotal = bioMode ? 34 : psychMode ? 14 : 20;
+  const frqWeight = bioMode ? 40 : psychMode ? 26.67 : (hasFRQ() ? 26.67 : 0);
   const mcWeighted = (mcCorrect / totalMC) * mcWeight;
   const frqWeighted = hasFRQ() ? (frqPoints / frqTotal) * frqWeight : 0;
   const composite = hasFRQ() ? (mcWeighted + frqWeighted) : mcWeighted;
@@ -8809,7 +11929,7 @@ function selectAnswer(i) {
 function toggleFlag() { state.mcFlags[state.currentQ] = !state.mcFlags[state.currentQ]; render(); }
 function reviewMC() { state.screen = 'mc-review'; render(); }
 function goToFRQ() { stopTimer(); state.screen = 'frq-transition'; state.currentQ = 0; render(); }
-function getFRQTime() { return isPsych() ? 50 : isEuro() ? 100 : 60; }
+function getFRQTime() { return isPsych() ? 50 : isEuro() ? 100 : isBio() ? 90 : 60; }
 function startFRQ() { startTimer(getFRQTime()); state.screen = 'frq'; state.currentQ = 0; render(); }
 function goToFRQScoring() { state.screen = 'frq-scoring'; render(); }
 function updateFRQTotal() {
