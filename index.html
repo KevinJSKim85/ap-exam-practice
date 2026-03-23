@@ -181,66 +181,644 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <script>
 // ===== QUESTION DATA =====
 const MACRO_MC = [
-{q:"When an economy operates inside its production possibilities curve, it can increase production of one good",choices:["at zero opportunity cost in terms of the other good","only with an increase in unemployment","only with an increase in the price level","only with an increase in technology","only if the labor force increases"],answer:0},
-{q:"If people save 10 percent of each additional dollar received in income, which of the following is true?",choices:["The marginal propensity to consume is less than the marginal propensity to save.","The marginal propensity to consume increases as income increases.","The marginal propensity to consume is 0.1, and the maximum value of the tax multiplier is \u22121.","The marginal propensity to consume equals the marginal propensity to save.","The marginal propensity to consume is 0.9, and the maximum value of the spending multiplier is 10."],answer:4},
-{q:"An increase in spending on capital goods will most likely lead to which of the following in the long run?",choices:["An increase in government spending","An increase in long-run aggregate supply","An increase in consumption spending due to crowding out","A decrease in employment","A decrease in economic growth"],answer:1},
-{q:"The real interest rate can remain constant if an increase in transfer payments is accompanied by",choices:["a decrease in government purchases","a decrease in income tax rates","an increase in reserve requirements","an open-market sale of bonds","a decrease in private savings"],answer:0},
-{q:"Suppose the only revenue taken in by the government is in the form of income taxes and the tax rate is 10 percent. If national income is $900 billion and government expenditures plus transfers are $120 billion, which of the following is true about the government budget?",choices:["The government budget has a surplus of $780 billion.","The government budget has a surplus of $120 billion.","The government budget is balanced.","The government budget has a deficit of $90 billion.","The government budget has a deficit of $30 billion."],answer:4},
-{q:"One reason the aggregate demand curve is downward-sloping is that as the price level increases,",choices:["the purchasing power of assets decreases","imports decrease","the demand for the domestic currency on the foreign exchange market increases","interest-sensitive expenditures increase","the public feels richer and spends more"],answer:0},
-{q:'The table shows the time required to produce one crane or one truck in the United States and Thailand. The United States and Thailand have the same amount of resources.<br><table><tr><th></th><th>1 Crane</th><th>1 Truck</th></tr><tr><td>United States</td><td>50 hours</td><td>25 hours</td></tr><tr><td>Thailand</td><td>20 hours</td><td>30 hours</td></tr></table>Which of the following can be accurately concluded from the data?',choices:["The United States has a comparative advantage in producing cranes, and Thailand has a comparative advantage in producing trucks.","Thailand has a comparative advantage in producing cranes, and the United States has a comparative advantage in producing trucks.","Thailand has a comparative advantage in producing both cranes and trucks.","The United States has a comparative advantage in producing both cranes and trucks.","Neither country has a comparative advantage in producing cranes and trucks."],answer:1},
-{q:"All of the following concepts can be illustrated using the production possibilities curve model EXCEPT",choices:["unemployment","inflation","opportunity cost","choice","scarcity"],answer:1},
-{q:"An expansionary monetary policy is intended to eliminate which type of unemployment?",choices:["Frictional","Cyclical","Structural","Seasonal","Natural"],answer:1},
-{q:"Based on the graph provided, which segment represents only the expansionary phase of the business cycle?",choices:["RS","ST","SU","TV","VW"],answer:3},
-{q:"Which of the following correctly describes spending in a circular flow model?",choices:["Households hire resources from producers in resource markets.","Households purchase goods and services from producers in product markets.","Households purchase goods and services from producers in resource markets.","Producers hire resources from households in product markets.","Producers sell resources to households in product markets."],answer:1},
-{q:"If some unemployed individuals become discouraged and stop looking for employment, which of the following will occur in the short run?",choices:["The unemployment rate will increase.","The unemployment rate will decrease.","The labor force will increase.","Real output will increase.","The labor force participation rate will increase."],answer:1},
-{q:"Which of the following would NOT be included in the gross domestic product of the United States in 2018?",choices:["The value of computers produced in the United States in 2018 but not sold","The value of cars produced in the United States in 2018 by a Japanese motor company","The value of cars produced in Japan in 2018 by a United States motor company","The amount a patient paid to a dentist for dental services completed in 2018 in the United States","The value of a restaurant meal purchased by a Japanese tourist in 2018 in the United States"],answer:2},
-{q:"Which of the following individuals benefits from unexpected inflation?",choices:["A retiree living on a fixed pension","A landlord receiving fixed lease payments","A student saving $10 each month in a piggy bank","A creditor lending out $1,000 as a fixed-rate loan","A debtor making payments on existing fixed-rate loans"],answer:4},
-{q:"Frictional unemployment may be caused by",choices:["people losing jobs when their skills become obsolete","people quitting jobs to look for better jobs","people dropping out of the job market after a considerable search","a general downturn in economic activity","a decrease in aggregate supply"],answer:1},
-{q:'Country X has the following macroeconomic statistics.<br><table><tr><th>Real Output (Billions $)</th><th>Unemployment Rate (%)</th></tr><tr><td>110</td><td>1</td></tr><tr><td>108</td><td>2</td></tr><tr><td>106</td><td>3</td></tr><tr><td>104</td><td>4</td></tr><tr><td>102</td><td>5</td></tr><tr><td>100</td><td>6</td></tr><tr><td>98</td><td>7</td></tr></table>Suppose the current cyclical unemployment rate is 2%, the frictional unemployment rate is 4%, and the structural unemployment rate is 1%. What is the full-employment level of real output?',choices:["$100 billion","$102 billion","$104 billion","$106 billion","$110 billion"],answer:1},
-{q:'The table shows the end-of-year consumer price index (CPI) for an economy.<br><table><tr><th>Year</th><th>CPI</th></tr><tr><td>2008</td><td>80</td></tr><tr><td>2009</td><td>100</td></tr><tr><td>2010</td><td>105</td></tr></table>Which of the following statements is true based on the information given?',choices:["The inflation rate in 2009 was 20 percent.","The base year for the price index is 2008.","The inflation rate was higher in 2010 than in 2009.","The inflation rate in 2010 was 5 percent.","Prices of all products rose in 2009 and 2010."],answer:3},
-{q:"One limitation of using real GDP to measure a nation\u2019s economic performance is that",choices:["real GDP does not account for inflation","real GDP does not count final goods","real GDP estimates an economy\u2019s potential, not its actual performance","real GDP does not account for nonmarket transactions","real GDP understates the rate of unemployment"],answer:3},
-{q:"Real gross domestic product is equal to which of the following?",choices:["Real wages of households","Real income plus government transfer payments","Nominal output adjusted for price-level changes","Nominal output less depreciation","Changes in the standard of living"],answer:2},
-{q:'Based on the data in the table, what is true about the market for pizza if the current market price is $10?<br><table><tr><th>Price</th><th>Quantity Demanded</th><th>Quantity Supplied</th></tr><tr><td>$5</td><td>140</td><td>20</td></tr><tr><td>$10</td><td>120</td><td>40</td></tr><tr><td>$15</td><td>100</td><td>60</td></tr><tr><td>$20</td><td>80</td><td>80</td></tr><tr><td>$25</td><td>60</td><td>100</td></tr></table>',choices:["The supply curve will shift to the left.","The demand curve will shift to the right.","The market price for pizza will decrease.","There is a shortage of 80 units.","There is a surplus of 160 units."],answer:3},
-{q:"In the short run, a contractionary fiscal policy will",choices:["shift the aggregate demand curve to the left","shift the short-run aggregate supply curve to the right","increase the money supply","increase the demand for loanable funds","increase the government budget deficit"],answer:0},
-{q:"A reduction in aggregate demand will necessarily cause an increase in unemployment in the short run when",choices:["nominal wages or prices are sticky downward","nominal wages and prices are flexible","the aggregate supply curve is vertical","the money supply grows at a constant rate","imports exceed exports"],answer:0},
-{q:"A decrease in nominal wages will cause the",choices:["price level to increase","real output to remain the same","long-run aggregate supply curve to shift to the left","short-run aggregate supply curve to shift to the right","aggregate demand curve to shift to the right"],answer:3},
-{q:"With an upward-sloping aggregate supply curve, an increase in government transfer payments will most likely",choices:["reduce the price level","reduce the level of nominal gross domestic product","increase real gross domestic product in the short run","shift the short-run aggregate supply curve to the right","shift both the aggregate demand curve and the long-run aggregate supply curve to the left"],answer:2},
-{q:"With an upward-sloping aggregate supply curve, an increase in government transfer payments will most likely",choices:["reduce the price level","reduce the level of nominal gross domestic product","increase real gross domestic product in the short run","shift the short-run aggregate supply curve to the right","shift both the aggregate demand curve and the long-run aggregate supply curve to the left"],answer:2},
-{q:"Which of the following is an example of an automatic stabilizer that is contractionary?",choices:["A government-legislated increase in the marginal income tax rate","Bond purchases by the nation\u2019s central bank","An increase in transfer payments","An increase in tax revenues as GDP increases","An increase in unemployment compensation"],answer:3},
-{q:"Which of the following correctly describes an effective fiscal policy action to close an inflationary gap?",choices:["Decreasing taxes, which will increase aggregate demand","Increasing taxes, which will increase aggregate demand","Increasing government spending, which will decrease private investment","Increasing government spending, which will decrease interest rates","Decreasing government spending, which will decrease aggregate demand"],answer:4},
-{q:"Assume that an economy is currently in a recession. If policy-makers do nothing and wages and prices are flexible, which of the following will occur in the long run?",choices:["The short-run aggregate supply curve will shift to the right, leading to full employment.","The short-run aggregate supply curve will shift to the left, leading to full employment.","The aggregate demand curve will shift to the right, leading to full employment.","The aggregate demand curve will shift to the left, leading to full employment.","The unemployment rate will continue to increase."],answer:0},
-{q:"If there is no crowding out, a $10 billion increase in investment in physical capital will most likely lead to a",choices:["less than $10 billion increase in aggregate supply","more than $10 billion increase in aggregate demand","$10 billion increase in aggregate demand","$10 billion increase in aggregate supply","$10 billion increase in the money supply"],answer:1},
-{q:"Which of the following will cause an increase in the price level in the short run?",choices:["A rightward shift in the aggregate demand curve","A rightward shift in the short-run aggregate supply curve","A rightward shift in the long-run aggregate supply curve","An increase in savings","An increase in imports"],answer:0},
-{q:"What is the most likely short-run effect of an increase in the price of oil, a key input for production?",choices:["An increase in long-run aggregate supply","Demand-pull inflation","A reduction in the unemployment rate","An increase in real gross domestic product","Cost-push inflation"],answer:4},
-{q:"Assume the economy is currently in short-run equilibrium at point D, as shown in the graph provided, and that the banking system has limited reserves. Which of the following is a monetary policy action that would restore long-run equilibrium?",choices:["An open-market purchase of government bonds, which would move the economy to point C","An open-market sale of government bonds, which would move the economy to point A","An increase in the required reserve ratio, which would move the economy to point C","An increase in government spending, which would move the economy to point C","An increase in taxes, which would move the economy to point A"],answer:1},
-{q:"Assume Bank A has the following balance sheet. If the required reserve ratio is 25 percent, what is the maximum amount by which Bank A can increase its loans?",choices:["$0","$25,000","$50,000","$100,000","$150,000"],answer:1},
-{q:"Assume that the required reserve ratio is 10 percent and the banking system has limited reserves. If the central bank buys $1,000 of bonds from commercial banks, which of the following will occur?",choices:["The money supply will increase by a maximum of $1,000.","There will be a maximum of $9,000 of new loans made by all banks.","Demand deposits will increase by a maximum of $9,000.","The amount of new cash reserves injected into the banking system will be $100.","The money supply will increase by a maximum of $10,000."],answer:4},
-{q:"Which of the following is counted in the M2 measure, but not the M1 measure, of the United States money supply?",choices:["Savings accounts","Currency","Stocks","Small time deposits","Checkable deposits"],answer:3},
-{q:"An increase in the real interest rate will most likely affect private investment in plant and equipment and the quantity of personal savings in which of the following ways?",choices:["Private investment will increase, and personal savings will increase.","Private investment will increase, and personal savings will decrease.","Private investment will decrease, and personal savings will increase.","Private investment will decrease, and personal savings will not change.","Private investment will not change, and personal savings will decrease."],answer:2},
-{q:"Assume the banking system in a nation has limited reserves. Following an unanticipated increase in the money supply, the price level and real output will change in which of the following ways in the short run?",choices:["The price level will increase, and real output will increase.","The price level will increase, and real output will decrease.","The price level will increase, and real output will not change.","The price level will not change, and real output will not change.","The price level will decrease, and real output will increase."],answer:0},
-{q:"Assume firms increase their borrowing in order to expand capacity. How will this additional borrowing affect the loanable funds market?",choices:["The supply of loanable funds curve will shift to the left.","The supply of loanable funds curve will shift to the right.","The demand for loanable funds curve will shift to the left.","The demand for loanable funds curve will shift to the right.","The loanable funds market will not be affected."],answer:3},
-{q:"Which of the following is an example of a contractionary monetary policy action by a central bank?",choices:["Increasing interest on reserves","Buying government securities on the open market","Decreasing government spending","Increasing business taxes","Decreasing the policy rate"],answer:0},
-{q:"Assume the banking system in a nation has limited reserves. When the central bank increases the required reserve ratio, a commercial bank\u2019s",choices:["excess reserves remain unchanged","excess reserves increase","excess reserves decrease","required reserves decrease","required reserves remain unchanged"],answer:2},
-{q:"Which of the following policy actions will offset the effect of a decrease in investment in plant and equipment on aggregate demand in the short run in the United States?",choices:["An open-market sale of government bonds","An increase in marginal income taxes","An increase in the required reserve ratio","A decrease in government spending","A decrease in interest on reserves"],answer:4},
-{q:"An increase in real income will cause which of the following to occur in the short run?",choices:["Imports will decrease.","Consumption spending will decrease.","Nominal interest rates will decrease.","The monetary base will increase.","Money demand will increase."],answer:4},
-{q:"Assume that a central bank operating in a banking system with limited reserves decreases its required reserve ratio. As a result, demand deposits and total reserves will most likely change in which of the following ways after all adjustments take place in the banking system and assuming banks lend out all excess reserves?",choices:["Demand deposits will increase, and total reserves will increase.","Demand deposits will increase, and total reserves will not change.","Demand deposits will not change, and total reserves will increase.","Demand deposits will decrease, and total reserves will not change.","Demand deposits will decrease, and total reserves will increase."],answer:1},
-{q:"Which of the following is true for savings accounts?",choices:["Savings accounts are shares of ownership in a company.","Savings accounts are part of the monetary base.","Savings accounts are interest-bearing assets.","Savings accounts are the most liquid form of financial assets.","Savings accounts are used as tools of monetary policy."],answer:2},
-{q:"Assume a country has ample reserves in its banking system. Which combination of monetary and fiscal policies will necessarily reduce the price level in the short run?",choices:["Selling bonds through open-market operations and increasing government spending","Increasing administered interest rates and decreasing government spending","Buying bonds through open-market operations and leaving government spending unchanged","Decreasing administered interest rates and decreasing government spending","Decreasing the policy rate and increasing government spending"],answer:1},
-{q:"Crowding out is most likely to occur with which of the following changes?",choices:["A decrease in government spending","An increase in the government budget surplus","An increase in the government budget deficit","A decrease in the real interest rate","A decrease in the trade deficit"],answer:2},
-{q:"Increases in public investment in education and increased educational attainment by workers will have which of the following effects in the long run?",choices:["Labor productivity will increase, and real GDP per capita will increase.","Labor productivity will increase, and real GDP per capita will decrease.","Labor productivity will increase, and real GDP per capita will not change.","Labor productivity will decrease, and real GDP per capita will increase.","Labor productivity will decrease, and real GDP per capita will decrease."],answer:0},
-{q:"Increases in government borrowing to finance increases in budget deficits will most likely result in",choices:["a decrease in the real interest rate","a decrease in private domestic investment","a rightward shift in the long-run Phillips curve","an increase in the money supply","an increase in financial capital outflows"],answer:1},
-{q:"Following a decrease in marginal income tax rates and a decrease in corporate tax rates, which of the following will most likely happen to aggregate demand, short-run aggregate supply, and the price level in the short run?",choices:["AD will increase, no change to SRAS, price level will decrease.","AD will increase, SRAS will decrease, price level will decrease.","AD will increase, SRAS will increase, indeterminate impact on price level.","No change to AD, SRAS will increase, price level will increase.","AD will decrease, SRAS will decrease, indeterminate impact on price level."],answer:2},
-{q:"An increase in which of the following will most likely lead to long-run economic growth?",choices:["Transfer payments","Personal consumption expenditures","The real interest rate","Exports","The stock of physical capital"],answer:4},
-{q:"Movement along the short-run Phillips curve describes the relationship between inflation and unemployment when",choices:["aggregate demand changes for a given short-run aggregate supply curve","short-run aggregate supply changes for a given aggregate demand curve","aggregate demand decreases and short-run aggregate supply increases","aggregate demand increases and short-run aggregate supply decreases","policy changes are perfectly anticipated and the aggregate supply curve is vertical"],answer:0},
-{q:"According to the quantity theory of money, an increase in the nominal gross domestic product with a constant money supply means that the velocity of money must have",choices:["increased","decreased","not changed","initially increased, then decreased","initially decreased, then increased"],answer:0},
-{q:"Which of the following is true for a long-run Phillips curve?",choices:["It represents points for which expected and actual inflation rates are equal.","It shifts to the left when aggregate supply decreases.","It shifts to the left when money supply decreases.","It shifts to the right when transfer payments decrease.","It is horizontal because there is no change in inflation."],answer:0},
-{q:"Which of the following statements about the national debt is true?",choices:["Interest payments on the national debt are paid only when the debt is owned by foreign investors.","Gross domestic product minus the national debt equals net domestic product.","A government budget surplus reduces the national debt.","A country\u2019s national debt increases when its exports exceed its imports.","A decrease in interest rates reduces the value of the national debt."],answer:2},
-{q:"If real interest rates in the United States increase relative to the rest of the world, which of the following will occur?",choices:["Domestic private investment in plant and equipment will increase.","The supply of United States dollars in the foreign exchange market will increase.","The demand for United States dollars in the foreign exchange market will increase.","Net exports in the United States will increase.","The United States capital and financial account will be in deficit."],answer:2},
-{q:"Japan and the European Union are trading partners with flexible exchange rates. The currency of Japan is the yen, and the currency of the European Union is the euro. Which of the following will happen in the foreign exchange market if Japan increases its imports from Europe?",choices:["A depreciation of the euro","An increase in the supply of the euro","An increase in the demand for the euro","An increase in the demand for the yen","A decrease in the supply of the yen"],answer:2},
-{q:"The United States and the United Kingdom are trading partners with flexible exchange rates. The currency of the United States is the dollar ($), and the currency of the United Kingdom is the pound (\u00a3). The graph shows the foreign exchange market for the pound. At an exchange rate of $2 per pound, which of the following will occur?",choices:["There will be excess supply of the dollar.","There will be excess demand for the pound.","The pound will appreciate.","The dollar will appreciate.","A \u00a32 souvenir in Britain will cost $1 for United States tourists."],answer:3},
-{q:"The United States and the European Union are trading partners with flexible exchange rates. Which of the following is true if the exchange rate between the euro and the dollar changes from $1.00 per euro to $1.25 per euro?",choices:["United States exports to Europe will increase.","European exports to the United States will increase.","The dollar has appreciated.","The euro has depreciated.","The money supply in the United States will increase."],answer:0},
-{q:"Under a flexible exchange-rate system, the exchange rate between two countries\u2019 currencies is determined by the",choices:["amount of gold reserves held by the central bank in each country","gross domestic product of the exporting country","demand for and supply of each country\u2019s currency","amount of resources available to the importing country","real interest rate in the exporting country"],answer:2},
-{q:"The current account portion of a nation\u2019s balance of payments accounts includes",choices:["foreign direct investment","purchases of foreign bonds","purchases of foreign real estate","holdings of foreign currencies","exports of services"],answer:4}
+  {
+    "q": "When an economy operates inside its production possibilities curve, it can increase production of one good",
+    "choices": [
+      "at zero opportunity cost in terms of the other good",
+      "only with an increase in unemployment",
+      "only with an increase in the price level",
+      "only with an increase in technology",
+      "only if the labor force increases"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "If people save 10 percent of each additional dollar received in income, which of the following is true?",
+    "choices": [
+      "The marginal propensity to consume is less than the marginal propensity to save.",
+      "The marginal propensity to consume increases as income increases.",
+      "The marginal propensity to consume is 0.1, and the maximum value of the tax multiplier is −1.",
+      "The marginal propensity to consume equals the marginal propensity to save.",
+      "The marginal propensity to consume is 0.9, and the maximum value of the spending multiplier is 10."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "An increase in spending on capital goods will most likely lead to which of the following in the long run?",
+    "choices": [
+      "An increase in government spending",
+      "An increase in long-run aggregate supply",
+      "An increase in consumption spending due to crowding out",
+      "A decrease in employment",
+      "A decrease in economic growth"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The real interest rate can remain constant if an increase in transfer payments is accompanied by",
+    "choices": [
+      "a decrease in government purchases",
+      "a decrease in income tax rates",
+      "an increase in reserve requirements",
+      "an open-market sale of bonds",
+      "a decrease in private savings"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Suppose the only revenue taken in by the government is in the form of income taxes and the tax rate is 10 percent. If national income is $900 billion and government expenditures plus transfers are $120 billion, which of the following is true about the government budget?",
+    "choices": [
+      "The government budget has a surplus of $780 billion.",
+      "The government budget has a surplus of $120 billion.",
+      "The government budget is balanced.",
+      "The government budget has a deficit of $90 billion.",
+      "The government budget has a deficit of $30 billion."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "One reason the aggregate demand curve is downward-sloping is that as the price level increases,",
+    "choices": [
+      "the purchasing power of assets decreases",
+      "imports decrease",
+      "the demand for the domestic currency on the foreign exchange market increases",
+      "interest-sensitive expenditures increase",
+      "the public feels richer and spends more"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The table shows the time required to produce one crane or one truck in the United States and Thailand. The United States and Thailand have the same amount of resources.<br><table><tr><th></th><th>1 Crane</th><th>1 Truck</th></tr><tr><td>United States</td><td>50 hours</td><td>25 hours</td></tr><tr><td>Thailand</td><td>20 hours</td><td>30 hours</td></tr></table>Which of the following can be accurately concluded from the data?",
+    "choices": [
+      "The United States has a comparative advantage in producing cranes, and Thailand has a comparative advantage in producing trucks.",
+      "Thailand has a comparative advantage in producing cranes, and the United States has a comparative advantage in producing trucks.",
+      "Thailand has a comparative advantage in producing both cranes and trucks.",
+      "The United States has a comparative advantage in producing both cranes and trucks.",
+      "Neither country has a comparative advantage in producing cranes and trucks."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "All of the following concepts can be illustrated using the production possibilities curve model EXCEPT",
+    "choices": [
+      "unemployment",
+      "inflation",
+      "opportunity cost",
+      "choice",
+      "scarcity"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "An expansionary monetary policy is intended to eliminate which type of unemployment?",
+    "choices": [
+      "Frictional",
+      "Cyclical",
+      "Structural",
+      "Seasonal",
+      "Natural"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following correctly describes spending in a circular flow model?",
+    "choices": [
+      "Households hire resources from producers in resource markets.",
+      "Households purchase goods and services from producers in product markets.",
+      "Households purchase goods and services from producers in resource markets.",
+      "Producers hire resources from households in product markets.",
+      "Producers sell resources to households in product markets."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "If some unemployed individuals become discouraged and stop looking for employment, which of the following will occur in the short run?",
+    "choices": [
+      "The unemployment rate will increase.",
+      "The unemployment rate will decrease.",
+      "The labor force will increase.",
+      "Real output will increase.",
+      "The labor force participation rate will increase."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following would NOT be included in the gross domestic product of the United States in 2018?",
+    "choices": [
+      "The value of computers produced in the United States in 2018 but not sold",
+      "The value of cars produced in the United States in 2018 by a Japanese motor company",
+      "The value of cars produced in Japan in 2018 by a United States motor company",
+      "The amount a patient paid to a dentist for dental services completed in 2018 in the United States",
+      "The value of a restaurant meal purchased by a Japanese tourist in 2018 in the United States"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following individuals benefits from unexpected inflation?",
+    "choices": [
+      "A retiree living on a fixed pension",
+      "A landlord receiving fixed lease payments",
+      "A student saving $10 each month in a piggy bank",
+      "A creditor lending out $1,000 as a fixed-rate loan",
+      "A debtor making payments on existing fixed-rate loans"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Frictional unemployment may be caused by",
+    "choices": [
+      "people losing jobs when their skills become obsolete",
+      "people quitting jobs to look for better jobs",
+      "people dropping out of the job market after a considerable search",
+      "a general downturn in economic activity",
+      "a decrease in aggregate supply"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Country X has the following macroeconomic statistics.<br><table><tr><th>Real Output (Billions $)</th><th>Unemployment Rate (%)</th></tr><tr><td>110</td><td>1</td></tr><tr><td>108</td><td>2</td></tr><tr><td>106</td><td>3</td></tr><tr><td>104</td><td>4</td></tr><tr><td>102</td><td>5</td></tr><tr><td>100</td><td>6</td></tr><tr><td>98</td><td>7</td></tr></table>Suppose the current cyclical unemployment rate is 2%, the frictional unemployment rate is 4%, and the structural unemployment rate is 1%. What is the full-employment level of real output?",
+    "choices": [
+      "$100 billion",
+      "$102 billion",
+      "$104 billion",
+      "$106 billion",
+      "$110 billion"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The table shows the end-of-year consumer price index (CPI) for an economy.<br><table><tr><th>Year</th><th>CPI</th></tr><tr><td>2008</td><td>80</td></tr><tr><td>2009</td><td>100</td></tr><tr><td>2010</td><td>105</td></tr></table>Which of the following statements is true based on the information given?",
+    "choices": [
+      "The inflation rate in 2009 was 20 percent.",
+      "The base year for the price index is 2008.",
+      "The inflation rate was higher in 2010 than in 2009.",
+      "The inflation rate in 2010 was 5 percent.",
+      "Prices of all products rose in 2009 and 2010."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "One limitation of using real GDP to measure a nation’s economic performance is that",
+    "choices": [
+      "real GDP does not account for inflation",
+      "real GDP does not count final goods",
+      "real GDP estimates an economy’s potential, not its actual performance",
+      "real GDP does not account for nonmarket transactions",
+      "real GDP understates the rate of unemployment"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Real gross domestic product is equal to which of the following?",
+    "choices": [
+      "Real wages of households",
+      "Real income plus government transfer payments",
+      "Nominal output adjusted for price-level changes",
+      "Nominal output less depreciation",
+      "Changes in the standard of living"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Based on the data in the table, what is true about the market for pizza if the current market price is $10?<br><table><tr><th>Price</th><th>Quantity Demanded</th><th>Quantity Supplied</th></tr><tr><td>$5</td><td>140</td><td>20</td></tr><tr><td>$10</td><td>120</td><td>40</td></tr><tr><td>$15</td><td>100</td><td>60</td></tr><tr><td>$20</td><td>80</td><td>80</td></tr><tr><td>$25</td><td>60</td><td>100</td></tr></table>",
+    "choices": [
+      "The supply curve will shift to the left.",
+      "The demand curve will shift to the right.",
+      "The market price for pizza will decrease.",
+      "There is a shortage of 80 units.",
+      "There is a surplus of 160 units."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In the short run, a contractionary fiscal policy will",
+    "choices": [
+      "shift the aggregate demand curve to the left",
+      "shift the short-run aggregate supply curve to the right",
+      "increase the money supply",
+      "increase the demand for loanable funds",
+      "increase the government budget deficit"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A reduction in aggregate demand will necessarily cause an increase in unemployment in the short run when",
+    "choices": [
+      "nominal wages or prices are sticky downward",
+      "nominal wages and prices are flexible",
+      "the aggregate supply curve is vertical",
+      "the money supply grows at a constant rate",
+      "imports exceed exports"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A decrease in nominal wages will cause the",
+    "choices": [
+      "price level to increase",
+      "real output to remain the same",
+      "long-run aggregate supply curve to shift to the left",
+      "short-run aggregate supply curve to shift to the right",
+      "aggregate demand curve to shift to the right"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "With an upward-sloping aggregate supply curve, an increase in government transfer payments will most likely",
+    "choices": [
+      "reduce the price level",
+      "reduce the level of nominal gross domestic product",
+      "increase real gross domestic product in the short run",
+      "shift the short-run aggregate supply curve to the right",
+      "shift both the aggregate demand curve and the long-run aggregate supply curve to the left"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "With an upward-sloping aggregate supply curve, an increase in government transfer payments will most likely",
+    "choices": [
+      "reduce the price level",
+      "reduce the level of nominal gross domestic product",
+      "increase real gross domestic product in the short run",
+      "shift the short-run aggregate supply curve to the right",
+      "shift both the aggregate demand curve and the long-run aggregate supply curve to the left"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is an example of an automatic stabilizer that is contractionary?",
+    "choices": [
+      "A government-legislated increase in the marginal income tax rate",
+      "Bond purchases by the nation’s central bank",
+      "An increase in transfer payments",
+      "An increase in tax revenues as GDP increases",
+      "An increase in unemployment compensation"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following correctly describes an effective fiscal policy action to close an inflationary gap?",
+    "choices": [
+      "Decreasing taxes, which will increase aggregate demand",
+      "Increasing taxes, which will increase aggregate demand",
+      "Increasing government spending, which will decrease private investment",
+      "Increasing government spending, which will decrease interest rates",
+      "Decreasing government spending, which will decrease aggregate demand"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Assume that an economy is currently in a recession. If policy-makers do nothing and wages and prices are flexible, which of the following will occur in the long run?",
+    "choices": [
+      "The short-run aggregate supply curve will shift to the right, leading to full employment.",
+      "The short-run aggregate supply curve will shift to the left, leading to full employment.",
+      "The aggregate demand curve will shift to the right, leading to full employment.",
+      "The aggregate demand curve will shift to the left, leading to full employment.",
+      "The unemployment rate will continue to increase."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "If there is no crowding out, a $10 billion increase in investment in physical capital will most likely lead to a",
+    "choices": [
+      "less than $10 billion increase in aggregate supply",
+      "more than $10 billion increase in aggregate demand",
+      "$10 billion increase in aggregate demand",
+      "$10 billion increase in aggregate supply",
+      "$10 billion increase in the money supply"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following will cause an increase in the price level in the short run?",
+    "choices": [
+      "A rightward shift in the aggregate demand curve",
+      "A rightward shift in the short-run aggregate supply curve",
+      "A rightward shift in the long-run aggregate supply curve",
+      "An increase in savings",
+      "An increase in imports"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "What is the most likely short-run effect of an increase in the price of oil, a key input for production?",
+    "choices": [
+      "An increase in long-run aggregate supply",
+      "Demand-pull inflation",
+      "A reduction in the unemployment rate",
+      "An increase in real gross domestic product",
+      "Cost-push inflation"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Assume Bank A has the following balance sheet. If the required reserve ratio is 25 percent, what is the maximum amount by which Bank A can increase its loans?",
+    "choices": [
+      "$0",
+      "$25,000",
+      "$50,000",
+      "$100,000",
+      "$150,000"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Assume that the required reserve ratio is 10 percent and the banking system has limited reserves. If the central bank buys $1,000 of bonds from commercial banks, which of the following will occur?",
+    "choices": [
+      "The money supply will increase by a maximum of $1,000.",
+      "There will be a maximum of $9,000 of new loans made by all banks.",
+      "Demand deposits will increase by a maximum of $9,000.",
+      "The amount of new cash reserves injected into the banking system will be $100.",
+      "The money supply will increase by a maximum of $10,000."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Which of the following is counted in the M2 measure, but not the M1 measure, of the United States money supply?",
+    "choices": [
+      "Savings accounts",
+      "Currency",
+      "Stocks",
+      "Small time deposits",
+      "Checkable deposits"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "An increase in the real interest rate will most likely affect private investment in plant and equipment and the quantity of personal savings in which of the following ways?",
+    "choices": [
+      "Private investment will increase, and personal savings will increase.",
+      "Private investment will increase, and personal savings will decrease.",
+      "Private investment will decrease, and personal savings will increase.",
+      "Private investment will decrease, and personal savings will not change.",
+      "Private investment will not change, and personal savings will decrease."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Assume the banking system in a nation has limited reserves. Following an unanticipated increase in the money supply, the price level and real output will change in which of the following ways in the short run?",
+    "choices": [
+      "The price level will increase, and real output will increase.",
+      "The price level will increase, and real output will decrease.",
+      "The price level will increase, and real output will not change.",
+      "The price level will not change, and real output will not change.",
+      "The price level will decrease, and real output will increase."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Assume firms increase their borrowing in order to expand capacity. How will this additional borrowing affect the loanable funds market?",
+    "choices": [
+      "The supply of loanable funds curve will shift to the left.",
+      "The supply of loanable funds curve will shift to the right.",
+      "The demand for loanable funds curve will shift to the left.",
+      "The demand for loanable funds curve will shift to the right.",
+      "The loanable funds market will not be affected."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is an example of a contractionary monetary policy action by a central bank?",
+    "choices": [
+      "Increasing interest on reserves",
+      "Buying government securities on the open market",
+      "Decreasing government spending",
+      "Increasing business taxes",
+      "Decreasing the policy rate"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Assume the banking system in a nation has limited reserves. When the central bank increases the required reserve ratio, a commercial bank’s",
+    "choices": [
+      "excess reserves remain unchanged",
+      "excess reserves increase",
+      "excess reserves decrease",
+      "required reserves decrease",
+      "required reserves remain unchanged"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following policy actions will offset the effect of a decrease in investment in plant and equipment on aggregate demand in the short run in the United States?",
+    "choices": [
+      "An open-market sale of government bonds",
+      "An increase in marginal income taxes",
+      "An increase in the required reserve ratio",
+      "A decrease in government spending",
+      "A decrease in interest on reserves"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "An increase in real income will cause which of the following to occur in the short run?",
+    "choices": [
+      "Imports will decrease.",
+      "Consumption spending will decrease.",
+      "Nominal interest rates will decrease.",
+      "The monetary base will increase.",
+      "Money demand will increase."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Assume that a central bank operating in a banking system with limited reserves decreases its required reserve ratio. As a result, demand deposits and total reserves will most likely change in which of the following ways after all adjustments take place in the banking system and assuming banks lend out all excess reserves?",
+    "choices": [
+      "Demand deposits will increase, and total reserves will increase.",
+      "Demand deposits will increase, and total reserves will not change.",
+      "Demand deposits will not change, and total reserves will increase.",
+      "Demand deposits will decrease, and total reserves will not change.",
+      "Demand deposits will decrease, and total reserves will increase."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is true for savings accounts?",
+    "choices": [
+      "Savings accounts are shares of ownership in a company.",
+      "Savings accounts are part of the monetary base.",
+      "Savings accounts are interest-bearing assets.",
+      "Savings accounts are the most liquid form of financial assets.",
+      "Savings accounts are used as tools of monetary policy."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Assume a country has ample reserves in its banking system. Which combination of monetary and fiscal policies will necessarily reduce the price level in the short run?",
+    "choices": [
+      "Selling bonds through open-market operations and increasing government spending",
+      "Increasing administered interest rates and decreasing government spending",
+      "Buying bonds through open-market operations and leaving government spending unchanged",
+      "Decreasing administered interest rates and decreasing government spending",
+      "Decreasing the policy rate and increasing government spending"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Crowding out is most likely to occur with which of the following changes?",
+    "choices": [
+      "A decrease in government spending",
+      "An increase in the government budget surplus",
+      "An increase in the government budget deficit",
+      "A decrease in the real interest rate",
+      "A decrease in the trade deficit"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Increases in public investment in education and increased educational attainment by workers will have which of the following effects in the long run?",
+    "choices": [
+      "Labor productivity will increase, and real GDP per capita will increase.",
+      "Labor productivity will increase, and real GDP per capita will decrease.",
+      "Labor productivity will increase, and real GDP per capita will not change.",
+      "Labor productivity will decrease, and real GDP per capita will increase.",
+      "Labor productivity will decrease, and real GDP per capita will decrease."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Increases in government borrowing to finance increases in budget deficits will most likely result in",
+    "choices": [
+      "a decrease in the real interest rate",
+      "a decrease in private domestic investment",
+      "a rightward shift in the long-run Phillips curve",
+      "an increase in the money supply",
+      "an increase in financial capital outflows"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Following a decrease in marginal income tax rates and a decrease in corporate tax rates, which of the following will most likely happen to aggregate demand, short-run aggregate supply, and the price level in the short run?",
+    "choices": [
+      "AD will increase, no change to SRAS, price level will decrease.",
+      "AD will increase, SRAS will decrease, price level will decrease.",
+      "AD will increase, SRAS will increase, indeterminate impact on price level.",
+      "No change to AD, SRAS will increase, price level will increase.",
+      "AD will decrease, SRAS will decrease, indeterminate impact on price level."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "An increase in which of the following will most likely lead to long-run economic growth?",
+    "choices": [
+      "Transfer payments",
+      "Personal consumption expenditures",
+      "The real interest rate",
+      "Exports",
+      "The stock of physical capital"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Movement along the short-run Phillips curve describes the relationship between inflation and unemployment when",
+    "choices": [
+      "aggregate demand changes for a given short-run aggregate supply curve",
+      "short-run aggregate supply changes for a given aggregate demand curve",
+      "aggregate demand decreases and short-run aggregate supply increases",
+      "aggregate demand increases and short-run aggregate supply decreases",
+      "policy changes are perfectly anticipated and the aggregate supply curve is vertical"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "According to the quantity theory of money, an increase in the nominal gross domestic product with a constant money supply means that the velocity of money must have",
+    "choices": [
+      "increased",
+      "decreased",
+      "not changed",
+      "initially increased, then decreased",
+      "initially decreased, then increased"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following is true for a long-run Phillips curve?",
+    "choices": [
+      "It represents points for which expected and actual inflation rates are equal.",
+      "It shifts to the left when aggregate supply decreases.",
+      "It shifts to the left when money supply decreases.",
+      "It shifts to the right when transfer payments decrease.",
+      "It is horizontal because there is no change in inflation."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Which of the following statements about the national debt is true?",
+    "choices": [
+      "Interest payments on the national debt are paid only when the debt is owned by foreign investors.",
+      "Gross domestic product minus the national debt equals net domestic product.",
+      "A government budget surplus reduces the national debt.",
+      "A country’s national debt increases when its exports exceed its imports.",
+      "A decrease in interest rates reduces the value of the national debt."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If real interest rates in the United States increase relative to the rest of the world, which of the following will occur?",
+    "choices": [
+      "Domestic private investment in plant and equipment will increase.",
+      "The supply of United States dollars in the foreign exchange market will increase.",
+      "The demand for United States dollars in the foreign exchange market will increase.",
+      "Net exports in the United States will increase.",
+      "The United States capital and financial account will be in deficit."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Japan and the European Union are trading partners with flexible exchange rates. The currency of Japan is the yen, and the currency of the European Union is the euro. Which of the following will happen in the foreign exchange market if Japan increases its imports from Europe?",
+    "choices": [
+      "A depreciation of the euro",
+      "An increase in the supply of the euro",
+      "An increase in the demand for the euro",
+      "An increase in the demand for the yen",
+      "A decrease in the supply of the yen"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The United States and the United Kingdom are trading partners with flexible exchange rates. The currency of the United States is the dollar ($), and the currency of the United Kingdom is the pound (£). The graph shows the foreign exchange market for the pound. At an exchange rate of $2 per pound, which of the following will occur?",
+    "choices": [
+      "There will be excess supply of the dollar.",
+      "There will be excess demand for the pound.",
+      "The pound will appreciate.",
+      "The dollar will appreciate.",
+      "A £2 souvenir in Britain will cost $1 for United States tourists."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The United States and the European Union are trading partners with flexible exchange rates. Which of the following is true if the exchange rate between the euro and the dollar changes from $1.00 per euro to $1.25 per euro?",
+    "choices": [
+      "United States exports to Europe will increase.",
+      "European exports to the United States will increase.",
+      "The dollar has appreciated.",
+      "The euro has depreciated.",
+      "The money supply in the United States will increase."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Under a flexible exchange-rate system, the exchange rate between two countries’ currencies is determined by the",
+    "choices": [
+      "amount of gold reserves held by the central bank in each country",
+      "gross domestic product of the exporting country",
+      "demand for and supply of each country’s currency",
+      "amount of resources available to the importing country",
+      "real interest rate in the exporting country"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The current account portion of a nation’s balance of payments accounts includes",
+    "choices": [
+      "foreign direct investment",
+      "purchases of foreign bonds",
+      "purchases of foreign real estate",
+      "holdings of foreign currencies",
+      "exports of services"
+    ],
+    "answer": 4
+  }
 ];
 
 const MACRO_2023_MC = [
@@ -586,17 +1164,6 @@ const MACRO_2023_MC = [
     "answer": 4
   },
   {
-    "q": "Using the graph provided of the long-run Phillips curve (LRPC), which of the following could cause the change from LRPC1 to LRPC2?",
-    "choices": [
-      "An increase in the price of natural resources",
-      "An increase in government spending",
-      "An increase in the central bank’s administered interest rates",
-      "A decrease in unemployment insurance benefits",
-      "A decrease in net exports"
-    ],
-    "answer": 3
-  },
-  {
     "q": "Assuming the marginal propensity to consume is less than 1, which of the following describes why the magnitude of the tax multiplier is smaller than the magnitude of the expenditure multiplier?",
     "choices": [
       "Changes in income taxes initially affect both household consumption and household savings.",
@@ -896,129 +1463,1274 @@ const MACRO_2023_MC = [
 ];
 
 const MICRO_MC = [
-{q:"If accounting profit is greater than zero for a firm in a competitive industry, then which of the following must be true?",choices:["The firm has no fixed cost.","The firm has positive economic profit.","The firm\u2019s total revenue exceeds its explicit cost.","The firm\u2019s economic profit exceeds its opportunity cost.","New firms will enter the industry in the long run."],answer:2},
-{q:"Which of the following best describes firms in an industry if all the firms are in a cartel?",choices:["They produce the allocatively efficient quantity.","They face a perfectly elastic demand curve.","They have identical cost curves.","They coordinate their production decisions.","They agree to remove barriers to entry."],answer:3},
-{q:"Which of the following is true for a price-discriminating firm?",choices:["The firm charges different prices to different consumers for the same product.","The firm charges different prices for different products.","The firm pays more per unit of labor than it pays per unit of capital.","The firm pays more per unit of capital than it pays per unit of labor.","The firm sells different quantities to its consumers but charges each of them the same price."],answer:0},
-{q:"A difference between command and market economic systems is that command economic systems",choices:["have a legal system that provides incentives to produce, whereas market economic systems do not","ensure efficiency, whereas market economic systems ensure equity","limit individual property rights, whereas market economic systems protect individual property rights","maximize producer and consumer surplus, whereas market economic systems do not","regulate production but not distribution, whereas market economic systems regulate both production and distribution"],answer:2},
-{q:"Dr. Art and Dr. Zed jointly own an outpatient surgery practice. Dr. Art takes 2 hours to perform knee surgery and 1 hour to perform elbow surgery. Dr. Zed takes 4 hours to perform knee surgery and 1 hour to perform elbow surgery. Which of the following conclusions is supported by the information provided?",choices:["Dr. Art has a comparative advantage in elbow surgery.","Dr. Zed has a comparative advantage in elbow surgery.","Dr. Zed does not have a comparative advantage in performing either procedure.","Dr. Art does not have a comparative advantage in performing either procedure.","Dr. Zed has an absolute advantage in performing both procedures."],answer:1},
-{q:"Assume that all firms in a perfectly competitive market currently earn positive economic profits. What will happen in the long run if all firms face constant returns to scale in production?",choices:["The price of the product will increase.","Firms will exit the industry.","The quantity produced by each existing firm will decrease.","Average total cost of production will increase.","Nothing will change."],answer:2},
-{q:'The table shows a firm\u2019s average fixed cost (AFC), total variable cost (TVC), and total economic profit at different levels of output.<br><table><tr><th>Output</th><th>AFC</th><th>TVC</th><th>Profit</th></tr><tr><td>50</td><td>$20</td><td>$200</td><td></td></tr><tr><td>200</td><td></td><td>$1,600</td><td>$1,000</td></tr></table>When the firm produces 200 units, the AFC is',choices:["$0","$5","$8","$20","$80"],answer:1},
-{q:"If the marginal revenue of the 201st unit of output is $15 and the marginal cost of the 201st unit is $20, the total economic profit of producing 201 units will be",choices:["$995","$1,000","$1,005","$1,015","$1,035"],answer:0},
-{q:'Assume that capital and labor are the only two inputs used by a clinic. The table shows the hourly marginal product and the hourly price of capital and labor at the current output level.<br><table><tr><th></th><th>Capital</th><th>Labor</th></tr><tr><td>Marginal Product</td><td>25 units</td><td>5 units</td></tr><tr><td>Hourly Price</td><td>$200</td><td>$50</td></tr></table>To minimize costs at the current output level, the clinic should change the hiring of capital and labor in which of the following ways?',choices:["Capital hired should decrease, labor hired should increase.","Capital hired should decrease, labor hired should decrease.","Capital hired should increase, labor hired should decrease.","Capital hired should increase, labor hired should increase.","There should be no change to capital or labor hired."],answer:2},
-{q:"The project funding decisions made by two interdependent research companies, Creative and Genezyz, resulted in a profit of $4 million for Creative and a profit of $5 million for Genezyz. Which of the following is required for this combination of project choices to be a Nash equilibrium?",choices:["Genezyz charges a lower price to its customers than Creative does.","Neither firm has a dominant strategy.","Neither firm could earn higher profits by unilaterally changing its project choice.","Creative could earn a higher profit if it chose a different project when Genezyz chose its initial project.","The combined profits of the two firms are maximized at the current combination of project choices."],answer:2},
-{q:"The cross-price elasticity of demand for Goods X and Y is \u22122.8. Based on this information, what is true about Good X and Good Y?",choices:["Good X is a normal good and Good Y is an inferior good.","The goods are inferior.","The goods are substitutes.","The goods are complements.","The goods have upward-sloping demand curves."],answer:3},
-{q:"Zucchini is produced in a perfectly competitive market with a downward-sloping demand curve and an upward-sloping supply curve. Dawson Farm is a typical perfectly competitive farm that produces and sells zucchini at the equilibrium price of $1.75 per pound. Which of the following is true?",choices:["No buyer in the market is willing to pay more than $1.75 per pound for zucchini.","No buyer in the market is willing to pay more than $1.75 per pound for zucchini from Dawson Farm.","Market demand for zucchini will increase if Dawson Farm lowers its price below $1.75 per pound.","Dawson Farm would lose some but not all of its customers if it raises the price above $1.75.","Dawson Farm would likely be able to increase the demand for its zucchini by advertising."],answer:1},
-{q:"Over the entire range of output for which a firm\u2019s short-run average variable cost is decreasing, which of the following must be true?",choices:["Short-run marginal cost is falling.","There are increasing returns to scale.","There are decreasing returns to scale.","Short-run marginal cost is less than short-run average variable cost.","Short-run marginal cost is increasing due to diminishing returns."],answer:3},
-{q:"Ice cream is a normal good. Ice cream and hot fudge are complementary goods, while ice cream and gelato are substitute goods. Which of the following could lead to an increase in the equilibrium price and an indeterminate change in the equilibrium quantity of ice cream?",choices:["Consumer incomes rise, and the price of hot fudge increases.","Bacteria in ice cream facilities leads to consumers being hospitalized, and increased dairy production lowers input costs for ice cream.","The price of gelato increases, and new technology increases efficiency of ice cream production.","A new study indicates ice cream is associated with improved bone health, and a leading ice cream producer declares bankruptcy.","A newly popular diet includes avoiding dairy products, and the government begins to subsidize ice cream production."],answer:3},
-{q:"As a firm expands its output, it initially experiences economies of scale and then diseconomies of scale. The firm\u2019s long-run average cost curve is",choices:["horizontal and then upward sloping","horizontal and then downward sloping","downward sloping and then upward sloping","continuously upward sloping","continuously downward sloping"],answer:2},
-{q:"When a firm is experiencing economies of scale, an increase in the firm\u2019s output will result in which of the following?",choices:["A decrease in total cost","A decrease in long-run average total cost","A downward shift in the long-run marginal cost curve","An increase in long-run average variable cost","An increase in average fixed cost"],answer:1},
-{q:"The graph shows the imposition of a per-unit tax on producers. Which areas represent government tax revenue, producer surplus, and deadweight loss after the imposition of the tax?",choices:["Tax revenue is P5P3MJ; Producer surplus is P3P1L; Deadweight loss is JNL.","Tax revenue is P5P2NJ; Producer surplus is P6P5J; Deadweight loss is P4P5J.","Tax revenue is JNL; Producer surplus is P3P1NM; Deadweight loss is MLN.","Tax revenue is P5P2NJ; Producer surplus is P2P1N; Deadweight loss is JNL.","Tax revenue is P5P3MJ; Producer surplus is P3P1L; Deadweight loss is JML."],answer:3},
-{q:"When Tom\u2019s income increases from $100 to $120, the quantity of golf balls he purchases increases from 10 to 12. What is Tom\u2019s income elasticity of demand, and what type of good is a golf ball for Tom?",choices:["Income elasticity of demand is 1, and golf balls are a normal good for Tom.","Income elasticity of demand is \u22121, and golf balls are an inferior good for Tom.","Income elasticity of demand is 10, and golf balls are a normal good for Tom.","Income elasticity of demand is \u221210, and golf balls are an inferior good for Tom.","Income elasticity of demand is 20, and golf balls are a normal good for Tom."],answer:0},
-{q:"One reason many governments provide free access to mandatory primary education is because primary education",choices:["generates negative externalities","helps to reduce future income inequality","is only provided by a natural monopoly","is nonrival and therefore subject to overcrowding","is nonexcludable and therefore subject to the free rider problem"],answer:1},
-{q:"Heggood, Inc., a perfectly competitive firm, produces hats using capital and labor purchased in competitive factor markets. If the demand for hats increases, Heggood, Inc. will",choices:["decrease the price of hats","decrease its demand for labor","decrease the quantity of labor demanded","increase its demand for capital","increase the rental price of capital"],answer:3},
-{q:"Imperfectly competitive markets do not achieve allocative efficiency because profit maximization for each firm occurs when which of the following is true?",choices:["Price equals average total cost.","Price is greater than marginal cost.","Price equals marginal revenue.","Price is less than marginal benefit.","Price is less than marginal revenue."],answer:1},
-{q:"Which of the following will likely result in an indeterminate change in the equilibrium quantity of a competitive market?",choices:["An increase in supply along a perfectly inelastic demand curve","A decrease in supply along a relatively elastic demand curve","A decrease in demand along a perfectly elastic supply curve","An increase in demand and a decrease in supply","An increase in demand and an increase in supply"],answer:3},
-{q:"Which of the following statements most accurately describes the relationship between corn, an output, and machines, an input, that are used to gather corn?",choices:["The price of machines used to gather corn increases when the demand for corn increases.","The price of machines used to gather corn decreases when the demand for corn increases.","The price of machines used to gather corn increases when the demand for corn decreases.","The price of machines used to gather corn increases when the price of wheat, a producer substitute for corn, increases.","The price of machines used to gather corn is unrelated to the demand for corn."],answer:0},
-{q:"RKB and JCM are two competing firms considering which project to develop. RKB will develop either Project Alpha or Project Beta. JCM will develop either Project X or Project Y. The payoff matrix shows the payoffs for each combination of strategies. Each firm independently and simultaneously chooses its strategy. Which of the following conclusions is supported by the information in the payoff matrix?",choices:["There is no combination of project choices that results in a Nash equilibrium.","There are multiple combinations of project choices that result in Nash equilibria.","RKB has a dominant strategy, but JCM does not.","JCM has a dominant strategy, but RKB does not.","Neither firm has a dominant strategy."],answer:2},
-{q:"Consider two groups of workers in competitive labor markets. Workers in group X have a skill set unique to producing computers, and workers in group Y have a skill set that can be used to produce either computers or smartphones. When the price of smartphones decreases, the wages paid to workers producing smartphones decrease. Which of the following could happen to the wages of workers in group X?",choices:["No change because workers in group X do not have the skills to produce smartphones.","No change because the supply of and demand for workers producing computers would both shift to the left.","Wages would decrease because the supply of workers producing computers would increase, with more workers from group Y seeking jobs with firms producing computers.","Wages would decrease because the supply of workers producing computers would decrease, with more workers from group X seeking training for smartphone jobs.","Wages would increase because workers in group X have specialized skills."],answer:2},
-{q:"If the marginal product of an input is positive and increasing, total product is",choices:["decreasing at an increasing rate","increasing at an increasing rate","increasing at a decreasing rate","decreasing at a decreasing rate","increasing at a constant rate"],answer:1},
-{q:"For a firm operating in perfectly competitive product and factor markets, the marginal revenue product of labor is equal to the",choices:["marginal product of labor","price of labor multiplied by the marginal product of labor","price of labor multiplied by the price of the output","price of the output divided by the price of labor","price of the output multiplied by the marginal product of labor"],answer:4},
-{q:"The graph shows the marginal private cost (MPC), marginal social cost (MSC), marginal private benefit (MPB), and marginal social benefit (MSB) in a market for a good that has an external cost. What are the socially efficient and market equilibrium quantities?",choices:["Socially efficient quantity is 6, and market equilibrium quantity is 12.","Socially efficient quantity is 9, and market equilibrium quantity is 9.","Socially efficient quantity is 9, and market equilibrium quantity is 12.","Socially efficient quantity is 12, and market equilibrium quantity is 12.","Socially efficient quantity is 12, and market equilibrium quantity is 9."],answer:2},
-{q:"What is the dollar value of the marginal external cost?",choices:["$0.25","$0.50","$1.00","$5.00","$5.50"],answer:1},
-{q:"When marginal utility from consuming a good is zero, the total utility from consuming the good is",choices:["zero","negative","maximized","rising at a constant rate","equal to marginal utility per dollar spent on the good"],answer:2},
-{q:'The table shows Rosco\u2019s utility data.<br><table><tr><th>Milkshake Cups</th><th>Total Utility (utils)</th></tr><tr><td>1</td><td>50</td></tr><tr><td>2</td><td>100</td></tr><tr><td>3</td><td>145</td></tr><tr><td>4</td><td>185</td></tr><tr><td>5</td><td>220</td></tr></table>Which of the following is true based on Rosco\u2019s utility data?',choices:["Rosco\u2019s marginal utility from the fourth cup is 185 utils.","Rosco\u2019s marginal utility from the fifth cup is 35 utils.","Rosco\u2019s marginal utility from the third cup is greater than the marginal utility from the second cup.","Rosco\u2019s marginal utility from the fourth cup is greater than the marginal utility from the third cup.","Rosco\u2019s total utility and marginal utility both increase as he consumes more cups of milkshake."],answer:1},
-{q:"Which of the following is true for a monopolistically competitive firm that is in short-run equilibrium and earning a positive economic profit?",choices:["Accounting profits are less than economic profits.","Marginal cost is greater than price.","Marginal revenue is less than price.","Average total cost is greater than price.","Marginal revenue is less than marginal cost."],answer:2},
-{q:"Which of the following is true in the inelastic region of a monopolist\u2019s demand curve as output increases?",choices:["Marginal revenue and total revenue are negative.","Marginal revenue is increasing and total revenue is positive.","Marginal revenue is decreasing and total revenue is negative.","Marginal revenue is positive and total revenue is increasing.","Marginal revenue is negative and total revenue is decreasing."],answer:4},
-{q:"Which of the following explains why the marginal factor (resource) cost curve lies above the supply curve for labor in a monopsonistic labor market?",choices:["The monopsonist must lower its price to sell more output.","Each worker is paid a different wage, based on individual marginal productivity.","The monopsonist has market power and pays whatever wage it desires.","The supply of labor is perfectly elastic.","The monopsonist must increase the wage for all workers to hire more workers."],answer:4},
-{q:"As an economy moves along its production possibilities curve, which of the following must be true?",choices:["The marginal benefit of the output is greater than the marginal cost of the output.","An increase in output results in a decrease in average total cost.","The marginal social cost of producing an additional output is zero.","Producing more of one good results in producing less of the other good.","The economy is producing the socially optimal combination of goods."],answer:3},
-{q:'The table shows hourly production data and total revenue for a perfectly competitive firm.<br><table><tr><th>Workers Hired</th><th>Total Revenue ($)</th><th>Quantity Produced</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>50</td><td>10</td></tr><tr><td>2</td><td>95</td><td>19</td></tr><tr><td>3</td><td>135</td><td>27</td></tr><tr><td>4</td><td>170</td><td>34</td></tr><tr><td>5</td><td>200</td><td>40</td></tr></table>What is the marginal revenue product of the fourth worker?',choices:["$35","$34","$30","$7","$5"],answer:0},
-{q:"Regulating a natural monopoly to set its output price equal to the marginal cost of production will result in economic losses because for the last unit of output produced, marginal cost is",choices:["less than the marginal willingness to pay and less than average total cost","greater than the marginal willingness to pay and less than average total cost","equal to the marginal willingness to pay and less than average total cost","equal to the marginal willingness to pay and equal to average total cost","greater than the marginal willingness to pay and equal to average total cost"],answer:2},
-{q:"Which of the following actions would a government take when regulating a natural monopoly to produce the socially optimal quantity?",choices:["Impose a lump-sum tax on the monopolist\u2019s profit.","Impose a per-unit tax on the monopolist\u2019s profit.","Open the market for competition to lower the monopoly price.","Regulate the monopoly to charge a price equal to the average total cost.","Grant a lump-sum subsidy to the monopoly."],answer:4},
-{q:"Which of the following is true if the production of a good creates negative externalities?",choices:["The market produces the socially efficient level of output.","Antitrust laws are violated.","The market price equals the marginal social cost.","The marginal social cost exceeds the marginal private cost.","The good is produced by the public sector."],answer:3},
-{q:"The graph shows the market supply (S) and demand (D) curves for a particular product. If the government imposes a price ceiling at P2, which of the following statements is true?",choices:["The quantity sold in the market falls from Q2 to Q1.","The quantity sold in the market remains at Q2 because the price ceiling is not binding.","The price ceiling results in a shortage of (Q3\u2212Q1).","The price ceiling results in a surplus of (Q3\u2212Q1).","The price ceiling will benefit sellers at the expense of buyers."],answer:1},
-{q:"Assume paper clips are produced in a perfectly competitive industry that is currently in long-run equilibrium. One firm develops a new production method that reduces its variable cost. If its competitors are unable to copy this new method, what will happen to this firm\u2019s output and profit in the short run?",choices:["Output will increase, and profit will increase.","Output will decrease, and profit will increase.","Output will not change, and profit will increase.","Output will increase, and profit will not change.","Output will not change, and profit will not change."],answer:0},
-{q:"The graph shows the combinations of donuts and cups of coffee that the country of Deetopia could produce. Which of the following must be true?",choices:["Combination T is allocatively efficient because customers will consume both donuts and cups of coffee.","Combination V is allocatively efficient because Deetopia has an absolute advantage in producing cups of coffee.","The opportunity cost of producing 1 cup of coffee is 2 donuts.","The opportunity cost of producing 1 cup of coffee is 6 donuts.","The opportunity cost of producing 1 donut increases as more cups of coffee are produced."],answer:2},
-{q:"Suppose the country of Deetopia produces 6 cups of coffee and 12 donuts. Which of the following must be true?",choices:["The combination leaves some resources unemployed.","The combination has the highest opportunity cost in production.","The combination is productively efficient.","The combination is neither productively nor socially efficient.","The combination cannot be produced with the given amount of resources."],answer:2},
-{q:"If a monopolist can increase output and profit by engaging in perfect price discrimination, allocative efficiency will",choices:["improve even though consumer surplus goes to zero","possibly improve or get worse depending on whether consumer surplus increases or decreases","possibly improve or get worse depending on whether consumer surplus increases by more or less than the increase in producer surplus","get worse because producer surplus increases by more than the increase in consumer surplus","be unchanged because although producer surplus increases, total surplus is unaffected"],answer:0},
-{q:"The demand curve for shoes is downward sloping, and the absolute value of the price elasticity of demand is 2. If the price of shoes increases by 3 percent, what will happen to the quantity of shoes demanded?",choices:["It will decrease by 6%.","It will decrease by 3%.","It will decrease by 2%.","It will increase by 6%.","It will increase by 3%."],answer:0},
-{q:"The postmaster general of a country decides to double the price of first-class stamps, expecting the action to cause the revenues from sales of first-class stamps to double. What absolute value of price elasticity of demand is the postmaster general assuming in making the projection?",choices:["0","Between 0 and 1","1","Greater than 1","Infinite"],answer:0},
-{q:"Katie\u2019s demand for chocolate bars is perfectly inelastic at a quantity of one per week. Maximiliano will consume three chocolate bars per week when the price is $1, and he will consume four per week when the price is $0.50. Katie and Maximiliano are the only consumers of chocolate bars. Which of the following best describes the price elasticity of market demand beginning at the price of $0.50 and ending at the price of $1?",choices:["Perfectly inelastic","Inelastic","Unit elastic","Elastic","Perfectly elastic"],answer:1},
-{q:"An effective price floor placed on a market for a good will have which of the following effects on the quantity purchased by consumers and the consumer surplus?",choices:["Quantity will decrease, and consumer surplus will increase","Quantity will decrease, and consumer surplus will decrease","Quantity will increase, and consumer surplus will not change","Quantity will increase, and consumer surplus will increase","Quantity will not change, and consumer surplus will decrease"],answer:1},
-{q:"Which of the following is true of production in the long run?",choices:["At least one factor of production is fixed.","Only one factor of production is fixed.","Some factors of production are fixed while others are variable.","All factors of production are variable.","All factors of production, except technology, are fixed."],answer:3},
-{q:'The table shows quantity, total revenue, and total cost data.<br><table><tr><th>Quantity</th><th>Total Revenue ($)</th><th>Total Cost ($)</th></tr><tr><td>0</td><td>0</td><td>100</td></tr><tr><td>1</td><td>200</td><td>150</td></tr><tr><td>2</td><td>250</td><td>190</td></tr><tr><td>3</td><td>275</td><td>210</td></tr><tr><td>4</td><td>290</td><td>225</td></tr><tr><td>5</td><td>300</td><td>255</td></tr><tr><td>6</td><td>305</td><td>300</td></tr></table>At which quantity is the marginal revenue equal to marginal cost?',choices:["2","3","4","5","6"],answer:2},
-{q:"If a pure public good is provided only by a private market, then generally the good will",choices:["be overproduced relative to the socially optimal quantity","be underproduced relative to the socially optimal quantity","be excludable","be rivalrous","reduce deadweight loss"],answer:1},
-{q:"Which of the following is an example of a violation of antitrust laws?",choices:["Advertising to increase a firm\u2019s market share in an industry","Making positive economic profits by charging a price above marginal cost","Making free-trade agreements with other countries","Engaging in collusive behavior to restrain competition","Charging a price below the price ceiling"],answer:3},
-{q:"Removing a binding price floor on milk will affect the quantity of milk demanded and the quantity of milk supplied in the market in which of the following ways?",choices:["No change to quantity demanded, and quantity supplied will decrease.","Quantity demanded will decrease, and quantity supplied will decrease.","Quantity demanded will decrease, and quantity supplied will increase.","Quantity demanded will increase, and no change to quantity supplied.","Quantity demanded will increase, and quantity supplied will decrease."],answer:4},
-{q:"Kailas Cars produces cars that are made of both steel and aluminum. Steel and aluminum are substitutes in production. Kailas Cars\u2019 demand for steel will increase if which of the following occurs?",choices:["The supply of aluminum increases.","The demand for cars increases.","The supply of gasoline, a complement to cars, decreases.","The wages of workers in the car industry increase.","The amount of time that people keep their cars increases."],answer:1},
-{q:"A decrease in the supply of pencils results in which of the following?",choices:["A surplus of pencils in the market","An increase in the demand for erasers, a complement in consumption","An increase in the quantity demanded of pencils","A decrease in the consumer surplus of pencil buyers","A decrease in the demand for pencils"],answer:3},
-{q:"The fresh fish market is in equilibrium, and the demand is perfectly elastic. The imposition of a per-unit tax on sellers by the government will result in which of the following?",choices:["The equilibrium price will increase by the full amount of the tax, and consumers will bear the entire burden.","The equilibrium price will remain unchanged, and consumers will bear the entire burden.","The equilibrium price will increase by the full amount of the tax, and suppliers will bear the entire burden.","The equilibrium price will remain unchanged, and suppliers will bear the entire burden.","The equilibrium price will increase by the full amount of the tax, and suppliers and consumers will bear the burden equally."],answer:3},
-{q:"The study of economics is based on the premise that",choices:["goods and services are scarce but capital is unlimited","the growth of government is limited but resources are unlimited","natural resources are scarce but labor is unlimited","factors of production are scarce but goods and services people desire are unlimited","consumer products are scarce but resources are unlimited"],answer:3},
-{q:"The efficient market outcome shown in the graph provided is",choices:["at price P1, quantity Q1, and total economic surplus is J+K","at price P2, quantity Q2, and total economic surplus is B+C+D+E+F+G+H+I","at price P0, quantity Q0, and total economic surplus is B+C+E+F","at price P0, quantity Q0, and total economic surplus is A+B+C+E+F","at price P0, quantity Q0, and total economic surplus is A+B+C+E+F+J"],answer:4},
-{q:"In the short run, when a profit-maximizing, perfectly competitive firm is producing at the quantity where MR=MC and the firm\u2019s total revenue is less than its total variable cost, the firm should",choices:["continue to produce the same quantity","shut down","lower its price","raise its price","expect other firms to enter the industry"],answer:1},
-{q:"Prosper Company is a profit-maximizing monopoly producing toy cubes. Prosper Company is currently earning positive economic profit. Which of the following combinations of events will definitely cause Prosper Company\u2019s profit to increase?",choices:["A decrease in demand for toy cubes and a decrease in fixed costs to produce toy cubes","A decrease in demand for toy cubes and an increase in fixed costs to produce toy cubes","A decrease in demand for toy cubes and a decrease in variable costs to produce toy cubes","An increase in demand for toy cubes and an increase in government subsidies to produce toy cubes","An increase in demand for toy cubes and an increase in fixed costs to produce toy cubes"],answer:3}
+  {
+    "q": "If accounting profit is greater than zero for a firm in a competitive industry, then which of the following must be true?",
+    "choices": [
+      "The firm has no fixed cost.",
+      "The firm has positive economic profit.",
+      "The firm’s total revenue exceeds its explicit cost.",
+      "The firm’s economic profit exceeds its opportunity cost.",
+      "New firms will enter the industry in the long run."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following best describes firms in an industry if all the firms are in a cartel?",
+    "choices": [
+      "They produce the allocatively efficient quantity.",
+      "They face a perfectly elastic demand curve.",
+      "They have identical cost curves.",
+      "They coordinate their production decisions.",
+      "They agree to remove barriers to entry."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is true for a price-discriminating firm?",
+    "choices": [
+      "The firm charges different prices to different consumers for the same product.",
+      "The firm charges different prices for different products.",
+      "The firm pays more per unit of labor than it pays per unit of capital.",
+      "The firm pays more per unit of capital than it pays per unit of labor.",
+      "The firm sells different quantities to its consumers but charges each of them the same price."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A difference between command and market economic systems is that command economic systems",
+    "choices": [
+      "have a legal system that provides incentives to produce, whereas market economic systems do not",
+      "ensure efficiency, whereas market economic systems ensure equity",
+      "limit individual property rights, whereas market economic systems protect individual property rights",
+      "maximize producer and consumer surplus, whereas market economic systems do not",
+      "regulate production but not distribution, whereas market economic systems regulate both production and distribution"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Dr. Art and Dr. Zed jointly own an outpatient surgery practice. Dr. Art takes 2 hours to perform knee surgery and 1 hour to perform elbow surgery. Dr. Zed takes 4 hours to perform knee surgery and 1 hour to perform elbow surgery. Which of the following conclusions is supported by the information provided?",
+    "choices": [
+      "Dr. Art has a comparative advantage in elbow surgery.",
+      "Dr. Zed has a comparative advantage in elbow surgery.",
+      "Dr. Zed does not have a comparative advantage in performing either procedure.",
+      "Dr. Art does not have a comparative advantage in performing either procedure.",
+      "Dr. Zed has an absolute advantage in performing both procedures."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Assume that all firms in a perfectly competitive market currently earn positive economic profits. What will happen in the long run if all firms face constant returns to scale in production?",
+    "choices": [
+      "The price of the product will increase.",
+      "Firms will exit the industry.",
+      "The quantity produced by each existing firm will decrease.",
+      "Average total cost of production will increase.",
+      "Nothing will change."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The table shows a firm’s average fixed cost (AFC), total variable cost (TVC), and total economic profit at different levels of output.<br><table><tr><th>Output</th><th>AFC</th><th>TVC</th><th>Profit</th></tr><tr><td>50</td><td>$20</td><td>$200</td><td></td></tr><tr><td>200</td><td></td><td>$1,600</td><td>$1,000</td></tr></table>When the firm produces 200 units, the AFC is",
+    "choices": [
+      "$0",
+      "$5",
+      "$8",
+      "$20",
+      "$80"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "If the marginal revenue of the 201st unit of output is $15 and the marginal cost of the 201st unit is $20, the total economic profit of producing 201 units will be",
+    "choices": [
+      "$995",
+      "$1,000",
+      "$1,005",
+      "$1,015",
+      "$1,035"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Assume that capital and labor are the only two inputs used by a clinic. The table shows the hourly marginal product and the hourly price of capital and labor at the current output level.<br><table><tr><th></th><th>Capital</th><th>Labor</th></tr><tr><td>Marginal Product</td><td>25 units</td><td>5 units</td></tr><tr><td>Hourly Price</td><td>$200</td><td>$50</td></tr></table>To minimize costs at the current output level, the clinic should change the hiring of capital and labor in which of the following ways?",
+    "choices": [
+      "Capital hired should decrease, labor hired should increase.",
+      "Capital hired should decrease, labor hired should decrease.",
+      "Capital hired should increase, labor hired should decrease.",
+      "Capital hired should increase, labor hired should increase.",
+      "There should be no change to capital or labor hired."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The project funding decisions made by two interdependent research companies, Creative and Genezyz, resulted in a profit of $4 million for Creative and a profit of $5 million for Genezyz. Which of the following is required for this combination of project choices to be a Nash equilibrium?",
+    "choices": [
+      "Genezyz charges a lower price to its customers than Creative does.",
+      "Neither firm has a dominant strategy.",
+      "Neither firm could earn higher profits by unilaterally changing its project choice.",
+      "Creative could earn a higher profit if it chose a different project when Genezyz chose its initial project.",
+      "The combined profits of the two firms are maximized at the current combination of project choices."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The cross-price elasticity of demand for Goods X and Y is −2.8. Based on this information, what is true about Good X and Good Y?",
+    "choices": [
+      "Good X is a normal good and Good Y is an inferior good.",
+      "The goods are inferior.",
+      "The goods are substitutes.",
+      "The goods are complements.",
+      "The goods have upward-sloping demand curves."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Zucchini is produced in a perfectly competitive market with a downward-sloping demand curve and an upward-sloping supply curve. Dawson Farm is a typical perfectly competitive farm that produces and sells zucchini at the equilibrium price of $1.75 per pound. Which of the following is true?",
+    "choices": [
+      "No buyer in the market is willing to pay more than $1.75 per pound for zucchini.",
+      "No buyer in the market is willing to pay more than $1.75 per pound for zucchini from Dawson Farm.",
+      "Market demand for zucchini will increase if Dawson Farm lowers its price below $1.75 per pound.",
+      "Dawson Farm would lose some but not all of its customers if it raises the price above $1.75.",
+      "Dawson Farm would likely be able to increase the demand for its zucchini by advertising."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Over the entire range of output for which a firm’s short-run average variable cost is decreasing, which of the following must be true?",
+    "choices": [
+      "Short-run marginal cost is falling.",
+      "There are increasing returns to scale.",
+      "There are decreasing returns to scale.",
+      "Short-run marginal cost is less than short-run average variable cost.",
+      "Short-run marginal cost is increasing due to diminishing returns."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Ice cream is a normal good. Ice cream and hot fudge are complementary goods, while ice cream and gelato are substitute goods. Which of the following could lead to an increase in the equilibrium price and an indeterminate change in the equilibrium quantity of ice cream?",
+    "choices": [
+      "Consumer incomes rise, and the price of hot fudge increases.",
+      "Bacteria in ice cream facilities leads to consumers being hospitalized, and increased dairy production lowers input costs for ice cream.",
+      "The price of gelato increases, and new technology increases efficiency of ice cream production.",
+      "A new study indicates ice cream is associated with improved bone health, and a leading ice cream producer declares bankruptcy.",
+      "A newly popular diet includes avoiding dairy products, and the government begins to subsidize ice cream production."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "As a firm expands its output, it initially experiences economies of scale and then diseconomies of scale. The firm’s long-run average cost curve is",
+    "choices": [
+      "horizontal and then upward sloping",
+      "horizontal and then downward sloping",
+      "downward sloping and then upward sloping",
+      "continuously upward sloping",
+      "continuously downward sloping"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "When a firm is experiencing economies of scale, an increase in the firm’s output will result in which of the following?",
+    "choices": [
+      "A decrease in total cost",
+      "A decrease in long-run average total cost",
+      "A downward shift in the long-run marginal cost curve",
+      "An increase in long-run average variable cost",
+      "An increase in average fixed cost"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The graph shows the imposition of a per-unit tax on producers. Which areas represent government tax revenue, producer surplus, and deadweight loss after the imposition of the tax?",
+    "choices": [
+      "Tax revenue is P5P3MJ; Producer surplus is P3P1L; Deadweight loss is JNL.",
+      "Tax revenue is P5P2NJ; Producer surplus is P6P5J; Deadweight loss is P4P5J.",
+      "Tax revenue is JNL; Producer surplus is P3P1NM; Deadweight loss is MLN.",
+      "Tax revenue is P5P2NJ; Producer surplus is P2P1N; Deadweight loss is JNL.",
+      "Tax revenue is P5P3MJ; Producer surplus is P3P1L; Deadweight loss is JML."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "When Tom’s income increases from $100 to $120, the quantity of golf balls he purchases increases from 10 to 12. What is Tom’s income elasticity of demand, and what type of good is a golf ball for Tom?",
+    "choices": [
+      "Income elasticity of demand is 1, and golf balls are a normal good for Tom.",
+      "Income elasticity of demand is −1, and golf balls are an inferior good for Tom.",
+      "Income elasticity of demand is 10, and golf balls are a normal good for Tom.",
+      "Income elasticity of demand is −10, and golf balls are an inferior good for Tom.",
+      "Income elasticity of demand is 20, and golf balls are a normal good for Tom."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "One reason many governments provide free access to mandatory primary education is because primary education",
+    "choices": [
+      "generates negative externalities",
+      "helps to reduce future income inequality",
+      "is only provided by a natural monopoly",
+      "is nonrival and therefore subject to overcrowding",
+      "is nonexcludable and therefore subject to the free rider problem"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Heggood, Inc., a perfectly competitive firm, produces hats using capital and labor purchased in competitive factor markets. If the demand for hats increases, Heggood, Inc. will",
+    "choices": [
+      "decrease the price of hats",
+      "decrease its demand for labor",
+      "decrease the quantity of labor demanded",
+      "increase its demand for capital",
+      "increase the rental price of capital"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Imperfectly competitive markets do not achieve allocative efficiency because profit maximization for each firm occurs when which of the following is true?",
+    "choices": [
+      "Price equals average total cost.",
+      "Price is greater than marginal cost.",
+      "Price equals marginal revenue.",
+      "Price is less than marginal benefit.",
+      "Price is less than marginal revenue."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following will likely result in an indeterminate change in the equilibrium quantity of a competitive market?",
+    "choices": [
+      "An increase in supply along a perfectly inelastic demand curve",
+      "A decrease in supply along a relatively elastic demand curve",
+      "A decrease in demand along a perfectly elastic supply curve",
+      "An increase in demand and a decrease in supply",
+      "An increase in demand and an increase in supply"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following statements most accurately describes the relationship between corn, an output, and machines, an input, that are used to gather corn?",
+    "choices": [
+      "The price of machines used to gather corn increases when the demand for corn increases.",
+      "The price of machines used to gather corn decreases when the demand for corn increases.",
+      "The price of machines used to gather corn increases when the demand for corn decreases.",
+      "The price of machines used to gather corn increases when the price of wheat, a producer substitute for corn, increases.",
+      "The price of machines used to gather corn is unrelated to the demand for corn."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "RKB and JCM are two competing firms considering which project to develop. RKB will develop either Project Alpha or Project Beta. JCM will develop either Project X or Project Y. The payoff matrix shows the payoffs for each combination of strategies. Each firm independently and simultaneously chooses its strategy. Which of the following conclusions is supported by the information in the payoff matrix?",
+    "choices": [
+      "There is no combination of project choices that results in a Nash equilibrium.",
+      "There are multiple combinations of project choices that result in Nash equilibria.",
+      "RKB has a dominant strategy, but JCM does not.",
+      "JCM has a dominant strategy, but RKB does not.",
+      "Neither firm has a dominant strategy."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Consider two groups of workers in competitive labor markets. Workers in group X have a skill set unique to producing computers, and workers in group Y have a skill set that can be used to produce either computers or smartphones. When the price of smartphones decreases, the wages paid to workers producing smartphones decrease. Which of the following could happen to the wages of workers in group X?",
+    "choices": [
+      "No change because workers in group X do not have the skills to produce smartphones.",
+      "No change because the supply of and demand for workers producing computers would both shift to the left.",
+      "Wages would decrease because the supply of workers producing computers would increase, with more workers from group Y seeking jobs with firms producing computers.",
+      "Wages would decrease because the supply of workers producing computers would decrease, with more workers from group X seeking training for smartphone jobs.",
+      "Wages would increase because workers in group X have specialized skills."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If the marginal product of an input is positive and increasing, total product is",
+    "choices": [
+      "decreasing at an increasing rate",
+      "increasing at an increasing rate",
+      "increasing at a decreasing rate",
+      "decreasing at a decreasing rate",
+      "increasing at a constant rate"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "For a firm operating in perfectly competitive product and factor markets, the marginal revenue product of labor is equal to the",
+    "choices": [
+      "marginal product of labor",
+      "price of labor multiplied by the marginal product of labor",
+      "price of labor multiplied by the price of the output",
+      "price of the output divided by the price of labor",
+      "price of the output multiplied by the marginal product of labor"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "The graph shows the marginal private cost (MPC), marginal social cost (MSC), marginal private benefit (MPB), and marginal social benefit (MSB) in a market for a good that has an external cost. What are the socially efficient and market equilibrium quantities?",
+    "choices": [
+      "Socially efficient quantity is 6, and market equilibrium quantity is 12.",
+      "Socially efficient quantity is 9, and market equilibrium quantity is 9.",
+      "Socially efficient quantity is 9, and market equilibrium quantity is 12.",
+      "Socially efficient quantity is 12, and market equilibrium quantity is 12.",
+      "Socially efficient quantity is 12, and market equilibrium quantity is 9."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "What is the dollar value of the marginal external cost?",
+    "choices": [
+      "$0.25",
+      "$0.50",
+      "$1.00",
+      "$5.00",
+      "$5.50"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "When marginal utility from consuming a good is zero, the total utility from consuming the good is",
+    "choices": [
+      "zero",
+      "negative",
+      "maximized",
+      "rising at a constant rate",
+      "equal to marginal utility per dollar spent on the good"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The table shows Rosco’s utility data.<br><table><tr><th>Milkshake Cups</th><th>Total Utility (utils)</th></tr><tr><td>1</td><td>50</td></tr><tr><td>2</td><td>100</td></tr><tr><td>3</td><td>145</td></tr><tr><td>4</td><td>185</td></tr><tr><td>5</td><td>220</td></tr></table>Which of the following is true based on Rosco’s utility data?",
+    "choices": [
+      "Rosco’s marginal utility from the fourth cup is 185 utils.",
+      "Rosco’s marginal utility from the fifth cup is 35 utils.",
+      "Rosco’s marginal utility from the third cup is greater than the marginal utility from the second cup.",
+      "Rosco’s marginal utility from the fourth cup is greater than the marginal utility from the third cup.",
+      "Rosco’s total utility and marginal utility both increase as he consumes more cups of milkshake."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is true for a monopolistically competitive firm that is in short-run equilibrium and earning a positive economic profit?",
+    "choices": [
+      "Accounting profits are less than economic profits.",
+      "Marginal cost is greater than price.",
+      "Marginal revenue is less than price.",
+      "Average total cost is greater than price.",
+      "Marginal revenue is less than marginal cost."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is true in the inelastic region of a monopolist’s demand curve as output increases?",
+    "choices": [
+      "Marginal revenue and total revenue are negative.",
+      "Marginal revenue is increasing and total revenue is positive.",
+      "Marginal revenue is decreasing and total revenue is negative.",
+      "Marginal revenue is positive and total revenue is increasing.",
+      "Marginal revenue is negative and total revenue is decreasing."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Which of the following explains why the marginal factor (resource) cost curve lies above the supply curve for labor in a monopsonistic labor market?",
+    "choices": [
+      "The monopsonist must lower its price to sell more output.",
+      "Each worker is paid a different wage, based on individual marginal productivity.",
+      "The monopsonist has market power and pays whatever wage it desires.",
+      "The supply of labor is perfectly elastic.",
+      "The monopsonist must increase the wage for all workers to hire more workers."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "As an economy moves along its production possibilities curve, which of the following must be true?",
+    "choices": [
+      "The marginal benefit of the output is greater than the marginal cost of the output.",
+      "An increase in output results in a decrease in average total cost.",
+      "The marginal social cost of producing an additional output is zero.",
+      "Producing more of one good results in producing less of the other good.",
+      "The economy is producing the socially optimal combination of goods."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The table shows hourly production data and total revenue for a perfectly competitive firm.<br><table><tr><th>Workers Hired</th><th>Total Revenue ($)</th><th>Quantity Produced</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>50</td><td>10</td></tr><tr><td>2</td><td>95</td><td>19</td></tr><tr><td>3</td><td>135</td><td>27</td></tr><tr><td>4</td><td>170</td><td>34</td></tr><tr><td>5</td><td>200</td><td>40</td></tr></table>What is the marginal revenue product of the fourth worker?",
+    "choices": [
+      "$35",
+      "$34",
+      "$30",
+      "$7",
+      "$5"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Regulating a natural monopoly to set its output price equal to the marginal cost of production will result in economic losses because for the last unit of output produced, marginal cost is",
+    "choices": [
+      "less than the marginal willingness to pay and less than average total cost",
+      "greater than the marginal willingness to pay and less than average total cost",
+      "equal to the marginal willingness to pay and less than average total cost",
+      "equal to the marginal willingness to pay and equal to average total cost",
+      "greater than the marginal willingness to pay and equal to average total cost"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following actions would a government take when regulating a natural monopoly to produce the socially optimal quantity?",
+    "choices": [
+      "Impose a lump-sum tax on the monopolist’s profit.",
+      "Impose a per-unit tax on the monopolist’s profit.",
+      "Open the market for competition to lower the monopoly price.",
+      "Regulate the monopoly to charge a price equal to the average total cost.",
+      "Grant a lump-sum subsidy to the monopoly."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Which of the following is true if the production of a good creates negative externalities?",
+    "choices": [
+      "The market produces the socially efficient level of output.",
+      "Antitrust laws are violated.",
+      "The market price equals the marginal social cost.",
+      "The marginal social cost exceeds the marginal private cost.",
+      "The good is produced by the public sector."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The graph shows the market supply (S) and demand (D) curves for a particular product. If the government imposes a price ceiling at P2, which of the following statements is true?",
+    "choices": [
+      "The quantity sold in the market falls from Q2 to Q1.",
+      "The quantity sold in the market remains at Q2 because the price ceiling is not binding.",
+      "The price ceiling results in a shortage of (Q3−Q1).",
+      "The price ceiling results in a surplus of (Q3−Q1).",
+      "The price ceiling will benefit sellers at the expense of buyers."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Assume paper clips are produced in a perfectly competitive industry that is currently in long-run equilibrium. One firm develops a new production method that reduces its variable cost. If its competitors are unable to copy this new method, what will happen to this firm’s output and profit in the short run?",
+    "choices": [
+      "Output will increase, and profit will increase.",
+      "Output will decrease, and profit will increase.",
+      "Output will not change, and profit will increase.",
+      "Output will increase, and profit will not change.",
+      "Output will not change, and profit will not change."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The graph shows the combinations of donuts and cups of coffee that the country of Deetopia could produce. Which of the following must be true?",
+    "choices": [
+      "Combination T is allocatively efficient because customers will consume both donuts and cups of coffee.",
+      "Combination V is allocatively efficient because Deetopia has an absolute advantage in producing cups of coffee.",
+      "The opportunity cost of producing 1 cup of coffee is 2 donuts.",
+      "The opportunity cost of producing 1 cup of coffee is 6 donuts.",
+      "The opportunity cost of producing 1 donut increases as more cups of coffee are produced."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Suppose the country of Deetopia produces 6 cups of coffee and 12 donuts. Which of the following must be true?",
+    "choices": [
+      "The combination leaves some resources unemployed.",
+      "The combination has the highest opportunity cost in production.",
+      "The combination is productively efficient.",
+      "The combination is neither productively nor socially efficient.",
+      "The combination cannot be produced with the given amount of resources."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If a monopolist can increase output and profit by engaging in perfect price discrimination, allocative efficiency will",
+    "choices": [
+      "improve even though consumer surplus goes to zero",
+      "possibly improve or get worse depending on whether consumer surplus increases or decreases",
+      "possibly improve or get worse depending on whether consumer surplus increases by more or less than the increase in producer surplus",
+      "get worse because producer surplus increases by more than the increase in consumer surplus",
+      "be unchanged because although producer surplus increases, total surplus is unaffected"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The demand curve for shoes is downward sloping, and the absolute value of the price elasticity of demand is 2. If the price of shoes increases by 3 percent, what will happen to the quantity of shoes demanded?",
+    "choices": [
+      "It will decrease by 6%.",
+      "It will decrease by 3%.",
+      "It will decrease by 2%.",
+      "It will increase by 6%.",
+      "It will increase by 3%."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The postmaster general of a country decides to double the price of first-class stamps, expecting the action to cause the revenues from sales of first-class stamps to double. What absolute value of price elasticity of demand is the postmaster general assuming in making the projection?",
+    "choices": [
+      "0",
+      "Between 0 and 1",
+      "1",
+      "Greater than 1",
+      "Infinite"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Katie’s demand for chocolate bars is perfectly inelastic at a quantity of one per week. Maximiliano will consume three chocolate bars per week when the price is $1, and he will consume four per week when the price is $0.50. Katie and Maximiliano are the only consumers of chocolate bars. Which of the following best describes the price elasticity of market demand beginning at the price of $0.50 and ending at the price of $1?",
+    "choices": [
+      "Perfectly inelastic",
+      "Inelastic",
+      "Unit elastic",
+      "Elastic",
+      "Perfectly elastic"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "An effective price floor placed on a market for a good will have which of the following effects on the quantity purchased by consumers and the consumer surplus?",
+    "choices": [
+      "Quantity will decrease, and consumer surplus will increase",
+      "Quantity will decrease, and consumer surplus will decrease",
+      "Quantity will increase, and consumer surplus will not change",
+      "Quantity will increase, and consumer surplus will increase",
+      "Quantity will not change, and consumer surplus will decrease"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is true of production in the long run?",
+    "choices": [
+      "At least one factor of production is fixed.",
+      "Only one factor of production is fixed.",
+      "Some factors of production are fixed while others are variable.",
+      "All factors of production are variable.",
+      "All factors of production, except technology, are fixed."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The table shows quantity, total revenue, and total cost data.<br><table><tr><th>Quantity</th><th>Total Revenue ($)</th><th>Total Cost ($)</th></tr><tr><td>0</td><td>0</td><td>100</td></tr><tr><td>1</td><td>200</td><td>150</td></tr><tr><td>2</td><td>250</td><td>190</td></tr><tr><td>3</td><td>275</td><td>210</td></tr><tr><td>4</td><td>290</td><td>225</td></tr><tr><td>5</td><td>300</td><td>255</td></tr><tr><td>6</td><td>305</td><td>300</td></tr></table>At which quantity is the marginal revenue equal to marginal cost?",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "If a pure public good is provided only by a private market, then generally the good will",
+    "choices": [
+      "be overproduced relative to the socially optimal quantity",
+      "be underproduced relative to the socially optimal quantity",
+      "be excludable",
+      "be rivalrous",
+      "reduce deadweight loss"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is an example of a violation of antitrust laws?",
+    "choices": [
+      "Advertising to increase a firm’s market share in an industry",
+      "Making positive economic profits by charging a price above marginal cost",
+      "Making free-trade agreements with other countries",
+      "Engaging in collusive behavior to restrain competition",
+      "Charging a price below the price ceiling"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Removing a binding price floor on milk will affect the quantity of milk demanded and the quantity of milk supplied in the market in which of the following ways?",
+    "choices": [
+      "No change to quantity demanded, and quantity supplied will decrease.",
+      "Quantity demanded will decrease, and quantity supplied will decrease.",
+      "Quantity demanded will decrease, and quantity supplied will increase.",
+      "Quantity demanded will increase, and no change to quantity supplied.",
+      "Quantity demanded will increase, and quantity supplied will decrease."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Kailas Cars produces cars that are made of both steel and aluminum. Steel and aluminum are substitutes in production. Kailas Cars’ demand for steel will increase if which of the following occurs?",
+    "choices": [
+      "The supply of aluminum increases.",
+      "The demand for cars increases.",
+      "The supply of gasoline, a complement to cars, decreases.",
+      "The wages of workers in the car industry increase.",
+      "The amount of time that people keep their cars increases."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A decrease in the supply of pencils results in which of the following?",
+    "choices": [
+      "A surplus of pencils in the market",
+      "An increase in the demand for erasers, a complement in consumption",
+      "An increase in the quantity demanded of pencils",
+      "A decrease in the consumer surplus of pencil buyers",
+      "A decrease in the demand for pencils"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The fresh fish market is in equilibrium, and the demand is perfectly elastic. The imposition of a per-unit tax on sellers by the government will result in which of the following?",
+    "choices": [
+      "The equilibrium price will increase by the full amount of the tax, and consumers will bear the entire burden.",
+      "The equilibrium price will remain unchanged, and consumers will bear the entire burden.",
+      "The equilibrium price will increase by the full amount of the tax, and suppliers will bear the entire burden.",
+      "The equilibrium price will remain unchanged, and suppliers will bear the entire burden.",
+      "The equilibrium price will increase by the full amount of the tax, and suppliers and consumers will bear the burden equally."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The study of economics is based on the premise that",
+    "choices": [
+      "goods and services are scarce but capital is unlimited",
+      "the growth of government is limited but resources are unlimited",
+      "natural resources are scarce but labor is unlimited",
+      "factors of production are scarce but goods and services people desire are unlimited",
+      "consumer products are scarce but resources are unlimited"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "In the short run, when a profit-maximizing, perfectly competitive firm is producing at the quantity where MR=MC and the firm’s total revenue is less than its total variable cost, the firm should",
+    "choices": [
+      "continue to produce the same quantity",
+      "shut down",
+      "lower its price",
+      "raise its price",
+      "expect other firms to enter the industry"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Prosper Company is a profit-maximizing monopoly producing toy cubes. Prosper Company is currently earning positive economic profit. Which of the following combinations of events will definitely cause Prosper Company’s profit to increase?",
+    "choices": [
+      "A decrease in demand for toy cubes and a decrease in fixed costs to produce toy cubes",
+      "A decrease in demand for toy cubes and an increase in fixed costs to produce toy cubes",
+      "A decrease in demand for toy cubes and a decrease in variable costs to produce toy cubes",
+      "An increase in demand for toy cubes and an increase in government subsidies to produce toy cubes",
+      "An increase in demand for toy cubes and an increase in fixed costs to produce toy cubes"
+    ],
+    "answer": 3
+  }
 ];
 
 const MICRO_2023_MC = [
-{q:"The exam begins on the next page. 60 Questions tions. Select the one that is best in each case and then fill in the corresponding circle on the answer sheet. Which of the following statements about short-run costs is always true as a firm increases its production?",choices:["Average fixed cost decreases.","Average variable cost decreases.","Average total cost decreases.","Marginal cost is lower than the average variable cost.","Marginal cost is lower than the average total cost."],answer:0},
-{q:"The allocatively efficient level of output is produced in any market structure when",choices:["firms are experiencing economies of scale","marginal revenue is equal to zero","long-run economic profit is equal to zero","price is equal to marginal cost","average variable cost is at a minimum"],answer:3},
-{q:"The government of Annapolita has determined that the country\u2019s power company, an unregulated natural monopolist, should be required to produce the allocatively efficient quantity of electricity. Which of the following actions will achieve the government\u2019s goal?",choices:["The government imposes a per-unit tax on each unit of output the monopoly produces and imposes a lump-sum tax on the monopolist to eliminate any remaining profit.","The government sets the price at the point where demand and average total cost curves intersect and provides a lump-sum subsidy to the monopolist equal to the monopolist\u2019s normal profit.","The government sets the price at the point where demand and average total cost curves intersect and imposes a lump-sum tax on the monopolist to eliminate the monopolist\u2019s normal profit.","The government sets the price at the point where demand and marginal cost curves intersect and imposes a lump-sum tax on the monopolist to eliminate the monopolist\u2019s normal profit.","The government sets the price at the point where demand and marginal cost curves intersect and provides a lump-sum subsidy to the monopolist to earn normal profit. 3"],answer:4},
-{q:"A decrease in the demand for antique lanterns, a normal good, would be caused by which of the following?",choices:["An increase in consumers\u2019 incomes","An increase in the price of antique lanterns","An increase in the expected price of antique lanterns in the future","An increase in the price of electric lanterns, a substitute good","An increase in the price of lamp oil, a complementary good"],answer:4},
-{q:"Apple trees need bees to pollinate their flowers and produce apples. Apple farmers hire beekeepers to bring bees to their orchards to pollinate the flowers. This is an example of a",choices:["negative externality","tragedy of the commons","public good","market transaction","free-rider problem Apples Bananas Marginal utility of last unit 15 12 Price per unit $5 $3"],answer:3},
-{q:"The table provides Ricardo\u2019s utility and price data.<br><table><tr><th></th><th>Apples</th><th>Bananas</th></tr><tr><td>Marginal utility of last unit</td><td>15</td><td>12</td></tr><tr><td>Price per unit</td><td>$5</td><td>$3</td></tr></table>Ricardo has $125 to spend on apples and bananas. He currently buys 10 apples and 25 bananas. Assuming that he remains within his budget constraint, Ricardo should do which of the following to increase his utility?",choices:["Buy more of both goods","Buy fewer of both goods","Buy more bananas and fewer apples","Buy more apples and fewer bananas","Continue buying the same quantities of both goods"],answer:2},
-{q:"Apples are produced in a perfectly competitive market with no government intervention. Which of the following price changes will cause the total economic surplus to increase for the apple market depicted in the graph provided?",choices:["A decrease in price from $8 to $6","A decrease in price from $6 to $4","A decrease in price from $6 to $0","An increase in price from $6 to $8","An increase in price from $8 to $12"],answer:0},
-{q:"Which of the following is true in a command economy?",choices:["There is more private ownership of the factors of production than in a market economy.","Production decisions are based on the incentive of firms to maximize profits.","The government directs the use of factors of production.","The price system is used to allocate resources.","There is more freedom of enterprise than in a market economy. 4"],answer:2},
-{q:"Consumer surplus could be the shaded area in which of the following situations?",choices:["A price floor set at P1 in the market","A price floor set at P2 in the market","A price ceiling set at P1 in the market","A per-unit subsidy equal to P2-P1 granted to producers","A per-unit tax equal to P2-P1 imposed on producers"],answer:2},
-{q:"Daily Tools is a typical firm in a monopolistically competitive market that produces tool kits for everyday use. Which of the following explains why Daily Tools is inefficient in long-run equilibrium?",choices:["The entry of more efficient firms is blocked.","The firm produces the quantity at which marginal cost equals average total cost.","The firm does not produce the quantity that results in minimum average total cost.","The firm does not produce the quantity that minimizes total cost.","The firm\u2019s customers value the last unit of output at less than its cost."],answer:2},
-{q:"For a rational consumer with diminishing marginal utility, the consumption of an additional unit of a good will result in which of the following?",choices:["Total utility will increase until it equals marginal utility.","Total utility will increase while marginal utility will be negative.","Total utility will increase while marginal utility will decrease.","Total utility will decrease while marginal utility will be positive.","Total utility will decrease while marginal utility will increase."],answer:2},
-{q:"A player\u2019s dominant strategy is",choices:["independent of the other player\u2019s choice","dependent on the other player\u2019s choice","the strategy that results in the maximum combined payoff for both players","the strategy that always delivers the other player\u2019s best outcome of the game","the strategy that always delivers the other player\u2019s worst outcome of the game"],answer:0},
-{q:"Donuts for Dollars is a typical profit-maximizing firm in a perfectly competitive market that is earning positive economic profit in the short run. Which of the following statements must be true?",choices:["Price must be less than average total cost in the short run, and firms will exit the market in the long run.","Price must be less than average total cost in the short run, and firms will earn normal profit in the long run.","Price must equal average total cost in the short run, and firms will enter the market in the long run.","Price must be greater than average total cost in the short run, and firms will exit the market in the long run.","Price must be greater than average total cost in the short run, and firms will earn normal profit in the long run. 5"],answer:4},
-{q:"The use of environmentally friendly drinking straws has benefits to society beyond those enjoyed by their direct users. As a result, a government with the goal of maximizing total economic surplus in society would have an incentive to",choices:["allow the free market to determine the equilibrium price and quantity of environmentally friendly drinking straws","implement a binding price ceiling on environmentally friendly drinking straws","implement a binding price floor on environmentally friendly drinking straws","implement a per-unit tax on consumers of environmentally friendly drinking straws","implement a per-unit subsidy to consumers of environmentally friendly drinking straws"],answer:4},
-{q:"Dylan recently quit his job as a journalist for a local newspaper where he was making $80,000 per year. He opened an ice-cream shop where he earns a yearly total revenue of $250,000. He spends $150,000 each year on rent, resources, and workers he hires. Which of the following equals Dylan\u2019s accounting profit and economic profit from the ice-cream shop? Accounting Profit Economic Profit",choices:["Accounting Profit: $250,000; Economic Profit: $20,000","Accounting Profit: $230,000; Economic Profit: $100,000","Accounting Profit: $150,000; Economic Profit: $70,000","Accounting Profit: $100,000; Economic Profit: $80,000","Accounting Profit: $100,000; Economic Profit: $20,000"],answer:4},
-{q:"A nation engages in international trade with its trading partners and is currently an importer of aluminum. Imposing an import tariff on aluminum will affect the domestic market for aluminum in which of the following ways? Domestic Quantity Supplied Domestic Consumer Surplus Domestic Producer Surplus",choices:["Domestic Quantity Supplied: Increase; Domestic Consumer Surplus: Decrease; Domestic Producer Surplus: Decrease","Domestic Quantity Supplied: Increase; Domestic Consumer Surplus: Decrease; Domestic Producer Surplus: Increase","Domestic Quantity Supplied: No change; Domestic Consumer Surplus: Decrease; Domestic Producer Surplus: Decrease","Domestic Quantity Supplied: Decrease; Domestic Consumer Surplus: Increase; Domestic Producer Surplus: Decrease","Domestic Quantity Supplied: Decrease; Domestic Consumer Surplus: Increase; Domestic Producer Surplus: Increase"],answer:1},
-{q:"Which of the following combinations is most likely to result in the demand for a product being highly price inelastic?",choices:["The product has few close substitutes and represents a small percentage of a consumer\u2019s income.","The product has few close substitutes and represents a large percentage of a consumer\u2019s income.","The product has many close substitutes and represents a small percentage of a consumer\u2019s income.","The product has many close substitutes and represents a moderate percentage of a consumer\u2019s income.","The product has many close substitutes and represents a large percentage of a consumer\u2019s income. 6"],answer:0},
-{q:"FishNets hires workers from the labor market depicted in the provided graph. The government imposes a binding minimum wage in the labor market. What is the binding minimum wage that would cause FishNets to hire the same number of workers as a perfectly competitive labor market?",choices:["$24","$32","$40","$48","$64"],answer:2},
-{q:"The cross-price elasticity of demand for flashlights and Good H is 2.5. This indicates which of the following?",choices:["Flashlights and Good H are inferior goods.","Flashlights and Good H are normal goods.","Flashlights and Good H are substitutes in consumption.","Flashlights and Good H are complements in consumption.","Flashlights and Good H both have elastic demand."],answer:2},
-{q:"FormalWear is a clothing factory that hires workers as a variable input and rents sewing machines as a fixed input. Which of the following will happen when the marginal product of workers decreases?",choices:["Total variable cost will decrease.","Total fixed cost will increase.","Short-run average total cost will decrease.","Marginal cost will increase.","Marginal cost will equal average total cost."],answer:3},
-{q:"Gale Furniture uses labor, capital, and wood as inputs in its production of office desks. When Gale Furniture doubles the quantity of labor, capital, and wood, the quantity of office desks doubles. Gale Furniture\u2019s production process is characterized by",choices:["economies of scale","diseconomies of scale","constant returns to scale","decreasing returns to scale","increasing returns to scale"],answer:2},
-{q:"Which of the following situations best fits with the description of a firm in a perfectly competitive market?",choices:["GaryNote constantly offers discounts to steal customers from EricNote, which retaliates by offering price cuts.","GaryNote has many competitors in the market, and each firm differentiates its product to gain customer loyalty.","GaryNote can hire as many workers as it wants at the market wage, but it must decrease its price to sell more output.","GaryNote sets its own price for its output, but because of market competition, it earns zero economic profit in the long run.","GaryNote can sell as many units of output as it wants at the market price but will lose all its customers if it charges a higher price. 7"],answer:4},
-{q:"Greencom is currently producing 20 units of output. At this level of output, Greencom\u2019s marginal revenue is $6, marginal cost is $6, and average total cost is $9. If Greencom operates in a monopolistically competitive market and sells all 20 units of output for $10 per unit, it can be concluded that",choices:["Greencom would earn more profit by decreasing output","Greencom would earn more profit by increasing output","Greencom is earning zero economic profit","Greencom is earning negative economic profit","Greencom is earning positive economic profit Number of Cases Total Cost ($) 0 15 1 25 45 3 75 4 115 5 165"],answer:4},
-{q:"The table provides Hansel\u2019s Hot Sauce daily total cost data.<br><table><tr><th>Number of Cases</th><th>Total Cost ($)</th></tr><tr><td>0</td><td>15</td></tr><tr><td>1</td><td>25</td></tr><tr><td>2</td><td>45</td></tr><tr><td>3</td><td>75</td></tr><tr><td>4</td><td>115</td></tr><tr><td>5</td><td>165</td></tr></table>If the average fixed cost was $5 per case, how many cases of hot sauce had Hansel\u2019s Hot Sauce produced?",choices:["1","2","3","4","5"],answer:2},
-{q:"Cross-price elasticity of demand for honey with respect to yogurt is -4. At the current equilibrium, consumers are buying 100 containers of yogurt per week and 20 containers of honey per week. If the price of yogurt increases by 10 percent per container, what will be the new quantity demanded of honey?",choices:["4 containers","8 containers","10 containers","12 containers","40 containers Quantity Price ($) Total Cost ($) 1 10 11 8 14 3 18 4 5 25 5 3 34"],answer:3},
-{q:"The table provides price and cost data for Howell\u2019s Toy Hoops.<br><table><tr><th>Quantity</th><th>Price ($)</th><th>Total Cost ($)</th></tr><tr><td>1</td><td>10</td><td>11</td></tr><tr><td>2</td><td>8</td><td>14</td></tr><tr><td>3</td><td>7</td><td>18</td></tr><tr><td>4</td><td>5</td><td>25</td></tr><tr><td>5</td><td>3</td><td>34</td></tr></table>Howell\u2019s Toy Hoops is a typical profit-maximizing firm that sells in a monopolistically competitive market. At the profit-maximizing quantity, the economic profit for Howell\u2019s Toy Hoops is",choices:["-$19","-$5","-$1","$2","$3 8"],answer:4},
-{q:"The graph shows the cost and revenue curves for a profitmaximizing firm. Which of the following is true about the firm?",choices:["The firm operates in a perfectly competitive market, producing the allocatively efficient quantity and charging P1.","The firm is a monopolist, producing the allocatively efficient quantity and charging P1.","The firm is a natural monopoly, producing Q1 and earning positive economic profit.","The firm operates in an imperfectly competitive market, producing Q1 and earning positive economic profit.","The firm operates in a monopolistically competitive market, producing Q1 and earning negative economic profit."],answer:3},
-{q:"The income and substitution effects explain which of the following?",choices:["Decreasing marginal productivity of labor","Market power caused by barriers to entry","Increasing marginal cost of production","Increasing returns to scale","The downward slope of the market demand curve 9"],answer:4},
-{q:"The graph provided shows five different short-run average total cost (SRATC) curves of a firm and its long-run average total cost (LRATC) curve. Which of the following is true if the firm is operating on its SRATC2 curve and producing quantity Q2?",choices:["The firm is producing at the minimum efficient scale.","The firm must decrease its output to achieve the minimum efficient scale.","The firm must increase its output to achieve the minimum efficient scale.","The firm is producing at its productively efficient quantity of output.","The firm is experiencing diseconomies of scale."],answer:2},
-{q:"Which of the following will happen if the firm continues to hire additional units of labor beyond L2 in the short run?",choices:["The firm\u2019s marginal cost will decrease.","The firm will begin experiencing diminishing marginal returns.","The firm\u2019s fixed cost will increase.","The average product of labor will be equal to zero.","The total product of labor will decrease. 10"],answer:4},
-{q:"The market for Good Z has relatively elastic supply and demand curves. Market efficiency is attained when",choices:["total labor cost is minimized for each firm","each firm experiences economies of scale","consumer surplus is greater than producer surplus","producer surplus is zero","deadweight loss is zero"],answer:4},
-{q:"The government imposition of a minimum wage in a perfectly competitive labor market is a policy that would",choices:["be used in a pure market economy","be used in a mixed economy","eliminate deadweight loss","increase the number of workers hired","decrease the supply of labor"],answer:1},
-{q:"A natural monopoly exists when a single firm",choices:["produces a quantity of output that maximizes the total producer surplus","produces the allocatively efficient quantity of output of a good","has an upward-sloping marginal cost curve","has a downward-sloping average total cost curve over the relevant range of output","sets price equal to marginal cost in order to maximize profit"],answer:3},
-{q:"Which of the following is an example of a good that is nonexcludable and rival in consumption?",choices:["Fish sandwich","Public highway","Private dance lesson","Online music","National defense"],answer:1},
-{q:"OfficeClips is a typical firm that produces and sells paper clips in a perfectly competitive market. OfficeClips is currently earning a positive economic profit. In the long run, what will happen to the firm\u2019s economic profit, the market price, and the market quantity? Firm\u2019s Profit Market Price Market Quantity",choices:["Firm\u2019s Profit: No change; Market Price: Decrease; Market Quantity: Increase","Firm\u2019s Profit: No change; Market Price: Increase; Market Quantity: Decrease","Firm\u2019s Profit: Decrease; Market Price: Increase; Market Quantity: Decrease","Firm\u2019s Profit: Decrease; Market Price: Decrease; Market Quantity: Decrease","Firm\u2019s Profit: Decrease; Market Price: Decrease; Market Quantity: Increase"],answer:4},
-{q:"Which of the following best represents the most distinctive characteristic of an oligopoly?",choices:["A market with a single firm that faces no competition","A market where a few firms have significant market share","A market with low barriers to entry","A market with many firms selling differentiated products","A market with many firms earning zero economic profits in the long run 11"],answer:1},
-{q:"The graph provided shows the marginal revenue (MR), average variable cost (AVC), average total cost (ATC), and marginal cost (MC) curves for a perfectly competitive firm. Which of the following is true if the firm is currently producing Q* units of output?",choices:["The firm can increase its economic profit by producing fewer units of output.","The firm can increase its economic profit by increasing the price of its product.","The firm is maximizing its economic profit at the current level of output.","The firm can increase total revenue by producing fewer units of output.","The firm can increase total revenue by decreasing the price of its product."],answer:2},
-{q:"Which of the following is an example of physical capital?",choices:["Earnings from a job","Fish in the ocean","Money in a person\u2019s wallet","An unskilled worker","A tractor used in farming"],answer:4},
-{q:"The graph provided shows the production possibilities curve for a country\u2019s economy. The economy is currently producing at point Z. What is the opportunity cost of changing production to point M?",choices:["3 units of Good Y","8 units of Good Y","3 units of Good X","4 units of Good X","2 units of Good X"],answer:0},
-{q:"A firm with market power sells its product in two markets. The firm faces the same cost curves in both markets but faces a relatively elastic demand in one market for its product and a relatively inelastic demand in the other market for that same product. Which of the following will increase the firm\u2019s profits?",choices:["The firm charges a lower price in both markets.","The firm charges a higher price in both markets.","The firm charges a price equal to its marginal cost in both markets.","The firm charges a lower price in the market with elastic demand and a higher price in the market with inelastic demand.","The firm charges a lower price in the market with inelastic demand and a higher price in the market with elastic demand. 12"],answer:3},
-{q:"Which of the following will occur in the market for bicycles if the government establishes a binding price floor?",choices:["A market shortage","A decrease in the demand for bicycles","A decrease in the quantity of bicycles purchased","An increase in consumer surplus","An increase in the equilibrium quantity of bicycles Quantity of Output (units) Total Variable Cost ($) Total Cost ($) 1 100 200 190 290 3 270 370 4 340 440 5 420 520 6 510 610 7 610 710"],answer:2},
-{q:"The table provides total variable cost and total cost data.<br><table><tr><th>Quantity of Output (units)</th><th>Total Variable Cost ($)</th><th>Total Cost ($)</th></tr><tr><td>1</td><td>100</td><td>200</td></tr><tr><td>2</td><td>190</td><td>290</td></tr><tr><td>3</td><td>270</td><td>370</td></tr><tr><td>4</td><td>340</td><td>440</td></tr><tr><td>5</td><td>420</td><td>520</td></tr><tr><td>6</td><td>510</td><td>610</td></tr><tr><td>7</td><td>610</td><td>710</td></tr></table>A typical profit-maximizing firm in a perfectly competitive market asks: how many units will it produce at a market price of $95 to maximize profits?",choices:["2 units","3 units","4 units","6 units","7 units"],answer:3},
-{q:"Which of the following is true at the quantity of labor hired by a profit-maximizing monopsonist?",choices:["Marginal revenue product is less than marginal factor cost.","Marginal revenue product is greater than marginal factor cost.","Marginal revenue product is less than the market wage.","Marginal revenue product is greater than the market wage.","Marginal revenue product equals the market wage. 13"],answer:3},
-{q:"Home remodeling services are provided in a perfectly competitive market but generate noise that angers neighbors. What is the socially optimal quantity of home remodeling services and the area that represents deadweight loss associated with the market equilibrium?",choices:["Q1 and area ACD","Q1 and area ABC","Q2 and area ABC","Q2 and area ACD","Q1 and area CEF"],answer:1},
-{q:"Robots and workers are substitutes in production and are both variable inputs. Both robots and workers are hired in perfectly competitive factor markets. If the daily rental price of robots increases, which of the following will most likely happen to wages paid to workers and the number of workers employed in the short run? Wages Number of Workers Employed",choices:["Wages: Decrease; Number of Workers Employed: Decrease","Wages: Decrease; Number of Workers Employed: Increase","Wages: Increase; Number of Workers Employed: Decrease","Wages: Increase; Number of Workers Employed: Increase","Wages: No change; Number of Workers Employed: No change"],answer:3},
-{q:"Rover\u2019s Rest and Dave\u2019s Den are the only two dog daycare companies in a town. Each firm is considering whether to run ads or to not run ads. The first entry in each cell shows Dave\u2019s Den\u2019s profit, and the second entry shows Rover\u2019s Rest\u2019s profit. Each dog daycare company independently and simultaneously chooses its strategy. Assume the two firms know all the information in the matrix and do not cooperate. Use the payoff matrix provided to answer the next two questions. Which of the following represents the Nash equilibrium?",choices:["Dave\u2019s Den chooses \u201cRun Ads,\u201d and Rover\u2019s Rest chooses \u201cNo Ads.\u201d","Both Dave\u2019s Den and Rover\u2019s Rest choose \u201cRun Ads.\u201d","Both Dave\u2019s Den and Rover\u2019s Rest choose \u201cNo Ads.\u201d","Dave\u2019s Den chooses \u201cNo Ads,\u201d and Rover\u2019s Rest chooses \u201cRun Ads.\u201d","There are multiple Nash equilibria."],answer:1},
-{q:"The advertising agency raises its prices, causing a firm that chooses to run ads to earn $200 less in profits. Once the firms adjust to the higher advertising prices, what is the total combined profit of the two firms in the new Nash equilibrium?",choices:["$500","$700","$1,300","$1,500","$1,600 15"],answer:2},
-{q:"Scarcity leads to which of the following?",choices:["Unemployed resources","Absolute advantage","Opportunity cost","Efficiency","Monopolies Orange juice (in liters) Canvases Stefan 40 30 Donna 20 10"],answer:2},
-{q:"The table provides maximum possible production of orange juice OR canvases.<br><table><tr><th></th><th>Orange juice (in liters)</th><th>Canvases</th></tr><tr><td>Stefan</td><td>40</td><td>30</td></tr><tr><td>Donna</td><td>20</td><td>10</td></tr></table>Stefan and Donna produce orange juice and canvases. Which of the following terms of trade would be mutually beneficial to Stefan and Donna?",choices:["1 canvas for 0.4 liter of orange juice","1 canvas for 0.5 liter of orange juice","1 canvas for 1 liter of orange juice","1 canvas for 1.5 liters of orange juice","1 canvas for 2.5 liters of orange juice"],answer:3},
-{q:"Which of the following is most likely true if textile production generates pollution during the production process?",choices:["The market will underproduce textiles relative to the socially optimal quantity, and the government would need to provide a lump-sum subsidy to firms to correct the externality.","The market will underproduce textiles relative to the socially optimal quantity, and the government would need to provide a per-unit subsidy to firms to correct the externality.","The market will overproduce textiles relative to the socially optimal quantity, and the government would need to impose a lump-sum tax on firms to correct the externality.","The market will overproduce textiles relative to the socially optimal quantity, and the government would need to impose a per-unit tax on firms to correct the externality.","The market will produce the socially optimal quantity of textiles, and the government would not need to intervene in the market to influence the production decisions of firms."],answer:3},
-{q:"If the value of the price elasticity of supply for a product is 0.5, which of the following statements is correct?",choices:["A 10 percent increase in the price of the product will decrease the quantity supplied by 5 percent.","A 10 percent increase in the price of the product will decrease the quantity supplied by 20 percent.","A 10 percent increase in the price of the product will increase the quantity supplied by 20 percent.","A 20 percent decrease in the price of the product will decrease the quantity supplied by 10 percent.","A 20 percent decrease in the price of the product will decrease the quantity supplied by 40 percent."],answer:3},
-{q:"Income inequality is measured by what economic concept?",choices:["Market failure","Unemployment","Production function","Gini coefficient","Deadweight loss"],answer:3},
-{q:"Toby\u2019s Toy Trains produces train sets in a monopolistically competitive market. If Toby increases the price of a train set by 5 percent, causing a 10 percent decrease in the quantity demanded of train sets, which of the following will occur?",choices:["Toby\u2019s total revenue will increase.","Toby\u2019s total revenue will decrease.","Toby\u2019s total revenue will remain the same.","The demand for Toby\u2019s train sets will increase.","The demand for Toby\u2019s train sets will decrease."],answer:1},
-{q:"A decrease in the cost of land devoted for building townhouses will most likely cause which of the following?",choices:["The supply curve of townhouses will shift to the left.","The demand curve for townhouses will become more elastic.","The price of townhouses will increase.","The supply of townhouses will increase.","There will be less incentive to build townhouses. 16 Number of Workers Quantity of T-Shirts 0 0 1 24 44 3 60 4 72 5 80"],answer:3},
-{q:"The table provides daily T-shirt output.<br><table><tr><th>Number of Workers</th><th>Quantity of T-Shirts</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>24</td></tr><tr><td>2</td><td>44</td></tr><tr><td>3</td><td>60</td></tr><tr><td>4</td><td>72</td></tr><tr><td>5</td><td>80</td></tr></table>The firm is profit maximizing in perfectly competitive product and labor markets. If each T-shirt sells for $10 and the equilibrium daily wage is $100, how many workers will the firm hire to maximize profit?",choices:["1","2","3","4","5"],answer:3},
-{q:"Which of the following ignores implicit costs?",choices:["Normal profit","Accounting profit","Economic profit","Opportunity cost","Economic cost"],answer:1},
-{q:"Which of the following best explains why the government provides public goods?",choices:["Nonexcludable goods have a perfectly inelastic demand.","Nonrival goods benefit only private consumers.","Surpluses result from the private production of nonrival goods.","Production of socially optimal quantities results in positive economic profits.","Nonexcludable goods are underproduced by private firms."],answer:4},
-{q:"Which of the following reasons could explain why a firm might hire fewer workers?",choices:["A decrease in the wage rate","A decrease in labor productivity","An increase in the price of a substitute input","An increase in the price of the firm\u2019s product","An increase in demand for the firm\u2019s product 17"],answer:1},
-{q:"ZBA is a typical profit-maximizing firm in a perfectly competitive market that produces and sells widgets at $5 each and hires labor in a perfectly competitive labor market. The table shows ZBA\u2019s production function.<br><table><tr><th>Number of Workers</th><th>Total Output</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>24</td></tr><tr><td>2</td><td>44</td></tr><tr><td>3</td><td>60</td></tr><tr><td>4</td><td>72</td></tr><tr><td>5</td><td>80</td></tr></table>What is the marginal revenue product of the third worker?",choices:["$5","$12","$25","$36","$60"],answer:4},
-{q:"ZBA is a typical profit-maximizing firm in a perfectly competitive market that produces and sells widgets at $5 each and hires labor in a perfectly competitive labor market. The table shows ZBA\u2019s production function.<br><table><tr><th>Number of Workers</th><th>Total Output</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>24</td></tr><tr><td>2</td><td>44</td></tr><tr><td>3</td><td>60</td></tr><tr><td>4</td><td>72</td></tr><tr><td>5</td><td>80</td></tr></table>If the hourly wage is $9, how many workers will the firm hire to maximize profit?",choices:["1","2","3","4","5"],answer:4},
+  {
+    "q": "The exam begins on the next page. 60 Questions tions. Select the one that is best in each case and then fill in the corresponding circle on the answer sheet. Which of the following statements about short-run costs is always true as a firm increases its production?",
+    "choices": [
+      "Average fixed cost decreases.",
+      "Average variable cost decreases.",
+      "Average total cost decreases.",
+      "Marginal cost is lower than the average variable cost.",
+      "Marginal cost is lower than the average total cost."
+    ],
+    "answer": 0
+  },
+  {
+    "q": "The allocatively efficient level of output is produced in any market structure when",
+    "choices": [
+      "firms are experiencing economies of scale",
+      "marginal revenue is equal to zero",
+      "long-run economic profit is equal to zero",
+      "price is equal to marginal cost",
+      "average variable cost is at a minimum"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The government of Annapolita has determined that the country’s power company, an unregulated natural monopolist, should be required to produce the allocatively efficient quantity of electricity. Which of the following actions will achieve the government’s goal?",
+    "choices": [
+      "The government imposes a per-unit tax on each unit of output the monopoly produces and imposes a lump-sum tax on the monopolist to eliminate any remaining profit.",
+      "The government sets the price at the point where demand and average total cost curves intersect and provides a lump-sum subsidy to the monopolist equal to the monopolist’s normal profit.",
+      "The government sets the price at the point where demand and average total cost curves intersect and imposes a lump-sum tax on the monopolist to eliminate the monopolist’s normal profit.",
+      "The government sets the price at the point where demand and marginal cost curves intersect and imposes a lump-sum tax on the monopolist to eliminate the monopolist’s normal profit.",
+      "The government sets the price at the point where demand and marginal cost curves intersect and provides a lump-sum subsidy to the monopolist to earn normal profit. 3"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "A decrease in the demand for antique lanterns, a normal good, would be caused by which of the following?",
+    "choices": [
+      "An increase in consumers’ incomes",
+      "An increase in the price of antique lanterns",
+      "An increase in the expected price of antique lanterns in the future",
+      "An increase in the price of electric lanterns, a substitute good",
+      "An increase in the price of lamp oil, a complementary good"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Apple trees need bees to pollinate their flowers and produce apples. Apple farmers hire beekeepers to bring bees to their orchards to pollinate the flowers. This is an example of a",
+    "choices": [
+      "negative externality",
+      "tragedy of the commons",
+      "public good",
+      "market transaction",
+      "free-rider problem Apples Bananas Marginal utility of last unit 15 12 Price per unit $5 $3"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The table provides Ricardo’s utility and price data.<br><table><tr><th></th><th>Apples</th><th>Bananas</th></tr><tr><td>Marginal utility of last unit</td><td>15</td><td>12</td></tr><tr><td>Price per unit</td><td>$5</td><td>$3</td></tr></table>Ricardo has $125 to spend on apples and bananas. He currently buys 10 apples and 25 bananas. Assuming that he remains within his budget constraint, Ricardo should do which of the following to increase his utility?",
+    "choices": [
+      "Buy more of both goods",
+      "Buy fewer of both goods",
+      "Buy more bananas and fewer apples",
+      "Buy more apples and fewer bananas",
+      "Continue buying the same quantities of both goods"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following is true in a command economy?",
+    "choices": [
+      "There is more private ownership of the factors of production than in a market economy.",
+      "Production decisions are based on the incentive of firms to maximize profits.",
+      "The government directs the use of factors of production.",
+      "The price system is used to allocate resources.",
+      "There is more freedom of enterprise than in a market economy. 4"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Consumer surplus could be the shaded area in which of the following situations?",
+    "choices": [
+      "A price floor set at P1 in the market",
+      "A price floor set at P2 in the market",
+      "A price ceiling set at P1 in the market",
+      "A per-unit subsidy equal to P2-P1 granted to producers",
+      "A per-unit tax equal to P2-P1 imposed on producers"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Daily Tools is a typical firm in a monopolistically competitive market that produces tool kits for everyday use. Which of the following explains why Daily Tools is inefficient in long-run equilibrium?",
+    "choices": [
+      "The entry of more efficient firms is blocked.",
+      "The firm produces the quantity at which marginal cost equals average total cost.",
+      "The firm does not produce the quantity that results in minimum average total cost.",
+      "The firm does not produce the quantity that minimizes total cost.",
+      "The firm’s customers value the last unit of output at less than its cost."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "For a rational consumer with diminishing marginal utility, the consumption of an additional unit of a good will result in which of the following?",
+    "choices": [
+      "Total utility will increase until it equals marginal utility.",
+      "Total utility will increase while marginal utility will be negative.",
+      "Total utility will increase while marginal utility will decrease.",
+      "Total utility will decrease while marginal utility will be positive.",
+      "Total utility will decrease while marginal utility will increase."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A player’s dominant strategy is",
+    "choices": [
+      "independent of the other player’s choice",
+      "dependent on the other player’s choice",
+      "the strategy that results in the maximum combined payoff for both players",
+      "the strategy that always delivers the other player’s best outcome of the game",
+      "the strategy that always delivers the other player’s worst outcome of the game"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Donuts for Dollars is a typical profit-maximizing firm in a perfectly competitive market that is earning positive economic profit in the short run. Which of the following statements must be true?",
+    "choices": [
+      "Price must be less than average total cost in the short run, and firms will exit the market in the long run.",
+      "Price must be less than average total cost in the short run, and firms will earn normal profit in the long run.",
+      "Price must equal average total cost in the short run, and firms will enter the market in the long run.",
+      "Price must be greater than average total cost in the short run, and firms will exit the market in the long run.",
+      "Price must be greater than average total cost in the short run, and firms will earn normal profit in the long run. 5"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "The use of environmentally friendly drinking straws has benefits to society beyond those enjoyed by their direct users. As a result, a government with the goal of maximizing total economic surplus in society would have an incentive to",
+    "choices": [
+      "allow the free market to determine the equilibrium price and quantity of environmentally friendly drinking straws",
+      "implement a binding price ceiling on environmentally friendly drinking straws",
+      "implement a binding price floor on environmentally friendly drinking straws",
+      "implement a per-unit tax on consumers of environmentally friendly drinking straws",
+      "implement a per-unit subsidy to consumers of environmentally friendly drinking straws"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Dylan recently quit his job as a journalist for a local newspaper where he was making $80,000 per year. He opened an ice-cream shop where he earns a yearly total revenue of $250,000. He spends $150,000 each year on rent, resources, and workers he hires. Which of the following equals Dylan’s accounting profit and economic profit from the ice-cream shop? Accounting Profit Economic Profit",
+    "choices": [
+      "Accounting Profit: $250,000; Economic Profit: $20,000",
+      "Accounting Profit: $230,000; Economic Profit: $100,000",
+      "Accounting Profit: $150,000; Economic Profit: $70,000",
+      "Accounting Profit: $100,000; Economic Profit: $80,000",
+      "Accounting Profit: $100,000; Economic Profit: $20,000"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "A nation engages in international trade with its trading partners and is currently an importer of aluminum. Imposing an import tariff on aluminum will affect the domestic market for aluminum in which of the following ways? Domestic Quantity Supplied Domestic Consumer Surplus Domestic Producer Surplus",
+    "choices": [
+      "Domestic Quantity Supplied: Increase; Domestic Consumer Surplus: Decrease; Domestic Producer Surplus: Decrease",
+      "Domestic Quantity Supplied: Increase; Domestic Consumer Surplus: Decrease; Domestic Producer Surplus: Increase",
+      "Domestic Quantity Supplied: No change; Domestic Consumer Surplus: Decrease; Domestic Producer Surplus: Decrease",
+      "Domestic Quantity Supplied: Decrease; Domestic Consumer Surplus: Increase; Domestic Producer Surplus: Decrease",
+      "Domestic Quantity Supplied: Decrease; Domestic Consumer Surplus: Increase; Domestic Producer Surplus: Increase"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following combinations is most likely to result in the demand for a product being highly price inelastic?",
+    "choices": [
+      "The product has few close substitutes and represents a small percentage of a consumer’s income.",
+      "The product has few close substitutes and represents a large percentage of a consumer’s income.",
+      "The product has many close substitutes and represents a small percentage of a consumer’s income.",
+      "The product has many close substitutes and represents a moderate percentage of a consumer’s income.",
+      "The product has many close substitutes and represents a large percentage of a consumer’s income. 6"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "FishNets hires workers from the labor market depicted in the provided graph. The government imposes a binding minimum wage in the labor market. What is the binding minimum wage that would cause FishNets to hire the same number of workers as a perfectly competitive labor market?",
+    "choices": [
+      "$24",
+      "$32",
+      "$40",
+      "$48",
+      "$64"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The cross-price elasticity of demand for flashlights and Good H is 2.5. This indicates which of the following?",
+    "choices": [
+      "Flashlights and Good H are inferior goods.",
+      "Flashlights and Good H are normal goods.",
+      "Flashlights and Good H are substitutes in consumption.",
+      "Flashlights and Good H are complements in consumption.",
+      "Flashlights and Good H both have elastic demand."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "FormalWear is a clothing factory that hires workers as a variable input and rents sewing machines as a fixed input. Which of the following will happen when the marginal product of workers decreases?",
+    "choices": [
+      "Total variable cost will decrease.",
+      "Total fixed cost will increase.",
+      "Short-run average total cost will decrease.",
+      "Marginal cost will increase.",
+      "Marginal cost will equal average total cost."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Gale Furniture uses labor, capital, and wood as inputs in its production of office desks. When Gale Furniture doubles the quantity of labor, capital, and wood, the quantity of office desks doubles. Gale Furniture’s production process is characterized by",
+    "choices": [
+      "economies of scale",
+      "diseconomies of scale",
+      "constant returns to scale",
+      "decreasing returns to scale",
+      "increasing returns to scale"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Which of the following situations best fits with the description of a firm in a perfectly competitive market?",
+    "choices": [
+      "GaryNote constantly offers discounts to steal customers from EricNote, which retaliates by offering price cuts.",
+      "GaryNote has many competitors in the market, and each firm differentiates its product to gain customer loyalty.",
+      "GaryNote can hire as many workers as it wants at the market wage, but it must decrease its price to sell more output.",
+      "GaryNote sets its own price for its output, but because of market competition, it earns zero economic profit in the long run.",
+      "GaryNote can sell as many units of output as it wants at the market price but will lose all its customers if it charges a higher price. 7"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Greencom is currently producing 20 units of output. At this level of output, Greencom’s marginal revenue is $6, marginal cost is $6, and average total cost is $9. If Greencom operates in a monopolistically competitive market and sells all 20 units of output for $10 per unit, it can be concluded that",
+    "choices": [
+      "Greencom would earn more profit by decreasing output",
+      "Greencom would earn more profit by increasing output",
+      "Greencom is earning zero economic profit",
+      "Greencom is earning negative economic profit",
+      "Greencom is earning positive economic profit Number of Cases Total Cost ($) 0 15 1 25 45 3 75 4 115 5 165"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "The table provides Hansel’s Hot Sauce daily total cost data.<br><table><tr><th>Number of Cases</th><th>Total Cost ($)</th></tr><tr><td>0</td><td>15</td></tr><tr><td>1</td><td>25</td></tr><tr><td>2</td><td>45</td></tr><tr><td>3</td><td>75</td></tr><tr><td>4</td><td>115</td></tr><tr><td>5</td><td>165</td></tr></table>If the average fixed cost was $5 per case, how many cases of hot sauce had Hansel’s Hot Sauce produced?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Cross-price elasticity of demand for honey with respect to yogurt is -4. At the current equilibrium, consumers are buying 100 containers of yogurt per week and 20 containers of honey per week. If the price of yogurt increases by 10 percent per container, what will be the new quantity demanded of honey?",
+    "choices": [
+      "4 containers",
+      "8 containers",
+      "10 containers",
+      "12 containers",
+      "40 containers Quantity Price ($) Total Cost ($) 1 10 11 8 14 3 18 4 5 25 5 3 34"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The table provides price and cost data for Howell’s Toy Hoops.<br><table><tr><th>Quantity</th><th>Price ($)</th><th>Total Cost ($)</th></tr><tr><td>1</td><td>10</td><td>11</td></tr><tr><td>2</td><td>8</td><td>14</td></tr><tr><td>3</td><td>7</td><td>18</td></tr><tr><td>4</td><td>5</td><td>25</td></tr><tr><td>5</td><td>3</td><td>34</td></tr></table>Howell’s Toy Hoops is a typical profit-maximizing firm that sells in a monopolistically competitive market. At the profit-maximizing quantity, the economic profit for Howell’s Toy Hoops is",
+    "choices": [
+      "-$19",
+      "-$5",
+      "-$1",
+      "$2",
+      "$3 8"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "The graph shows the cost and revenue curves for a profitmaximizing firm. Which of the following is true about the firm?",
+    "choices": [
+      "The firm operates in a perfectly competitive market, producing the allocatively efficient quantity and charging P1.",
+      "The firm is a monopolist, producing the allocatively efficient quantity and charging P1.",
+      "The firm is a natural monopoly, producing Q1 and earning positive economic profit.",
+      "The firm operates in an imperfectly competitive market, producing Q1 and earning positive economic profit.",
+      "The firm operates in a monopolistically competitive market, producing Q1 and earning negative economic profit."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The income and substitution effects explain which of the following?",
+    "choices": [
+      "Decreasing marginal productivity of labor",
+      "Market power caused by barriers to entry",
+      "Increasing marginal cost of production",
+      "Increasing returns to scale",
+      "The downward slope of the market demand curve 9"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Which of the following will happen if the firm continues to hire additional units of labor beyond L2 in the short run?",
+    "choices": [
+      "The firm’s marginal cost will decrease.",
+      "The firm will begin experiencing diminishing marginal returns.",
+      "The firm’s fixed cost will increase.",
+      "The average product of labor will be equal to zero.",
+      "The total product of labor will decrease. 10"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "The market for Good Z has relatively elastic supply and demand curves. Market efficiency is attained when",
+    "choices": [
+      "total labor cost is minimized for each firm",
+      "each firm experiences economies of scale",
+      "consumer surplus is greater than producer surplus",
+      "producer surplus is zero",
+      "deadweight loss is zero"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "The government imposition of a minimum wage in a perfectly competitive labor market is a policy that would",
+    "choices": [
+      "be used in a pure market economy",
+      "be used in a mixed economy",
+      "eliminate deadweight loss",
+      "increase the number of workers hired",
+      "decrease the supply of labor"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A natural monopoly exists when a single firm",
+    "choices": [
+      "produces a quantity of output that maximizes the total producer surplus",
+      "produces the allocatively efficient quantity of output of a good",
+      "has an upward-sloping marginal cost curve",
+      "has a downward-sloping average total cost curve over the relevant range of output",
+      "sets price equal to marginal cost in order to maximize profit"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is an example of a good that is nonexcludable and rival in consumption?",
+    "choices": [
+      "Fish sandwich",
+      "Public highway",
+      "Private dance lesson",
+      "Online music",
+      "National defense"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "OfficeClips is a typical firm that produces and sells paper clips in a perfectly competitive market. OfficeClips is currently earning a positive economic profit. In the long run, what will happen to the firm’s economic profit, the market price, and the market quantity? Firm’s Profit Market Price Market Quantity",
+    "choices": [
+      "Firm’s Profit: No change; Market Price: Decrease; Market Quantity: Increase",
+      "Firm’s Profit: No change; Market Price: Increase; Market Quantity: Decrease",
+      "Firm’s Profit: Decrease; Market Price: Increase; Market Quantity: Decrease",
+      "Firm’s Profit: Decrease; Market Price: Decrease; Market Quantity: Decrease",
+      "Firm’s Profit: Decrease; Market Price: Decrease; Market Quantity: Increase"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Which of the following best represents the most distinctive characteristic of an oligopoly?",
+    "choices": [
+      "A market with a single firm that faces no competition",
+      "A market where a few firms have significant market share",
+      "A market with low barriers to entry",
+      "A market with many firms selling differentiated products",
+      "A market with many firms earning zero economic profits in the long run 11"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following is an example of physical capital?",
+    "choices": [
+      "Earnings from a job",
+      "Fish in the ocean",
+      "Money in a person’s wallet",
+      "An unskilled worker",
+      "A tractor used in farming"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "A firm with market power sells its product in two markets. The firm faces the same cost curves in both markets but faces a relatively elastic demand in one market for its product and a relatively inelastic demand in the other market for that same product. Which of the following will increase the firm’s profits?",
+    "choices": [
+      "The firm charges a lower price in both markets.",
+      "The firm charges a higher price in both markets.",
+      "The firm charges a price equal to its marginal cost in both markets.",
+      "The firm charges a lower price in the market with elastic demand and a higher price in the market with inelastic demand.",
+      "The firm charges a lower price in the market with inelastic demand and a higher price in the market with elastic demand. 12"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following will occur in the market for bicycles if the government establishes a binding price floor?",
+    "choices": [
+      "A market shortage",
+      "A decrease in the demand for bicycles",
+      "A decrease in the quantity of bicycles purchased",
+      "An increase in consumer surplus",
+      "An increase in the equilibrium quantity of bicycles Quantity of Output (units) Total Variable Cost ($) Total Cost ($) 1 100 200 190 290 3 270 370 4 340 440 5 420 520 6 510 610 7 610 710"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The table provides total variable cost and total cost data.<br><table><tr><th>Quantity of Output (units)</th><th>Total Variable Cost ($)</th><th>Total Cost ($)</th></tr><tr><td>1</td><td>100</td><td>200</td></tr><tr><td>2</td><td>190</td><td>290</td></tr><tr><td>3</td><td>270</td><td>370</td></tr><tr><td>4</td><td>340</td><td>440</td></tr><tr><td>5</td><td>420</td><td>520</td></tr><tr><td>6</td><td>510</td><td>610</td></tr><tr><td>7</td><td>610</td><td>710</td></tr></table>A typical profit-maximizing firm in a perfectly competitive market asks: how many units will it produce at a market price of $95 to maximize profits?",
+    "choices": [
+      "2 units",
+      "3 units",
+      "4 units",
+      "6 units",
+      "7 units"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is true at the quantity of labor hired by a profit-maximizing monopsonist?",
+    "choices": [
+      "Marginal revenue product is less than marginal factor cost.",
+      "Marginal revenue product is greater than marginal factor cost.",
+      "Marginal revenue product is less than the market wage.",
+      "Marginal revenue product is greater than the market wage.",
+      "Marginal revenue product equals the market wage. 13"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Home remodeling services are provided in a perfectly competitive market but generate noise that angers neighbors. What is the socially optimal quantity of home remodeling services and the area that represents deadweight loss associated with the market equilibrium?",
+    "choices": [
+      "Q1 and area ACD",
+      "Q1 and area ABC",
+      "Q2 and area ABC",
+      "Q2 and area ACD",
+      "Q1 and area CEF"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Robots and workers are substitutes in production and are both variable inputs. Both robots and workers are hired in perfectly competitive factor markets. If the daily rental price of robots increases, which of the following will most likely happen to wages paid to workers and the number of workers employed in the short run? Wages Number of Workers Employed",
+    "choices": [
+      "Wages: Decrease; Number of Workers Employed: Decrease",
+      "Wages: Decrease; Number of Workers Employed: Increase",
+      "Wages: Increase; Number of Workers Employed: Decrease",
+      "Wages: Increase; Number of Workers Employed: Increase",
+      "Wages: No change; Number of Workers Employed: No change"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Rover’s Rest and Dave’s Den are the only two dog daycare companies in a town. Each firm is considering whether to run ads or to not run ads. The first entry in each cell shows Dave’s Den’s profit, and the second entry shows Rover’s Rest’s profit. Each dog daycare company independently and simultaneously chooses its strategy. Assume the two firms know all the information in the matrix and do not cooperate. Use the payoff matrix provided to answer the next two questions. Which of the following represents the Nash equilibrium?",
+    "choices": [
+      "Dave’s Den chooses “Run Ads,” and Rover’s Rest chooses “No Ads.”",
+      "Both Dave’s Den and Rover’s Rest choose “Run Ads.”",
+      "Both Dave’s Den and Rover’s Rest choose “No Ads.”",
+      "Dave’s Den chooses “No Ads,” and Rover’s Rest chooses “Run Ads.”",
+      "There are multiple Nash equilibria."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The advertising agency raises its prices, causing a firm that chooses to run ads to earn $200 less in profits. Once the firms adjust to the higher advertising prices, what is the total combined profit of the two firms in the new Nash equilibrium?",
+    "choices": [
+      "$500",
+      "$700",
+      "$1,300",
+      "$1,500",
+      "$1,600 15"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Scarcity leads to which of the following?",
+    "choices": [
+      "Unemployed resources",
+      "Absolute advantage",
+      "Opportunity cost",
+      "Efficiency",
+      "Monopolies Orange juice (in liters) Canvases Stefan 40 30 Donna 20 10"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The table provides maximum possible production of orange juice OR canvases.<br><table><tr><th></th><th>Orange juice (in liters)</th><th>Canvases</th></tr><tr><td>Stefan</td><td>40</td><td>30</td></tr><tr><td>Donna</td><td>20</td><td>10</td></tr></table>Stefan and Donna produce orange juice and canvases. Which of the following terms of trade would be mutually beneficial to Stefan and Donna?",
+    "choices": [
+      "1 canvas for 0.4 liter of orange juice",
+      "1 canvas for 0.5 liter of orange juice",
+      "1 canvas for 1 liter of orange juice",
+      "1 canvas for 1.5 liters of orange juice",
+      "1 canvas for 2.5 liters of orange juice"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following is most likely true if textile production generates pollution during the production process?",
+    "choices": [
+      "The market will underproduce textiles relative to the socially optimal quantity, and the government would need to provide a lump-sum subsidy to firms to correct the externality.",
+      "The market will underproduce textiles relative to the socially optimal quantity, and the government would need to provide a per-unit subsidy to firms to correct the externality.",
+      "The market will overproduce textiles relative to the socially optimal quantity, and the government would need to impose a lump-sum tax on firms to correct the externality.",
+      "The market will overproduce textiles relative to the socially optimal quantity, and the government would need to impose a per-unit tax on firms to correct the externality.",
+      "The market will produce the socially optimal quantity of textiles, and the government would not need to intervene in the market to influence the production decisions of firms."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "If the value of the price elasticity of supply for a product is 0.5, which of the following statements is correct?",
+    "choices": [
+      "A 10 percent increase in the price of the product will decrease the quantity supplied by 5 percent.",
+      "A 10 percent increase in the price of the product will decrease the quantity supplied by 20 percent.",
+      "A 10 percent increase in the price of the product will increase the quantity supplied by 20 percent.",
+      "A 20 percent decrease in the price of the product will decrease the quantity supplied by 10 percent.",
+      "A 20 percent decrease in the price of the product will decrease the quantity supplied by 40 percent."
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Income inequality is measured by what economic concept?",
+    "choices": [
+      "Market failure",
+      "Unemployment",
+      "Production function",
+      "Gini coefficient",
+      "Deadweight loss"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Toby’s Toy Trains produces train sets in a monopolistically competitive market. If Toby increases the price of a train set by 5 percent, causing a 10 percent decrease in the quantity demanded of train sets, which of the following will occur?",
+    "choices": [
+      "Toby’s total revenue will increase.",
+      "Toby’s total revenue will decrease.",
+      "Toby’s total revenue will remain the same.",
+      "The demand for Toby’s train sets will increase.",
+      "The demand for Toby’s train sets will decrease."
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A decrease in the cost of land devoted for building townhouses will most likely cause which of the following?",
+    "choices": [
+      "The supply curve of townhouses will shift to the left.",
+      "The demand curve for townhouses will become more elastic.",
+      "The price of townhouses will increase.",
+      "The supply of townhouses will increase.",
+      "There will be less incentive to build townhouses. 16 Number of Workers Quantity of T-Shirts 0 0 1 24 44 3 60 4 72 5 80"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "The table provides daily T-shirt output.<br><table><tr><th>Number of Workers</th><th>Quantity of T-Shirts</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>24</td></tr><tr><td>2</td><td>44</td></tr><tr><td>3</td><td>60</td></tr><tr><td>4</td><td>72</td></tr><tr><td>5</td><td>80</td></tr></table>The firm is profit maximizing in perfectly competitive product and labor markets. If each T-shirt sells for $10 and the equilibrium daily wage is $100, how many workers will the firm hire to maximize profit?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Which of the following ignores implicit costs?",
+    "choices": [
+      "Normal profit",
+      "Accounting profit",
+      "Economic profit",
+      "Opportunity cost",
+      "Economic cost"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Which of the following best explains why the government provides public goods?",
+    "choices": [
+      "Nonexcludable goods have a perfectly inelastic demand.",
+      "Nonrival goods benefit only private consumers.",
+      "Surpluses result from the private production of nonrival goods.",
+      "Production of socially optimal quantities results in positive economic profits.",
+      "Nonexcludable goods are underproduced by private firms."
+    ],
+    "answer": 4
+  },
+  {
+    "q": "Which of the following reasons could explain why a firm might hire fewer workers?",
+    "choices": [
+      "A decrease in the wage rate",
+      "A decrease in labor productivity",
+      "An increase in the price of a substitute input",
+      "An increase in the price of the firm’s product",
+      "An increase in demand for the firm’s product 17"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "ZBA is a typical profit-maximizing firm in a perfectly competitive market that produces and sells widgets at $5 each and hires labor in a perfectly competitive labor market. The table shows ZBA’s production function.<br><table><tr><th>Number of Workers</th><th>Total Output</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>24</td></tr><tr><td>2</td><td>44</td></tr><tr><td>3</td><td>60</td></tr><tr><td>4</td><td>72</td></tr><tr><td>5</td><td>80</td></tr></table>What is the marginal revenue product of the third worker?",
+    "choices": [
+      "$5",
+      "$12",
+      "$25",
+      "$36",
+      "$60"
+    ],
+    "answer": 4
+  },
+  {
+    "q": "ZBA is a typical profit-maximizing firm in a perfectly competitive market that produces and sells widgets at $5 each and hires labor in a perfectly competitive labor market. The table shows ZBA’s production function.<br><table><tr><th>Number of Workers</th><th>Total Output</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>24</td></tr><tr><td>2</td><td>44</td></tr><tr><td>3</td><td>60</td></tr><tr><td>4</td><td>72</td></tr><tr><td>5</td><td>80</td></tr></table>If the hourly wage is $9, how many workers will the firm hire to maximize profit?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": 4
+  }
 ];
 
 
@@ -1214,16 +2926,6 @@ const PHYSICS1_2017_MC = [
     "answer": 3
   },
   {
-    "q": "A transverse periodic wave travels along a string that is stretched along the x-axis. The figure shows the y-position of a point on the string as a function of time. What further information, if any, is needed to determine the wavelength of the wave?",
-    "choices": [
-      "The velocity of the wave",
-      "The amplitude of the wave",
-      "The frequency of the wave",
-      "No further information is needed to determine the wavelength."
-    ],
-    "answer": 0
-  },
-  {
     "q": "Two objects, A and B, move toward one another. Object A has twice the mass and half the speed of object B. Which of the following describes the forces the objects exert on each other when they collide and provides the best explanation?",
     "choices": [
       "The force exerted by A on B will be twice as great as the force exerted by B on A, because A has twice the mass of B.",
@@ -1314,16 +3016,6 @@ const PHYSICS1_2017_MC = [
     "answer": 3
   },
   {
-    "q": "The figure shows a uniform meterstick that is set on a fulcrum at its center. A force of magnitude F toward the bottom of the page is exerted on the meterstick at the position shown. At which of the labeled positions must an upward force of magnitude 2F be exerted on the meterstick to keep the meterstick in equilibrium?",
-    "choices": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ],
-    "answer": 1
-  },
-  {
     "q": "In a classroom at time t = 0, a sphere is thrown upward at a 45° angle to the horizontal. At time t₁, while the sphere is still rising, it bounces off the ceiling elastically and with no friction. Which of the following pairs of graphs could represent the sphere's horizontal velocity and vertical velocity as functions of time t?",
     "choices": [
       "Graph pair A",
@@ -1372,20 +3064,6 @@ const PHYSICS1_2017_MC = [
       "15 J"
     ],
     "answer": 0
-  },
-  {
-    "q": "Which of the following equations correctly represent the total potential difference for a complete loop in the circuit diagram above? Select two answers.",
-    "choices": [
-      "V − I₁R₁ − I₃(R₃ + R₄) = 0",
-      "V − I₁R₁ − I₂R₂ − I₃(R₃ + R₄) = 0",
-      "V − I₃(R₃ + R₄) − I₂R₂ = 0",
-      "V − I₁R₁ + I₂R₂ = 0"
-    ],
-    "answer": [
-      0,
-      2
-    ],
-    "multi": true
   },
   {
     "q": "Two lab carts have the same mass and are free to move on a horizontal track. Cart 1 travels to the right at 1.0 m/s and collides with cart 2, which is initially at rest. Cart 2 has a compressed spring-loaded plunger with a nonnegligible amount of stored energy. Negligible mechanical energy dissipates during the collision. Taking rightward as positive, the carts' velocities after the collision could be which of the following? Select two answers.",
@@ -1619,16 +3297,6 @@ const PHYSICS1_2014_MC = [
       "v_c < v_f",
       "v_c < v",
       "v_c = v"
-    ],
-    "answer": 3
-  },
-  {
-    "q": "The diagram above shows a top view of a child of mass M on a circular platform of mass 5M that is rotating counterclockwise. Assume the platform rotates without friction. Which of the following describes an action by the child that will result in an increase in the total angular momentum of the child-platform system?",
-    "choices": [
-      "The child moves toward the center of the platform.",
-      "The child moves away from the center of the platform.",
-      "The child moves along a circle concentric with the platform (dashed line shown) opposite the direction of the platform’s rotation.",
-      "None of the actions described will change the total angular momentum of the child- platform system."
     ],
     "answer": 3
   },
@@ -6223,17 +7891,6 @@ const PSYCH_SET1_MC = [
     "answer": 3
   },
   {
-    "q": "Jacob cries uncontrollably every time his mother takes him down the candy isle in the supermarket and refuses to let him buy anything. Eventually, Jacob's mother gives in and lets him choose one candy item to buy if he stops crying. Jacob's crying behavior is __________________ by his mother.",
-    "choices": [
-      "punished",
-      "associated",
-      "reinforced",
-      "extinguished",
-      "shaped"
-    ],
-    "answer": 2
-  },
-  {
     "q": "Which of the following scientists was among the first to study the relationship between reinforcement and learning?",
     "choices": [
       "Sigmund Freud",
@@ -6709,11 +8366,11 @@ const PSYCH_SET1_MC = [
   {
     "q": "Which of the following represents the correct order of auditory transmission from the time the sound is first heard to when it is processed in the brain?",
     "choices": [
-      "Oval window\u00e2\u0086\u0092 cochlea\u00e2\u0086\u0092 tympanic membrane\u00e2\u0086\u0092 auditory nerve\u00e2\u0086\u0092 auditory canal",
-      "Auditory canal\u00e2\u0086\u0092 auditory nerve\u00e2\u0086\u0092 cochlea\u00e2\u0086\u0092 tympanic membrane\u00e2\u0086\u0092 ossicles",
-      "Tympanic membrane\u00e2\u0086\u0092 oval window\u00e2\u0086\u0092 cochlea\u00e2\u0086\u0092 auditory nerve\u00e2\u0086\u0092 auditory canal",
-      "Auditory canal\u00e2\u0086\u0092 ossicles\u00e2\u0086\u0092 oval window\u00e2\u0086\u0092 cochlea\u00e2\u0086\u0092 auditory nerve",
-      "Cochlea\u00e2\u0086\u0092 ossicles\u00e2\u0086\u0092 oval window\u00e2\u0086\u0092 auditory canal\u00e2\u0086\u0092 auditory nerve"
+      "Oval windowâ cochleaâ tympanic membraneâ auditory nerveâ auditory canal",
+      "Auditory canalâ auditory nerveâ cochleaâ tympanic membraneâ ossicles",
+      "Tympanic membraneâ oval windowâ cochleaâ auditory nerveâ auditory canal",
+      "Auditory canalâ ossiclesâ oval windowâ cochleaâ auditory nerve",
+      "Cochleaâ ossiclesâ oval windowâ auditory canalâ auditory nerve"
     ],
     "answer": 3
   },
