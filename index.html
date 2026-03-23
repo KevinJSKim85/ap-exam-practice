@@ -24097,40 +24097,81 @@ function renderMCReview() {
   const unanswered = qs.length - answered;
   const flaggedCount = Object.values(state.mcFlags).filter(Boolean).length;
 
+  let mcCorrect = 0;
+  qs.forEach((q, i) => {
+    if (q.multi) {
+      const ua = state.mcAnswers[i] || [];
+      if (Array.isArray(ua) && ua.length === q.answer.length && [...ua].sort().every((v,j) => v === [...q.answer].sort()[j])) mcCorrect++;
+    } else {
+      if (state.mcAnswers[i] === q.answer) mcCorrect++;
+    }
+  });
+  const mcPct = qs.length ? Math.round(mcCorrect / qs.length * 100) : 0;
+
   let grid = '<div class="review-grid">';
   for (let i = 0; i < qs.length; i++) {
+    const q = qs[i];
+    const userAnswer = state.mcAnswers[i];
+    const isAnswered = q.multi ? Array.isArray(userAnswer) && userAnswer.length === 2 : userAnswer !== undefined;
+    const isCorrect = isAnswered && (q.multi ? [...userAnswer].sort().every((v,j) => v === [...q.answer].sort()[j]) : userAnswer === q.answer);
     let cls = 'review-item';
-    const isAnswered = qs[i].multi ? Array.isArray(state.mcAnswers[i]) && state.mcAnswers[i].length === 2 : state.mcAnswers[i] !== undefined;
-    if (isAnswered) cls += ' answered'; else cls += ' unanswered';
+    if (isCorrect) cls += ' correct';
+    else if (isAnswered) cls += ' incorrect';
+    else cls += ' unanswered';
     if (state.mcFlags[i]) cls += ' flagged';
-    grid += `<div class="${cls}" onclick="goToQ(${i});state.screen='mc';render()">${i+1}</div>`;
+    const title = isCorrect ? `Q${i+1}: Correct` : isAnswered ? `Q${i+1}: Your answer: ${LETTERS[userAnswer]}, Correct: ${LETTERS[q.answer]}` : `Q${i+1}: Unanswered`;
+    grid += `<div class="${cls}" title="${title}" onclick="goToQ(${i});state.screen='mc';render()">${i+1}</div>`;
   }
   grid += '</div>';
+
+  let explHTML = '';
+  if (qs[0] && qs[0].explanation) {
+    explHTML = `<div class="breakdown" style="margin-top:24px">
+      <h3>Answer Explanations</h3>
+      <p style="color:#666;font-size:13px;margin-bottom:16px">Review why each answer is correct or incorrect.</p>
+      ${qs.map((q, i) => {
+        const userAnswer = state.mcAnswers[i];
+        const isAnswered = userAnswer !== undefined;
+        const correct = isAnswered && userAnswer === q.answer;
+        const icon = !isAnswered ? '⬜' : (correct ? '✅' : '❌');
+        return `<div style="padding:12px;margin-bottom:8px;background:${correct ? '#f0fdf4' : (isAnswered ? '#fef2f2' : '#fefce8')};border-radius:8px;border-left:4px solid ${correct ? 'var(--ap-green)' : (isAnswered ? 'var(--ap-red)' : 'var(--ap-orange)')}">
+          <div style="font-weight:700;font-size:13px;margin-bottom:3px">${icon} Question ${i+1} — ${isAnswered ? (correct ? 'Correct' : 'Incorrect') : 'Unanswered'}</div>
+          ${isAnswered && !correct ? '<div style="font-size:12px;color:#666;margin-bottom:4px">Your answer: <strong>' + LETTERS[userAnswer] + '</strong> | Correct: <strong>' + LETTERS[q.answer] + '</strong></div>' : ''}
+          <div style="font-size:12px;line-height:1.5;color:#444">${q.explanation || ''}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
 
   return `
   <div class="header">
     <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
-    <div class="exam-info">Section I: Review</div>
+    <div class="exam-info">Section I: Results</div>
     <div class="header-actions"><div id="timer" class="timer">--:--</div></div>
   </div>
   <div class="main no-sidebar" style="max-width:700px;margin:80px auto 0">
     <div class="question-container">
-      <h2 style="margin-bottom:8px">Review Your Answers</h2>
-      <p style="color:#666;margin-bottom:20px">Click any question to return to it.</p>
-      <div style="display:flex;gap:24px;margin-bottom:20px">
-        <div><strong>${answered}</strong> Answered</div>
+      <div style="text-align:center;margin-bottom:24px">
+        <div style="font-size:48px;font-weight:800;color:${mcPct>=70?'var(--ap-green)':mcPct>=50?'var(--ap-orange)':'var(--ap-red)'}">${mcCorrect}/${qs.length}</div>
+        <div style="font-size:16px;color:#666">Section I Score: ${mcPct}% correct</div>
+      </div>
+      <div style="display:flex;gap:24px;margin-bottom:16px;justify-content:center">
+        <div style="color:var(--ap-green)"><strong>${mcCorrect}</strong> Correct</div>
+        <div style="color:var(--ap-red)"><strong>${answered - mcCorrect}</strong> Incorrect</div>
         <div style="color:var(--ap-orange)"><strong>${unanswered}</strong> Unanswered</div>
-        <div><strong>${flaggedCount}</strong> Flagged</div>
+        ${flaggedCount ? `<div><strong>${flaggedCount}</strong> Flagged</div>` : ''}
       </div>
       <div class="legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#e8f5e9;border-color:var(--ap-green)"></div>Answered</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e8f5e9;border-color:var(--ap-green)"></div>Correct</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ffebee;border-color:var(--ap-red)"></div>Incorrect</div>
         <div class="legend-item"><div class="legend-dot" style="background:#fff3e0;border-color:var(--ap-orange)"></div>Unanswered</div>
       </div>
       ${grid}
+      ${explHTML}
     </div>
     <div class="nav-buttons" style="margin-top:24px">
       <button class="btn btn-outline" onclick="state.screen='mc';render()">← Back to Questions</button>
-      ${hasFRQ() ? `<button class="btn btn-primary" onclick="goToFRQ()">Continue to Section II →</button>` : `<button class="btn btn-primary" onclick="showResults()">Submit & See Score →</button>`}
+      ${hasFRQ() ? `<button class="btn btn-primary" onclick="goToFRQ()">Continue to Section II →</button>` : `<button class="btn btn-primary" onclick="showResults()">See Final AP Score →</button>`}
     </div>
   </div>`;
 }
@@ -24245,7 +24286,7 @@ function renderFRQScoring() {
     <h2 style="margin-bottom:8px">Score Your Free Responses</h2>
     <p style="color:#666;margin-bottom:24px">Compare your answers against the scoring rubric. Check each criterion you believe you earned.</p>
     <div id="frq-total" style="background:var(--ap-green);color:white;padding:16px 24px;border-radius:8px;margin-bottom:24px;font-size:18px;font-weight:600;text-align:center">
-      FRQ Score: 0 / 20
+      FRQ Score: 0 / ${frqs.reduce((s,f) => s + normalizeRubric(f.rubric).reduce((a,r) => a+r.pts, 0), 0)}
     </div>
     ${sections}
     <div style="text-align:center;margin-top:32px">
@@ -24427,8 +24468,9 @@ function updateFRQTotal() {
       if (state.frqScores[`${state.exam}_${fi}_${ri}`]) total += r.pts;
     });
   });
+  const frqMax = getFRQs().reduce((s,f) => s + normalizeRubric(f.rubric).reduce((a,r) => a+r.pts, 0), 0);
   const el = document.getElementById('frq-total');
-  if (el) el.textContent = `FRQ Score: ${total} / 20`;
+  if (el) el.textContent = `FRQ Score: ${total} / ${frqMax}`;
 }
 function showResults() { state.screen = 'results'; render(); }
 function goHome() {
