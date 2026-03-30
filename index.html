@@ -31285,9 +31285,10 @@ function speakCurrentQuestion() {
 
 function normalizeQuestionHtml(html) {
   return (html || '')
-    .replace(/<div class=\"stimulus\"><pre>/g, '<div class="stimulus">')
-    .replace(/<div class=\'stimulus\'><pre>/g, '<div class="stimulus">')
-    .replace(/<\/pre><\/div>/g, '</div>');
+    .replace(/<pre>/g, '')
+    .replace(/<\/pre>/g, '')
+    .replace(/<p>\s*<b>Questions?\s+[\d\u2013\u2014–-]+<\/b>\s*refer to the following information\.?\s*<\/p>/gi, '')
+    .replace(/<b>Questions?\s+[\d\u2013\u2014–-]+<\/b>\s*refer to the following information\.?\s*/gi, '');
 }
 
 // ===== RENDER =====
