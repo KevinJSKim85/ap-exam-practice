@@ -100,7 +100,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .question-text table th{background:var(--ap-gray);font-weight:600}
 .stimulus{background:var(--ap-gray);border-left:3px solid var(--ap-green);padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.6;border-radius:0 4px 4px 0;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:break-word;max-width:100%;overflow-x:hidden}
 .stimulus img{max-width:100%;height:auto;display:block;margin:8px 0}
+.stimulus svg{display:block;width:100%;height:auto;margin:10px 0}
 .stimulus pre{white-space:pre-wrap;word-wrap:break-word;overflow-wrap:break-word;margin:0;font-family:inherit;max-width:100%;overflow:hidden}
+.stimulus .stimulus-caption{margin:8px 0 0;color:#5b6576;font-size:12px;line-height:1.5}
+.stimulus .econ-figure-title{font-weight:700;color:#111827;margin-bottom:8px}
+.stimulus .econ-table{width:100%;border-collapse:collapse;margin:6px 0 0}
+.stimulus .econ-table th,.stimulus .econ-table td{border:1px solid #cbd5e1;padding:6px 10px;text-align:center;background:#fff}
+.stimulus .econ-table th{background:#e2e8f0;font-weight:700}
 .choices{list-style:none}
 .choices li{padding:12px 16px;margin-bottom:8px;border:2px solid var(--ap-border);border-radius:6px;cursor:pointer;transition:all .15s;font-size:15px;display:flex;align-items:flex-start;gap:12px}
 .choices li:hover{border-color:var(--ap-blue);background:#f0f7ff}
@@ -30972,6 +30978,7 @@ function defaultLandingSections() {
 
 function getAllUnitPracticeSets() {
   const all = [];
+  if (typeof AP_ECON_INTENSIVE_SETS !== 'undefined') all.push(...AP_ECON_INTENSIVE_SETS);
   if (typeof AP_MACRO_UNIT_SETS !== 'undefined') all.push(...AP_MACRO_UNIT_SETS);
   if (typeof AP_MICRO_UNIT_SETS !== 'undefined') all.push(...AP_MICRO_UNIT_SETS);
   if (typeof AP_PHYSICS1_UNIT_SETS !== 'undefined') all.push(...AP_PHYSICS1_UNIT_SETS);
@@ -30999,11 +31006,11 @@ function renderUnitPracticeCards(prefix, toneClass) {
   const sets = getAllUnitPracticeSets().filter(set => set.id.startsWith(prefix));
   return sets.map((set, idx) => `
     <div class="exam-card num-card" onclick="selectExam('${set.id}')">
-      <div class="card-num ${toneClass}">${idx + 1}</div>
+      <div class="card-num ${toneClass}">${set.cardLabel || idx + 1}</div>
       <div class="card-body">
-        <span class="badge explain">UNIT PRACTICE</span>
+        <span class="badge explain">${set.badge || 'UNIT PRACTICE'}</span>
         <h2>${set.title}</h2>
-        <p>${set.mc.length} MCQ${set.frq && set.frq.length ? ` + ${set.frq.length} FRQ` : ''} · ${((set.mcTime||25)+(set.frqTime||0))}-minute set</p>
+        <p>${set.description || `${set.mc.length} MCQ${set.frq && set.frq.length ? ` + ${set.frq.length} FRQ` : ''} · ${((set.mcTime||25)+(set.frqTime||0))}-minute set`}</p>
         <div class="meta"><div>⏱ ${((set.mcTime||25)+(set.frqTime||0))} min</div></div>
       </div>
     </div>`).join('');
@@ -31089,11 +31096,13 @@ function isPsych() { return state.exam && state.exam.startsWith('psych'); }
 function isBio() { return state.exam && state.exam.startsWith('bio'); }
 function isBioHard() { return state.exam === 'bio_hard'; }
 function isChinese() { return state.exam && state.exam.startsWith('chinese'); }
-function isUnitPractice() { return !!(state.exam && state.exam.includes('_u')); }
+function isEconIntensive() { return !!(state.exam && state.exam.startsWith('econ_i')); }
+function isUnitPractice() { return !!(state.exam && (state.exam.includes('_u') || state.exam.startsWith('econ_i'))); }
 function isPhysics1() { return !!(state.exam && state.exam.startsWith('physics1')); }
 function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()); }
 function getExamName() {
   if (isUnitPractice()) {
+    if (isEconIntensive()) return 'AP Economics';
     if (state.exam && state.exam.startsWith('macro_u')) return 'AP Macroeconomics';
     if (state.exam && state.exam.startsWith('micro_u')) return 'AP Microeconomics';
     if (isBio()) return 'AP Biology';
@@ -31152,6 +31161,22 @@ function getMCTime() {
   return isChinese() ? 80 : isEuro() ? 55 : isPsych() ? 70 : isBio() ? 90 : (hasFRQ() ? 70 : 90);
 }
 const LETTERS = ['A','B','C','D','E'];
+
+function getRenderedQuestion(question) {
+  if (!question) return question;
+  if (window.EconStimuli && typeof window.EconStimuli.decorateQuestion === 'function') {
+    return window.EconStimuli.decorateQuestion(question);
+  }
+  return question;
+}
+
+function getRenderedFRQ(frq) {
+  if (!frq) return frq;
+  if (window.EconStimuli && typeof window.EconStimuli.decorateFrq === 'function') {
+    return window.EconStimuli.decorateFrq(frq);
+  }
+  return frq;
+}
 
 function getActualFRQTotal() {
   return getFRQs().reduce((sum, q) => sum + (q.maxPoints || 0), 0);
@@ -31270,7 +31295,7 @@ function updateTimerDisplay() {
 
 function speakCurrentQuestion() {
   const qs = getQuestions();
-  const q = qs[state.currentQ];
+  const q = getRenderedQuestion(qs[state.currentQ]);
   if (!q || !window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   const temp = document.createElement('div');
@@ -31336,15 +31361,16 @@ function renderLanding() {
       <section class="hero">
         <h1>AP Exam Practice</h1>
         <p class="subtitle">Practice with released exams and curated practice sets</p>
-        <div class="quick-stats">68 exams • 6 subjects • 2,300+ questions</div>
+        <div class="quick-stats">72 exams • 6 subjects • 2,400+ questions</div>
       </section>
 
       <div class="subjects">
-        ${section('econ','econ','📊','AP Economics','AP Economics — 16 practice sets',`
+        ${section('econ','econ','📊','AP Economics','AP Economics — 20 practice sets',`
           <div class="exam-card num-card" onclick="selectExam('macro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('micro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('macro23')"><div class="card-num econ-num">'23</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('micro23')"><div class="card-num econ-num">'23</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
+          ${renderUnitPracticeCards('econ_i', 'econ-num')}
           ${renderUnitPracticeCards('macro_u', 'econ-num')}
           ${renderUnitPracticeCards('micro_u', 'econ-num')}
         `)}
@@ -31410,7 +31436,7 @@ function renderMC() {
     </div>
   </div>`;
   }
-  const q = qs[state.currentQ];
+  const q = getRenderedQuestion(qs[state.currentQ]);
   const answered = qs.filter((question, i) => question.multi ? Array.isArray(state.mcAnswers[i]) && state.mcAnswers[i].length === 2 : state.mcAnswers[i] !== undefined).length;
   const flagged = state.mcFlags[state.currentQ] || false;
   const selected = state.mcAnswers[state.currentQ];
@@ -31572,7 +31598,7 @@ function renderFRQTransition() {
 function renderFRQ() {
   const frqs = getFRQs();
   const currentFRQ = state.currentQ;
-  const frq = frqs[currentFRQ];
+  const frq = getRenderedFRQ(frqs[currentFRQ]);
   const timerText = state.timerSeconds > 0
     ? `${Math.floor(state.timerSeconds / 60)}:${(state.timerSeconds % 60).toString().padStart(2, '0')}`
     : `${getFRQTime()}:00`;
@@ -31869,5 +31895,6 @@ function goHome() {
 // INIT
 render();
 </script>
+<script src="econ_intensive_sets.js"></script>
 </body>
 </html>
