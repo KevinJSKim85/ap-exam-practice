@@ -60,6 +60,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .subject-header.psych{border-left-color:var(--psych)}
 .subject-header.bio{border-left-color:#0d9488}
 .subject-header.chinese{border-left-color:#d97706}
+.subject-header.german{border-left-color:#1f2937}
 .subject-title{font-size:20px;font-weight:800;color:#1f2937;display:flex;align-items:center;gap:8px}
 .subject-count{font-size:13px;color:#667085;font-weight:600}
 .subject-indicator{font-size:18px;color:#667085;transition:transform .3s}
@@ -84,6 +85,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .psych-num{background:linear-gradient(135deg,#dc2626,#ef4444);font-size:22px;letter-spacing:-0.5px}
 .bio-num{background:linear-gradient(135deg,#0d9488,#14b8a6);font-size:22px;letter-spacing:-0.5px}
 .chinese-num{background:linear-gradient(135deg,#b45309,#f59e0b);font-size:22px;letter-spacing:-0.5px}
+.german-num{background:linear-gradient(135deg,#1f2937,#dd0000 55%,#ffcc00);font-size:22px;letter-spacing:-0.5px}
 .badge{position:absolute;top:10px;right:10px;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff}
 .badge.explain{background:var(--euro)}
 .badge.hard{background:var(--psych)}
@@ -30973,7 +30975,7 @@ void AP_MICRO_UNIT_SETS;
 
 // ===== APP STATE =====
 function defaultLandingSections() {
-  return { econ: false, physics: false, euro: false, psych: false, bio: false, chinese: false };
+  return { econ: false, physics: false, euro: false, psych: false, bio: false, chinese: false, german: false };
 }
 
 function getAllUnitPracticeSets() {
@@ -31058,6 +31060,9 @@ function getQuestions() {
     case 'chinese1': return typeof CHINESE_SET1_MC!=='undefined'?CHINESE_SET1_MC:[];
     case 'chinese2': return typeof CHINESE_SET2_MC!=='undefined'?CHINESE_SET2_MC:[];
     case 'chinese3': return typeof CHINESE_SET3_MC!=='undefined'?CHINESE_SET3_MC:[];
+    case 'german1': return typeof GERMAN_SET1_MC!=='undefined'?GERMAN_SET1_MC:[];
+    case 'german2': return typeof GERMAN_SET2_MC!=='undefined'?GERMAN_SET2_MC:[];
+    case 'german3': return typeof GERMAN_SET3_MC!=='undefined'?GERMAN_SET3_MC:[];
     default: return [];
   }
 }
@@ -31087,6 +31092,9 @@ function getFRQs() {
     case 'chinese1': return [];
     case 'chinese2': return [];
     case 'chinese3': return [];
+    case 'german1': return typeof GERMAN_SET1_FRQ!=='undefined'?GERMAN_SET1_FRQ:[];
+    case 'german2': return typeof GERMAN_SET2_FRQ!=='undefined'?GERMAN_SET2_FRQ:[];
+    case 'german3': return typeof GERMAN_SET3_FRQ!=='undefined'?GERMAN_SET3_FRQ:[];
     default: return [];
   }
 }
@@ -31096,10 +31104,11 @@ function isPsych() { return state.exam && state.exam.startsWith('psych'); }
 function isBio() { return state.exam && state.exam.startsWith('bio'); }
 function isBioHard() { return state.exam === 'bio_hard'; }
 function isChinese() { return state.exam && state.exam.startsWith('chinese'); }
+function isGerman() { return state.exam && state.exam.startsWith('german'); }
 function isEconIntensive() { return !!(state.exam && state.exam.startsWith('econ_i')); }
 function isUnitPractice() { return !!(state.exam && (state.exam.includes('_u') || state.exam.startsWith('econ_i'))); }
 function isPhysics1() { return !!(state.exam && state.exam.startsWith('physics1')); }
-function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()); }
+function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()) || isGerman(); }
 function getExamName() {
   if (isUnitPractice()) {
     if (isEconIntensive()) return 'AP Economics';
@@ -31121,6 +31130,7 @@ function getExamName() {
     case 'psych1': case 'psych2': case 'psych3': return 'AP Psychology';
     case 'bio1': case 'bio2': case 'bio3': case 'bio4': case 'bio_hard': return 'AP Biology';
     case 'chinese1': case 'chinese2': case 'chinese3': return 'AP Chinese Language and Culture';
+    case 'german1': case 'german2': case 'german3': return 'AP German Language and Culture';
     default: return 'AP Exam';
   }
 }
@@ -31151,6 +31161,9 @@ function getExamYear() {
   if (state.exam === 'chinese1') return 'Set 1';
   if (state.exam === 'chinese2') return 'Set 2';
   if (state.exam === 'chinese3') return 'Set 3';
+  if (state.exam === 'german1') return '2023';
+  if (state.exam === 'german2') return '2024';
+  if (state.exam === 'german3') return '2025';
   return '2022';
 }
 function getMCTime() {
@@ -31158,7 +31171,7 @@ function getMCTime() {
     const set = currentUnitPracticeSet();
     return set && set.mcTime ? set.mcTime : 25;
   }
-  return isChinese() ? 80 : isEuro() ? 55 : isPsych() ? 70 : isBio() ? 90 : (hasFRQ() ? 70 : 90);
+  return isGerman() ? 85 : isChinese() ? 80 : isEuro() ? 55 : isPsych() ? 70 : isBio() ? 90 : (hasFRQ() ? 70 : 90);
 }
 const LETTERS = ['A','B','C','D','E'];
 
@@ -31240,6 +31253,17 @@ function getScoreProfile() {
       frqLabel: '0.00'
     };
   }
+  if (isGerman()) {
+    return {
+      mcWeight: 40,
+      frqTotal: 21,
+      frqWeight: 40,
+      compositeMax: 80,
+      thresholds: { 5: 60, 4: 47, 3: 35, 2: 25 },
+      mcLabel: '40.00',
+      frqLabel: '40.00'
+    };
+  }
   if (hasFRQ()) {
     return {
       mcWeight: 53.33,
@@ -31303,8 +31327,8 @@ function speakCurrentQuestion() {
   const text = temp.textContent.replace(/\s+/g, ' ').trim();
   if (!text) return;
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = isChinese() ? 'zh-CN' : 'en-US';
-  utterance.rate = isChinese() ? 0.92 : 0.96;
+  utterance.lang = isChinese() ? 'zh-CN' : isGerman() ? 'de-DE' : 'en-US';
+  utterance.rate = isChinese() ? 0.92 : isGerman() ? 0.94 : 0.96;
   window.speechSynthesis.speak(utterance);
 }
 
@@ -31412,6 +31436,12 @@ ${renderUnitPracticeCards('bio_u', 'bio-num')}
 <div class="exam-card num-card" onclick="selectExam('chinese1')"><div class="card-num chinese-num">1</div><div class="card-body"><span class="badge hard">HARDEST</span><h2>AP Chinese</h2><p>Full MCQ set · hardest year</p><div class="meta"><div>⏱ 80 min</div></div></div></div>
 <div class="exam-card num-card" onclick="selectExam('chinese2')"><div class="card-num chinese-num">2</div><div class="card-body"><h2>AP Chinese</h2><p>Full MCQ set · 2nd hardest year</p><div class="meta"><div>⏱ 80 min</div></div></div></div>
 <div class="exam-card num-card" onclick="selectExam('chinese3')"><div class="card-num chinese-num">3</div><div class="card-body"><h2>AP Chinese</h2><p>Full MCQ set · 3rd hardest year</p><div class="meta"><div>⏱ 80 min</div></div></div></div>
+`)}
+
+        ${section('german','german','🇩🇪','AP German','AP German — 3 sets · Official FRQ (AP Central) + practice MCQ',`
+<div class="exam-card num-card" onclick="selectExam('german1')"><div class="card-num german-num">'23</div><div class="card-body"><span class="badge explain">OFFICIAL FRQ</span><h2>AP German 2023</h2><p>4 official FRQ (Email · Essay · Speaking ×2) + 45 practice MCQ</p><div class="meta"><div>⏱ 85 min MCQ</div><div>🎧 Audio embedded</div></div></div></div>
+<div class="exam-card num-card" onclick="selectExam('german2')"><div class="card-num german-num">'24</div><div class="card-body"><span class="badge explain">OFFICIAL FRQ</span><h2>AP German 2024</h2><p>4 official FRQ + 45 practice MCQ · AP Central links</p><div class="meta"><div>⏱ 85 min MCQ</div><div>🎧 Audio embedded</div></div></div></div>
+<div class="exam-card num-card" onclick="selectExam('german3')"><div class="card-num german-num">'25</div><div class="card-body"><span class="badge explain">OFFICIAL FRQ</span><h2>AP German 2025</h2><p>4 official FRQ + 45 practice MCQ · newest year</p><div class="meta"><div>⏱ 85 min MCQ</div><div>🎧 Audio embedded</div></div></div></div>
 `)}
       </div>
     </div>
@@ -31896,5 +31926,8 @@ function goHome() {
 render();
 </script>
 <script src="econ_intensive_sets.js"></script>
+<script src="german_set1_questions.js"></script>
+<script src="german_set2_questions.js"></script>
+<script src="german_set3_questions.js"></script>
 </body>
 </html>
