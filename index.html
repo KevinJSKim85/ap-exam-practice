@@ -60,6 +60,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .subject-header.psych{border-left-color:var(--psych)}
 .subject-header.bio{border-left-color:#0d9488}
 .subject-header.chinese{border-left-color:#d97706}
+.subject-header.german{border-left-color:#1f2937}
 .subject-title{font-size:20px;font-weight:800;color:#1f2937;display:flex;align-items:center;gap:8px}
 .subject-count{font-size:13px;color:#667085;font-weight:600}
 .subject-indicator{font-size:18px;color:#667085;transition:transform .3s}
@@ -84,6 +85,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .psych-num{background:linear-gradient(135deg,#dc2626,#ef4444);font-size:22px;letter-spacing:-0.5px}
 .bio-num{background:linear-gradient(135deg,#0d9488,#14b8a6);font-size:22px;letter-spacing:-0.5px}
 .chinese-num{background:linear-gradient(135deg,#b45309,#f59e0b);font-size:22px;letter-spacing:-0.5px}
+.german-num{background:linear-gradient(135deg,#1f2937,#dd0000 55%,#ffcc00);font-size:22px;letter-spacing:-0.5px}
 .badge{position:absolute;top:10px;right:10px;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff}
 .badge.explain{background:var(--euro)}
 .badge.hard{background:var(--psych)}
@@ -100,7 +102,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .question-text table th{background:var(--ap-gray);font-weight:600}
 .stimulus{background:var(--ap-gray);border-left:3px solid var(--ap-green);padding:16px 20px;margin-bottom:20px;font-size:14px;line-height:1.6;border-radius:0 4px 4px 0;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:break-word;max-width:100%;overflow-x:hidden}
 .stimulus img{max-width:100%;height:auto;display:block;margin:8px 0}
+.stimulus svg{display:block;width:100%;height:auto;margin:10px 0}
 .stimulus pre{white-space:pre-wrap;word-wrap:break-word;overflow-wrap:break-word;margin:0;font-family:inherit;max-width:100%;overflow:hidden}
+.stimulus .stimulus-caption{margin:8px 0 0;color:#5b6576;font-size:12px;line-height:1.5}
+.stimulus .econ-figure-title{font-weight:700;color:#111827;margin-bottom:8px}
+.stimulus .econ-table{width:100%;border-collapse:collapse;margin:6px 0 0}
+.stimulus .econ-table th,.stimulus .econ-table td{border:1px solid #cbd5e1;padding:6px 10px;text-align:center;background:#fff}
+.stimulus .econ-table th{background:#e2e8f0;font-weight:700}
 .choices{list-style:none}
 .choices li{padding:12px 16px;margin-bottom:8px;border:2px solid var(--ap-border);border-radius:6px;cursor:pointer;transition:all .15s;font-size:15px;display:flex;align-items:flex-start;gap:12px}
 .choices li:hover{border-color:var(--ap-blue);background:#f0f7ff}
@@ -30967,11 +30975,12 @@ void AP_MICRO_UNIT_SETS;
 
 // ===== APP STATE =====
 function defaultLandingSections() {
-  return { econ: false, physics: false, euro: false, psych: false, bio: false, chinese: false };
+  return { econ: false, physics: false, euro: false, psych: false, bio: false, chinese: false, german: false };
 }
 
 function getAllUnitPracticeSets() {
   const all = [];
+  if (typeof AP_ECON_INTENSIVE_SETS !== 'undefined') all.push(...AP_ECON_INTENSIVE_SETS);
   if (typeof AP_MACRO_UNIT_SETS !== 'undefined') all.push(...AP_MACRO_UNIT_SETS);
   if (typeof AP_MICRO_UNIT_SETS !== 'undefined') all.push(...AP_MICRO_UNIT_SETS);
   if (typeof AP_PHYSICS1_UNIT_SETS !== 'undefined') all.push(...AP_PHYSICS1_UNIT_SETS);
@@ -30999,11 +31008,11 @@ function renderUnitPracticeCards(prefix, toneClass) {
   const sets = getAllUnitPracticeSets().filter(set => set.id.startsWith(prefix));
   return sets.map((set, idx) => `
     <div class="exam-card num-card" onclick="selectExam('${set.id}')">
-      <div class="card-num ${toneClass}">${idx + 1}</div>
+      <div class="card-num ${toneClass}">${set.cardLabel || idx + 1}</div>
       <div class="card-body">
-        <span class="badge explain">UNIT PRACTICE</span>
+        <span class="badge explain">${set.badge || 'UNIT PRACTICE'}</span>
         <h2>${set.title}</h2>
-        <p>${set.mc.length} MCQ${set.frq && set.frq.length ? ` + ${set.frq.length} FRQ` : ''} · ${((set.mcTime||25)+(set.frqTime||0))}-minute set</p>
+        <p>${set.description || `${set.mc.length} MCQ${set.frq && set.frq.length ? ` + ${set.frq.length} FRQ` : ''} · ${((set.mcTime||25)+(set.frqTime||0))}-minute set`}</p>
         <div class="meta"><div>⏱ ${((set.mcTime||25)+(set.frqTime||0))} min</div></div>
       </div>
     </div>`).join('');
@@ -31051,6 +31060,9 @@ function getQuestions() {
     case 'chinese1': return typeof CHINESE_SET1_MC!=='undefined'?CHINESE_SET1_MC:[];
     case 'chinese2': return typeof CHINESE_SET2_MC!=='undefined'?CHINESE_SET2_MC:[];
     case 'chinese3': return typeof CHINESE_SET3_MC!=='undefined'?CHINESE_SET3_MC:[];
+    case 'german1': return typeof GERMAN_SET1_MC!=='undefined'?GERMAN_SET1_MC:[];
+    case 'german2': return typeof GERMAN_SET2_MC!=='undefined'?GERMAN_SET2_MC:[];
+    case 'german3': return typeof GERMAN_SET3_MC!=='undefined'?GERMAN_SET3_MC:[];
     default: return [];
   }
 }
@@ -31080,6 +31092,9 @@ function getFRQs() {
     case 'chinese1': return [];
     case 'chinese2': return [];
     case 'chinese3': return [];
+    case 'german1': return typeof GERMAN_SET1_FRQ!=='undefined'?GERMAN_SET1_FRQ:[];
+    case 'german2': return typeof GERMAN_SET2_FRQ!=='undefined'?GERMAN_SET2_FRQ:[];
+    case 'german3': return typeof GERMAN_SET3_FRQ!=='undefined'?GERMAN_SET3_FRQ:[];
     default: return [];
   }
 }
@@ -31089,11 +31104,14 @@ function isPsych() { return state.exam && state.exam.startsWith('psych'); }
 function isBio() { return state.exam && state.exam.startsWith('bio'); }
 function isBioHard() { return state.exam === 'bio_hard'; }
 function isChinese() { return state.exam && state.exam.startsWith('chinese'); }
-function isUnitPractice() { return !!(state.exam && state.exam.includes('_u')); }
+function isGerman() { return state.exam && state.exam.startsWith('german'); }
+function isEconIntensive() { return !!(state.exam && state.exam.startsWith('econ_i')); }
+function isUnitPractice() { return !!(state.exam && (state.exam.includes('_u') || state.exam.startsWith('econ_i'))); }
 function isPhysics1() { return !!(state.exam && state.exam.startsWith('physics1')); }
-function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()); }
+function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()) || isGerman(); }
 function getExamName() {
   if (isUnitPractice()) {
+    if (isEconIntensive()) return 'AP Economics';
     if (state.exam && state.exam.startsWith('macro_u')) return 'AP Macroeconomics';
     if (state.exam && state.exam.startsWith('micro_u')) return 'AP Microeconomics';
     if (isBio()) return 'AP Biology';
@@ -31112,6 +31130,7 @@ function getExamName() {
     case 'psych1': case 'psych2': case 'psych3': return 'AP Psychology';
     case 'bio1': case 'bio2': case 'bio3': case 'bio4': case 'bio_hard': return 'AP Biology';
     case 'chinese1': case 'chinese2': case 'chinese3': return 'AP Chinese Language and Culture';
+    case 'german1': case 'german2': case 'german3': return 'AP German Language and Culture';
     default: return 'AP Exam';
   }
 }
@@ -31142,6 +31161,9 @@ function getExamYear() {
   if (state.exam === 'chinese1') return 'Set 1';
   if (state.exam === 'chinese2') return 'Set 2';
   if (state.exam === 'chinese3') return 'Set 3';
+  if (state.exam === 'german1') return '2023';
+  if (state.exam === 'german2') return '2024';
+  if (state.exam === 'german3') return '2025';
   return '2022';
 }
 function getMCTime() {
@@ -31149,9 +31171,25 @@ function getMCTime() {
     const set = currentUnitPracticeSet();
     return set && set.mcTime ? set.mcTime : 25;
   }
-  return isChinese() ? 80 : isEuro() ? 55 : isPsych() ? 70 : isBio() ? 90 : (hasFRQ() ? 70 : 90);
+  return isGerman() ? 85 : isChinese() ? 80 : isEuro() ? 55 : isPsych() ? 70 : isBio() ? 90 : (hasFRQ() ? 70 : 90);
 }
 const LETTERS = ['A','B','C','D','E'];
+
+function getRenderedQuestion(question) {
+  if (!question) return question;
+  if (window.EconStimuli && typeof window.EconStimuli.decorateQuestion === 'function') {
+    return window.EconStimuli.decorateQuestion(question);
+  }
+  return question;
+}
+
+function getRenderedFRQ(frq) {
+  if (!frq) return frq;
+  if (window.EconStimuli && typeof window.EconStimuli.decorateFrq === 'function') {
+    return window.EconStimuli.decorateFrq(frq);
+  }
+  return frq;
+}
 
 function getActualFRQTotal() {
   return getFRQs().reduce((sum, q) => sum + (q.maxPoints || 0), 0);
@@ -31215,6 +31253,17 @@ function getScoreProfile() {
       frqLabel: '0.00'
     };
   }
+  if (isGerman()) {
+    return {
+      mcWeight: 40,
+      frqTotal: 21,
+      frqWeight: 40,
+      compositeMax: 80,
+      thresholds: { 5: 60, 4: 47, 3: 35, 2: 25 },
+      mcLabel: '40.00',
+      frqLabel: '40.00'
+    };
+  }
   if (hasFRQ()) {
     return {
       mcWeight: 53.33,
@@ -31270,7 +31319,7 @@ function updateTimerDisplay() {
 
 function speakCurrentQuestion() {
   const qs = getQuestions();
-  const q = qs[state.currentQ];
+  const q = getRenderedQuestion(qs[state.currentQ]);
   if (!q || !window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   const temp = document.createElement('div');
@@ -31278,8 +31327,8 @@ function speakCurrentQuestion() {
   const text = temp.textContent.replace(/\s+/g, ' ').trim();
   if (!text) return;
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = isChinese() ? 'zh-CN' : 'en-US';
-  utterance.rate = isChinese() ? 0.92 : 0.96;
+  utterance.lang = isChinese() ? 'zh-CN' : isGerman() ? 'de-DE' : 'en-US';
+  utterance.rate = isChinese() ? 0.92 : isGerman() ? 0.94 : 0.96;
   window.speechSynthesis.speak(utterance);
 }
 
@@ -31336,15 +31385,16 @@ function renderLanding() {
       <section class="hero">
         <h1>AP Exam Practice</h1>
         <p class="subtitle">Practice with released exams and curated practice sets</p>
-        <div class="quick-stats">68 exams • 6 subjects • 2,300+ questions</div>
+        <div class="quick-stats">72 exams • 6 subjects • 2,400+ questions</div>
       </section>
 
       <div class="subjects">
-        ${section('econ','econ','📊','AP Economics','AP Economics — 16 practice sets',`
+        ${section('econ','econ','📊','AP Economics','AP Economics — 20 practice sets',`
           <div class="exam-card num-card" onclick="selectExam('macro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('micro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('macro23')"><div class="card-num econ-num">'23</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('micro23')"><div class="card-num econ-num">'23</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
+          ${renderUnitPracticeCards('econ_i', 'econ-num')}
           ${renderUnitPracticeCards('macro_u', 'econ-num')}
           ${renderUnitPracticeCards('micro_u', 'econ-num')}
         `)}
@@ -31387,6 +31437,12 @@ ${renderUnitPracticeCards('bio_u', 'bio-num')}
 <div class="exam-card num-card" onclick="selectExam('chinese2')"><div class="card-num chinese-num">2</div><div class="card-body"><h2>AP Chinese</h2><p>Full MCQ set · 2nd hardest year</p><div class="meta"><div>⏱ 80 min</div></div></div></div>
 <div class="exam-card num-card" onclick="selectExam('chinese3')"><div class="card-num chinese-num">3</div><div class="card-body"><h2>AP Chinese</h2><p>Full MCQ set · 3rd hardest year</p><div class="meta"><div>⏱ 80 min</div></div></div></div>
 `)}
+
+        ${section('german','german','🇩🇪','AP German','AP German — 3 sets · Official FRQ (AP Central) + practice MCQ',`
+<div class="exam-card num-card" onclick="selectExam('german1')"><div class="card-num german-num">'23</div><div class="card-body"><span class="badge explain">OFFICIAL FRQ</span><h2>AP German 2023</h2><p>4 official FRQ (Email · Essay · Speaking ×2) + 45 practice MCQ</p><div class="meta"><div>⏱ 85 min MCQ</div><div>🎧 Audio embedded</div></div></div></div>
+<div class="exam-card num-card" onclick="selectExam('german2')"><div class="card-num german-num">'24</div><div class="card-body"><span class="badge explain">OFFICIAL FRQ</span><h2>AP German 2024</h2><p>4 official FRQ + 45 practice MCQ · AP Central links</p><div class="meta"><div>⏱ 85 min MCQ</div><div>🎧 Audio embedded</div></div></div></div>
+<div class="exam-card num-card" onclick="selectExam('german3')"><div class="card-num german-num">'25</div><div class="card-body"><span class="badge explain">OFFICIAL FRQ</span><h2>AP German 2025</h2><p>4 official FRQ + 45 practice MCQ · newest year</p><div class="meta"><div>⏱ 85 min MCQ</div><div>🎧 Audio embedded</div></div></div></div>
+`)}
       </div>
     </div>
   </div>`;
@@ -31410,7 +31466,7 @@ function renderMC() {
     </div>
   </div>`;
   }
-  const q = qs[state.currentQ];
+  const q = getRenderedQuestion(qs[state.currentQ]);
   const answered = qs.filter((question, i) => question.multi ? Array.isArray(state.mcAnswers[i]) && state.mcAnswers[i].length === 2 : state.mcAnswers[i] !== undefined).length;
   const flagged = state.mcFlags[state.currentQ] || false;
   const selected = state.mcAnswers[state.currentQ];
@@ -31572,7 +31628,7 @@ function renderFRQTransition() {
 function renderFRQ() {
   const frqs = getFRQs();
   const currentFRQ = state.currentQ;
-  const frq = frqs[currentFRQ];
+  const frq = getRenderedFRQ(frqs[currentFRQ]);
   const timerText = state.timerSeconds > 0
     ? `${Math.floor(state.timerSeconds / 60)}:${(state.timerSeconds % 60).toString().padStart(2, '0')}`
     : `${getFRQTime()}:00`;
@@ -31869,5 +31925,9 @@ function goHome() {
 // INIT
 render();
 </script>
+<script src="econ_intensive_sets.js"></script>
+<script src="german_set1_questions.js"></script>
+<script src="german_set2_questions.js"></script>
+<script src="german_set3_questions.js"></script>
 </body>
 </html>
