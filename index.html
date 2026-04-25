@@ -7,7 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300703c'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif' font-weight='800' font-size='30' fill='white'%3EAP%3C/text%3E%3C/svg%3E">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ap-green:#00703c;--ap-dark:#1a1a1a;--ap-gray:#f5f5f5;--ap-border:#ddd;--ap-text:#333;--ap-white:#fff;--ap-blue:#0066cc;--ap-red:#cc0000;--ap-orange:#e67e00;--sidebar-w:260px;--econ:#145ea8;--physics:#5f3dc4;--euro:#1f8a4c;--psych:#b4232f;--landing-ink:#111827;--landing-sub:#5b6576}
+:root{--ap-green:#00703c;--ap-dark:#1a1a1a;--ap-gray:#f5f5f5;--ap-border:#ddd;--ap-text:#333;--ap-white:#fff;--ap-blue:#0066cc;--ap-red:#cc0000;--ap-orange:#e67e00;--sidebar-w:260px;--econ:#145ea8;--physics:#5f3dc4;--euro:#1f8a4c;--psych:#b4232f;--chem:#0f766e;--stats:#b45309;--ush:#7c2d12;--landing-ink:#111827;--landing-sub:#5b6576}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--ap-gray);color:var(--ap-text);min-height:100vh}
 /* HEADER */
 .header{background:var(--ap-dark);color:var(--ap-white);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:fixed;top:0;left:0;right:0;z-index:100}
@@ -61,6 +61,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .subject-header.bio{border-left-color:#0d9488}
 .subject-header.chinese{border-left-color:#d97706}
 .subject-header.german{border-left-color:#1f2937}
+.subject-header.chem{border-left-color:var(--chem)}
+.subject-header.stats{border-left-color:var(--stats)}
+.subject-header.ush{border-left-color:var(--ush)}
 .subject-title{font-size:20px;font-weight:800;color:#1f2937;display:flex;align-items:center;gap:8px}
 .subject-count{font-size:13px;color:#667085;font-weight:600}
 .subject-indicator{font-size:18px;color:#667085;transition:transform .3s}
@@ -86,6 +89,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .bio-num{background:linear-gradient(135deg,#0d9488,#14b8a6);font-size:22px;letter-spacing:-0.5px}
 .chinese-num{background:linear-gradient(135deg,#b45309,#f59e0b);font-size:22px;letter-spacing:-0.5px}
 .german-num{background:linear-gradient(135deg,#1f2937,#dd0000 55%,#ffcc00);font-size:22px;letter-spacing:-0.5px}
+.chem-num{background:linear-gradient(135deg,#0f766e,#14b8a6);font-size:22px;letter-spacing:-0.5px}
+.stats-num{background:linear-gradient(135deg,#9a3412,#f59e0b);font-size:22px;letter-spacing:-0.5px}
+.ush-num{background:linear-gradient(135deg,#7c2d12,#b91c1c);font-size:22px;letter-spacing:-0.5px}
 .badge{position:absolute;top:10px;right:10px;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;color:#fff}
 .badge.explain{background:var(--euro)}
 .badge.hard{background:var(--psych)}
@@ -115,6 +121,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .choices li.selected{border-color:var(--ap-green);background:#e8f5e9}
 .choices li .choice-letter{font-weight:700;min-width:20px;color:#666}
 .choices li.selected .choice-letter{color:var(--ap-green)}
+.feedback-panel{margin-top:16px;padding:16px 18px;border-radius:12px;border:1px solid #d7deea;background:#f8fafc}
+.feedback-panel.correct{background:#f0fdf4;border-color:#86efac}
+.feedback-panel.incorrect{background:#fef2f2;border-color:#fca5a5}
+.feedback-panel .status{font-size:13px;font-weight:800;letter-spacing:.04em;margin-bottom:6px}
+.feedback-panel .source{margin-top:10px;font-size:12px;color:#667085}
+.inline-rubric{margin-top:22px;padding-top:18px;border-top:1px solid #e5e7eb}
+.inline-rubric-header{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.inline-rubric-score{background:var(--ap-dark);color:#fff;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.answer-toggle{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.answer-box{margin-top:12px;padding:14px 16px;border-radius:10px;background:#f8fafc;border:1px solid #d7deea;font-size:14px;line-height:1.6}
+.answer-box h4{margin-bottom:8px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:#475467}
 /* NAV BUTTONS */
 .nav-buttons{display:flex;justify-content:space-between;margin-top:24px}
 /* FRQ */
@@ -30975,11 +30992,12 @@ void AP_MICRO_UNIT_SETS;
 
 // ===== APP STATE =====
 function defaultLandingSections() {
-  return { econ: false, physics: false, euro: false, psych: false, bio: false, chinese: false, german: false };
+  return { econ: false, physics: false, euro: false, psych: false, bio: false, chinese: false, german: false, chem: true, stats: true, ush: true };
 }
 
 function getAllUnitPracticeSets() {
   const all = [];
+  if (typeof AP_CUSTOM_DYNAMIC_SETS !== 'undefined') all.push(...AP_CUSTOM_DYNAMIC_SETS);
   if (typeof AP_ECON_INTENSIVE_SETS !== 'undefined') all.push(...AP_ECON_INTENSIVE_SETS);
   if (typeof AP_MACRO_UNIT_SETS !== 'undefined') all.push(...AP_MACRO_UNIT_SETS);
   if (typeof AP_MICRO_UNIT_SETS !== 'undefined') all.push(...AP_MICRO_UNIT_SETS);
@@ -31018,6 +31036,20 @@ function renderUnitPracticeCards(prefix, toneClass) {
     </div>`).join('');
 }
 
+function renderCustomSetCards(subjectKey, toneClass) {
+  const sets = getAllUnitPracticeSets().filter(set => set.subjectKey === subjectKey);
+  return sets.map((set, idx) => `
+    <div class="exam-card num-card" onclick="selectExam('${set.id}')">
+      <div class="card-num ${toneClass}">${set.cardLabel || idx + 1}</div>
+      <div class="card-body">
+        <span class="badge explain">${set.badge || 'BETA'}</span>
+        <h2>${set.examName}</h2>
+        <p>${set.description || `${set.mc.length} MCQ + ${set.frq.length} FRQ`}</p>
+        <div class="meta"><div>⏱ ${((set.mcTime||25)+(set.frqTime||0))} min</div><div>Instant review</div></div>
+      </div>
+    </div>`).join('');
+}
+
 let state = {
   screen: 'landing', // landing, mc, mc-review, frq-transition, frq, frq-scoring, results
   exam: null, // 'macro', 'micro', 'macro23', 'micro23', 'physics1_2017', or 'physics1_2014'
@@ -31026,9 +31058,11 @@ let state = {
   mcFlags: {},
   frqAnswers: {},
   frqScores: {},
+  frqReveal: {},
   timerSeconds: 0,
   timerInterval: null,
   timerRunning: false,
+  attemptSeed: 0,
   landingSections: defaultLandingSections()
 };
 
@@ -31105,12 +31139,26 @@ function isBio() { return state.exam && state.exam.startsWith('bio'); }
 function isBioHard() { return state.exam === 'bio_hard'; }
 function isChinese() { return state.exam && state.exam.startsWith('chinese'); }
 function isGerman() { return state.exam && state.exam.startsWith('german'); }
+function isChem() { return !!(state.exam && state.exam.startsWith('chem_')); }
+function isStats() { return !!(state.exam && state.exam.startsWith('stats_')); }
+function isUSH() { return !!(state.exam && state.exam.startsWith('ush_')); }
 function isEconIntensive() { return !!(state.exam && state.exam.startsWith('econ_i')); }
-function isUnitPractice() { return !!(state.exam && (state.exam.includes('_u') || state.exam.startsWith('econ_i'))); }
+function isUnitPractice() { return !!currentUnitPracticeSet(); }
 function isPhysics1() { return !!(state.exam && state.exam.startsWith('physics1')); }
-function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()) || isGerman(); }
+function hasFRQ() { return state.exam === 'macro' || state.exam === 'micro' || state.exam === 'macro23' || state.exam === 'micro23' || unitSetHasFRQ() || (isEuro() && !isMarco()) || isPsych() || (isBio() && !isBioHard()) || isGerman() || isChem() || isStats() || isUSH(); }
+function currentSetConfig() { return currentUnitPracticeSet(); }
+function usesImmediateFeedback() {
+  const set = currentSetConfig();
+  return !!(set && set.liveFeedback);
+}
+function usesInlineRubric() {
+  const set = currentSetConfig();
+  return !!(set && set.liveRubric);
+}
 function getExamName() {
   if (isUnitPractice()) {
+    const set = currentSetConfig();
+    if (set && set.examName) return set.examName;
     if (isEconIntensive()) return 'AP Economics';
     if (state.exam && state.exam.startsWith('macro_u')) return 'AP Macroeconomics';
     if (state.exam && state.exam.startsWith('micro_u')) return 'AP Microeconomics';
@@ -31137,7 +31185,7 @@ function getExamName() {
 function getExamYear() {
   if (isUnitPractice()) {
     const set = getUnitPracticeSetById(state.exam);
-    if (set) return set.title;
+    if (set && set.title) return set.title;
     return state.exam.replace(/^.*?_u/, 'Unit ').replace(/_/g, ' ');
   }
   if (state.exam === 'macro23' || state.exam === 'micro23') return '2023';
@@ -31197,6 +31245,8 @@ function getActualFRQTotal() {
 
 function getScoreProfile() {
   if (isUnitPractice()) {
+    const set = currentSetConfig();
+    if (set && set.scoreProfile) return set.scoreProfile;
     const dynamicFrqTotal = getActualFRQTotal() || 14;
     const unitHasFrq = unitSetHasFRQ();
     return {
@@ -31284,6 +31334,29 @@ function getScoreProfile() {
     mcLabel: '80.00',
     frqLabel: '0.00'
   };
+}
+
+function getChoiceOrder(question, questionIndex) {
+  if (!usesImmediateFeedback() || !window.APExamEngine || !question || !Array.isArray(question.choices)) {
+    return Array.from({ length: question && question.choices ? question.choices.length : 0 }, (_, index) => index);
+  }
+  return window.APExamEngine.computeChoiceOrder(
+    question,
+    state.exam,
+    questionIndex,
+    state.attemptSeed || 0,
+  );
+}
+
+function formatAnswerLetter(question, actualIndex, questionIndex) {
+  if (typeof actualIndex !== 'number') return '—';
+  if (!window.APExamEngine) return LETTERS[actualIndex];
+  const displayIndex = window.APExamEngine.mapActualAnswerToDisplay(actualIndex, getChoiceOrder(question, questionIndex));
+  return displayIndex >= 0 ? LETTERS[displayIndex] : LETTERS[actualIndex];
+}
+
+function renderSourceLine(source) {
+  return source ? `<div class="source">Source: ${source}</div>` : '';
 }
 
 // ===== TIMER =====
@@ -31384,11 +31457,23 @@ function renderLanding() {
     <div class="landing-shell">
       <section class="hero">
         <h1>AP Exam Practice</h1>
-        <p class="subtitle">Practice with released exams and curated practice sets</p>
-        <div class="quick-stats">72 exams • 6 subjects • 2,400+ questions</div>
+        <p class="subtitle">Source-aware practice with immediate feedback, shuffled answers, and checklist scoring</p>
+        <div class="quick-stats">Built for asset-safe AP practice rather than fast copy-paste imports</div>
       </section>
 
       <div class="subjects">
+        ${section('chem','chem','⚗','AP Chemistry','AP Chemistry — 3 source-audited beta sets',`
+          ${renderCustomSetCards('chem', 'chem-num')}
+        `)}
+
+        ${section('stats','stats','📈','AP Statistics','AP Statistics — 3 source-audited beta sets',`
+          ${renderCustomSetCards('stats', 'stats-num')}
+        `)}
+
+        ${section('ush','ush','🇺🇸','AP United States History','APUSH — 3 source-audited beta sets',`
+          ${renderCustomSetCards('ush', 'ush-num')}
+        `)}
+
         ${section('econ','econ','📊','AP Economics','AP Economics — 20 practice sets',`
           <div class="exam-card num-card" onclick="selectExam('macro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Macroeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
           <div class="exam-card num-card" onclick="selectExam('micro')"><div class="card-num econ-num">'22</div><div class="card-body"><h2>AP Microeconomics</h2><p>International Released Exam · 60 MC + 3 FRQ</p><div class="meta"><div>⏱ 2 hr 10 min</div></div></div></div>
@@ -31467,6 +31552,7 @@ function renderMC() {
   </div>`;
   }
   const q = getRenderedQuestion(qs[state.currentQ]);
+  const choiceOrder = getChoiceOrder(q, state.currentQ);
   const answered = qs.filter((question, i) => question.multi ? Array.isArray(state.mcAnswers[i]) && state.mcAnswers[i].length === 2 : state.mcAnswers[i] !== undefined).length;
   const flagged = state.mcFlags[state.currentQ] || false;
   const selected = state.mcAnswers[state.currentQ];
@@ -31483,14 +31569,31 @@ function renderMC() {
   sidebar += `</div><div class="sidebar-stats"><div>Answered: <span>${answered}</span> / ${qs.length}</div><div>Flagged: <span>${Object.values(state.mcFlags).filter(Boolean).length}</span></div></div></div>`;
 
   let choices = '<ul class="choices">';
-  q.choices.forEach((c, i) => {
-    const isSelected = q.multi ? Array.isArray(selected) && selected.includes(i) : selected === i;
+  choiceOrder.forEach((actualIndex, displayIndex) => {
+    const c = q.choices[actualIndex];
+    const isSelected = q.multi ? Array.isArray(selected) && selected.includes(actualIndex) : selected === actualIndex;
     const sel = isSelected ? ' selected' : '';
-    const indicator = q.multi ? (isSelected ? '☑' : '☐') : LETTERS[i];
-    const choiceText = q.multi ? `<strong>${LETTERS[i]}.</strong> ${c}` : c;
-    choices += `<li class="${sel}" onclick="selectAnswer(${i})"><span class="choice-letter">${indicator}</span><span>${choiceText}</span></li>`;
+    const indicator = q.multi ? (isSelected ? '☑' : '☐') : LETTERS[displayIndex];
+    const choiceText = q.multi ? `<strong>${LETTERS[displayIndex]}.</strong> ${c}` : c;
+    choices += `<li class="${sel}" onclick="selectAnswer(${displayIndex})"><span class="choice-letter">${indicator}</span><span>${choiceText}</span></li>`;
   });
   choices += '</ul>';
+
+  let feedbackPanel = '';
+  if (usesImmediateFeedback() && selected !== undefined && !q.multi && window.APExamEngine) {
+    const feedback = window.APExamEngine.buildImmediateFeedback(q, selected, choiceOrder);
+    feedbackPanel = `
+      <div class="feedback-panel ${feedback.correct ? 'correct' : 'incorrect'}">
+        <div class="status">${feedback.correct ? 'Correct' : 'Check This One'}</div>
+        <div style="font-size:14px;line-height:1.6">
+          ${feedback.correct
+            ? `You chose <strong>${feedback.selectedLetter}</strong>, which is correct.`
+            : `You chose <strong>${feedback.selectedLetter}</strong>. The keyed answer is <strong>${feedback.correctLetter}</strong>.`}
+        </div>
+        <div style="margin-top:8px;font-size:14px;line-height:1.6">${feedback.explanation || ''}</div>
+        ${renderSourceLine(q.source)}
+      </div>`;
+  }
 
   return `
   <div class="header">
@@ -31515,6 +31618,7 @@ function renderMC() {
       <div class="question-text">${normalizeQuestionHtml(q.q)}</div>
       ${q.multi ? '<p style="font-size:14px;color:#666;margin-bottom:12px">Select two answers.</p>' : ''}
       ${choices}
+      ${feedbackPanel}
     </div>
     <div class="nav-buttons">
       <button class="btn btn-outline" onclick="prevQ()" ${state.currentQ === 0 ? 'disabled style="opacity:.4;pointer-events:none"' : ''}>← Previous</button>
@@ -31553,7 +31657,7 @@ function renderMCReview() {
     else if (isAnswered) cls += ' incorrect';
     else cls += ' unanswered';
     if (state.mcFlags[i]) cls += ' flagged';
-    const title = isCorrect ? `Q${i+1}: Correct` : isAnswered ? `Q${i+1}: Your answer: ${LETTERS[userAnswer]}, Correct: ${LETTERS[q.answer]}` : `Q${i+1}: Unanswered`;
+    const title = isCorrect ? `Q${i+1}: Correct` : isAnswered ? `Q${i+1}: Your answer: ${formatAnswerLetter(q, userAnswer, i)}, Correct: ${formatAnswerLetter(q, q.answer, i)}` : `Q${i+1}: Unanswered`;
     grid += `<div class="${cls}" title="${title}" onclick="goToQ(${i});state.screen='mc';render()">${i+1}</div>`;
   }
   grid += '</div>';
@@ -31570,7 +31674,7 @@ function renderMCReview() {
         const icon = !isAnswered ? '⬜' : (correct ? '✅' : '❌');
         return `<div style="padding:12px;margin-bottom:8px;background:${correct ? '#f0fdf4' : (isAnswered ? '#fef2f2' : '#fefce8')};border-radius:8px;border-left:4px solid ${correct ? 'var(--ap-green)' : (isAnswered ? 'var(--ap-red)' : 'var(--ap-orange)')}">
           <div style="font-weight:700;font-size:13px;margin-bottom:3px">${icon} Question ${i+1} — ${isAnswered ? (correct ? 'Correct' : 'Incorrect') : 'Unanswered'}</div>
-          ${isAnswered && !correct ? '<div style="font-size:12px;color:#666;margin-bottom:4px">Your answer: <strong>' + LETTERS[userAnswer] + '</strong> | Correct: <strong>' + LETTERS[q.answer] + '</strong></div>' : ''}
+          ${isAnswered && !correct ? '<div style="font-size:12px;color:#666;margin-bottom:4px">Your answer: <strong>' + formatAnswerLetter(q, userAnswer, i) + '</strong> | Correct: <strong>' + formatAnswerLetter(q, q.answer, i) + '</strong></div>' : ''}
           <div style="font-size:12px;line-height:1.5;color:#444">${q.explanation || ''}</div>
         </div>`;
       }).join('')}
@@ -31612,6 +31716,7 @@ function renderMCReview() {
 
 function renderFRQTransition() {
   stopTimer();
+  const set = currentSetConfig();
   return `
   <div class="header">
     <div class="logo" onclick="goHome()"><span>← AP</span> ${getExamName()}</div>
@@ -31620,7 +31725,7 @@ function renderFRQTransition() {
   </div>
   <div class="main no-sidebar section-transition" style="max-width:700px;margin:80px auto 0">
     <h2>Section II: Free Response</h2>
-    <p>${isUnitPractice() ? 'You will have <strong>15 minutes</strong> to answer 2 focused free-response questions.<br>These are short unit-practice prompts designed for quick skill checks.<br>Use the rubric checklist after writing to estimate your AP-style score.' : isPsych() ? 'You will have <strong>50 minutes</strong> to answer 2 free-response questions.<br>Each question is worth 7 points. Spend approximately 25 minutes on each question.<br>You must APPLY concepts to the scenario — definitions alone earn zero points.' : isEuro() ? 'You will have <strong>100 minutes</strong> to answer the free-response questions.<br>SAQ: 40 minutes (3 questions). DBQ: 60 minutes (1 document-based question + 1 long essay).' : isBio() ? 'You will have <strong>90 minutes</strong> to answer 6 free-response questions.<br>Questions 1-2 are long (8-10 pts each). Questions 3-6 are short (4 pts each).<br>Spend ~20 min on each long question and ~10 min on each short question.' : 'You will have <strong>60 minutes</strong> to answer 3 free-response questions.<br>You are advised to spend the first 10 minutes reading all questions and planning your answers.<br>Spend approximately half your time on the first question and divide the remaining time equally between the next two.'}</p>
+    <p>${set && set.liveRubric ? `You will have <strong>${getFRQTime()} minutes</strong> to complete ${getFRQs().length} free-response prompt${getFRQs().length === 1 ? '' : 's'}.<br>Use the inline checklist to score each response immediately instead of waiting for a final scoring screen.` : isUnitPractice() ? 'You will have <strong>15 minutes</strong> to answer 2 focused free-response questions.<br>These are short unit-practice prompts designed for quick skill checks.<br>Use the rubric checklist after writing to estimate your AP-style score.' : isPsych() ? 'You will have <strong>50 minutes</strong> to answer 2 free-response questions.<br>Each question is worth 7 points. Spend approximately 25 minutes on each question.<br>You must APPLY concepts to the scenario — definitions alone earn zero points.' : isEuro() ? 'You will have <strong>100 minutes</strong> to answer the free-response questions.<br>SAQ: 40 minutes (3 questions). DBQ: 60 minutes (1 document-based question + 1 long essay).' : isBio() ? 'You will have <strong>90 minutes</strong> to answer 6 free-response questions.<br>Questions 1-2 are long (8-10 pts each). Questions 3-6 are short (4 pts each).<br>Spend ~20 min on each long question and ~10 min on each short question.' : 'You will have <strong>60 minutes</strong> to answer 3 free-response questions.<br>You are advised to spend the first 10 minutes reading all questions and planning your answers.<br>Spend approximately half your time on the first question and divide the remaining time equally between the next two.'}</p>
     <button class="btn btn-primary" onclick="startFRQ()" style="font-size:16px;padding:12px 32px">Begin Section II</button>
   </div>`;
 }
@@ -31641,6 +31746,33 @@ function renderFRQ() {
   tabs += '</div>';
 
   const savedAnswer = state.frqAnswers[`${state.exam}_${currentFRQ}`] || '';
+  const rubric = normalizeRubric(frq.rubric);
+  const score = window.APExamEngine
+    ? window.APExamEngine.computeRubricScore(state.exam, currentFRQ, rubric, state.frqScores)
+    : { earned: 0, possible: rubric.reduce((sum, item) => sum + item.pts, 0) };
+  const revealKey = `${state.exam}_${currentFRQ}`;
+  const showSample = !!state.frqReveal[`${revealKey}_sample`];
+  const showNotes = !!state.frqReveal[`${revealKey}_notes`];
+  const inlineRubric = usesInlineRubric() ? `
+      <div class="inline-rubric">
+        <div class="inline-rubric-header">
+          <h4>Checklist Scoring</h4>
+          <div class="inline-rubric-score">${score.earned} / ${score.possible} pts</div>
+        </div>
+        ${rubric.map((item, rubricIndex) => {
+          const key = `${state.exam}_${currentFRQ}_${rubricIndex}`;
+          return `<div class="rubric-item">
+            <input type="checkbox" id="${key}" ${state.frqScores[key] ? 'checked' : ''} onchange="toggleInlineRubric('${key}', this.checked)">
+            <label for="${key}"><strong>${item.part}</strong> (${item.pts} pt${item.pts > 1 ? 's' : ''}): ${item.desc}</label>
+          </div>`;
+        }).join('')}
+        <div class="answer-toggle">
+          <button class="btn btn-outline btn-sm" onclick="toggleFrqReveal('${revealKey}_sample')">${showSample ? 'Hide' : 'Show'} sample answer</button>
+          <button class="btn btn-outline btn-sm" onclick="toggleFrqReveal('${revealKey}_notes')">${showNotes ? 'Hide' : 'Show'} scoring notes</button>
+        </div>
+        ${showSample ? `<div class="answer-box"><h4>Sample Answer</h4><div>${frq.sampleAnswer || ''}</div>${renderSourceLine(frq.source)}</div>` : ''}
+        ${showNotes ? `<div class="answer-box"><h4>Scoring Notes</h4><div>${frq.scoringNotes || ''}</div></div>` : ''}
+      </div>` : '';
 
   return `
   <div class="header">
@@ -31659,11 +31791,12 @@ function renderFRQ() {
         <h4>Your Response</h4>
         <textarea class="frq-textarea" placeholder="Type your response here..." oninput="state.frqAnswers['${state.exam}_${currentFRQ}']=this.value">${savedAnswer}</textarea>
       </div>
+      ${inlineRubric}
     </div>
     <div class="nav-buttons" style="margin-top:24px">
       <button class="btn btn-outline" onclick="${currentFRQ > 0 ? `state.currentQ=${currentFRQ-1};render()` : ''}" ${currentFRQ === 0 ? 'disabled style="opacity:.4;pointer-events:none"' : ''}>\u2190 Previous</button>
       ${currentFRQ === frqs.length - 1
-        ? `<button class="btn btn-primary" onclick="goToFRQScoring()">Submit Exam \u2192</button>`
+        ? `<button class="btn btn-primary" onclick="${usesInlineRubric() ? 'showResults()' : 'goToFRQScoring()'}">Submit Exam \u2192</button>`
         : `<button class="btn btn-primary" onclick="state.currentQ=${currentFRQ+1};render()">Next Question \u2192</button>`}
     </div>
   </div>`;
@@ -31671,16 +31804,8 @@ function renderFRQ() {
 
 
 function normalizeRubric(rubric) {
-  if (!rubric) return [];
-  if (typeof rubric === 'string') {
-    return rubric.split(';').map((s,i) => ({part:'('+(i+1)+')', desc:s.trim(), pts:1})).filter(r=>r.desc);
-  }
-  if (Array.isArray(rubric)) {
-    return rubric.map((r,i) => {
-      if (typeof r === 'string') return {part:'('+(i+1)+')', desc:r.trim(), pts:1};
-      if (typeof r === 'object' && r !== null) return {part:r.part||'('+(i+1)+')', desc:r.desc||'', pts:r.pts||1};
-      return null;
-    }).filter(Boolean);
+  if (window.APExamEngine && typeof window.APExamEngine.normalizeRubric === 'function') {
+    return window.APExamEngine.normalizeRubric(rubric);
   }
   return [];
 }
@@ -31782,8 +31907,8 @@ function renderResults() {
     const cls = answered ? (correct ? 'correct' : 'incorrect') : 'unanswered';
     const userText = q.multi
       ? (Array.isArray(userAnswer) && userAnswer.length ? userAnswer.map(v => LETTERS[v]).join(',') : 'Unanswered')
-      : (userAnswer !== undefined ? LETTERS[userAnswer] : 'Unanswered');
-    const correctText = q.multi ? q.answer.map(v => LETTERS[v]).join(',') : LETTERS[q.answer];
+      : (userAnswer !== undefined ? formatAnswerLetter(q, userAnswer, i) : 'Unanswered');
+    const correctText = q.multi ? q.answer.map(v => LETTERS[v]).join(',') : formatAnswerLetter(q, q.answer, i);
     const title = answered
       ? (correct ? `Q${i+1}: Correct` : `Q${i+1}: Your answer: ${userText}, Correct: ${correctText}`)
       : `Q${i+1}: Unanswered`;
@@ -31835,7 +31960,7 @@ function renderResults() {
         const icon = !answered ? '⬜' : (correct ? '✅' : '❌');
         return `<div style="padding:16px;margin-bottom:12px;background:${correct ? '#f0fdf4' : (answered ? '#fef2f2' : '#fefce8')};border-radius:8px;border-left:4px solid ${correct ? 'var(--ap-green)' : (answered ? 'var(--ap-red)' : 'var(--ap-orange)')}">
           <div style="font-weight:700;font-size:14px;margin-bottom:4px">${icon} Question ${i+1} — ${answered ? (correct ? 'Correct' : 'Incorrect') : 'Unanswered'}</div>
-          ${answered && !correct ? '<div style=\"font-size:13px;color:#666;margin-bottom:6px\">Your answer: <strong>' + LETTERS[userAnswer] + '</strong> | Correct: <strong>' + LETTERS[q.answer] + '</strong></div>' : ''}
+          ${answered && !correct ? '<div style=\"font-size:13px;color:#666;margin-bottom:6px\">Your answer: <strong>' + formatAnswerLetter(q, userAnswer, i) + '</strong> | Correct: <strong>' + formatAnswerLetter(q, q.answer, i) + '</strong></div>' : ''}
           <div style="font-size:13px;line-height:1.6;color:#444">${q.explanation || ''}</div>
         </div>`;
       }).join('')}
@@ -31864,7 +31989,7 @@ function renderResults() {
 
 // ===== ACTIONS =====
 function selectExam(exam) {
-  state = { screen:'mc', exam, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false, landingSections: defaultLandingSections() };
+  state = { screen:'mc', exam, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, frqReveal:{}, timerSeconds:0, timerInterval:null, timerRunning:false, attemptSeed: Date.now(), landingSections: defaultLandingSections() };
   startTimer(getMCTime());
   render();
 }
@@ -31874,17 +31999,18 @@ function prevQ() { if (state.currentQ > 0) { state.currentQ--; render(); } }
 function selectAnswer(i) {
   const qs = getQuestions();
   const q = qs[state.currentQ];
+  const actualIndex = getChoiceOrder(q, state.currentQ)[i];
   if (q.multi) {
     let current = state.mcAnswers[state.currentQ] || [];
-    if (current.includes(i)) {
-      current = current.filter(x => x !== i);
+    if (current.includes(actualIndex)) {
+      current = current.filter(x => x !== actualIndex);
     } else {
       if (current.length >= 2) current.shift();
-      current.push(i);
+      current.push(actualIndex);
     }
     state.mcAnswers[state.currentQ] = current;
   } else {
-    state.mcAnswers[state.currentQ] = i;
+    state.mcAnswers[state.currentQ] = actualIndex;
   }
   render();
 }
@@ -31912,19 +32038,29 @@ function updateFRQTotal() {
   const el = document.getElementById('frq-total');
   if (el) el.textContent = `FRQ Score: ${total} / ${frqMax}`;
 }
+function toggleInlineRubric(key, checked) {
+  state.frqScores[key] = checked;
+  render();
+}
+function toggleFrqReveal(key) {
+  state.frqReveal[key] = !state.frqReveal[key];
+  render();
+}
 function showResults() { state.screen = 'results'; render(); }
 function goHome() {
   if (state.screen !== 'landing' && state.screen !== 'results') {
     if (!confirm('Leave this exam and return to the home page?')) return;
   }
   stopTimer();
-  state = { screen:'landing', exam:null, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, timerSeconds:0, timerInterval:null, timerRunning:false, landingSections: defaultLandingSections() };
+  state = { screen:'landing', exam:null, currentQ:0, mcAnswers:{}, mcFlags:{}, frqAnswers:{}, frqScores:{}, frqReveal:{}, timerSeconds:0, timerInterval:null, timerRunning:false, attemptSeed: 0, landingSections: defaultLandingSections() };
   render();
 }
 
 // INIT
-render();
+window.addEventListener('load', render);
 </script>
+<script src="ap_exam_engine.js"></script>
+<script src="ap_custom_sets.js"></script>
 <script src="econ_intensive_sets.js"></script>
 <script src="german_set1_questions.js"></script>
 <script src="german_set2_questions.js"></script>

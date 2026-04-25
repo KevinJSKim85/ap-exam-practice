@@ -1,0 +1,7 @@
+{
+  "name": "ap-exam-practice",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  }
+}
